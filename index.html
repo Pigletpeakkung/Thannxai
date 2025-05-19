@@ -1,101 +1,186 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GPT Prompt Lab | Thanatsitt Santisamranwilai</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="ThannxAI: GPT Prompt Lab by Thanatsitt Santisamranwilai, Creative Technologist in Kamphaeng Phet, Thailand. Explore GPT prompt templates, automation scripts, and bilingual Thai-English content tools.">
+  <meta name="keywords" content="Thanatsitt Santisamranwilai, GPT prompts, AI content, automation scripts, Thai-English, creative technologist">
+  <meta property="og:title" content="ThannxAI: GPT Prompt Lab | Thanatsitt Santisamranwilai">
+  <meta property="og:description" content="Discover ready-to-use GPT prompt templates, automation tools, and bilingual content solutions by Thanatsitt Santisamranwilai.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1516321318427-d6b7496123e5?w=1200">
+  <meta property="og:type" content="website">
+  <title>ThannxAI: GPT Prompt Lab | Thanatsitt Santisamranwilai</title>
+  <link rel="icon" href="https://favicon.io/favicon.ico" type="image/x-icon">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" as="style">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
   <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f3f4f6;
-      color: #1f2937;
-      line-height: 1.6;
-    }
-    header {
-      background-color: #2563eb;
-      color: white;
-      padding: 2rem 1rem;
-      text-align: center;
-    }
-    header h1 {
-      margin: 0 0 0.5rem;
-    }
-    header p {
-      margin: 0;
-      font-size: 1.1rem;
-    }
-    main {
-      max-width: 960px;
-      margin: auto;
-      padding: 2rem 1rem;
-    }
-    section {
-      margin-bottom: 2rem;
-    }
-    h2 {
-      color: #3b82f6;
-      margin-bottom: 0.5rem;
-    }
-    ul {
-      padding-left: 1.5rem;
-    }
-    a {
-      color: #2563eb;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    footer {
-      text-align: center;
-      padding: 1rem;
-      background-color: #e5e7eb;
-      font-size: 0.9rem;
-    }
+    :root{--primary:#2563eb;--secondary:#3b82f6;--bg:#f3f4f6;--text:#1f2937;--footer-bg:#e5e7eb}body{font-family:Inter,sans-serif;margin:0;background:var(--bg);color:var(--text);font-size:16px;line-height:1.6}.navbar{background:#fff;box-shadow:0 2px 4px rgba(0,0,0,.1);position:sticky;top:0;z-index:100}header{background:var(--primary);color:#fff;padding:2rem 1rem;text-align:center;position:relative;overflow:hidden}header::before{content:"";position:absolute;top:0;left:0;width:100%;height:100%;background:url(https://images.unsplash.com/photo-1516321318427-d6b7496123e5?w=1920) center/cover no-repeat;opacity:.2}header *{position:relative}header h1{font-size:2.5rem;margin:0 0 .5rem}header p{font-size:1.1rem;margin:0}.container{max-width:960px;padding:1rem}.section{margin-bottom:2rem}h2{color:var(--secondary);margin-bottom:.5rem}.card{transition:transform .3s,box-shadow .3s;border-radius:8px;background:#fff;overflow:hidden}.card:hover{transform:translateY(-5px);box-shadow:0 8px 16px rgba(0,0,0,.1)}.card-img-top{width:100%;height:200px;object-fit:cover}.card-body{padding:1rem}.card-title{font-size:1.25rem;margin-bottom:.5rem}.card-text{font-size:.9rem;color:#6c757d}ul{padding-left:1.5rem}ul li{margin-bottom:.5rem}.skills-list{list-style:none;padding:0;display:flex;flex-wrap:wrap;gap:.5rem}.skills-list li{background:#e9ecef;padding:.5rem 1rem;border-radius:4px}a{color:var(--primary);text-decoration:none}a:hover{text-decoration:underline}footer{background:var(--footer-bg);padding:1rem;text-align:center;font-size:.9rem}.profile-img{width:120px;height:120px;border-radius:50%;object-fit:cover;margin:1rem auto;display:block}@media (max-width:768px){header h1{font-size:1.8rem}header p{font-size:1rem}.container{padding:.5rem}.card-img-top{height:150px}.profile-img{width:100px;height:100px}}@media (max-width:576px){.skills-list li{display:block;margin:.3rem 0}}
   </style>
 </head>
 <body>
+  <nav class="navbar navbar-expand-lg bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="/">ThannxAI</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#overview">Overview</a></li>
+          <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#explore">Explore</a></li>
+          <li class="nav-item"><a class="nav-link" href="#connect">Connect</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
   <header>
-    <h1>GPT Prompt Lab</h1>
-    <p>A toolkit for AI prompt engineering, cultural adaptation, and narrative automation</p>
+    <h1>ThannxAI: GPT Prompt Lab</h1>
+    <p>By Thanatsitt Santisamranwilai, Creative Technologist & AI Content Developer</p>
+    <img src="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?w=120&h=120&fit=crop&crop=faces" alt="Thanatsitt Santisamranwilai" class="profile-img" loading="lazy">
   </header>
-  <main>
-    <section>
+
+  <main class="container">
+    <section class="section" id="overview" itemscope itemtype="https://schema.org/SoftwareApplication">
       <h2>Overview</h2>
-      <p>This project includes ready-to-use GPT prompt templates, tone-optimized writing tools, and automation scripts for product content, blogs, and chatbots. Designed for bilingual (Thai/English) use cases with cultural alignment.</p>
-    </section><section>
-  <h2>Features</h2>
-  <ul>
-    <li>Prompt templates for product, blog, and chatbot tone design</li>
-    <li>Scripts for automation (Google Colab & Python)</li>
-    <li>Examples and screenshots of prompt outputs</li>
-    <li>UX writing in Thai-English context</li>
-  </ul>
-</section>
+      <p itemprop="description">ThannxAI provides ready-to-use GPT prompt templates, tone-optimized writing tools, and automation scripts for product content, blogs, and chatbots. Designed for bilingual Thai-English use cases with cultural alignment, this project leverages my expertise in AI content development, prompt engineering, and linguistics to enhance content creation workflows.</p>
+    </section>
 
-<section>
-  <h2>Explore</h2>
-  <ul>
-    <li><a href="./cv/">CV & Portfolio</a></li>
-    <li><a href="./examples/">Prompt Output Examples</a></li>
-    <li><a href="./scripts/">Scripts & Tools</a></li>
-    <li><a href="https://pegearts.com" target="_blank">Pegearts.com (Studio)</a></li>
-  </ul>
-</section>
+    <section class="section" id="features">
+      <h2>Features</h2>
+      <div class="row">
+        <div class="col-md-6 mb-4">
+          <div class="card">
+            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=360&h=200&fit=crop" alt="Prompt Templates" class="card-img-top" loading="lazy">
+            <div class="card-body">
+              <h3 class="card-title">Prompt Templates</h3>
+              <p class="card-text">Templates for product descriptions, blogs, and chatbot tone design, optimized for Thai-English contexts.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 mb-4">
+          <div class="card">
+            <img src="https://images.unsplash.com/photo-1516321318427-d6b7496123e5?w=360&h=200&fit=crop" alt="Automation Scripts" class="card-img-top" loading="lazy">
+            <div class="card-body">
+              <h3 class="card-title">Automation Scripts</h3>
+              <p class="card-text">Python and Google Colab tools for automating content generation workflows.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 mb-4">
+          <div class="card">
+            <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?w=360&h=200&fit=crop" alt="Prompt Outputs" class="card-img-top" loading="lazy">
+            <div class="card-body">
+              <h3 class="card-title">Prompt Outputs</h3>
+              <p class="card-text">Examples and screenshots showcasing GPT-generated content.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 mb-4">
+          <div class="card">
+            <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=360&h=200&fit=crop" alt="UX Writing" class="card-img-top" loading="lazy">
+            <div class="card-body">
+              <h3 class="card-title">UX Writing</h3>
+              <p class="card-text">Bilingual Thai-English UX writing for culturally aligned user experiences.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<section>
-  <h2>Connect</h2>
-  <ul>
-    <li>Email: <a href="mailto:thanattsitt.info@yahoo.co.uk">thanattsitt.info@yahoo.co.uk</a></li>
-    <li>GitHub: <a href="https://github.com/Pigletpeakkung" target="_blank">Pigletpeakkung</a></li>
-    <li>Discord: zeintharts</li>
-    <li>Support: <a href="https://ko-fi.com/ezekielarts" target="_blank">Ko-fi</a></li>
-  </ul>
-</section>
+    <section class="section" id="about" itemscope itemtype="https://schema.org/Person">
+      <h2>About Thanatsitt</h2>
+      <p itemprop="description">I’m a Creative Technologist based in Kamphaeng Phet, Thailand, with a BA in Design from London College of Fashion. As a native Thai speaker fluent in English and conversational in Japanese, I specialize in AI content development (MidJourney, GPT scripting), creative writing, and e-commerce solutions (Shopify, Shopee). My work focuses on crafting culturally sensitive, bilingual content to enhance AI models and user experiences.</p>
+      <h3>Professional Experience</h3>
+      <ul>
+        <li><strong>Web Developer & Creative Lead, Pegearts.com</strong> (2024-Present): Designed AI-driven Shopify content strategies, boosting engagement by 25%.</li>
+        <li><strong>AI Multimedia Specialist, ezekiel-arts.myshopify.com</strong> (2023-2024): Created MidJourney art campaigns and scaled Shopee/Lazada sales by 30%.</li>
+        <li><strong>Founder & Creative Director, Thanattsitt Studio</strong> (2018-2023): Developed viral VTuber content and WordPress sites.</li>
+      </ul>
+      <h3>Education</h3>
+      <ul>
+        <li>BA in Fashion & Design, London College of Fashion (2015-2017)</li>
+        <li>Diploma in Fashion & Textile Design, Bunka Fashion College (2012-2014)</li>
+      </ul>
+      <h3>Skills</h3>
+      <ul class="skills-list">
+        <li>AI Content Development</li>
+        <li>Prompt Engineering</li>
+        <li>MidJourney & GPT Scripting</li>
+        <li>SEO Copywriting</li>
+        <li>Shopify & WordPress</li>
+        <li>React.js</li>
+        <li>Google Ads</li>
+      </ul>
+      <h3>Languages</h3>
+      <ul>
+        <li>Thai (Native)</li>
+        <li>English (Fluent)</li>
+        <li>Japanese (Conversational)</li>
+      </ul>
+    </section>
 
+    <section class="section" id="explore">
+      <h2>Explore</h2>
+      <div class="row">
+        <div class="col-md-6 mb-4">
+          <div class="card">
+            <div class="card-body">
+              <h3 class="card-title">CV & Portfolio</h3>
+              <p class="card-text">View my full CV and portfolio of AI and creative projects.</p>
+              <a href="./cv/" class="btn btn-primary" aria-label="View CV and Portfolio">Explore</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 mb-4">
+          <div class="card">
+            <div class="card-body">
+              <h3 class="card-title">Prompt Output Examples</h3>
+              <p class="card-text">See sample GPT outputs in markdown and images.</p>
+              <a href="./examples/" class="btn btn-primary" aria-label="View Prompt Output Examples">Explore</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 mb-4">
+          <div class="card">
+            <div class="card-body">
+              <h3 class="card-title">Scripts & Tools</h3>
+              <p class="card-text">Access Python and Google Colab automation scripts.</p>
+              <a href="./scripts/" class="btn btn-primary" aria-label="View Scripts and Tools">Explore</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 mb-4">
+          <div class="card">
+            <div class="card-body">
+              <h3 class="card-title">Pegearts Studio</h3>
+              <p class="card-text">Visit my studio for more AI-driven projects.</p>
+              <a href="https://pegearts.com" target="_blank" rel="noopener" class="btn btn-primary" aria-label="Visit Pegearts Studio">Explore</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="connect">
+      <h2>Connect</h2>
+      <ul>
+        <li>Email: <a href="mailto:thanattsitt.info@yahoo.co.uk" aria-label="Email Thanatsitt">thanattsitt.info@yahoo.co.uk</a></li>
+        <li>GitHub: <a href="https://github.com/Pigletpeakkung" target="_blank" rel="noopener" aria-label="Visit GitHub Profile">Pigletpeakkung</a></li>
+        <li>LinkedIn: <a href="https://linkedin.com/in/thanattsitts" target="_blank" rel="noopener" aria-label="Visit LinkedIn Profile">thanattsitts</a></li>
+        <li>Discord: zeintharts</li>
+        <li>Support: <a href="https://ko-fi.com/ezekielarts" target="_blank" rel="noopener" aria-label="Support via Ko-fi">Ko-fi</a></li>
+      </ul>
+    </section>
   </main>
+
   <footer>
-    Created by Thanatsitt Santisamranwilai | 2025
+    <p>Created by <span itemprop="name">Thanatsitt Santisamranwilai</span> | 2025</p>
   </footer>
+
+  <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </body>
 </html>
