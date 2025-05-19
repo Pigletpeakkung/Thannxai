@@ -12,6 +12,5 @@
 - Optional CV integration (HTML)
 
 ## Folder Structure
-## Folder Structure
 
 thannxai/ ├── README.md               ← Project overview ├── index.html              ← GitHub Pages landing page ├── assets/                 ← Logo, banners, images ├── prompts/                ← Prompt templates ├── scripts/                ← Python & Colab tools ├── examples/               ← Sample outputs ├── cv/                     ← Online CV page └── LICENSE                 
