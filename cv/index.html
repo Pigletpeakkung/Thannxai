@@ -1,142 +1,127 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Portfolio of Thanattsitt Santisamranwilai, Creative Technologist and AI Content Developer in Kamphaeng Phet, Thailand.">
+  <meta name="keywords" content="creative technologist, AI content developer, creative writer, Thailand">
+  <meta property="og:title" content="Thanattsitt Santisamranwilai | Portfolio">
+  <meta property="og:description" content="Explore Thanattsitt's projects in AI and creative writing.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1516321318427-d6b7496123e5?w=1200">
+  <meta property="og:type" content="website">
   <title>Thanattsitt Santisamranwilai | Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="icon" href="https://favicon.io/favicon.ico" type="image/x-icon">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" as="style">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" integrity="sha384-7k2C8fQo2G3TzXjS4tQjAZ1Z+IwW5vXO9+lbwcK+/uVX9tH64r39iW4F2zE8j3kK" crossorigin="anonymous">
   <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #f9f9f9;
-      color: #333;
-    }
-    .container {
-      max-width: 960px;
-      margin: auto;
-      padding: 2rem;
-    }
-    h1, h2, h3 {
-      color: #2d2d2d;
-    }
-    .header {
-      text-align: center;
-    }
-    .header h1 {
-      font-size: 2rem;
-      margin-bottom: 0.2rem;
-    }
-    .header p {
-      margin: 0.3rem 0;
-    }
-    .section {
-      margin-top: 2rem;
-    }
-    ul {
-      padding-left: 1.2rem;
-    }
-    @media (max-width: 600px) {
-      .container {
-        padding: 1rem;
-      }
-    }
+    :root{--primary:#007bff;--secondary:#6c757d;--bg:#f9f9f9;--text:#333;--header-grad:linear-gradient(to bottom right,#fff,#f0f0f0)}body{font-family:Inter,sans-serif;margin:0;background:var(--bg);color:var(--text);font-size:16px;line-height:1.5}.container{max-width:960px;padding:1rem}h1,h2,h3{color:#2d2d2d}.header{text-align:center;background:var(--header-grad);padding:2rem 1rem;position:relative;overflow:hidden}.header::before{content:"";position:absolute;top:0;left:0;width:100%;height:100%;background:url(https://images.unsplash.com/photo-1516321318427-d6b7496123e5?w=1920) center/cover no-repeat;opacity:.1}.header *{position:relative}.header h1{font-size:2rem;margin-bottom:.5rem}.header p{margin:.3rem 0}.navbar{background:#fff;box-shadow:0 2px 4px rgba(0,0,0,.1);position:sticky;top:0;z-index:100}.section{margin-top:2rem;scroll-margin-top:80px}.project-card{transition:transform .3s,box-shadow .3s;border-radius:8px;background:#fff;overflow:hidden}.project-card:hover{transform:translateY(-5px);box-shadow:0 8px 16px rgba(0,0,0,.1)}.project-card img{width:100%;height:200px;object-fit:cover}.card-body{padding:1rem}.card-title{font-size:1.25rem;margin-bottom:.5rem}.card-text{font-size:.9rem;color:var(--secondary)}.btn-primary{margin-top:1rem}.filter-buttons{text-align:center;margin-bottom:1.5rem}.filter-buttons .btn{margin:.3rem}.parallax{min-height:300px;background:url(https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?w=1920) center/cover no-repeat;background-attachment:fixed}@media (max-width:768px){.header h1{font-size:1.5rem}.project-card img{height:150px}.parallax{background-attachment:scroll}.container{padding:.5rem}}@media (max-width:576px){.filter-buttons .btn{display:block;margin:.3rem 0}}
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="header">
-      <h1>Thanattsitt Santisamranwilai</h1>
-      <p><strong>Creative Technologist | AI Content Developer | Creative Writer</strong></p>
-      <p>Location: Kamphaeng Phet, Thailand</p>
-      <p>Email: <a href="mailto:thanattsitt.info@yahoo.co.uk">thanattsitt.info@yahoo.co.uk</a></p>
-      <p>LinkedIn: <a href="https://linkedin.com/in/thanattsitts">linkedin.com/in/thanattsitts</a> | GitHub: <a href="https://github.com/Pigletpeakkung">github.com/Pigletpeakkung</a></p>
-    </div><div class="section">
-  <h2>Professional Summary</h2>
-  <p>Native Thai speaker with a Bachelor's degree in Design from the London College of Fashion. Strong foundation in communication, storytelling, and cross-cultural sensitivity. Passionate about linguistics, psychology, and AI development. Experienced in freelance voice and content tasks. Dedicated to supporting AI models with linguistic accuracy and cultural depth in Thai and English.</p>
-</div>
+  <nav class="navbar navbar-expand-lg bg-light sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="/">Portfolio</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-<div class="section">
-  <h2>Core Competencies</h2>
-  <ul>
-    <li>AI Content Development | MidJourney | GPT Scripting | Prompt Engineering</li>
-    <li>Creative Writing | SEO Copywriting | Digital Storytelling</li>
-    <li>Shopify | Shopee | Lazada | WordPress | React.js | W3.CSS</li>
-    <li>Google Ads | Meta Business Suite | Email Marketing</li>
-  </ul>
-</div>
+  <header class="header">
+    <h1>Thanattsitt Santisamranwilai</h1>
+    <p><strong>Creative Technologist | AI Content Developer | Creative Writer</strong></p>
+    <p>Kamphaeng Phet, Thailand</p>
+    <p>Email: <a href="mailto:thanattsitt.info@yahoo.co.uk">thanattsitt.info@yahoo.co.uk</a></p>
+    <p>LinkedIn: <a href="https://linkedin.com/in/thanattsitts">linkedin.com/in/thanattsitts</a> | GitHub: <a href="https://github.com/Pigletpeakkung">github.com/Pigletpeakkung</a></p>
+  </header>
 
-<div class="section">
-  <h2>Professional Experience</h2>
-  <p><strong>Web Developer & Creative Lead</strong> – Pegearts.com (2024 - Present)</p>
-  <ul>
-    <li>Designed AI-driven Shopify content strategies, increasing site engagement by 25%.</li>
-    <li>Integrated GPT-powered descriptions and MidJourney visuals into product pages.</li>
-  </ul>
-  <p><strong>AI Multimedia Specialist</strong> – ezekiel-arts.myshopify.com (2023 - 2024)</p>
-  <ul>
-    <li>Created MidJourney art campaigns and automated blog content using GPT.</li>
-    <li>Scaled Shopee/Lazada sales by 30% through narrative social promotions.</li>
-  </ul>
-  <p><strong>E-Commerce Specialist</strong> – Shopee, Lazada, Meta (2022 - 2023)</p>
-  <ul>
-    <li>Crafted SEO-optimized product copy and visual storytelling for online launches.</li>
-  </ul>
-  <p><strong>Founder & Creative Director</strong> – Thanattsitt Studio (2018 - 2023)</p>
-  <ul>
-    <li>Developed VTuber content and original scripts, gaining viral engagement.</li>
-    <li>Built WordPress websites for showcasing AI and creative projects.</li>
-  </ul>
-</div>
+  <div class="parallax" aria-hidden="true"></div>
 
-<div class="section">
-  <h2>Relevant Projects</h2>
-  <ul>
-    <li><strong>Cozy Light</strong> – A responsive HTML/CSS portfolio site. <a href="https://pigletpeakkung.github.io/Cozy-light/">View Project</a></li>
-    <li><strong>TON Mini App Project</strong> – Storytelling-based Telegram Mini App using AI assets, funded by TON Foundation.</li>
-    <li><strong>MidJourney + GPT Content Series</strong> – AI-powered visuals and scripts for e-commerce storytelling.</li>
-  </ul>
-</div>
+  <main class="container">
+    <section class="section" id="about" data-aos="fade-up">
+      <h2>About Me</h2>
+      <p>Creative Technologist in Kamphaeng Phet, Thailand, blending AI, coding, and creative writing for innovative content solutions.</p>
+    </section>
 
-<div class="section">
-  <h2>AI / Voice Task Experience</h2>
-  <ul>
-    <li>Participated in Thai-English bilingual voice and transcription tasks.</li>
-    <li>Supported training datasets for AI language models on various platforms.</li>
-  </ul>
-</div>
+    <section class="section" id="projects" itemscope itemtype="https://schema.org/CreativeWork">
+      <h2>Projects</h2>
+      <div class="filter-buttons">
+        <button class="btn btn-outline-primary active" data-filter="all" aria-label="Show all projects">All</button>
+        <button class="btn btn-outline-primary" data-filter="ai" aria-label="Show AI projects">AI</button>
+        <button class="btn btn-outline-primary" data-filter="web" aria-label="Show web projects">Web</button>
+        <button class="btn btn-outline-primary" data-filter="writing" aria-label="Show writing projects">Writing</button>
+      </div>
+      <div class="row" id="project-container">
+        <div class="col-md-6 col-lg-4 mb-4 project-item" data-category="ai" data-aos="fade-up" itemscope itemtype="https://schema.org/SoftwareApplication">
+          <div class="project-card">
+            <img src="https://images.unsplash.com/photo-1516321318427-d6b7496123e5?w=360&h=200&fit=crop" alt="AI Content Generator" loading="lazy">
+            <div class="card-body">
+              <h3 class="card-title" itemprop="name">AI Content Generator</h3>
+              <p class="card-text" itemprop="description">AI-powered tool for creative content using Python and TensorFlow.</p>
+              <a href="https://github.com/Pigletpeakkung/ai-content" class="btn btn-primary" itemprop="url">View on GitHub</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4 mb-4 project-item" data-category="web" data-aos="fade-up" itemscope itemtype="https://schema.org/WebApplication">
+          <div class="project-card">
+            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=360&h=200&fit=crop" alt="Creative Writing Blog" loading="lazy">
+            <div class="card-body">
+              <h3 class="card-title" itemprop="name">Creative Writing Blog</h3>
+              <p class="card-text" itemprop="description">Responsive blog using React and Firebase.</p>
+              <a href="https://example.com/blog" class="btn btn-primary" itemprop="url">Visit Site</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4 mb-4 project-item" data-category="writing" data-aos="fade-up" itemscope itemtype="https://schema.org/CreativeWork">
+          <div class="project-card">
+            <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?w=360&h=200&fit=crop" alt="Short Story Collection" loading="lazy">
+            <div class="card-body">
+              <h3 class="card-title" itemprop="name">Short Story Collection</h3>
+              <p class="card-text" itemprop="description">Short stories exploring technology and humanity.</p>
+              <a href="https://example.com/stories" class="btn btn-primary" itemprop="url">Read More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="text-center">
+        <button class="btn btn-primary" id="load-more">Load More</button>
+      </div>
+    </section>
 
-<div class="section">
-  <h2>Education</h2>
-  <ul>
-    <li>BA in Fashion & Design – London College of Fashion (2015 - 2017)</li>
-    <li>Diploma in Fashion & Textile Design – Bunka Fashion College (2012 - 2014)</li>
-    <li>High School Diploma (Japanese Major) – Kamphangphet Pittayakom School (2008)</li>
-  </ul>
-</div>
+    <section class="section" id="contact" data-aos="fade-up">
+      <h2>Contact</h2>
+      <p>Discuss collaborations or opportunities.</p>
+      <form action="https://formspree.io/f/your-form-id" method="POST">
+        <div class="mb-3">
+          <label for="name" class="form-label">Name</label>
+          <input type="text" class="form-control" id="name" name="name" required>
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email"大 name="email" required>
+        </div>
+        <div class="mb-3">
+          <label for="message" class="form-label">Message</label>
+          <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Send</button>
+      </form>
+    </section>
+  </main>
 
-<div class="section">
-  <h2>Certifications</h2>
-  <ul>
-    <li>Shopify Partner Academy – E-commerce Development</li>
-    <li>Google SEO & Digital Marketing</li>
-    <li>AI Prompt Engineering (Self-Trained)</li>
-  </ul>
-</div>
-
-<div class="section">
-  <h2>Languages</h2>
-  <p>Thai – Native | English – Fluent | Japanese – Conversational</p>
-</div>
-
-<div class="section">
-  <h2>Professional Interests</h2>
-  <ul>
-    <li>Linguistics, psychology, mindful communication</li>
-    <li>Supporting AI training and ethical data creation</li>
-  </ul>
-</div>
-
-  </div>
+  <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+  <script defer src="https://unpkg.com/aos@2.3.1/dist/aos.js" integrity="sha384-6HY1bHjH6H6JTL37iS6L+PLr2AFtR2OBo2c/kPZI3z17qbgTj3b7jY+Ay+DrOAVh" crossorigin="anonymous"></script>
+  <script>
+    AOS.init({duration:800,once:!0});const t=document.querySelectorAll(".filter-buttons .btn"),e=document.querySelectorAll(".project-item"),r=document.getElementById("load-more");let a=6;t.forEach(t=>{t.addEventListener("click",()=>{t.forEach(t=>t.classList.remove("active")),t.classList.add("active");const r=t.getAttribute("data-filter");e.forEach(t=>{t.style.display="all"===r||t.getAttribute("data-category")===r?"block":"none"})})}),r.addEventListener("click",()=>{a+=3,e.forEach((t,e)=>{e<a&&(t.style.display="block")}),a>=e.length&&(r.style.display="none")});
+  </script>
 </body>
 </html>
