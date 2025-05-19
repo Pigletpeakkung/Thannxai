@@ -1,16 +1,29 @@
-# ThannxAI
+# ThannxAI – Prompt Engineering Toolkit
 
-**ThannxAI** is a modular toolkit for AI prompt engineering, cultural adaptation (Thai-English), and narrative generation. It includes pre-built templates, automation scripts, and sample outputs for content creators, designers, and AI developers.
+**ThannxAI** is a bilingual (Thai-English) toolkit for prompt engineering, cultural tone alignment, and automated narrative generation using OpenAI GPT (3.5/4). Built by Thanatsitt Santisamranwilai, this project streamlines content creation with smart templates, UX writing tone design, and Colab automation.
 
 ## Features
 
-- Prompt templates for blogs, products, and chatbots
-- Tools for tone alignment and localization (Thai-English)
-- Automation scripts (Python + Google Colab)
-- Output samples and documentation
-- Minimal, clean GitHub Pages landing page
-- Optional CV integration (HTML)
+- Ready-to-use prompt templates for blog posts, chatbots, and product listings
+- Cultural tone alignment (Thai ↔ English)
+- Python & Colab scripts for automating outputs
+- Sample outputs and reference tone packs
 
-## Folder Structure
+## Folder Overview
 
-thannxai/ ├── README.md               ← Project overview ├── index.html              ← GitHub Pages landing page ├── assets/                 ← Logo, banners, images ├── prompts/                ← Prompt templates ├── scripts/                ← Python & Colab tools ├── examples/               ← Sample outputs ├── cv/                     ← Online CV page └── LICENSE                 
+| Folder        | Contents                                      |
+|---------------|-----------------------------------------------|
+| `prompts/`    | Blog, chatbot, product prompt templates       |
+| `scripts/`    | Python & Colab tools for automation           |
+| `examples/`   | Sample GPT outputs (markdown/images)          |
+| `cv/`         | Online CV and portfolio link                  |
+| `assets/`     | Banner and branding images                    |
+
+## Demo
+
+Visit: [ThannxAI GitHub Page](https://pigletpeakkung.github.io/thannxai/)  
+Author Portfolio: [PegeArts.com](https://pegearts.com)
+
+## License
+
+MIT License – Free for public use and adaptation with credit.
