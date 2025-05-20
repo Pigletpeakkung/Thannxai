@@ -3,23 +3,406 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="ThannxAI: GPT Prompt Lab by Thanatsitt Santisamranwilai, Creative Technologist in Kamphaeng Phet, Thailand. Explore GPT prompt templates, automation scripts, and bilingual Thai-English content tools.">
+  <meta name="description" content="ThannxAI: Learning Lab by Thanatsitt Santisamranwilai, Creative Technologist in Kamphaeng Phet, Thailand. Explore GPT prompt templates, automation scripts, and bilingual Thai-English content tools.">
   <meta name="keywords" content="Thanatsitt Santisamranwilai, GPT prompts, AI content, automation scripts, Thai-English, creative technologist">
-  <meta property="og:title" content="ThannxAI: GPT Prompt Lab | Thanatsitt Santisamranwilai">
+  <meta property="og:title" content="ThannxAI: Learning Lab | Thanatsitt Santisamranwilai">
   <meta property="og:description" content="Discover ready-to-use GPT prompt templates, automation tools, and bilingual content solutions by Thanatsitt Santisamranwilai.">
-  <meta property="og:image" content="https://images.unsplash.com/photo-1516321318427-d6b7496123e5?w=1200">
+  <meta property="og:image" content="https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1200&format=webp">
   <meta property="og:type" content="website">
-  <title>ThannxAI: GPT Prompt Lab | Thanatsitt Santisamranwilai</title>
+  <title>ThannxAI: Learning Lab | Thanatsitt Santisamranwilai</title>
   <link rel="icon" href="https://favicon.io/favicon.ico" type="image/x-icon">
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" as="style">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" as="style">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preload" href="https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1920&format=webp" as="image">
   <style>
-    :root{--primary:#2563eb;--secondary:#3b82f6;--bg:#f3f4f6;--text:#1f2937;--footer-bg:#e5e7eb}body{font-family:Inter,sans-serif;margin:0;background:var(--bg);color:var(--text);font-size:16px;line-height:1.6}.navbar{background:#fff;box-shadow:0 2px 4px rgba(0,0,0,.1);position:sticky;top:0;z-index:100}header{background:var(--primary);color:#fff;padding:2rem 1rem;text-align:center;position:relative;overflow:hidden}header::before{content:"";position:absolute;top:0;left:0;width:100%;height:100%;background:url(https://images.unsplash.com/photo-1516321318427-d6b7496123e5?w=1920) center/cover no-repeat;opacity:.2}header *{position:relative}header h1{font-size:2.5rem;margin:0 0 .5rem}header p{font-size:1.1rem;margin:0}.container{max-width:960px;padding:1rem}.section{margin-bottom:2rem}h2{color:var(--secondary);margin-bottom:.5rem}.card{transition:transform .3s,box-shadow .3s;border-radius:8px;background:#fff;overflow:hidden}.card:hover{transform:translateY(-5px);box-shadow:0 8px 16px rgba(0,0,0,.1)}.card-img-top{width:100%;height:200px;object-fit:cover}.card-body{padding:1rem}.card-title{font-size:1.25rem;margin-bottom:.5rem}.card-text{font-size:.9rem;color:#6c757d}ul{padding-left:1.5rem}ul li{margin-bottom:.5rem}.skills-list{list-style:none;padding:0;display:flex;flex-wrap:wrap;gap:.5rem}.skills-list li{background:#e9ecef;padding:.5rem 1rem;border-radius:4px}a{color:var(--primary);text-decoration:none}a:hover{text-decoration:underline}footer{background:var(--footer-bg);padding:1rem;text-align:center;font-size:.9rem}.profile-img{width:120px;height:120px;border-radius:50%;object-fit:cover;margin:1rem auto;display:block}@media (max-width:768px){header h1{font-size:1.8rem}header p{font-size:1rem}.container{padding:.5rem}.card-img-top{height:150px}.profile-img{width:100px;height:100px}}@media (max-width:576px){.skills-list li{display:block;margin:.3rem 0}}
+    :root {
+      --primary: #4f46e5;
+      --secondary: #10b981;
+      --bg: #f8fafc;
+      --text: #1e293b;
+      --footer-bg: #1e293b;
+      --card-bg: #ffffff;
+      --shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      --dark-bg: #1e293b;
+      --dark-text: #f8fafc;
+      --dark-card-bg: #2d3748;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.7;
+      scroll-behavior: smooth;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+    body.dark-mode {
+      background: var(--dark-bg);
+      color: var(--dark-text);
+    }
+    body.dark-mode .card {
+      background: var(--dark-card-bg);
+    }
+    body.dark-mode .navbar {
+      background: var(--dark-card-bg);
+    }
+    body.dark-mode .navbar.scrolled {
+      background: rgba(45, 55, 72, 0.95);
+    }
+    #preloader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity 0.5s ease;
+    }
+    #preloader.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+    .preloader-spinner {
+      width: 50px;
+      height: 50px;
+      border: 5px solid var(--primary);
+      border-top: 5px solid var(--secondary);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .navbar {
+      background: #fff;
+      box-shadow: var(--shadow);
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      transition: background 0.3s ease;
+    }
+    .navbar.scrolled {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+    }
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--primary);
+    }
+    .nav-link {
+      font-weight: 600;
+      color: var(--text);
+      transition: color 0.3s ease;
+    }
+    .nav-link:hover, .nav-link.active {
+      color: var(--secondary);
+    }
+    #theme-toggle {
+      background: none;
+      border: none;
+      color: var(--text);
+      font-size: 1.2rem;
+      cursor: pointer;
+      margin-left: 1rem;
+    }
+    body.dark-mode #theme-toggle {
+      color: var(--dark-text);
+    }
+    #back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    #back-to-top.visible {
+      opacity: 1;
+    }
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: #fff;
+      padding: 4rem 1rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url(https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1920&format=webp) center/cover no-repeat;
+      opacity: 0.15;
+      z-index: 0;
+    }
+    header * {
+      position: relative;
+      z-index: 1;
+    }
+    header h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin: 0 0 0.5rem;
+      animation: fadeInDown 1s ease;
+    }
+    header p {
+      font-size: 1.25rem;
+      font-weight: 400;
+      margin: 0;
+      animation: fadeInUp 1s ease 0.2s;
+    }
+    .container {
+      max-width: 1100px;
+      padding: 2rem 1rem;
+    }
+    .section {
+      margin-bottom: 3rem;
+      padding: 2rem 0;
+    }
+    h2 {
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+    h2::after {
+      content: "";
+      width: 60px;
+      height: 4px;
+      background: var(--secondary);
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+    }
+    .card {
+      background: var(--card-bg);
+      border: none;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      position: relative;
+      margin-bottom: 1.5rem;
+    }
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow);
+    }
+    .card-img-top {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      transition: transform 0.5s ease, filter 0.5s ease;
+      filter: blur(5px);
+    }
+    .card-img-top.loaded {
+      filter: blur(0);
+    }
+    .card:hover .card-img-top {
+      transform: scale(1.05);
+    }
+    .card-body {
+      padding: 1.5rem;
+    }
+    .card-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--primary);
+    }
+    .card-text {
+      font-size: 0.95rem;
+      color: #64748b;
+    }
+    .btn-primary {
+      background: var(--primary);
+      border: none;
+      border-radius: 8px;
+      padding: 0.75rem 1.5rem;
+      font-weight: 600;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+    .btn-primary:hover {
+      background: var(--secondary);
+      transform: scale(1.05);
+    }
+    .skills-list {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    .skills-list li {
+      background: #e0f2fe;
+      color: var(--primary);
+      padding: 0.5rem 1.25rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+    }
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      cursor: pointer;
+      opacity: 0;
+      animation: fadeInUp 0.6s ease forwards;
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      transition: transform 0.4s ease, filter 0.5s ease;
+      filter: blur(5px);
+    }
+    .gallery-item img.loaded {
+      filter: blur(0);
+    }
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+    .gallery-item::after {
+      content: attr(data-caption);
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.7);
+      color: #fff;
+      padding: 0.5rem;
+      font-size: 0.9rem;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .gallery-item:hover::after {
+      opacity: 1;
+    }
+    .gallery-filter {
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+    .gallery-filter button {
+      background: #e0f2fe;
+      border: none;
+      padding: 0.5rem 1rem;
+      margin: 0 0.5rem;
+      border-radius: 20px;
+      font-weight: 600;
+      color: var(--primary);
+      transition: background 0.3s ease;
+    }
+    .gallery-filter button.active, .gallery-filter button:hover {
+      background: var(--secondary);
+      color: #fff;
+    }
+    .modal-content {
+      border-radius: 12px;
+      border: none;
+    }
+    .modal-img {
+      width: 100%;
+      max-height: 70vh;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+    footer {
+      background: var(--footer-bg);
+      color: #fff;
+      padding: 2rem 1rem;
+      text-align: center;
+      font-size: 0.95rem;
+    }
+    .profile-img {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 1.5rem auto;
+      display: block;
+      border: 4px solid #fff;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s ease, filter 0.5s ease;
+      filter: blur(5px);
+    }
+    .profile-img.loaded {
+      filter: blur(0);
+    }
+    .profile-img:hover {
+      transform: scale(1.1);
+    }
+    .social-icons {
+      margin-top: 1rem;
+    }
+    .social-icons a {
+      color: #fff;
+      font-size: 1.5rem;
+      margin: 0 0.75rem;
+      transition: color 0.3s ease;
+    }
+    .social-icons a:hover {
+      color: var(--secondary);
+    }
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @media (max-width: 768px) {
+      header h1 { font-size: 2rem; }
+      header p { font-size: 1rem; }
+      .container { padding: 1rem; }
+      .card-img-top { height: 180px; }
+      .profile-img { width: 110px; height: 110px; }
+      h2 { font-size: 1.75rem; }
+      .gallery-item img { height: 150px; }
+      .navbar { padding: 0.5rem 0; }
+    }
+    @media (max-width: 576px) {
+      .skills-list li { display: block; margin: 0.5rem 0; }
+      .card-img-top { height: 150px; }
+      .navbar-brand { font-size: 1.25rem; }
+      .nav-link { font-size: 0.9rem; }
+      .gallery-grid { grid-template-columns: 1fr; }
+      .gallery-filter button { margin: 0.3rem; }
+    }
   </style>
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg bg-light">
+  <div id="preloader">
+    <div class="preloader-spinner"></div>
+  </div>
+  <nav class="navbar navbar-expand-lg" role="navigation">
     <div class="container">
       <a class="navbar-brand" href="/">ThannxAI</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -29,59 +412,81 @@
         <ul class="navbar-nav ms-auto">
           <li class="nav-item"><a class="nav-link" href="#overview">Overview</a></li>
           <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+          <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
           <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
           <li class="nav-item"><a class="nav-link" href="#explore">Explore</a></li>
           <li class="nav-item"><a class="nav-link" href="#connect">Connect</a></li>
+          <li class="nav-item">
+            <button id="theme-toggle" aria-label="Toggle Dark Mode">
+              <i class="fas fa-moon"></i>
+            </button>
+          </li>
         </ul>
       </div>
     </div>
   </nav>
+  <button id="back-to-top" aria-label="Back to Top"><i class="fas fa-arrow-up"></i></button>
 
-  <header>
-    <h1>ThannxAI: GPT Prompt Lab</h1>
-    <p>By Thanatsitt Santisamranwilai, Creative Technologist & AI Content Developer</p>
-    <img src="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?w=120&h=120&fit=crop&crop=faces" alt="Thanatsitt Santisamranwilai" class="profile-img" loading="lazy">
+  <header role="banner">
+    <h1 id="header-title">ThannxAI: Learning Lab</h1>
+    <p>Creative Technologist & AI Content Developer</p>
+    <picture>
+      <source srcset="https://images.pexels.com/photos/2379748/pexels-photo-2379748.jpeg?auto=compress&cs=tinysrgb&w=140&h=140&fit=crop&format=webp" type="image/webp">
+      <img src="https://images.pexels.com/photos/2379748/pexels-photo-2379748.jpeg?auto=compress&cs=tinysrgb&w=140&h=140&fit=crop" alt="Thanatsitt Santisamranwilai" class="profile-img" loading="lazy">
+    </picture>
   </header>
 
-  <main class="container">
+  <main class="container" role="main">
     <section class="section" id="overview" itemscope itemtype="https://schema.org/SoftwareApplication">
       <h2>Overview</h2>
-      <p itemprop="description">ThannxAI provides ready-to-use GPT prompt templates, tone-optimized writing tools, and automation scripts for product content, blogs, and chatbots. Designed for bilingual Thai-English use cases with cultural alignment, this project leverages my expertise in AI content development, prompt engineering, and linguistics to enhance content creation workflows.</p>
+      <p itemprop="description">ThannxAI offers showcase of prompt templates, tone-optimized writing tools, and automation scripts for product content, blogs, and chatbots, tailored for bilingual Thai-English use cases with cultural alignment.</p>
     </section>
 
     <section class="section" id="features">
       <h2>Features</h2>
       <div class="row">
-        <div class="col-md-6 mb-4">
-          <div class="card">
-            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=360&h=200&fit=crop" alt="Prompt Templates" class="card-img-top" loading="lazy">
+        <div class="col-md-6 col-lg-3 mb-4">
+          <div class="card" role="article">
+            <picture>
+              <source srcset="https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=360&h=220&fit=crop&format=webp" type="image/webp">
+              <img src="https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=360&h=220&fit=crop" alt="Prompt Templates" class="card-img-top" loading="lazy">
+            </picture>
             <div class="card-body">
               <h3 class="card-title">Prompt Templates</h3>
               <p class="card-text">Templates for product descriptions, blogs, and chatbot tone design, optimized for Thai-English contexts.</p>
             </div>
           </div>
         </div>
-        <div class="col-md-6 mb-4">
-          <div class="card">
-            <img src="https://images.unsplash.com/photo-1516321318427-d6b7496123e5?w=360&h=200&fit=crop" alt="Automation Scripts" class="card-img-top" loading="lazy">
+        <div class="col-md-6 col-lg-3 mb-4">
+          <div class="card" role="article">
+            <picture>
+              <source srcset="https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?auto=compress&cs=tinysrgb&w=360&h=220&fit=crop&format=webp" type="image/webp">
+              <img src="https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?auto=compress&cs=tinysrgb&w=360&h=220&fit=crop" alt="Automation Scripts" class="card-img-top" loading="lazy">
+            </picture>
             <div class="card-body">
               <h3 class="card-title">Automation Scripts</h3>
               <p class="card-text">Python and Google Colab tools for automating content generation workflows.</p>
             </div>
           </div>
         </div>
-        <div class="col-md-6 mb-4">
-          <div class="card">
-            <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?w=360&h=200&fit=crop" alt="Prompt Outputs" class="card-img-top" loading="lazy">
+        <div class="col-md-6 col-lg-3 mb-4">
+          <div class="card" role="article">
+            <picture>
+              <source srcset="https://images.pexels.com/photos/1591061/pexels-photo-1591061.jpeg?auto=compress&cs=tinysrgb&w=360&h=220&fit=crop&format=webp" type="image/webp">
+              <img src="https://images.pexels.com/photos/1591061/pexels-photo-1591061.jpeg?auto=compress&cs=tinysrgb&w=360&h=220&fit=crop" alt="Prompt Outputs" class="card-img-top" loading="lazy">
+            </picture>
             <div class="card-body">
               <h3 class="card-title">Prompt Outputs</h3>
               <p class="card-text">Examples and screenshots showcasing GPT-generated content.</p>
             </div>
           </div>
         </div>
-        <div class="col-md-6 mb-4">
-          <div class="card">
-            <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=360&h=200&fit=crop" alt="UX Writing" class="card-img-top" loading="lazy">
+        <div class="col-md-6 col-lg-3 mb-4">
+          <div class="card" role="article">
+            <picture>
+              <source srcset="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=360&h=220&fit=crop&format=webp" type="image/webp">
+              <img src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=360&h=220&fit=crop" alt="UX Writing" class="card-img-top" loading="lazy">
+            </picture>
             <div class="card-body">
               <h3 class="card-title">UX Writing</h3>
               <p class="card-text">Bilingual Thai-English UX writing for culturally aligned user experiences.</p>
@@ -91,20 +496,59 @@
       </div>
     </section>
 
+    <section class="section" id="gallery">
+      <h2>Gallery</h2>
+      <div class="gallery-filter" role="tablist">
+        <button data-filter="all" class="active" role="tab" aria-selected="true" tabindex="0">All</button>
+        <button data-filter="ai-content" role="tab" aria-selected="false" tabindex="0">AI Content</button>
+        <button data-filter="scripts" role="tab" aria-selected="false" tabindex="0">Scripts</button>
+        <button data-filter="ux" role="tab" aria-selected="false" tabindex="0">UX Writing</button>
+      </div>
+      <div class="gallery-grid" id="gallery-grid" role="region" aria-live="polite">
+        <div class="gallery-item" data-category="ai-content" data-bs-toggle="modal" data-bs-target="#galleryModal" data-img="https://images.pexels.com/photos/3861972/pexels-photo-3861972.jpeg?auto=compress&cs=tinysrgb&w=600&format=webp" data-caption="AI-Generated Product Description">
+          <picture>
+            <source srcset="https://images.pexels.com/photos/3861972/pexels-photo-3861972.jpeg?auto=compress&cs=tinysrgb&w=250&h=200&fit=crop&format=webp" type="image/webp">
+            <img src="https://images.pexels.com/photos/3861972/pexels-photo-3861972.jpeg?auto=compress&cs=tinysrgb&w=250&h=200&fit=crop" alt="AI-Generated Product Description" loading="lazy">
+          </picture>
+        </div>
+        <div class="gallery-item" data-category="scripts" data-bs-toggle="modal" data-bs-target="#galleryModal" data-img="https://images.pexels.com/photos/270360/pexels-photo-270360.jpeg?auto=compress&cs=tinysrgb&w=600&format=webp" data-caption="Automation Script Interface">
+          <picture>
+            <source srcset="https://images.pexels.com/photos/270360/pexels-photo-270360.jpeg?auto=compress&cs=tinysrgb&w=250&h=200&fit=crop&format=webp" type="image/webp">
+            <img src="https://images.pexels.com/photos/270360/pexels-photo-270360.jpeg?auto=compress&cs=tinysrgb&w=250&h=200&fit=crop" alt="Automation Script Interface" loading="lazy">
+          </picture>
+        </div>
+        <div class="gallery-item" data-category="ux" data-bs-toggle="modal" data-bs-target="#galleryModal" data-img="https://images.pexels.com/photos/1591062/pexels-photo-1591062.jpeg?auto=compress&cs=tinysrgb&w=600&format=webp" data-caption="Bilingual UX Writing Sample">
+          <picture>
+            <source srcset="https://images.pexels.com/photos/1591062/pexels-photo-1591062.jpeg?auto=compress&cs=tinysrgb&w=250&h=200&fit=crop&format=webp" type="image/webp">
+            <img src="https://images.pexels.com/photos/1591062/pexels-photo-1591062.jpeg?auto=compress&cs=tinysrgb&w=250&h=200&fit=crop" alt="Bilingual UX Writing Sample" loading="lazy">
+          </picture>
+        </div>
+        <div class="gallery-item" data-category="ai-content" data-bs-toggle="modal" data-bs-target="#galleryModal" data-img="https://images.pexels.com/photos/1181359/pexels-photo-1181359.jpeg?auto=compress&cs=tinysrgb&w=600&format=webp" data-caption="MidJourney Art Campaign">
+          <picture>
+            <source srcset="https://images.pexels.com/photos/1181359/pexels-photo-1181359.jpeg?auto=compress&cs=tinysrgb&w=250&h=200&fit=crop&format=webp" type="image/webp">
+            <img src="https://images.pexels.com/photos/1181359/pexels-photo-1181359.jpeg?auto=compress&cs=tinysrgb&w=250&h=200&fit=crop" alt="MidJourney Art Campaign" loading="lazy">
+          </picture>
+        </div>
+      </div>
+      <div class="modal fade" id="galleryModal" tabindex="-1" aria-labelledby="galleryModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="galleryModalLabel">Gallery Item</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+              <img src="" class="modal-img" alt="Gallery Image">
+              <p class="mt-3"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="section" id="about" itemscope itemtype="https://schema.org/Person">
       <h2>About Thanatsitt</h2>
-      <p itemprop="description">I’m a Creative Technologist based in Kamphaeng Phet, Thailand, with a BA in Design from London College of Fashion. As a native Thai speaker fluent in English and conversational in Japanese, I specialize in AI content development (MidJourney, GPT scripting), creative writing, and e-commerce solutions (Shopify, Shopee). My work focuses on crafting culturally sensitive, bilingual content to enhance AI models and user experiences.</p>
-      <h3>Professional Experience</h3>
-      <ul>
-        <li><strong>Web Developer & Creative Lead, Pegearts.com</strong> (2024-Present): Designed AI-driven Shopify content strategies, boosting engagement by 25%.</li>
-        <li><strong>AI Multimedia Specialist, ezekiel-arts.myshopify.com</strong> (2023-2024): Created MidJourney art campaigns and scaled Shopee/Lazada sales by 30%.</li>
-        <li><strong>Founder & Creative Director, Thanattsitt Studio</strong> (2018-2023): Developed viral VTuber content and WordPress sites.</li>
-      </ul>
-      <h3>Education</h3>
-      <ul>
-        <li>BA in Fashion & Design, London College of Fashion (2015-2017)</li>
-        <li>Diploma in Fashion & Textile Design, Bunka Fashion College (2012-2014)</li>
-      </ul>
+      <p itemprop="description">Thanatsitt Santisamranwilai, a Creative Technologist in Kamphaeng Phet, Thailand, specializes in AI content development (MidJourney, GPT scripting), bilingual Thai-English UX writing, and e-commerce solutions (Shopify, Shopee). With a BA in Design from London College of Fashion, I create culturally aligned content and automation tools to enhance user experiences.</p>
       <h3>Skills</h3>
       <ul class="skills-list">
         <li>AI Content Development</li>
@@ -115,19 +559,13 @@
         <li>React.js</li>
         <li>Google Ads</li>
       </ul>
-      <h3>Languages</h3>
-      <ul>
-        <li>Thai (Native)</li>
-        <li>English (Fluent)</li>
-        <li>Japanese (Conversational)</li>
-      </ul>
     </section>
 
     <section class="section" id="explore">
       <h2>Explore</h2>
       <div class="row">
-        <div class="col-md-6 mb-4">
-          <div class="card">
+        <div class="col-md-6 col-lg-3 mb-4">
+          <div class="card" role="article">
             <div class="card-body">
               <h3 class="card-title">CV & Portfolio</h3>
               <p class="card-text">View my full CV and portfolio of AI and creative projects.</p>
@@ -135,8 +573,8 @@
             </div>
           </div>
         </div>
-        <div class="col-md-6 mb-4">
-          <div class="card">
+        <div class="col-md-6 col-lg-3 mb-4">
+          <div class="card" role="article">
             <div class="card-body">
               <h3 class="card-title">Prompt Output Examples</h3>
               <p class="card-text">See sample GPT outputs in markdown and images.</p>
@@ -144,8 +582,8 @@
             </div>
           </div>
         </div>
-        <div class="col-md-6 mb-4">
-          <div class="card">
+        <div class="col-md-6 col-lg-3 mb-4">
+          <div class="card" role="article">
             <div class="card-body">
               <h3 class="card-title">Scripts & Tools</h3>
               <p class="card-text">Access Python and Google Colab automation scripts.</p>
@@ -153,8 +591,8 @@
             </div>
           </div>
         </div>
-        <div class="col-md-6 mb-4">
-          <div class="card">
+        <div class="col-md-6 col-lg-3 mb-4">
+          <div class="card" role="article">
             <div class="card-body">
               <h3 class="card-title">Pegearts Studio</h3>
               <p class="card-text">Visit my studio for more AI-driven projects.</p>
@@ -174,13 +612,294 @@
         <li>Discord: zeintharts</li>
         <li>Support: <a href="https://ko-fi.com/ezekielarts" target="_blank" rel="noopener" aria-label="Support via Ko-fi">Ko-fi</a></li>
       </ul>
+      <div class="social-icons">
+        <a href="https://github.com/Pigletpeakkung" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://linkedin.com/in/thanattsitts" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="https://ko-fi.com/ezekielarts" target="_blank" rel="noopener" aria-label="Ko-fi"><i class="fas fa-coffee"></i></a>
+      </div>
     </section>
   </main>
 
-  <footer>
+  <footer role="contentinfo">
     <p>Created by <span itemprop="name">Thanatsitt Santisamranwilai</span> | 2025</p>
+    <div class="social-icons">
+      <a href="https://github.com/Pigletpeakkung" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+      <a href="https://linkedin.com/in/thanattsitts" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      <a href="https://ko-fi.com/ezekielarts" target="_blank" rel="noopener" aria-label="Ko-fi"><i class="fas fa-coffee"></i></a>
+    </div>
   </footer>
 
   <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+  <script>
+    // Preloader
+    window.addEventListener('load', () => {
+      const preloader = document.getElementById('preloader');
+      setTimeout(() => {
+        preloader.classList.add('hidden');
+        setTimeout(() => {
+          preloader.style.display = 'none';
+        }, 500);
+      }, 1000);
+    });
+
+    // Progressive image loading
+    document.querySelectorAll('img[loading="lazy"]').forEach(img => {
+      img.addEventListener('load', () => {
+        img.classList.add('loaded');
+      });
+    });
+
+    // Navbar scroll effect and active link
+    window.addEventListener('scroll', () => {
+      const navbar = document.querySelector('.navbar');
+      const backToTop = document.getElementById('back-to-top');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+        backToTop.classList.add('visible');
+      } else {
+        navbar.classList.remove('scrolled');
+        backToTop.classList.remove('visible');
+      }
+
+      // Highlight active section in navbar
+      const sections = document.querySelectorAll('.section');
+      const navLinks = document.querySelectorAll('.nav-link');
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        if (window.scrollY >= sectionTop - 60) {
+          current = section.getAttribute('id');
+        }
+      });
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href')?.slice(1) === current) {
+          link.classList.add('active');
+        }
+      });
+    });
+
+    // Smooth scroll for nav links
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href').slice(1);
+        const target = document.getElementById(targetId);
+        window.scrollTo({
+          top: target.offsetTop - 60,
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // Back to top button
+    document.getElementById('back-to-top').addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // Lazy load animations for sections
+    const sections = document.querySelectorAll('.section');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    sections.forEach(section => {
+      section.classList.add('fade-in');
+      observer.observe(section);
+    });
+
+    // Gallery modal
+    document.querySelectorAll('.gallery-item').forEach(item => {
+      item.addEventListener('click', () => {
+        const modal = document.querySelector('#galleryModal');
+        const modalImg = modal.querySelector('.modal-img');
+        const modalCaption = modal.querySelector('.modal-body p');
+        modalImg.src = item.dataset.img;
+        modalCaption.textContent = item.dataset.caption;
+      });
+    });
+
+    // Gallery filter with keyboard support
+    const filterButtons = document.querySelectorAll('.gallery-filter button');
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        filterButtons.forEach(btn => {
+          btn.classList.remove('active');
+          btn.setAttribute('aria-selected', 'false');
+        });
+        button.classList.add('active');
+        button.setAttribute('aria-selected', 'true');
+        const filter = button.dataset.filter;
+        document.querySelectorAll('.gallery-item').forEach(item => {
+          if (filter === 'all' || item.dataset.category === filter) {
+            item.style.display = 'block';
+            item.style.animation = 'fadeInUp 0.6s ease forwards';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+      button.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          button.click();
+        }
+      });
+    });
+
+    // Infinite scroll for gallery
+    const galleryItems = [
+      {
+        category: 'ai-content',
+        img: 'https://images.pexels.com/photos/3861458/pexels-photo-3861458.jpeg?auto=compress&cs=tinysrgb&w=600&format=webp',
+        thumbnail: 'https://images.pexels.com/photos/3861458/pexels-photo-3861458.jpeg?auto=compress&cs=tinysrgb&w=250&h=200&fit=crop&format=webp',
+        caption: 'AI-Powered Blog Post'
+      },
+      {
+        category: 'scripts',
+        img: 'https://images.pexels.com/photos/574071/pexels-photo-574071.jpeg?auto=compress&cs=tinysrgb&w=600&format=webp',
+        thumbnail: 'https://images.pexels.com/photos/574071/pexels-photo-574071.jpeg?auto=compress&cs=tinysrgb&w=250&h=200&fit=crop&format=webp',
+        caption: 'Python Automation Dashboard'
+      }
+    ];
+    let loadedItems = 0;
+    const galleryGrid = document.getElementById('gallery-grid');
+    const loadMoreItems = () => {
+      if (loadedItems >= galleryItems.length) return;
+      const itemsToLoad = galleryItems.slice(loadedItems, loadedItems + 2);
+      itemsToLoad.forEach(item => {
+        const div = document.createElement('div');
+        div.className = 'gallery-item';
+        div.dataset.category = item.category;
+        div.dataset.bsToggle = 'modal';
+        div.dataset.bsTarget = '#galleryModal';
+        div.dataset.img = item.img;
+        div.dataset.caption = item.caption;
+        div.innerHTML = `
+          <picture>
+            <source srcset="${item.thumbnail}" type="image/webp">
+            <img src="${item.thumbnail.replace('&format=webp', '')}" alt="${item.caption}" loading="lazy">
+          </picture>
+        `;
+        galleryGrid.appendChild(div);
+        div.addEventListener('click', () => {
+          const modal = document.querySelector('#galleryModal');
+          const modalImg = modal.querySelector('.modal-img');
+          const modalCaption = modal.querySelector('.modal-body p');
+          modalImg.src = div.dataset.img;
+          modalCaption.textContent = div.dataset.caption;
+        });
+      });
+      loadedItems += itemsToLoad.length;
+    };
+    const galleryObserver = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting && loadedItems < galleryItems.length) {
+        loadMoreItems();
+      }
+    }, { rootMargin: '200px' });
+    galleryObserver.observe(galleryGrid);
+
+    // Parallax effect for header background
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('header');
+      const scrollPosition = window.scrollY;
+      header.style.backgroundPositionY = `${scrollPosition * 0.5}px`;
+    });
+
+    // Dark mode toggle
+    document.getElementById('theme-toggle').addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      const icon = document.getElementById('theme-toggle').querySelector('i');
+      icon.classList.toggle('fa-moon');
+      icon.classList.toggle('fa-sun');
+      localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+    });
+
+    // Load theme from localStorage
+    if (localStorage.getItem('theme') === 'dark') {
+      document.body.classList.add('dark-mode');
+      document.getElementById('theme-toggle').querySelector('i').classList.replace('fa-moon', 'fa-sun');
+    }
+
+    // Add fade-in class for animation
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.fade-in').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      });
+      document.querySelectorAll('.visible').forEach(el => {
+        el.style.opacity = '1';
+        el.style.transform = 'translateY(0)';
+      });
+    });
+
+    // Service worker registration
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js').then(reg => {
+        console.log('Service Worker registered:', reg);
+      }).catch(err => {
+        console.error('Service Worker registration failed:', err);
+      });
+    }
+
+    /*
+    // Placeholder for NFT gallery (uncomment to enable)
+    // Requires Ethers.js and a contract address
+    async function loadNFTs() {
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      const contract = new ethers.Contract('YOUR_CONTRACT_ADDRESS', 'YOUR_ABI', provider);
+      const nfts = await contract.getNFTs();
+      const nftGrid = document.createElement('div');
+      nftGrid.className = 'gallery-grid';
+      nfts.forEach(nft => {
+        const div = document.createElement('div');
+        div.className = 'gallery-item';
+        div.innerHTML = `<img src="${nft.image}" alt="${nft.name}" loading="lazy">`;
+        nftGrid.appendChild(div);
+      });
+      document.getElementById('gallery').appendChild(nftGrid);
+    }
+    if (window.ethereum) loadNFTs();
+    */
+  </script>
+  <script>
+    // Service Worker (save as /sw.js)
+    const CACHE_NAME = 'thannxai-v1';
+    const urlsToCache = [
+      '/',
+      '/index.html',
+      'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css',
+      'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js',
+      'https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1920&format=webp'
+    ];
+    self.addEventListener('install', event => {
+      event.waitUntil(
+        caches.open(CACHE_NAME).then(cache => {
+          return cache.addAll(urlsToCache);
+        })
+      );
+    });
+    self.addEventListener('fetch', event => {
+      event.respondWith(
+        caches.match(event.request).then(response => {
+          return response || fetch(event.request);
+        })
+      );
+    });
+  </script>
+  <style>
+    .fade-in.visible {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+    }
+  </style>
 </body>
-</html>
+  </html>
