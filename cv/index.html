@@ -13,14 +13,149 @@
   <link rel="icon" href="https://favicon.io/favicon.ico" type="image/x-icon">
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" as="style">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" integrity="sha384-7k2C8fQo2G3TzXjS4tQjAZ1Z+IwW5vXO9+lbwcK+/uVX9tH64r39iW4F2zE8j3kK" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" crossorigin="anonymous">
   <style>
-    :root{--primary:#007bff;--secondary:#6c757d;--bg:#f9f9f9;--text:#333;--header-grad:linear-gradient(to bottom right,#fff,#f0f0f0)}body{font-family:Inter,sans-serif;margin:0;background:var(--bg);color:var(--text);font-size:16px;line-height:1.6}.container{max-width:960px;padding:1rem}h1,h2,h3{color:#2d2d2d}.header{text-align:center;background:var(--header-grad);padding:2rem 1rem;position:relative;overflow:hidden}.header::before{content:"";position:absolute;top:0;left:0;width:100%;height:100%;background:url(https://images.unsplash.com/photo-1516321318427-d6b7496123e5?w=1920) center/cover no-repeat;opacity:.1}.header *{position:relative}.header h1{font-size:2rem;margin-bottom:.5rem}.header p{margin:.3rem 0}.navbar{background:#fff;box-shadow:0 2px 4px rgba(0,0,0,.1);position:sticky;top:0;z-index:100}.section{margin-top:2rem;scroll-margin-top:80px}.project-card,.experience-card{transition:transform .3s,box-shadow .3s;border-radius:8px;background:#fff;overflow:hidden}.project-card:hover,.experience-card:hover{transform:translateY(-5px);box-shadow:0 8px 16px rgba(0,0,0,.1)}.project-card img{width:100%;height:200px;object-fit:cover}.card-body{padding:1rem}.card-title{font-size:1.25rem;margin-bottom:.5rem}.card-text{font-size:.9rem;color:var(--secondary);line-height:1.4}.btn-primary{margin-top:.5rem}.filter-buttons{text-align:center;margin-bottom:1.5rem}.filter-buttons .btn{margin:.3rem}.parallax{min-height:300px;background:url(https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?w=1920) center/cover no-repeat;background-attachment:fixed}.skills-list,.languages-list{list-style:none;padding:0}.skills-list li,.languages-list li{display:inline-block;margin:.5rem;padding:.5rem 1rem;background:#e9ecef;border-radius:4px}.education-item,.certification-item{margin-bottom:1rem}@media (max-width:768px){.header h1{font-size:1.5rem}.project-card img{height:150px}.parallax{background-attachment:scroll}.container{padding:.5rem}.skills-list li,.languages-list li{display:block;margin:.3rem 0}}@media (max-width:576px){.filter-buttons .btn{display:block;margin:.3rem 0}}
+    :root {
+      --primary: #007bff;
+      --secondary: #6c757d;
+      --bg: #f9f9f9;
+      --text: #333;
+      --header-grad: linear-gradient(to bottom right, #fff, #f0f0f0);
+    }
+    body {
+      font-family: Inter, sans-serif;
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 960px;
+      padding: 1rem;
+    }
+    h1, h2, h3 {
+      color: #2d2d2d;
+    }
+    .header {
+      text-align: center;
+      background: var(--header-grad);
+      padding: 2rem 1rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url(https://images.unsplash.com/photo-1516321318427-d6b7496123e5?w=1920) center/cover no-repeat;
+      opacity: .1;
+    }
+    .header * {
+      position: relative;
+    }
+    .header h1 {
+      font-size: 2rem;
+      margin-bottom: .5rem;
+    }
+    .header p {
+      margin: .3rem 0;
+    }
+    .navbar {
+      background: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .section {
+      margin-top: 2rem;
+      scroll-margin-top: 80px;
+    }
+    .project-card, .experience-card {
+      transition: transform .3s, box-shadow .3s;
+      border-radius: 8px;
+      background: #fff;
+      overflow: hidden;
+    }
+    .project-card:hover, .experience-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0,0,0,.1);
+    }
+    .project-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      transition: filter 0.5s;
+      filter: blur(5px);
+    }
+    .project-card img.loaded {
+      filter: blur(0);
+    }
+    .card-body {
+      padding: 1rem;
+    }
+    .card-title {
+      font-size: 1.25rem;
+      margin-bottom: .5rem;
+    }
+    .card-text {
+      font-size: .9rem;
+      color: var(--secondary);
+      line-height: 1.4;
+    }
+    .btn-primary {
+      margin-top: .5rem;
+    }
+    .filter-buttons {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    .filter-buttons .btn {
+      margin: .3rem;
+    }
+    .parallax {
+      min-height: 300px;
+      background: url(https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?w=1920) center/cover no-repeat;
+      background-attachment: fixed;
+    }
+    .skills-list, .languages-list {
+      list-style: none;
+      padding: 0;
+    }
+    .skills-list li, .languages-list li {
+      display: inline-block;
+      margin: .5rem;
+      padding: .5rem 1rem;
+      background: #e9ecef;
+      border-radius: 4px;
+    }
+    .education-item, .certification-item {
+      margin-bottom: 1rem;
+    }
+    @media (max-width:768px) {
+      .header h1 { font-size: 1.5rem; }
+      .project-card img { height: 150px; }
+      .parallax { background-attachment: scroll; }
+      .container { padding: .5rem; }
+      .skills-list li, .languages-list li { display: block; margin: .3rem 0; }
+    }
+    @media (max-width:576px) {
+      .filter-buttons .btn { display: block; margin: .3rem 0; }
+    }
+    /* Accessibility focus style */
+    a:focus, button:focus, input:focus, textarea:focus {
+      outline: 2px solid var(--primary);
+      outline-offset: 2px;
+    }
   </style>
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg bg-light sticky-top">
+  <nav class="navbar navbar-expand-lg bg-light sticky-top" role="navigation">
     <div class="container">
       <a class="navbar-brand" href="/">Portfolio</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,17 +172,17 @@
     </div>
   </nav>
 
-  <header class="header">
+  <header class="header" role="banner">
     <h1>Thanatsitt Santisamranwilai</h1>
     <p><strong>Creative Technologist | AI Content Developer | Creative Writer</strong></p>
     <p>Kamphaeng Phet, Thailand</p>
     <p>Email: <a href="mailto:thanattsitt.info@yahoo.co.uk">thanattsitt.info@yahoo.co.uk</a></p>
-    <p>LinkedIn: <a href="https://linkedin.com/in/thanattsitts">linkedin.com/in/thanattsitts</a> | GitHub: <a href="https://github.com/Pigletpeakkung">github.com/Pigletpeakkung</a></p>
+    <p>LinkedIn: <a href="https://linkedin.com/in/thanattsitts" rel="noopener" target="_blank">linkedin.com/in/thanattsitts</a> | GitHub: <a href="https://github.com/Pigletpeakkung" rel="noopener" target="_blank">github.com/Pigletpeakkung</a></p>
   </header>
 
   <div class="parallax" aria-hidden="true"></div>
 
-  <main class="container">
+  <main class="container" role="main">
     <section class="section" id="about" data-aos="fade-up">
       <h2>About Me</h2>
       <p>Native Thai speaker with a BA in Design from London College of Fashion. Skilled in communication, storytelling, and cross-cultural sensitivity. Passionate about linguistics, psychology, and AI, I specialize in creating AI-driven content and narratives with linguistic accuracy in Thai and English.</p>
@@ -124,11 +259,11 @@
 
     <section class="section" id="projects" itemscope itemtype="https://schema.org/CreativeWork" data-aos="fade-up">
       <h2>Projects</h2>
-      <div class="filter-buttons">
-        <button class="btn btn-outline-primary active" data-filter="all" aria-label="Show all projects">All</button>
-        <button class="btn btn-outline-primary" data-filter="ai" aria-label="Show AI projects">AI</button>
-        <button class="btn btn-outline-primary" data-filter="web" aria-label="Show web projects">Web</button>
-        <button class="btn btn-outline-primary" data-filter="writing" aria-label="Show writing projects">Writing</button>
+      <div class="filter-buttons" role="tablist" aria-label="Project filters">
+        <button class="btn btn-outline-primary active" data-filter="all" aria-label="Show all projects" aria-selected="true" role="tab">All</button>
+        <button class="btn btn-outline-primary" data-filter="ai" aria-label="Show AI projects" aria-selected="false" role="tab">AI</button>
+        <button class="btn btn-outline-primary" data-filter="web" aria-label="Show web projects" aria-selected="false" role="tab">Web</button>
+        <button class="btn btn-outline-primary" data-filter="writing" aria-label="Show writing projects" aria-selected="false" role="tab">Writing</button>
       </div>
       <div class="row" id="project-container">
         <div class="col-md-6 col-lg-4 mb-4 project-item" data-category="web" itemscope itemtype="https://schema.org/WebApplication">
@@ -137,7 +272,7 @@
             <div class="card-body">
               <h3 class="card-title" itemprop="name">Cozy Light Portfolio</h3>
               <p class="card-text" itemprop="description">Responsive HTML/CSS portfolio showcasing UI/UX design.</p>
-              <a href="https://pigletpeakkung.github.io/Cozy-light/" class="btn btn-primary" itemprop="url">View Project</a>
+              <a href="https://pigletpeakkung.github.io/Cozy-light/" class="btn btn-primary" itemprop="url" target="_blank" rel="noopener">View Project</a>
             </div>
           </div>
         </div>
@@ -147,7 +282,7 @@
             <div class="card-body">
               <h3 class="card-title" itemprop="name">TON Mini App</h3>
               <p class="card-text" itemprop="description">Storytelling-based Telegram Mini App using AI-generated assets, funded by TON Foundation.</p>
-              <a href="https://github.com/Pigletpeakkung" class="btn btn-primary" itemprop="url">View on GitHub</a>
+              <a href="https://github.com/Pigletpeakkung" class="btn btn-primary" itemprop="url" target="_blank" rel="noopener">View on GitHub</a>
             </div>
           </div>
         </div>
@@ -157,7 +292,7 @@
             <div class="card-body">
               <h3 class="card-title" itemprop="name">MidJourney + GPT Content Series</h3>
               <p class="card-text" itemprop="description">E-commerce storytelling combining GPT scripting and MidJourney visuals.</p>
-              <a href="https://github.com/Pigletpeakkung" class="btn btn-primary" itemprop="url">View on GitHub</a>
+              <a href="https://github.com/Pigletpeakkung" class="btn btn-primary" itemprop="url" target="_blank" rel="noopener">View on GitHub</a>
             </div>
           </div>
         </div>
@@ -212,10 +347,69 @@
     </section>
   </main>
 
-  <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
-  <script defer src="https://unpkg.com/aos@2.3.1/dist/aos.js" integrity="sha384-6HY1bHjH6H6JTL37iS6L+PLr2AFtR2OBo2c/kPZI3z17qbgTj3b7jY+Ay+DrOAVh" crossorigin="anonymous"></script>
+  <footer class="text-center py-4">
+    <small>
+      &copy; 2025 Thanatsitt Santisamranwilai. Portfolio generated with Bootstrap 5.  
+      <a href="../#%20Code%20Citations.md" target="_blank" rel="noopener">Code Citations</a>
+    </small>
+  </footer>
+
+  <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+  <script defer src="https://unpkg.com/aos@2.3.1/dist/aos.js" crossorigin="anonymous"></script>
+  <script defer src="/cv/sw.js"></script>
   <script>
-    AOS.init({duration:800,once:!0});const filterBtns=document.querySelectorAll(".filter-buttons .btn"),projects=document.querySelectorAll(".project-item"),loadMoreBtn=document.getElementById("load-more");let visibleCount=6;filterBtns.forEach(btn=>{btn.addEventListener("click",()=>{filterBtns.forEach(b=>b.classList.remove("active"));btn.classList.add("active");const filter=btn.getAttribute("data-filter");projects.forEach(p=>{p.style.display=filter==="all"||p.getAttribute("data-category").split(" ").includes(filter)?"block":"none"})})});loadMoreBtn.addEventListener("click",()=>{visibleCount+=3;projects.forEach((p,i)=>{if(i<visibleCount)p.style.display="block"});if(visibleCount>=projects.length)loadMoreBtn.style.display="none"});
+    // AOS animation
+    AOS.init({duration:800,once:true});
+
+    // Progressive image loading
+    document.querySelectorAll('.project-card img[loading="lazy"]').forEach(img => {
+      img.addEventListener('load', () => img.classList.add('loaded'));
+    });
+
+    // Project filter
+    const filterBtns = document.querySelectorAll(".filter-buttons .btn");
+    const projects = document.querySelectorAll(".project-item");
+    let visibleCount = 6;
+    filterBtns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        filterBtns.forEach(b => {
+          b.classList.remove("active");
+          b.setAttribute("aria-selected", "false");
+        });
+        btn.classList.add("active");
+        btn.setAttribute("aria-selected", "true");
+        const filter = btn.getAttribute("data-filter");
+        projects.forEach(p => {
+          const cats = p.getAttribute("data-category").split(" ");
+          p.style.display = (filter === "all" || cats.includes(filter)) ? "block" : "none";
+        });
+      });
+      btn.addEventListener("keydown", e => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          btn.click();
+        }
+      });
+    });
+
+    // Load more projects
+    const loadMoreBtn = document.getElementById("load-more");
+    loadMoreBtn.addEventListener("click", () => {
+      visibleCount += 3;
+      projects.forEach((p, i) => {
+        if (i < visibleCount) p.style.display = "block";
+      });
+      if (visibleCount >= projects.length) loadMoreBtn.style.display = "none";
+    });
+
+    // Service Worker registration for caching assets
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/cv/sw.js').then(reg => {
+        console.log('Service Worker registered:', reg);
+      }).catch(err => {
+        console.error('Service Worker registration failed:', err);
+      });
+    }
   </script>
 </body>
 </html>
