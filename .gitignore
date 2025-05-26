@@ -1,0 +1,59 @@
+# Node.js dependencies
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
+yarn.lock
+
+# Build and distribution folders
+dist/
+build/
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.swp
+*~
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+# Editor and IDE files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Environment and sensitive files
+.env
+.env.local
+.env.development
+.env.production
+config.json
+secrets.json
+
+# Large design files (if not tracked with Git LFS)
+# designs/*.psd
+# designs/*.sketch
+# designs/*.fig
+
+# Logs and caches
+*.log
+*.cache
+.cache/
+coverage/
+
+# Service worker cache (if applicable)
+sw-cache/
+
+# Miscellaneous
+*.zip
+*.tar.gz
+*.rar
+
+# Ignore local development server artifacts
+http-server.log
