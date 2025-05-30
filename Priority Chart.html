@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Platform Priority Chart</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    canvas { max-width: 600px; margin: 20px auto; }
+    body { font-family: 'Montserrat', sans-serif; background-color: #F9F1F0; }
+  </style>
+</head>
+<body>
+  <canvas id="priorityChart"></canvas>
+  <script>
+    const ctx = document.getElementById('priorityChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['YouTube', 'Medium', 'Behance', 'Dribbble', 'Adobe Express', 'Voice123', 'X', 'Wattpad', 'SoundCloud', 'GitHub'],
+        datasets: [{
+          label: 'Platform Priority Score',
+          data: [33, 31, 30, 30, 29, 29, 28, 28, 27, 25],
+          backgroundColor: ['#FFD1DC', '#FFCCF9', '#E6E6FA', '#D4A5A5', '#AEC6CF', '#B5EAD7', '#C7CEEA', '#FF9AA2', '#FFB7B2', '#FFDAC1'],
+          borderColor: '#5C4033',
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: { beginAtZero: true, max: 40, title: { display: true, text: 'Priority Score' } },
+          x: { title: { display: true, text: 'Platform' } }
+        },
+        plugins: { title: { display: true, text: 'Thanatsitt’s Platform Priorities (2025)' } }
+      }
+    });
+  </script>
+</body>
+</html>
