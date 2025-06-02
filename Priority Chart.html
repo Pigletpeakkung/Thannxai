@@ -1,37 +1,665 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Platform Priority Chart</title>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <style>
-    canvas { max-width: 600px; margin: 20px auto; }
-    body { font-family: 'Montserrat', sans-serif; background-color: #F9F1F0; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ThannxAI Development Priority Chart</title>
+    <style>
+        :root {
+            --primary: #3b82f6;
+            --secondary: #10b981;
+            --accent: #8b5cf6;
+            --warning: #f59e0b;
+            --error: #ef4444;
+            --success: #22c55e;
+            --bg-primary: #f8fafc;
+            --bg-secondary: #f1f5f9;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --border: #e2e8f0;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .header p {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .priority-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .priority-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .priority-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .priority-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .priority-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .high-priority .priority-icon { background: var(--error); }
+        .medium-priority .priority-icon { background: var(--warning); }
+        .low-priority .priority-icon { background: var(--success); }
+        .completed .priority-icon { background: var(--secondary); }
+
+        .priority-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .priority-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .high-priority .priority-badge {
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--error);
+        }
+
+        .medium-priority .priority-badge {
+            background: rgba(245, 158, 11, 0.1);
+            color: var(--warning);
+        }
+
+        .low-priority .priority-badge {
+            background: rgba(34, 197, 94, 0.1);
+            color: var(--success);
+        }
+
+        .completed .priority-badge {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--secondary);
+        }
+
+        .task-list {
+            list-style: none;
+        }
+
+        .task-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .task-item:last-child {
+            border-bottom: none;
+        }
+
+        .task-checkbox {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--border);
+            border-radius: 0.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 0.125rem;
+            flex-shrink: 0;
+        }
+
+        .task-checkbox.checked {
+            background: var(--secondary);
+            border-color: var(--secondary);
+            color: white;
+        }
+
+        .task-content {
+            flex: 1;
+        }
+
+        .task-title {
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+
+        .task-description {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .task-meta {
+            display: flex;
+            gap: 1rem;
+            margin-top: 0.5rem;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        .progress-section {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 12px;
+            background: var(--bg-secondary);
+            border-radius: 6px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--secondary), var(--primary));
+            border-radius: 6px;
+            transition: width 0.3s ease;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1rem;
+            background: var(--bg-secondary);
+            border-radius: 0.75rem;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin-top: 0.25rem;
+        }
+
+        .timeline {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 1rem;
+            top: 3rem;
+            bottom: -2rem;
+            width: 2px;
+            background: var(--border);
+        }
+
+        .timeline-item:last-child::before {
+            display: none;
+        }
+
+        .timeline-icon {
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.875rem;
+            flex-shrink: 0;
+            z-index: 1;
+            position: relative;
+        }
+
+        .timeline-content {
+            flex: 1;
+        }
+
+        .timeline-date {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.25rem;
+        }
+
+        .timeline-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-description {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .priority-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .priority-card {
+                padding: 1.5rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
 </head>
 <body>
-  <canvas id="priorityChart"></canvas>
-  <script>
-    const ctx = document.getElementById('priorityChart').getContext('2d');
-    new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: ['YouTube', 'Medium', 'Behance', 'Dribbble', 'Adobe Express', 'Voice123', 'X', 'Wattpad', 'SoundCloud', 'GitHub'],
-        datasets: [{
-          label: 'Platform Priority Score',
-          data: [33, 31, 30, 30, 29, 29, 28, 28, 27, 25],
-          backgroundColor: ['#FFD1DC', '#FFCCF9', '#E6E6FA', '#D4A5A5', '#AEC6CF', '#B5EAD7', '#C7CEEA', '#FF9AA2', '#FFB7B2', '#FFDAC1'],
-          borderColor: '#5C4033',
-          borderWidth: 1
-        }]
-      },
-      options: {
-        scales: {
-          y: { beginAtZero: true, max: 40, title: { display: true, text: 'Priority Score' } },
-          x: { title: { display: true, text: 'Platform' } }
-        },
-        plugins: { title: { display: true, text: 'Thanatsitt’s Platform Priorities (2025)' } }
-      }
-    });
-  </script>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 ThannxAI Development Priority Chart</h1>
+            <p>Strategic roadmap for AI content creation platform development and feature implementation</p>
+        </div>
+
+        <!-- Progress Overview -->
+        <div class="progress-section">
+            <div class="progress-header">
+                <h2>Overall Progress</h2>
+                <span id="progress-percentage">72%</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 72%"></div>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">18</div>
+                    <div class="stat-label">Total Tasks</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">13</div>
+                    <div class="stat-label">Completed</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">In Progress</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">2</div>
+                    <div class="stat-label">Pending</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Priority Cards -->
+        <div class="priority-grid">
+            <!-- High Priority -->
+            <div class="priority-card high-priority">
+                <div class="priority-header">
+                    <div class="priority-icon">🔥</div>
+                    <div>
+                        <h3 class="priority-title">High Priority</h3>
+                        <span class="priority-badge">Critical</span>
+                    </div>
+                </div>
+                <ul class="task-list">
+                    <li class="task-item">
+                        <div class="task-checkbox checked">✓</div>
+                        <div class="task-content">
+                            <div class="task-title">Core Portfolio Structure</div>
+                            <div class="task-description">Main HTML structure with responsive design</div>
+                            <div class="task-meta">
+                                <span>⏱️ 2 days</span>
+                                <span>👤 Frontend</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="task-item">
+                        <div class="task-checkbox checked">✓</div>
+                        <div class="task-content">
+                            <div class="task-title">PWA Implementation</div>
+                            <div class="task-description">Service worker, manifest, offline functionality</div>
+                            <div class="task-meta">
+                                <span>⏱️ 1 day</span>
+                                <span>👤 PWA</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="task-item">
+                        <div class="task-checkbox">□</div>
+                        <div class="task-content">
+                            <div class="task-title">SEO Optimization</div>
+                            <div class="task-description">Meta tags, structured data, sitemap</div>
+                            <div class="task-meta">
+                                <span>⏱️ 0.5 days</span>
+                                <span>👤 SEO</span>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Medium Priority -->
+            <div class="priority-card medium-priority">
+                <div class="priority-header">
+                    <div class="priority-icon">⚡</div>
+                    <div>
+                        <h3 class="priority-title">Medium Priority</h3>
+                        <span class="priority-badge">Important</span>
+                    </div>
+                </div>
+                <ul class="task-list">
+                    <li class="task-item">
+                        <div class="task-checkbox checked">✓</div>
+                        <div class="task-content">
+                            <div class="task-title">Gallery Implementation</div>
+                            <div class="task-description">Interactive gallery with filtering</div>
+                            <div class="task-meta">
+                                <span>⏱️ 1 day</span>
+                                <span>👤 Frontend</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="task-item">
+                        <div class="task-checkbox">□</div>
+                        <div class="task-content">
+                            <div class="task-title">Content Management</div>
+                            <div class="task-description">Dynamic content loading system</div>
+                            <div class="task-meta">
+                                <span>⏱️ 2 days</span>
+                                <span>👤 Backend</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="task-item">
+                        <div class="task-checkbox checked">✓</div>
+                        <div class="task-content">
+                            <div class="task-title">Dark Mode Toggle</div>
+                            <div class="task-description">Theme switching with persistence</div>
+                            <div class="task-meta">
+                                <span>⏱️ 0.5 days</span>
+                                <span>👤 Frontend</span>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Low Priority -->
+            <div class="priority-card low-priority">
+                <div class="priority-header">
+                    <div class="priority-icon">📋</div>
+                    <div>
+                        <h3 class="priority-title">Low Priority</h3>
+                        <span class="priority-badge">Nice to Have</span>
+                    </div>
+                </div>
+                <ul class="task-list">
+                    <li class="task-item">
+                        <div class="task-checkbox">□</div>
+                        <div class="task-content">
+                            <div class="task-title">Analytics Integration</div>
+                            <div class="task-description">Google Analytics and user tracking</div>
+                            <div class="task-meta">
+                                <span>⏱️ 0.5 days</span>
+                                <span>👤 Analytics</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="task-item">
+                        <div class="task-checkbox checked">✓</div>
+                        <div class="task-content">
+                            <div class="task-title">Social Media Integration</div>
+                            <div class="task-description">Share buttons and social links</div>
+                            <div class="task-meta">
+                                <span>⏱️ 0.5 days</span>
+                                <span>👤 Frontend</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="task-item">
+                        <div class="task-checkbox checked">✓</div>
+                        <div class="task-content">
+                            <div class="task-title">Performance Optimization</div>
+                            <div class="task-description">Image optimization, lazy loading</div>
+                            <div class="task-meta">
+                                <span>⏱️ 1 day</span>
+                                <span>👤 Performance</span>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Completed -->
+            <div class="priority-card completed">
+                <div class="priority-header">
+                    <div class="priority-icon">✅</div>
+                    <div>
+                        <h3 class="priority-title">Completed</h3>
+                        <span class="priority-badge">Done</span>
+                    </div>
+                </div>
+                <ul class="task-list">
+                    <li class="task-item">
+                        <div class="task-checkbox checked">✓</div>
+                        <div class="task-content">
+                            <div class="task-title">Design System</div>
+                            <div class="task-description">Color palette, typography, components</div>
+                            <div class="task-meta">
+                                <span>⏱️ 1 day</span>
+                                <span>👤 Design</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="task-item">
+                        <div class="task-checkbox checked">✓</div>
+                        <div class="task-content">
+                            <div class="task-title">Responsive Layout</div>
+                            <div class="task-description">Mobile-first responsive design</div>
+                            <div class="task-meta">
+                                <span>⏱️ 1 day</span>
+                                <span>👤 Frontend</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="task-item">
+                        <div class="task-checkbox checked">✓</div>
+                        <div class="task-content">
+                            <div class="task-title">Navigation System</div>
+                            <div class="task-description">Smooth scrolling, active states</div>
+                            <div class="task-meta">
+                                <span>⏱️ 0.5 days</span>
+                                <span>👤 Frontend</span>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Development Timeline -->
+        <div class="timeline">
+            <h2 style="margin-bottom: 2rem;">🗓️ Development Timeline</h2>
+            
+            <div class="timeline-item">
+                <div class="timeline-icon">1</div>
+                <div class="timeline-content">
+                    <div class="timeline-date">Week 1 - Completed</div>
+                    <div class="timeline-title">Foundation & Design</div>
+                    <div class="timeline-description">
+                        Core HTML structure, CSS design system, responsive layout implementation
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-icon">2</div>
+                <div class="timeline-content">
+                    <div class="timeline-date">Week 2 - Completed</div>
+                    <div class="timeline-title">Interactive Features</div>
+                    <div class="timeline-description">
+                        JavaScript functionality, navigation, gallery filtering, dark mode
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-icon">3</div>
+                <div class="timeline-content">
+                    <div class="timeline-date">Week 3 - In Progress</div>
+                    <div class="timeline-title">PWA & Performance</div>
+                    <div class="timeline-description">
+                        Service worker implementation, offline functionality, performance optimization
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-icon">4</div>
+                <div class="timeline-content">
+                    <div class="timeline-date">Week 4 - Planned</div>
+                    <div class="timeline-title">Content & SEO</div>
+                    <div class="timeline-description">
+                        Content management system, SEO optimization, analytics integration
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-icon">5</div>
+                <div class="timeline-content">
+                    <div class="timeline-date">Week 5 - Planned</div>
+                    <div class="timeline-title">Testing & Launch</div>
+                    <div class="timeline-description">
+                        Cross-browser testing, accessibility audit, final optimizations, deployment
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Update progress dynamically
+        function updateProgress() {
+            const checkboxes = document.querySelectorAll('.task-checkbox');
+            const completed = document.querySelectorAll('.task-checkbox.checked').length;
+            const total = checkboxes.length;
+            const percentage = Math.round((completed / total) * 100);
+            
+            document.getElementById('progress-percentage').textContent = percentage + '%';
+            document.querySelector('.progress-fill').style.width = percentage + '%';
+            
+            // Update stats
+            const stats = document.querySelectorAll('.stat-number');
+            stats[0].textContent = total;
+            stats[1].textContent = completed;
+            stats[2].textContent = Math.max(0, total - completed - 2);
+            stats[3].textContent = Math.max(0, 2);
+        }
+
+        // Initialize
+        updateProgress();
+
+        // Add click handlers for checkboxes
+        document.querySelectorAll('.task-checkbox:not(.checked)').forEach(checkbox => {
+            checkbox.addEventListener('click', () => {
+                checkbox.classList.toggle('checked');
+                checkbox.textContent = checkbox.classList.contains('checked') ? '✓' : '□';
+                updateProgress();
+            });
+        });
+
+        console.log('📊 Priority Chart loaded successfully!');
+    </script>
 </body>
 </html>
