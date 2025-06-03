@@ -1,2002 +1,1144 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ThannxAI: Learning Lab | Thanatsitt Santisamranwilai</title>
-  
-  <!-- Preconnect for performance -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://images.pexels.com">
-  
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  
-  <!-- Icons -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.js">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
-  <!-- Meta Tags -->
-  <meta name="description" content="ThannxAI: Learning Lab by Thanatsitt Santisamranwilai. Explore GPT prompt templates, automation scripts, and bilingual Thai-English content tools for AI-powered creativity.">
-  <meta name="keywords" content="Thanatsitt Santisamranwilai, AI content developer, GPT prompts, automation scripts, Thai-English, creative technologist, machine learning, prompt engineering">
-  <meta name="author" content="Thanatsitt Santisamranwilai">
-  <meta name="robots" content="index, follow">
-  
-  <!-- Open Graph -->
-  <meta property="og:title" content="ThannxAI: Learning Lab | Thanatsitt Santisamranwilai">
-  <meta property="og:description" content="Discover ready-to-use GPT prompt templates, automation tools, and bilingual content solutions by Thanatsitt Santisamranwilai.">
-  <meta property="og:image" content="https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1200&format=webp">
-  <meta property="og:url" content="https://pigletpeakkung.github.io/Thannxai/">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="ThannxAI Learning Lab">
-  
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="ThannxAI: Learning Lab">
-  <meta name="twitter:description" content="AI-powered content tools and prompt templates by Thanatsitt Santisamranwilai">
-  <meta name="twitter:image" content="https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1200&format=webp">
-  
-  <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  
-  <!-- Manifest -->
-  <link rel="manifest" href="/manifest.json">
-  
-  <!-- Theme Color -->
-  <meta name="theme-color" content="#3b82f6">
-  
-  <style>
-    :root {
-  /* Primary Palette - Cool Grays */
-  --gray-50: #f8fafc;
-  --gray-100: #f1f5f9;
-  --gray-200: #e2e8f0;
-  --gray-300: #cbd5e1;
-  --gray-400: #94a3b8;
-  --gray-500: #64748b;
-  --gray-600: #475569;
-  --gray-700: #334155;
-  --gray-800: #1e293b;
-  --gray-900: #0f172a;
-
-  /* Accent Colors */
-  --blue-400: #60a5fa;
-  --blue-500: #3b82f6;
-  --blue-600: #2563eb;
-  --emerald-400: #34d399;
-  --emerald-500: #10b981;
-  --emerald-600: #059669;
-  --violet-400: #a78bfa;
-  --violet-500: #8b5cf6;
-  --violet-600: #7c3aed;
-
-  /* Semantic Colors */
-  --primary: var(--blue-500);
-  --secondary: var(--emerald-500);
-  --accent: var(--violet-500);
-  --success: var(--emerald-500);
-  --warning: #f59e0b;
-  --error: #ef4444;
-
-  /* Surface Colors */
-  --bg-primary: var(--gray-50);
-  --bg-secondary: var(--gray-100);
-  --surface: #ffffff;
-  --surface-elevated: #ffffff;
-  --text-primary: var(--gray-800);
-  --text-secondary: var(--gray-600);
-  --text-muted: var(--gray-500);
-  --border: var(--gray-200);
-  --border-light: var(--gray-100);
-
-  /* Dark Mode */
-  --dark-bg-primary: var(--gray-900);
-  --dark-bg-secondary: var(--gray-800);
-  --dark-surface: var(--gray-800);
-  --dark-surface-elevated: var(--gray-700);
-  --dark-text-primary: var(--gray-100);
-  --dark-text-secondary: var(--gray-300);
-  --dark-text-muted: var(--gray-400);
-  --dark-border: var(--gray-700);
-  --dark-border-light: var(--gray-600);
-
-  /* Shadows */
-  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-
-  /* Gradients */
-  --gradient-primary: linear-gradient(135deg, var(--blue-500) 0%, var(--violet-500) 100%);
-  --gradient-secondary: linear-gradient(135deg, var(--emerald-400) 0%, var(--blue-400) 100%);
-  --gradient-warm: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
-  --gradient-cool: linear-gradient(135deg, var(--blue-400) 0%, var(--emerald-400) 100%);
-
-  /* Spacing Scale */
-  --space-1: 0.25rem;
-  --space-2: 0.5rem;
-  --space-3: 0.75rem;
-  --space-4: 1rem;
-  --space-5: 1.25rem;
-  --space-6: 1.5rem;
-  --space-8: 2rem;
-  --space-10: 2.5rem;
-  --space-12: 3rem;
-  --space-16: 4rem;
-  --space-20: 5rem;
-
-  /* Border Radius */
-  --radius-sm: 0.375rem;
-  --radius-md: 0.5rem;
-  --radius-lg: 0.75rem;
-  --radius-xl: 1rem;
-  --radius-2xl: 1.5rem;
-  --radius-full: 9999px;
-
-  /* Typography */
-  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
-  
-  /* Transitions */
-  --transition-fast: 150ms ease;
-  --transition-base: 250ms ease;
-  --transition-slow: 350ms ease;
-}
-
-    /* Reset and Base Styles */
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      font-size: 16px;
-      line-height: 1.6;
-    }
-
-    body {
-      font-family: var(--font-sans);
-      background-color: var(--bg-primary);
-      color: var(--text-primary);
-      line-height: 1.7;
-      overflow-x: hidden;
-      transition: background-color var(--transition-base), color var(--transition-base);
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-
-    /* Dark Mode */
-    body.dark-mode {
-      background-color: var(--dark-bg-primary);
-      color: var(--dark-text-primary);
-    }
-
-    body.dark-mode .surface {
-      background-color: var(--dark-surface);
-      border-color: var(--dark-border);
-    }
-
-    body.dark-mode .surface-elevated {
-      background-color: var(--dark-surface-elevated);
-    }
-
-    /* Loading Screen */
-    #preloader {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
-      transition: opacity var(--transition-slow), visibility var(--transition-slow);
-    }
-
-    #preloader.hidden {
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
-    }
-
-    .preloader-content {
-      text-align: center;
-      animation: fadeInUp 0.8s ease;
-    }
-
-    .preloader-spinner {
-      width: 60px;
-      height: 60px;
-      border: 3px solid var(--border);
-      border-top: 3px solid var(--primary);
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-      margin-bottom: var(--space-4);
-    }
-
-    .preloader-text {
-      font-size: 1.125rem;
-      font-weight: 500;
-      color: var(--text-secondary);
-      margin-bottom: var(--space-2);
-    }
-
-    .preloader-subtext {
-      font-size: 0.875rem;
-      color: var(--text-muted);
-    }
-
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
-    /* Navigation */
-    .navbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1000;
-      background: rgba(248, 250, 252, 0.8);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border-light);
-      transition: all var(--transition-base);
-      padding: var(--space-4) 0;
-    }
-
-    .navbar.scrolled {
-      background: rgba(248, 250, 252, 0.95);
-      box-shadow: var(--shadow-sm);
-      padding: var(--space-3) 0;
-    }
-
-    body.dark-mode .navbar {
-      background: rgba(15, 23, 42, 0.8);
-      border-bottom-color: var(--dark-border);
-    }
-
-    body.dark-mode .navbar.scrolled {
-      background: rgba(15, 23, 42, 0.95);
-    }
-
-    .nav-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 var(--space-6);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .navbar-brand {
-      display: flex;
-      align-items: center;
-      gap: var(--space-3);
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--primary);
-      text-decoration: none;
-      transition: transform var(--transition-fast);
-    }
-
-    .navbar-brand:hover {
-      transform: scale(1.05);
-    }
-
-    .brand-icon {
-      width: 40px;
-      height: 40px;
-      background: var(--gradient-primary);
-      border-radius: var(--radius-lg);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 1.25rem;
-    }
-
-    .nav-menu {
-      display: flex;
-      list-style: none;
-      gap: var(--space-8);
-      margin: 0;
-    }
-
-    .nav-link {
-      color: var(--text-secondary);
-      text-decoration: none;
-      font-weight: 500;
-      padding: var(--space-2) var(--space-4);
-      border-radius: var(--radius-md);
-      transition: all var(--transition-fast);
-      position: relative;
-    }
-
-    .nav-link:hover,
-    .nav-link.active {
-      color: var(--primary);
-      background-color: var(--bg-secondary);
-    }
-
-    .nav-actions {
-      display: flex;
-      align-items: center;
-      gap: var(--space-3);
-    }
-
-    #theme-toggle {
-      background: none;
-      border: none;
-      color: var(--text-secondary);
-      font-size: 1.25rem;
-      cursor: pointer;
-      padding: var(--space-2);
-      border-radius: var(--radius-md);
-      transition: all var(--transition-fast);
-    }
-
-    #theme-toggle:hover {
-      color: var(--primary);
-      background-color: var(--bg-secondary);
-    }
-
-    .mobile-menu-toggle {
-      display: none;
-      background: none;
-      border: none;
-      color: var(--text-secondary);
-      font-size: 1.25rem;
-      cursor: pointer;
-      padding: var(--space-2);
-      border-radius: var(--radius-md);
-    }
-
-    /* Hero Section */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
-      position: relative;
-      overflow: hidden;
-      padding-top: 80px;
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cg fill-opacity='0.03'%3E%3Cpath d='M30 0l30 30-30 30L0 30z'/%3E%3C/g%3E%3C/svg%3E") repeat;
-      opacity: 0.5;
-    }
-
-    .hero-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 var(--space-6);
-      position: relative;
-      z-index: 2;
-    }
-
-    .hero-content {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: var(--space-16);
-      align-items: center;
-    }
-
-    .hero-text {
-      animation: fadeInLeft 0.8s ease;
-    }
-
-    .hero-title {
-      font-size: clamp(2.5rem, 5vw, 4rem);
-      font-weight: 800;
-      line-height: 1.1;
-      margin-bottom: var(--space-6);
-      background: var(--gradient-primary);
-      background-clip: text;
-      -webkit-background-clip: text;
-      color: transparent;
-    }
-
-    .hero-subtitle {
-      font-size: 1.25rem;
-      color: var(--text-secondary);
-      margin-bottom: var(--space-8);
-      line-height: 1.6;
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: var(--space-4);
-      margin-bottom: var(--space-8);
-    }
-
-    .hero-visual {
-      position: relative;
-      animation: fadeInRight 0.8s ease;
-    }
-
-    .profile-container {
-      position: relative;
-      display: inline-block;
-    }
-
-    .profile-img {
-      width: 300px;
-      height: 300px;
-      border-radius: var(--radius-2xl);
-      object-fit: cover;
-      border: 4px solid var(--surface);
-      box-shadow: var(--shadow-xl);
-      transition: transform var(--transition-base), filter var(--transition-slow);
-      filter: blur(5px);
-    }
-
-    .profile-img.loaded {
-      filter: blur(0);
-    }
-
-    .profile-img:hover {
-      transform: scale(1.05);
-    }
-
-    .profile-badge {
-      position: absolute;
-      top: var(--space-4);
-      right: var(--space-4);
-      background: var(--gradient-secondary);
-      color: white;
-      padding: var(--space-2) var(--space-4);
-      border-radius: var(--radius-full);
-      font-size: 0.875rem;
-      font-weight: 600;
-      box-shadow: var(--shadow-lg);
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-    }
-
-    /* Button Components */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: var(--space-2);
-      padding: var(--space-3) var(--space-6);
-      border-radius: var(--radius-lg);
-      font-weight: 600;
-      text-decoration: none;
-      border: none;
-      cursor: pointer;
-      font-size: 1rem;
-      transition: all var(--transition-fast);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .btn::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-      transition: left 0.5s;
-    }
-
-    .btn:hover::before {
-      left: 100%;
-    }
-
-    .btn-primary {
-      background: var(--gradient-primary);
-      color: white;
-      box-shadow: var(--shadow-md);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-lg);
-    }
-
-    .btn-secondary {
-      background: var(--surface);
-      color: var(--text-primary);
-      border: 2px solid var(--border);
-      box-shadow: var(--shadow-sm);
-    }
-
-    .btn-secondary:hover {
-      border-color: var(--primary);
-      color: var(--primary);
-      box-shadow: var(--shadow-md);
-    }
-
-    .btn-outline {
-      background: transparent;
-      color: var(--primary);
-      border: 2px solid var(--primary);
-    }
-
-    .btn-outline:hover {
-      background: var(--primary);
-      color: white;
-    }
-
-    /* Section Styling */
-    .section {
-      padding: var(--space-20) 0;
-      position: relative;
-    }
-
-    .section-alt {
-      background-color: var(--bg-secondary);
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 var(--space-6);
-    }
-
-    .section-header {
-      text-align: center;
-      margin-bottom: var(--space-16);
-    }
-
-    .section-title {
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 700;
-      margin-bottom: var(--space-4);
-      background: var(--gradient-primary);
-      background-clip: text;
-      -webkit-background-clip: text;
-      color: transparent;
-    }
-
-    .section-subtitle {
-      font-size: 1.125rem;
-      color: var(--text-secondary);
-      max-width: 600px;
-      margin: 0 auto;
-      line-height: 1.6;
-    }
-
-    /* Card Components */
-    .card {
-      background: var(--surface);
-      border-radius: var(--radius-xl);
-      padding: var(--space-6);
-      border: 1px solid var(--border);
-      transition: all var(--transition-base);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: var(--gradient-primary);
-      transform: scaleX(0);
-      transition: transform var(--transition-base);
-    }
-
-    .card:hover {
-      transform: translateY(-8px);
-      box-shadow: var(--shadow-xl);
-      border-color: var(--primary);
-    }
-
-    .card:hover::before {
-      transform: scaleX(1);
-    }
-
-    .card-image {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      border-radius: var(--radius-lg);
-      margin-bottom: var(--space-4);
-      transition: transform var(--transition-base), filter var(--transition-slow);
-      filter: blur(5px);
-    }
-
-    .card-image.loaded {
-      filter: blur(0);
-    }
-
-    .card:hover .card-image {
-      transform: scale(1.05);
-    }
-
-    .card-title {
-      font-size: 1.25rem;
-      font-weight: 600;
-      color: var(--text-primary);
-      margin-bottom: var(--space-3);
-    }
-
-    .card-description {
-      color: var(--text-secondary);
-      line-height: 1.6;
-      margin-bottom: var(--space-4);
-    }
-
-    /* Grid Layouts */
-    .grid {
-      display: grid;
-      gap: var(--space-6);
-    }
-
-    .grid-2 { grid-template-columns: repeat(2, 1fr); }
-    .grid-3 { grid-template-columns: repeat(3, 1fr); }
-    .grid-4 { grid-template-columns: repeat(4, 1fr); }
-
-    .grid-auto {
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    }
-
-    /* Skills Section */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: var(--space-6);
-    }
-
-    .skill-category {
-      background: var(--surface);
-      padding: var(--space-6);
-      border-radius: var(--radius-xl);
-      border: 1px solid var(--border);
-      transition: all var(--transition-base);
-    }
-
-    .skill-category:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-lg);
-    }
-
-    .skill-category h3 {
-      font-size: 1.25rem;
-      font-weight: 600;
-      margin-bottom: var(--space-4);
-      display: flex;
-      align-items: center;
-      gap: var(--space-2);
-      color: var(--text-primary);
-    }
-
-    .skills-list {
-      list-style: none;
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--space-2);
-    }
-
-    .skill-item {
-      padding: var(--space-2) var(--space-4);
-      background: var(--bg-secondary);
-      color: var(--text-primary);
-      border-radius: var(--radius-full);
-      font-size: 0.875rem;
-      font-weight: 500;
-      transition: all var(--transition-fast);
-      border: 1px solid var(--border-light);
-    }
-
-    .skill-item:hover {
-      background: var(--primary);
-      color: white;
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-md);
-    }
-
-    /* Gallery */
-    .gallery-filter {
-      display: flex;
-      justify-content: center;
-      gap: var(--space-3);
-      margin-bottom: var(--space-8);
-      flex-wrap: wrap;
-    }
-
-    .filter-btn {
-      padding: var(--space-2) var(--space-4);
-      background: var(--bg-secondary);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-full);
-      font-weight: 500;
-      color: var(--text-secondary);
-      cursor: pointer;
-      transition: all var(--transition-fast);
-    }
-
-    .filter-btn.active,
-    .filter-btn:hover {
-      background: var(--primary);
-      color: white;
-      border-color: var(--primary);
-    }
-
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: var(--space-6);
-    }
-
-    .gallery-item {
-      position: relative;
-      border-radius: var(--radius-xl);
-      overflow: hidden;
-      cursor: pointer;
-      transition: transform var(--transition-base);
-      background: var(--surface);
-      border: 1px solid var(--border);
-    }
-
-    .gallery-item:hover {
-      transform: translateY(-8px);
-      box-shadow: var(--shadow-xl);
-    }
-
-    .gallery-item img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      transition: transform var(--transition-base), filter var(--transition-slow);
-      filter: blur(5px);
-    }
-
-    .gallery-item img.loaded {
-      filter: blur(0);
-    }
-
-    .gallery-item:hover img {
-      transform: scale(1.1);
-    }
-
-    .gallery-overlay {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: linear-gradient(transparent, rgba(0,0,0,0.8));
-      color: white;
-      padding: var(--space-4);
-      transform: translateY(100%);
-      transition: transform var(--transition-base);
-    }
-
-    .gallery-item:hover .gallery-overlay {
-      transform: translateY(0);
-    }
-
-    /* Footer */
-    .footer {
-      background: var(--gray-900);
-      color: var(--gray-300);
-      padding: var(--space-16) 0 var(--space-8);
-    }
-
-    .footer-content {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: var(--space-8);
-      margin-bottom: var(--space-8);
-    }
-
-    .footer-section h3 {
-      color: white;
-      font-weight: 600;
-      margin-bottom: var(--space-4);
-    }
-
-    .footer-links {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-2);
-    }
-
-    .footer-link {
-      color: var(--gray-400);
-      text-decoration: none;
-      transition: color var(--transition-fast);
-    }
-
-    .footer-link:hover {
-      color: var(--primary);
-    }
-
-    .social-icons {
-      display: flex;
-      gap: var(--space-4);
-      margin-top: var(--space-4);
-    }
-
-    .social-link {
-      width: 40px;
-      height: 40px;
-      background: var(--gray-800);
-      border-radius: var(--radius-lg);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--gray-400);
-      text-decoration: none;
-      transition: all var(--transition-fast);
-    }
-
-    .social-link:hover {
-      background: var(--primary);
-      color: white;
-      transform: translateY(-2px);
-    }
-
-    .footer-bottom {
-      border-top: 1px solid var(--gray-800);
-      padding-top: var(--space-8);
-      text-align: center;
-      color: var(--gray-500);
-    }
-
-    /* Back to Top */
-    #back-to-top {
-      position: fixed;
-      bottom: var(--space-6);
-      right: var(--space-6);
-      width: 50px;
-      height: 50px;
-      background: var(--gradient-primary);
-      color: white;
-      border: none;
-      border-radius: var(--radius-full);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      opacity: 0;
-      visibility: hidden;
-      transition: all var(--transition-base);
-      z-index: 1000;
-    }
-
-    #back-to-top.visible {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    #back-to-top:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-lg);
-    }
-
-    /* Animations */
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes fadeInLeft {
-      from {
-        opacity: 0;
-        transform: translateX(-30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
-
-    @keyframes fadeInRight {
-      from {
-        opacity: 0;
-        transform: translateX(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
-
-    .fade-in {
-      animation: fadeInUp 0.6s ease forwards;
-    }
-
-    .fade-in-left {
-      animation: fadeInLeft 0.6s ease forwards;
-    }
-
-    .fade-in-right {
-      animation: fadeInRight 0.6s ease forwards;
-    }
-
-    /* Responsive Design */
-    @media (max-width: 1024px) {
-      .nav-menu {
-        display: none;
-      }
-      
-      .mobile-menu-toggle {
-        display: block;
-      }
-      
-      .hero-content {
-        grid-template-columns: 1fr;
-        gap: var(--space-8);
-        text-align: center;
-      }
-      
-      .grid-4 { grid-template-columns: repeat(2, 1fr); }
-      .grid-3 { grid-template-columns: repeat(2, 1fr); }
-    }
-
-    @media (max-width: 768px) {
-      .nav-container {
-        padding: 0 var(--space-4);
-      }
-      
-      .hero {
-        padding-top: 100px;
-      }
-      
-      .container {
-        padding: 0 var(--space-4);
-      }
-      
-      .section {
-        padding: var(--space-12) 0;
-      }
-      
-      .hero-actions {
-        flex-direction: column;
-        align-items: center;
-      }
-      
-      .profile-img {
-        width: 250px;
-        height: 250px;
-      }
-      
-      .grid-2 { grid-template-columns: 1fr; }
-      .grid-3 { grid-template-columns: 1fr; }
-      .grid-4 { grid-template-columns: 1fr; }
-      
-      .gallery-filter {
-        justify-content: flex-start;
-        overflow-x: auto;
-        padding-bottom: var(--space-2);
-      }
-      
-      .filter-btn {
-        white-space: nowrap;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .hero-title {
-        font-size: 2rem;
-      }
-      
-      .profile-img {
-        width: 200px;
-        height: 200px;
-      }
-      
-      .card {
-        padding: var(--space-4);
-      }
-      
-      .btn {
-        padding: var(--space-2) var(--space-4);
-        font-size: 0.875rem;
-      }
-    }
-
-    /* Print Styles */
-    @media print {
-      .navbar,
-      .hero-actions,
-      #back-to-top,
-      .social-icons {
-        display: none;
-      }
-      
-      .section {
-        padding: var(--space-4) 0;
-      }
-      
-      body {
-        font-size: 12pt;
-        line-height: 1.4;
-      }
-    }
-
-    /* Reduced Motion */
-    @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-      }
-    }
-
-    /* High Contrast Mode */
-    @media (prefers-contrast: high) {
-      :root {
-        --border: #000000;
-        --text-primary: #000000;
-        --text-secondary: #000000;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ThannxAI - Exploring Digital Depth Psychology. AI Developer combining 7+ years of experience with emerging psychology insights for human-centered technology.">
+    <meta name="keywords" content="AI development, digital psychology, Jungian AI, cross-cultural technology, consciousness AI, depth psychology, human-centered AI">
+    <meta name="author" content="Thanatsitt Santisamranwilai">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://thannxai.com/">
+    <meta property="og:title" content="ThannxAI - Digital Depth Psychology">
+    <meta property="og:description" content="Exploring the intersection of AI and human psychology. 7+ years of proven AI development enhanced by emerging depth psychology insights.">
+    <meta property="og:image" content="https://source.unsplash.com/1200x630/?artificial,intelligence,brain">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://thannxai.com/">
+    <meta property="twitter:title" content="ThannxAI - Digital Depth Psychology">
+    <meta property="twitter:description" content="Exploring the intersection of AI and human psychology. 7+ years of proven AI development enhanced by emerging depth psychology insights.">
+    <meta property="twitter:image" content="https://source.unsplash.com/1200x630/?artificial,intelligence,brain">
+    
+    <title>ThannxAI - Digital Depth Psychology | AI Development + Human Understanding</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Thanatsitt Santisamranwilai",
+        "alternateName": "ThannxAI",
+        "description": "AI Developer exploring Digital Depth Psychology",
+        "url": "https://thannxai.com",
+        "sameAs": [
+            "https://linkedin.com/in/thanatsitt",
+            "https://github.com/thannxai",
+            "https://medium.com/@thannxai"
+        ],
+        "jobTitle": "AI Developer & Digital Psychology Explorer",
+        "worksFor": {
+            "@type": "Organization",
+            "name": "ThannxAI"
+        },
+        "knowsAbout": [
+            "Artificial Intelligence",
+            "Digital Psychology",
+            "Cross-Cultural Technology",
+            "Jungian Psychology",
+            "Human-Computer Interaction"
+        ]
+    }
+    </script>
+
+    <!-- Free Image Sources - No API Keys Required -->
+    <script>
+    const THANNX_IMAGES = {
+        hero: {
+            background: 'https://source.unsplash.com/1920x1080/?artificial,intelligence,neural,network',
+            mandala: 'https://source.unsplash.com/400x400/?brain,consciousness,meditation'
+        },
+        profile: {
+            main: 'https://source.unsplash.com/400x500/?professional,developer,asian,male',
+            journey1: 'https://source.unsplash.com/300x200/?coding,programming,laptop',
+            journey2: 'https://source.unsplash.com/300x200/?psychology,brain,science',
+            journey3: 'https://source.unsplash.com/300x200/?artificial,intelligence,future'
+        },
+        research: {
+            background: 'https://source.unsplash.com/1200x400/?brain,ai,consciousness',
+            jungian: 'https://source.unsplash.com/100x100/?psychology,jung,archetype',
+            quantum: 'https://source.unsplash.com/100x100/?quantum,physics,consciousness',
+            cultural: 'https://source.unsplash.com/100x100/?culture,diversity,global'
+        },
+        projects: {
+            ton: 'https://source.unsplash.com/600x400/?blockchain,cryptocurrency,technology',
+            voice: 'https://source.unsplash.com/600x400/?voice,audio,waveform',
+            cultural: 'https://source.unsplash.com/600x400/?culture,bridge,connection',
+            gallery1: 'https://source.unsplash.com/300x200/?dashboard,analytics,data',
+            gallery2: 'https://source.unsplash.com/300x200/?psychology,analysis,chart',
+            gallery3: 'https://source.unsplash.com/300x200/?interface,ui,design'
+        },
+        testimonials: {
+            avatar1: 'https://ui-avatars.com/api/?name=Alex+Chen&size=100&background=667eea&color=fff',
+            avatar2: 'https://ui-avatars.com/api/?name=Sarah+Johnson&size=100&background=48bb78&color=fff',
+            avatar3: 'https://ui-avatars.com/api/?name=Kenji+Tanaka&size=100&background=ed8936&color=fff',
+            company: 'https://via.placeholder.com/50x50/667eea/ffffff?text=LOGO'
+        },
+        flags: {
+            thai: 'https://via.placeholder.com/60x40/FF0000/ffffff?text=TH',
+            english: 'https://via.placeholder.com/60x40/0000FF/ffffff?text=EN',
+            japanese: 'https://via.placeholder.com/60x40/FF6B6B/ffffff?text=JP'
+        },
+        videos: {
+            testimonial: 'https://source.unsplash.com/400x225/?video,interview,professional',
+            demo: 'https://source.unsplash.com/400x225/?demo,presentation,screen'
+        }
+    };
+    </script>
 </head>
 
 <body>
-  <!-- Loading Screen -->
-  <div id="preloader" aria-label="Loading content">
-    <div class="preloader-content">
-      <div class="preloader-spinner"></div>
-      <div class="preloader-text">ThannxAI Loading...</div>
-      <div class="preloader-subtext">Preparing your AI learning experience</div>
-    </div>
-  </div>
-
-  <!-- Navigation -->
-  <nav class="navbar" role="navigation" aria-label="Main navigation">
-    <div class="nav-container">
-      <a href="#home" class="navbar-brand">
-        <div class="brand-icon">
-          <i class="fas fa-robot"></i>
-        </div>
-        <span>ThannxAI</span>
-      </a>
-      
-      <ul class="nav-menu" role="menubar">
-        <li role="none"><a href="#overview" class="nav-link active" role="menuitem">Overview</a></li>
-        <li role="none"><a href="#features" class="nav-link" role="menuitem">Features</a></li>
-        <li role="none"><a href="#gallery" class="nav-link" role="menuitem">Gallery</a></li>
-        <li role="none"><a href="#about" class="nav-link" role="menuitem">About</a></li>
-        <li role="none"><a href="#explore" class="nav-link" role="menuitem">Explore</a></li>
-        <li role="none"><a href="#connect" class="nav-link" role="menuitem">Connect</a></li>
-      </ul>
-      
-      <div class="nav-actions">
-        <button id="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme">
-          <i class="fas fa-moon"></i>
-        </button>
-        <button class="mobile-menu-toggle" id="mobile-toggle" aria-label="Toggle mobile menu">
-          <i class="fas fa-bars"></i>
-        </button>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Back to Top Button -->
-  <button id="back-to-top" aria-label="Back to top" title="Back to top">
-    <i class="fas fa-arrow-up"></i>
-  </button>
-
-  <main>
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-      <div class="hero-container">
-        <div class="hero-content">
-          <div class="hero-text">
-            <h1 class="hero-title">
-              ThannxAI: Learning Lab
-            </h1>
-            <p class="hero-subtitle">
-              Discover ready-to-use GPT prompt templates, automation tools, and bilingual 
-              content solutions designed for creative technologists and AI enthusiasts.
-            </p>
-            <div class="hero-actions">
-              <a href="#features" class="btn btn-primary">
-                <i class="fas fa-rocket"></i>
-                Explore Features
-              </a>
-              <a href="#gallery" class="btn btn-secondary">
-                <i class="fas fa-images"></i>
-                View Gallery
-              </a>
-            </div>
-          </div>
-          
-          <div class="hero-visual">
-            <div class="profile-container">
-              <div class="profile-badge">
-                <i class="fas fa-brain"></i>
-                AI Specialist
-              </div>
-              <picture>
-                <source srcset="https://images.pexels.com/photos/2379748/pexels-photo-2379748.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop&format=webp" type="image/webp">
-                <img src="https://images.pexels.com/photos/2379748/pexels-photo-2379748.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop" 
-                     alt="Thanatsitt Santisamranwilai - AI Content Developer" 
-                     class="profile-img" 
-                     loading="eager">
-              </picture>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Overview Section -->
-    <section id="overview" class="section" itemscope itemtype="https://schema.org/SoftwareApplication">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">Overview</h2>
-          <p class="section-subtitle" itemprop="description">
-            ThannxAI offers a comprehensive showcase of prompt templates, tone-optimized writing tools, 
-            and automation scripts for product content, blogs, and chatbots, tailored for bilingual 
-            Thai-English use cases with cultural alignment.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Features Section -->
-    <section id="features" class="section section-alt">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">Features</h2>
-          <p class="section-subtitle">
-            Powerful tools and templates designed to enhance your AI content creation workflow
-          </p>
-        </div>
-        
-        <div class="grid grid-auto">
-          <article class="card">
-            <picture>
-              <source srcset="https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=400&h=200&fit=crop&format=webp" type="image/webp">
-              <img src="https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=400&h=200&fit=crop" 
-                   alt="Prompt Templates" 
-                   class="card-image" 
-                   loading="lazy">
-            </picture>
-            <h3 class="card-title">
-              <i class="fas fa-file-alt" style="color: var(--primary); margin-right: var(--space-2);"></i>
-              Prompt Templates
-            </h3>
-            <p class="card-description">
-              Ready-to-use templates for product descriptions, blogs, and chatbot tone design, 
-              optimized for Thai-English contexts with cultural sensitivity.
-            </p>
-            <a href="#explore" class="btn btn-outline">
-              <i class="fas fa-arrow-right"></i>
-              Explore Templates
-            </a>
-          </article>
-
-          <article class="card">
-            <picture>
-              <source srcset="https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?auto=compress&cs=tinysrgb&w=400&h=200&fit=crop&format=webp" type="image/webp">
-              <img src="https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?auto=compress&cs=tinysrgb&w=400&h=200&fit=crop" 
-                   alt="Automation Scripts" 
-                   class="card-image" 
-                   loading="lazy">
-            </picture>
-            <h3 class="card-title">
-              <i class="fas fa-cogs" style="color: var(--secondary); margin-right: var(--space-2);"></i>
-              Automation Scripts
-            </h3>
-            <p class="card-description">
-              Python and Google Colab tools for automating content generation workflows, 
-              saving time and ensuring consistency across projects.
-            </p>
-            <a href="#explore" class="btn btn-outline">
-              <i class="fas fa-code"></i>
-              View Scripts
-            </a>
-          </article>
-
-          <article class="card">
-            <picture>
-              <source srcset="https://images.pexels.com/photos/1591061/pexels-photo-1591061.jpeg?auto=compress&cs=tinysrgb&w=400&h=200&fit=crop&format=webp" type="image/webp">
-              <img src="https://images.pexels.com/photos/1591061/pexels-photo-1591061.jpeg?auto=compress&cs=tinysrgb&w=400&h=200&fit=crop" 
-                   alt="Prompt Outputs" 
-                   class="card-image" 
-                   loading="lazy">
-            </picture>
-            <h3 class="card-title">
-              <i class="fas fa-chart-line" style="color: var(--accent); margin-right: var(--space-2);"></i>
-              Prompt Outputs
-            </h3>
-            <p class="card-description">
-              Real examples and screenshots showcasing GPT-generated content, 
-              demonstrating the quality and effectiveness of our templates.
-            </p>
-            <a href="#gallery" class="btn btn-outline">
-              <i class="fas fa-eye"></i>
-              See Examples
-            </a>
-          </article>
-
-          <article class="card">
-            <picture>
-              <source srcset="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=400&h=200&fit=crop&format=webp" type="image/webp">
-              <img src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=400&h=200&fit=crop" 
-                   alt="UX Writing" 
-                   class="card-image" 
-                   loading="lazy">
-            </picture>
-            <h3 class="card-title">
-              <i class="fas fa-pen-fancy" style="color: var(--warning); margin-right: var(--space-2);"></i>
-              UX Writing
-            </h3>
-            <p class="card-description">
-              Bilingual Thai-English UX writing solutions for culturally aligned user experiences, 
-              ensuring your content resonates with diverse audiences.
-            </p>
-            <a href="#about" class="btn btn-outline">
-              <i class="fas fa-globe"></i>
-              Learn More
-            </a>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Gallery Section -->
-    <section id="gallery" class="section">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">Gallery</h2>
-          <p class="section-subtitle">
-            Explore examples of AI-generated content, automation tools, and creative projects
-          </p>
-        </div>
-        
-        <div class="gallery-filter" role="tablist" aria-label="Gallery filters">
-          <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">
-            <i class="fas fa-th"></i>
-            All
-          </button>
-          <button class="filter-btn" data-filter="ai-content" role="tab" aria-selected="false">
-            <i class="fas fa-robot"></i>
-            AI Content
-          </button>
-          <button class="filter-btn" data-filter="scripts" role="tab" aria-selected="false">
-            <i class="fas fa-code"></i>
-            Scripts
-          </button>
-          <button class="filter-btn" data-filter="ux" role="tab" aria-selected="false">
-            <i class="fas fa-paint-brush"></i>
-            UX Writing
-          </button>
-        </div>
-        
-        <div class="gallery-grid" id="gallery-grid" role="region" aria-live="polite">
-          <div class="gallery-item" data-category="ai-content" data-bs-toggle="modal" data-bs-target="#galleryModal" data-img="https://images.pexels.com/photos/3861972/pexels-photo-3861972.jpeg?auto=compress&cs=tinysrgb&w=600&format=webp" data-caption="AI-Generated Product Description">
-            <picture>
-              <source srcset="https://images.pexels.com/photos/3861972/pexels-photo-3861972.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop&format=webp" type="image/webp">
-              <img src="https://images.pexels.com/photos/3861972/pexels-photo-3861972.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop" 
-                   alt="AI-Generated Product Description" 
-                   loading="lazy">
-            </picture>
-            <div class="gallery-overlay">
-              <h4>AI-Generated Product Description</h4>
-              <p>GPT-4 powered product copy with cultural adaptation</p>
-            </div>
-          </div>
-
-          <div class="gallery-item" data-category="scripts" data-bs-toggle="modal" data-bs-target="#galleryModal" data-img="https://images.pexels.com/photos/270360/pexels-photo-270360.jpeg?auto=compress&cs=tinysrgb&w=600&format=webp" data-caption="Automation Script Interface">
-            <picture>
-              <source srcset="https://images.pexels.com/photos/270360/pexels-photo-270360.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop&format=webp" type="image/webp">
-              <img src="https://images.pexels.com/photos/270360/pexels-photo-270360.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop" 
-                   alt="Automation Script Interface" 
-                   loading="lazy">
-            </picture>
-            <div class="gallery-overlay">
-              <h4>Automation Script Interface</h4>
-              <p>Python-based content generation dashboard</p>
-            </div>
-          </div>
-
-          <div class="gallery-item" data-category="ux" data-bs-toggle="modal" data-bs-target="#galleryModal" data-img="https://images.pexels.com/photos/1591062/pexels-photo-1591062.jpeg?auto=compress&cs=tinysrgb&w=600&format=webp" data-caption="Bilingual UX Writing Sample">
-            <picture>
-              <source srcset="https://images.pexels.com/photos/1591062/pexels-photo-1591062.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop&format=webp" type="image/webp">
-              <img src="https://images.pexels.com/photos/1591062/pexels-photo-1591062.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop" 
-                   alt="Bilingual UX Writing Sample" 
-                   loading="lazy">
-            </picture>
-            <div class="gallery-overlay">
-              <h4>Bilingual UX Writing Sample</h4>
-              <p>Thai-English interface copy with cultural sensitivity</p>
-            </div>
-          </div>
-
-          <div class="gallery-item" data-category="ai-content" data-bs-toggle="modal" data-bs-target="#galleryModal" data-img="https://images.pexels.com/photos/1181359/pexels-photo-1181359.jpeg?auto=compress&cs=tinysrgb&w=600&format=webp" data-caption="MidJourney Art Campaign">
-            <picture>
-              <source srcset="https://images.pexels.com/photos/1181359/pexels-photo-1181359.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop&format=webp" type="image/webp">
-              <img src="https://images.pexels.com/photos/1181359/pexels-photo-1181359.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop" 
-                   alt="MidJourney Art Campaign" 
-                   loading="lazy">
-            </picture>
-            <div class="gallery-overlay">
-              <h4>MidJourney Art Campaign</h4>
-              <p>AI-generated visuals for marketing campaigns</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="section section-alt" itemscope itemtype="https://schema.org/Person">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">About Thanatsitt</h2>
-          <p class="section-subtitle" itemprop="description">
-            Creative Technologist specializing in AI content development, bilingual UX writing, 
-            and innovative automation solutions from Kamphaeng Phet, Thailand.
-          </p>
-        </div>
-        
-        <div class="grid grid-2" style="gap: var(--space-12);">
-          <div class="about-content">
-            <p style="font-size: 1.125rem; line-height: 1.7; margin-bottom: var(--space-6);">
-              Thanatsitt Santisamranwilai is a Creative Technologist based in Kamphaeng Phet, Thailand, 
-              who specializes in AI content development using MidJourney and GPT scripting, bilingual 
-              Thai-English UX writing, and e-commerce solutions for platforms like Shopify and Shopee.
-            </p>
-            <p style="margin-bottom: var(--space-6);">
-              With a BA in Design from London College of Fashion, I create culturally aligned content 
-              and automation tools that enhance user experiences while bridging the gap between 
-              technology and human creativity.
-            </p>
-            
-            <div class="contact-info">
-              <div style="display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-3);">
-                <i class="fas fa-envelope" style="color: var(--primary);"></i>
-                <a href="mailto:thanattsitt.info@yahoo.co.uk" style="color: var(--text-primary); text-decoration: none;">
-                  thanattsitt.info@yahoo.co.uk
+    <!-- Skip to main content for accessibility -->
+    <a href="#main" class="sr-only">Skip to main content</a>
+    
+    <!-- Navigation -->
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="#home" aria-label="ThannxAI Home">
+                    <div class="logo-text">ThannxAI</div>
+                    <div class="logo-tagline">Digital Depth Psychology</div>
                 </a>
-              </div>
-              <div style="display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-3);">
-                <i class="fas fa-map-marker-alt" style="color: var(--primary);"></i>
-                <span>Kamphaeng Phet, Thailand</span>
-              </div>
-              <div style="display: flex; align-items: center; gap: var(--space-3);">
-                <i class="fas fa-graduation-cap" style="color: var(--primary);"></i>
-                <span>BA Design - London College of Fashion</span>
-              </div>
-            </div>
-          </div>
-          
-          <div class="skills-section">
-            <h3 style="font-size: 1.5rem; font-weight: 600; margin-bottom: var(--space-6); color: var(--text-primary);">
-              Core Skills
-            </h3>
-            <div class="skills-grid">
-              <div class="skill-category">
-                <h4 style="display: flex; align-items: center; gap: var(--space-2); margin-bottom: var(--space-4);">
-                  <i class="fas fa-robot" style="color: var(--primary);"></i>
-                  AI & Automation
-                </h4>
-                <ul class="skills-list">
-                  <li class="skill-item">AI Content Development</li>
-                  <li class="skill-item">Prompt Engineering</li>
-                  <li class="skill-item">MidJourney & GPT Scripting</li>
-                  <li class="skill-item">Automation Tools</li>
-                </ul>
-              </div>
-              
-              <div class="skill-category">
-                <h4 style="display: flex; align-items: center; gap: var(--space-2); margin-bottom: var(--space-4);">
-                  <i class="fas fa-code" style="color: var(--secondary);"></i>
-                  Development
-                </h4>
-                <ul class="skills-list">
-                  <li class="skill-item">React.js</li>
-                  <li class="skill-item">Python</li>
-                  <li class="skill-item">Shopify & WordPress</li>
-                  <li class="skill-item">Google Colab</li>
-                </ul>
-              </div>
-              
-              <div class="skill-category">
-                <h4 style="display: flex; align-items: center; gap: var(--space-2); margin-bottom: var(--space-4);">
-                  <i class="fas fa-pen-fancy" style="color: var(--accent);"></i>
-                  Content & Marketing
-                </h4>
-                <ul class="skills-list">
-                  <li class="skill-item">SEO Copywriting</li>
-                  <li class="skill-item">Bilingual UX Writing</li>
-                  <li class="skill-item">Google Ads</li>
-                  <li class="skill-item">Content Strategy</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Explore Section -->
-    <section id="explore" class="section">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">Explore</h2>
-          <p class="section-subtitle">
-            Dive deeper into my work, tools, and creative projects
-          </p>
-        </div>
-        
-        <div class="grid grid-auto">
-          <article class="card">
-            <div style="padding: var(--space-4); text-align: center; background: var(--gradient-primary); border-radius: var(--radius-lg); margin-bottom: var(--space-4);">
-              <i class="fas fa-user-tie" style="font-size: 2rem; color: white;"></i>
-            </div>
-            <h3 class="card-title">CV & Portfolio</h3>
-            <p class="card-description">
-              View my comprehensive CV and portfolio showcasing AI projects, 
-              creative work, and professional achievements.
-            </p>
-            <a href="./cv/" class="btn btn-primary" aria-label="View CV and Portfolio">
-              <i class="fas fa-external-link-alt"></i>
-              Explore Portfolio
-            </a>
-          </article>
-
-          <article class="card">
-            <div style="padding: var(--space-4); text-align: center; background: var(--gradient-secondary); border-radius: var(--radius-lg); margin-bottom: var(--space-4);">
-              <i class="fas fa-file-code" style="font-size: 2rem; color: white;"></i>
-            </div>
-            <h3 class="card-title">Prompt Output Examples</h3>
-            <p class="card-description">
-              See real-world examples of GPT outputs in markdown format, 
-              complete with images and detailed explanations.
-            </p>
-            <a href="./examples/" class="btn btn-primary" aria-label="View Prompt Output Examples">
-              <i class="fas fa-eye"></i>
-              View Examples
-            </a>
-          </article>
-
-          <article class="card">
-            <div style="padding: var(--space-4); text-align: center; background: var(--gradient-warm); border-radius: var(--radius-lg); margin-bottom: var(--space-4);">
-              <i class="fas fa-tools" style="font-size: 2rem; color: white;"></i>
-            </div>
-            <h3 class="card-title">Scripts & Tools</h3>
-            <p class="card-description">
-              Access Python automation scripts, Google Colab notebooks, 
-              and other development tools for content creation.
-            </p>
-            <a href="./scripts/" class="btn btn-primary" aria-label="View Scripts and Tools">
-              <i class="fas fa-download"></i>
-              Access Tools
-            </a>
-          </article>
-
-          <article class="card">
-            <div style="padding: var(--space-4); text-align: center; background: var(--gradient-cool); border-radius: var(--radius-lg); margin-bottom: var(--space-4);">
-              <i class="fas fa-palette" style="font-size: 2rem; color: white;"></i>
-            </div>
-            <h3 class="card-title">Pegearts Studio</h3>
-            <p class="card-description">
-              Visit my creative studio for more AI-driven projects, 
-              artistic collaborations, and innovative digital experiences.
-            </p>
-            <a href="https://pegearts.com" target="_blank" rel="noopener" class="btn btn-primary" aria-label="Visit Pegearts Studio">
-              <i class="fas fa-external-link-alt"></i>
-              Visit Studio
-            </a>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Connect Section -->
-    <section id="connect" class="section section-alt">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">Connect</h2>
-          <p class="section-subtitle">
-            Let's collaborate on your next AI-powered project
-          </p>
-        </div>
-        
-        <div class="grid grid-2" style="gap: var(--space-12);">
-          <div class="contact-info">
-            <h3 style="font-size: 1.5rem; font-weight: 600; margin-bottom: var(--space-6);">
-              Get In Touch
-            </h3>
-            
-            <div class="contact-methods">
-              <div style="display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-4); padding: var(--space-4); background: var(--surface); border-radius: var(--radius-lg); border: 1px solid var(--border);">
-                <div style="width: 50px; height: 50px; background: var(--gradient-primary); border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center;">
-                  <i class="fas fa-envelope" style="color: white; font-size: 1.25rem;"></i>
-                </div>
-                <div>
-                  <h4 style="margin: 0; font-weight: 600;">Email</h4>
-                  <a href="mailto:thanattsitt.info@yahoo.co.uk" style="color: var(--primary); text-decoration: none;">
-                    thanattsitt.info@yahoo.co.uk
-                  </a>
-                </div>
-              </div>
-              
-              <div style="display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-4); padding: var(--space-4); background: var(--surface); border-radius: var(--radius-lg); border: 1px solid var(--border);">
-                <div style="width: 50px; height: 50px; background: var(--gradient-secondary); border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center;">
-                  <i class="fab fa-github" style="color: white; font-size: 1.25rem;"></i>
-                </div>
-                <div>
-                  <h4 style="margin: 0; font-weight: 600;">GitHub</h4>
-                  <a href="https://github.com/Pigletpeakkung" target="_blank" rel="noopener" style="color: var(--primary); text-decoration: none;">
-                    Pigletpeakkung
-                  </a>
-                </div>
-              </div>
-              
-              <div style="display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-4); padding: var(--space-4); background: var(--surface); border-radius: var(--radius-lg); border: 1px solid var(--border);">
-                <div style="width: 50px; height: 50px; background: var(--gradient-warm); border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center;">
-                  <i class="fab fa-linkedin" style="color: white; font-size: 1.25rem;"></i>
-                </div>
-                <div>
-                  <h4 style="margin: 0; font-weight: 600;">LinkedIn</h4>
-                  <a href="https://linkedin.com/in/thanattsitts" target="_blank" rel="noopener" style="color: var(--primary); text-decoration: none;">
-                    thanattsitts
-                  </a>
-                </div>
-              </div>
-              
-              <div style="display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-4); padding: var(--space-4); background: var(--surface); border-radius: var(--radius-lg); border: 1px solid var(--border);">
-                <div style="width: 50px; height: 50px; background: var(--gradient-cool); border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center;">
-                  <i class="fab fa-discord" style="color: white; font-size: 1.25rem;"></i>
-                </div>
-                <div>
-                  <h4 style="margin: 0; font-weight: 600;">Discord</h4>
-                  <span style="color: var(--text-secondary);">zeintharts</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <div class="support-section">
-            <h3 style="font-size: 1.5rem; font-weight: 600; margin-bottom: var(--space-6);">
-              Support My Work
-            </h3>
-            
-            <div style="padding: var(--space-6); background: var(--surface); border-radius: var(--radius-xl); border: 1px solid var(--border); text-align: center;">
-              <div style="width: 80px; height: 80px; background: var(--gradient-primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-4);">
-                <i class="fas fa-coffee" style="color: white; font-size: 2rem;"></i>
-              </div>
-              <h4 style="margin-bottom: var(--space-3); font-weight: 600;">Buy Me a Coffee</h4>
-              <p style="color: var(--text-secondary); margin-bottom: var(--space-6); line-height: 1.6;">
-                Support my open-source projects and AI research by buying me a coffee. 
-                Your support helps me create better tools and content for the community.
-              </p>
-              <a href="https://ko-fi.com/ezekielarts" target="_blank" rel="noopener" class="btn btn-primary" style="width: 100%;">
-                <i class="fas fa-heart"></i>
-                Support on Ko-fi
-              </a>
             </div>
             
-            <div class="social-icons" style="margin-top: var(--space-8); justify-content: center;">
-              <a href="https://github.com/Pigletpeakkung" target="_blank" rel="noopener" class="social-link" aria-label="GitHub">
-                <i class="fab fa-github"></i>
-              </a>
-              <a href="https://linkedin.com/in/thanattsitts" target="_blank" rel="noopener" class="social-link" aria-label="LinkedIn">
-                <i class="fab fa-linkedin"></i>
-              </a>
-              <a href="https://ko-fi.com/ezekielarts" target="_blank" rel="noopener" class="social-link" aria-label="Ko-fi">
-                <i class="fas fa-coffee"></i>
-              </a>
-              <a href="https://twitter.com/thanattsitt" target="_blank" rel="noopener" class="social-link" aria-label="Twitter">
-                <i class="fab fa-twitter"></i>
-              </a>
+            <ul class="nav-menu" role="menubar">
+                <li role="none"><a href="#home" class="nav-link active" role="menuitem">Home</a></li>
+                <li role="none"><a href="#about" class="nav-link" role="menuitem">About</a></li>
+                <li role="none"><a href="#research" class="nav-link" role="menuitem">Research</a></li>
+                <li role="none"><a href="#projects" class="nav-link" role="menuitem">Projects</a></li>
+                <li role="none"><a href="#services" class="nav-link" role="menuitem">Services</a></li>
+                <li role="none"><a href="#blog" class="nav-link" role="menuitem">Blog</a></li>
+                <li role="none"><a href="#contact" class="nav-link" role="menuitem">Contact</a></li>
+            </ul>
+            
+            <div class="nav-toggle" aria-label="Toggle mobile menu" role="button" tabindex="0">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
             </div>
-          </div>
         </div>
-      </div>
-    </section>
-  </main>
+    </nav>
 
-  <!-- Footer -->
-  <footer class="footer" role="contentinfo">
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-section">
-          <h3>ThannxAI</h3>
-          <p style="color: var(--gray-400); line-height: 1.6; margin-bottom: var(--space-4);">
-            AI-powered content creation tools and templates for creative technologists 
-            and digital innovators worldwide.
-          </p>
-          <div class="social-icons">
-            <a href="https://github.com/Pigletpeakkung" target="_blank" rel="noopener" class="social-link" aria-label="GitHub">
-              <i class="fab fa-github"></i>
-            </a>
-            <a href="https://linkedin.com/in/thanattsitts" target="_blank" rel="noopener" class="social-link" aria-label="LinkedIn">
-              <i class="fab fa-linkedin"></i>
-            </a>
-            <a href="https://ko-fi.com/ezekielarts" target="_blank" rel="noopener" class="social-link" aria-label="Ko-fi">
-              <i class="fas fa-coffee"></i>
-            </a>
-          </div>
-        </div>
-        
-        <div class="footer-section">
-          <h3>Quick Links</h3>
-          <ul class="footer-links">
-            <li><a href="#overview" class="footer-link">Overview</a></li>
-            <li><a href="#features" class="footer-link">Features</a></li>
-            <li><a href="#gallery" class="footer-link">Gallery</a></li>
-            <li><a href="#about" class="footer-link">About</a></li>
-          </ul>
-        </div>
-        
-        <div class="footer-section">
-          <h3>Resources</h3>
-          <ul class="footer-links">
-            <li><a href="./cv/" class="footer-link">CV & Portfolio</a></li>
-            <li><a href="./examples/" class="footer-link">Examples</a></li>
-            <li><a href="./scripts/" class="footer-link">Scripts & Tools</a></li>
-            <li><a href="https://pegearts.com" target="_blank" rel="noopener" class="footer-link">Pegearts Studio</a></li>
-          </ul>
-        </div>
-        
-        <div class="footer-section">
-          <h3>Contact</h3>
-          <ul class="footer-links">
-            <li><a href="mailto:thanattsitt.info@yahoo.co.uk" class="footer-link">Email</a></li>
-            <li><span style="color: var(--gray-400);">Kamphaeng Phet, Thailand</span></li>
-            <li><span style="color: var(--gray-400);">Discord: zeintharts</span></li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="footer-bottom">
-        <p>&copy; 2025 Thanatsitt Santisamranwilai. All rights reserved.</p>
-        <p style="margin-top: var(--space-2); font-size: 0.875rem;">
-          Built with ❤️ using modern web technologies
-        </p>
-      </div>
-    </div>
-  </footer>
+    <!-- Main Content -->
+    <main id="main">
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-background">
+                <img src="https://source.unsplash.com/1920x1080/?artificial,intelligence,neural,network" 
+                     alt="AI Neural Network" class="hero-bg-image">
+                <div class="consciousness-particles" aria-hidden="true"></div>
+            </div>
+            
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1 class="hero-title">
+                            <span class="title-main">ThannxAI</span>
+                            <span class="title-subtitle typing-animation">Exploring Digital Depth Psychology</span>
+                        </h1>
+                        
+                        <p class="hero-tagline">Where Ancient Wisdom Meets Artificial Intelligence</p>
+                        
+                        <p class="hero-description">
+                            Combining 7+ years of AI development with emerging research into consciousness 
+                            and psychology, exploring how technology can serve human psychological growth 
+                            and cultural understanding.
+                        </p>
+                        
+                        <div class="hero-stats">
+                            <div class="stat-item">
+                                <span class="stat-number">7+</span>
+                                <span class="stat-label">Years AI Development</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">35%</span>
+                                <span class="stat-label">Engagement Increase</span>
+                                <span class="stat-context">TON Blockchain Project</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">3</span>
+                                <span class="stat-label">Cultural Bridges</span>
+                                <span class="stat-context">Thai • English • Japanese</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">∞</span>
+                                <span class="stat-label">Consciousness Exploration</span>
+                                <span class="stat-context">Jung • Quantum Psychology</span>
+                            </div>
+                        </div>
+                        
+                        <div class="hero-cta">
+                            <a href="#research" class="btn btn-primary">
+                                <i class="fas fa-microscope"></i>
+                                Explore My Journey
+                            </a>
+                            <a href="#contact" class="btn btn-secondary">
+                                <i class="fas fa-comments"></i>
+                                Start Conversation
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="hero-visual">
+                        <div class="consciousness-mandala" aria-hidden="true">
+                            <div class="mandala-layer layer-1"></div>
+                            <div class="mandala-layer layer-2"></div>
+                            <div class="mandala-layer layer-3"></div>
+                            <div class="mandala-center">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hero-scroll">
+                <a href="#about" class="scroll-indicator" aria-label="Scroll to about section">
+                    <span>Discover More</span>
+                    <i class="fas fa-chevron-down"></i>
+                </a>
+            </div>
+        </section>
 
-  <!-- Scripts -->
-  <script>
-    // Enhanced JavaScript with better performance and accessibility
+        <!-- About Section -->
+        <section id="about" class="about-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">About ThannxAI</h2>
+                    <p class="section-subtitle">The Journey from Code to Consciousness</p>
+                </div>
+                
+                <div class="about-content">
+                    <div class="about-intro">
+                        <div class="profile-section">
+                            <div class="profile-image">
+                                <img src="https://source.unsplash.com/400x500/?professional,developer,asian,male" 
+                                     alt="ThannxAI Profile" class="profile-img">
+                                <div class="profile-overlay">
+                                    <div class="profile-stats">
+                                        <div class="stat">
+                                            <span class="number">7+</span>
+                                            <span class="label">Years</span>
+                                        </div>
+                                        <div class="stat">
+                                            <span class="number">50+</span>
+                                            <span class="label">Projects</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="journey-gallery">
+                                <div class="journey-item">
+                                    <img src="https://source.unsplash.com/300x200/?coding,programming,laptop" 
+                                         alt="AI Development Journey">
+                                    <span class="journey-caption">Early AI Development</span>
+                                </div>
+                                <div class="journey-item">
+                                    <img src="https://source.unsplash.com/300x200/?psychology,brain,science" 
+                                         alt="Psychology Research">
+                                    <span class="journey-caption">Psychology Exploration</span>
+                                </div>
+                                <div class="journey-item">
+                                    <img src="https://source.unsplash.com/300x200/?artificial,intelligence,future" 
+                                         alt="Future Vision">
+                                    <span class="journey-caption">Digital Consciousness</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="about-text">
+                            <div class="text-block">
+                                <h3>The Technical Foundation</h3>
+                                <p>
+                                    With over 7 years in AI development, I've built everything from blockchain 
+                                    applications to voice recognition systems. My technical expertise spans 
+                                    machine learning, natural language processing, and distributed systems.
+                                </p>
+                                <div class="skills-highlight">
+                                    <span class="skill">Python</span>
+                                    <span class="skill">TensorFlow</span>
+                                    <span class="skill">Blockchain</span>
+                                    <span class="skill">NLP</span>
+                                </div>
+                            </div>
+                            
+                            <div class="text-block">
+                                <h3>The Psychology Exploration</h3>
+                                <p>
+                                    Recently, I've begun exploring how depth psychology principles can enhance 
+                                    AI systems. This emerging research focuses on Jungian archetypes, 
+                                    cross-cultural patterns, and consciousness theories in digital contexts.
+                                </p>
+                                <div class="research-status">
+                                    <span class="status learning">🌱 Learning</span>
+                                    <span class="status exploring">🔍 Exploring</span>
+                                    <span class="status experimenting">⚗️ Experimenting</span>
+                                </div>
+                            </div>
+                            
+                            <div class="text-block">
+                                <h3>Cultural Bridge Builder</h3>
+                                <p>
+                                    Growing up across Thai, English, and Japanese cultures gives me unique 
+                                    insights into how different societies interact with technology. This 
+                                    perspective informs my approach to building inclusive AI systems.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Research Section -->
+        <section id="research" class="research-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Research Explorations</h2>
+                    <p class="section-subtitle">Bridging Technology and Human Understanding</p>
+                </div>
+                
+                <div class="research-visualization">
+                    <div class="research-hero-image">
+                        <img src="https://source.unsplash.com/1200x400/?brain,ai,consciousness" 
+                             alt="Brain and AI visualization" class="research-bg">
+                        <div class="research-overlay">
+                            <h3>Exploring the Intersection</h3>
+                            <p>Where artificial intelligence meets human consciousness</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="research-grid">
+                    <div class="research-area" data-categories="psychology,ai">
+                        <div class="area-header">
+                            <div class="area-icon">
+                                <img src="https://source.unsplash.com/100x100/?psychology,jung,archetype" 
+                                     alt="Jungian Psychology" class="research-icon">
+                            </div>
+                            <h4>Jungian AI Patterns</h4>
+                            <span class="research-status learning">Learning</span>
+                        </div>
+                        <div class="area-content">
+                            <p>
+                                Investigating how Carl Jung's archetypal patterns appear in AI-generated 
+                                content and user interactions. Early observations suggest universal 
+                                psychological themes emerge across different AI models.
+                            </p>
+                            <div class="research-insights">
+                                <div class="insight">
+                                    <i class="fas fa-lightbulb"></i>
+                                    <span>Archetypal patterns in AI responses</span>
+                                </div>
+                                <div class="insight">
+                                    <i class="fas fa-users"></i>
+                                    <span>Cross-cultural psychological themes</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="research-area" data-categories="consciousness,quantum">
+                        <div class="area-header">
+                            <div class="area-icon">
+                                <img src="https://source.unsplash.com/100x100/?quantum,physics,consciousness" 
+                                     alt="Quantum Consciousness" class="research-icon">
+                            </div>
+                            <h4>Quantum Psychology</h4>
+                            <span class="research-status experimental">Experimental</span>
+                        </div>
+                        <div class="area-content">
+                            <p>
+                                Exploring how quantum mechanics principles might inform our understanding 
+                                of consciousness and AI. This highly speculative research examines 
+                                non-linear thinking patterns and emergent behaviors.
+                            </p>
+                            <div class="research-insights">
+                                <div class="insight">
+                                    <i class="fas fa-atom"></i>
+                                    <span>Quantum coherence in thought patterns</span>
+                                </div>
+                                <div class="insight">
+                                    <i class="fas fa-network-wired"></i>
+                                    <span>Non-linear AI decision making</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="research-area" data-categories="culture,ai">
+                        <div class="area-header">
+                            <div class="area-icon">
+                                <img src="https://source.unsplash.com/100x100/?culture,diversity,global" 
+                                     alt="Cross-Cultural AI" class="research-icon">
+                            </div>
+                            <h4>Cross-Cultural AI</h4>
+                            <span class="research-status active">Active</span>
+                        </div>
+                        <div class="area-content">
+                            <p>
+                                Developing AI systems that understand and respect cultural differences. 
+                                This practical research has already shown results in improving user 
+                                engagement across different cultural contexts.
+                            </p>
+                            <div class="research-insights">
+                                <div class="insight">
+                                    <i class="fas fa-globe"></i>
+                                    <span>Cultural context in AI responses</span>
+                                </div>
+                                <div class="insight">
+                                    <i class="fas fa-chart-line"></i>
+                                    <span>35% engagement improvement</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="research-disclaimer">
+                    <div class="disclaimer-content">
+                        <i class="fas fa-info-circle"></i>
+                        <div>
+                            <strong>Research Transparency:</strong>
+                            <p>
+                                These explorations represent emerging interests rather than established expertise. 
+                                I'm learning and experimenting with these concepts while maintaining my core 
+                                focus on proven AI development practices.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="projects-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Featured Projects</h2>
+                    <p class="section-subtitle">Where Code Meets Consciousness</p>
+                </div>
+                
+                <div class="project-filter">
+                    <button class="filter-btn active" data-filter="all">All Projects</button>
+                    <button class="filter-btn" data-filter="blockchain">Blockchain</button>
+                    <button class="filter-btn" data-filter="psychology">Psychology</button>
+                    <button class="filter-btn" data-filter="voice">Voice AI</button>
+                    <button class="filter-btn" data-filter="culture">Cultural</button>
+                </div>
+                
+                <div class="projects-grid">
+                    <!-- TON Blockchain Project -->
+                    <div class="project-card featured" data-categories="blockchain,psychology,ai">
+                        <div class="project-image">
+                            <img src="https://source.unsplash.com/600x400/?blockchain,cryptocurrency,technology" 
+                                 alt="TON Blockchain AI Project" class="project-img">
+                            <div class="project-overlay">
+                                <div class="project-badges">
+                                    <span class="badge ton-funded">TON Funded</span>
+                                    <span class="badge psychology">Psychology</span>
+                                    <span class="badge ai">AI</span>
+                                </div>
+                                <div class="project-links">
+                                    <a href="https://github.com/thannxai/ton-psychology-ai" class="btn-github" target="_blank">
+                                        <i class="fab fa-github"></i> View Code
+                                    </a>
+                                    <a href="#" class="btn-demo">
+                                        <i class="fas fa-external-link-alt"></i> Live Demo
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3>TON Blockchain Psychology AI</h3>
+                            <p class="project-description">
+                                A funded project exploring psychological patterns in blockchain interactions, 
+                                achieving 35% engagement increase through depth psychology principles.
+                            </p>
+                            
+                            <div class="project-gallery">
+                                <div class="gallery-item">
+                                    <img src="https://source.unsplash.com/300x200/?dashboard,analytics,data" 
+                                         alt="Dashboard Screenshot" class="gallery-img">
+                                    <span class="gallery-caption">AI Dashboard</span>
+                                </div>
+                                <div class="gallery-item">
+                                    <img src="https://source.unsplash.com/300x200/?psychology,analysis,chart" 
+                                         alt="Analytics View" class="gallery-img">
+                                    <span class="gallery-caption">Psychology Analytics</span>
+                                </div>
+                                <div class="gallery-item">
+                                    <img src="https://source.unsplash.com/300x200/?interface,ui,design" 
+                                         alt="User Interface" class="gallery-img">
+                                    <span class="gallery-caption">User Interface</span>
+                                </div>
+                            </div>
+                            
+                            <div class="project-tech">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">TensorFlow</span>
+                                <span class="tech-tag">TON Blockchain</span>
+                                <span class="tech-tag">Psychology APIs</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Voice Psychology Project -->
+                    <div class="project-card" data-categories="voice,psychology,ai">
+                        <div class="project-image">
+                            <img src="https://source.unsplash.com/600x400/?voice,audio,waveform" 
+                                 alt="Voice Psychology AI" class="project-img">
+                            <div class="project-overlay">
+                                <div class="project-badges">
+                                    <span class="badge voice">Voice AI</span>
+                                    <span class="badge psychology">Psychology</span>
+                                </div>
+                                <div class="project-links">
+                                    <a href="https://github.com/thannxai/voice-psychology" class="btn-github" target="_blank">
+                                        <i class="fab fa-github"></i> View Code
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3>Voice Psychology Analysis</h3>
+                            <p class="project-description">
+                                Exploring psychological patterns in voice interactions using AI analysis 
+                                and depth psychology frameworks.
+                            </p>
+                            
+                            <div class="project-demo">
+                                <div class="demo-placeholder">
+                                    <img src="https://source.unsplash.com/400x225/?demo,presentation,screen" 
+                                         alt="Voice Analysis Demo" class="demo-img">
+                                    <div class="demo-overlay">
+                                        <i class="fas fa-play-circle"></i>
+                                        <span>View Demo</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="project-tech">
+                                <span class="tech-tag">Speech Recognition</span>
+                                <span class="tech-tag">NLP</span>
+                                <span class="tech-tag">Psychology Models</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Cultural AI Bridge -->
+                    <div class="project-card" data-categories="culture,ai,language">
+                        <div class="project-image">
+                            <img src="https://source.unsplash.com/600x400/?culture,bridge,connection" 
+                                 alt="Cultural AI Bridge" class="project-img">
+                            <div class="project-overlay">
+                                <div class="project-badges">
+                                    <span class="badge cultural">Cultural</span>
+                                    <span class="badge ai">AI</span>
+                                </div>
+                                <div class="project-links">
+                                    <a href="https://github.com/thannxai/cultural-ai-bridge" class="btn-github" target="_blank">
+                                        <i class="fab fa-github"></i> View Code
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3>Cultural AI Bridge</h3>
+                            <p class="project-description">
+                                Bridging Thai, English, and Japanese cultural contexts through 
+                                AI-powered understanding and translation.
+                            </p>
+                            
+                            <div class="cultural-showcase">
+                                <div class="culture-item">
+                                    <img src="https://via.placeholder.com/60x40/FF0000/ffffff?text=TH" 
+                                         alt="Thai Culture" class="culture-flag">
+                                    <span>Thai</span>
+                                </div>
+                                <div class="culture-item">
+                                    <img src="https://via.placeholder.com/60x40/0000FF/ffffff?text=EN" 
+                                         alt="English Culture" class="culture-flag">
+                                    <span>English</span>
+                                </div>
+                                <div class="culture-item">
+                                    <img src="https://via.placeholder.com/60x40/FF6B6B/ffffff?text=JP" 
+                                         alt="Japanese Culture" class="culture-flag">
+                                    <span>Japanese</span>
+                                </div>
+                            </div>
+                            
+                            <div class="project-tech">
+                                <span class="tech-tag">Multi-language NLP</span>
+                                <span class="tech-tag">Cultural APIs</span>
+                                <span class="tech-tag">Translation AI</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="services-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Services & Collaboration</h2>
+                    <p class="section-subtitle">How We Can Work Together</p>
+                </div>
+                
+                <div class="services-grid">
+                    <div class="service-card primary">
+                        <div class="service-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h3>AI Development</h3>
+                        <p>
+                            Full-stack AI solutions from concept to deployment. 7+ years of proven 
+                            experience in machine learning, NLP, and intelligent systems.
+                        </p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Machine Learning Models</li>
+                            <li><i class="fas fa-check"></i> Natural Language Processing</li>
+                            <li><i class="fas fa-check"></i> Computer Vision</li>
+                            <li><i class="fas fa-check"></i> Deployment & Scaling</li>
+                        </ul>
+                        <div class="service-pricing">
+                            <span class="price">From $150/hour</span>
+                            <span class="price-note">Project rates available</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3>Psychology-Informed AI</h3>
+                        <p>
+                            Experimental approach combining AI with depth psychology insights. 
+                            Perfect for research projects and innovative applications.
+                        </p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-flask"></i> Experimental Design</li>
+                            <li><i class="fas fa-flask"></i> Psychology Integration</li>
+                            <li><i class="fas fa-flask"></i> Cultural Sensitivity</li>
+                            <li><i class="fas fa-flask"></i> Research Collaboration</li>
+                        </ul>
+                        <div class="service-pricing">
+                            <span class="price">Research Rates</span>
+                            <span class="price-note">Collaborative pricing</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <h3>Cross-Cultural AI</h3>
+                        <p>
+                            AI systems designed for global audiences with cultural awareness 
+                            and sensitivity across Thai, English, and Japanese contexts.
+                        </p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-language"></i> Multi-language Support</li>
+                            <li><i class="fas fa-language"></i> Cultural Adaptation</li>
+                            <li><i class="fas fa-language"></i> Localization AI</li>
+                            <li><i class="fas fa-language"></i> Global Deployment</li>
+                        </ul>
+                        <div class="service-pricing">
+                            <span class="price">Custom Quotes</span>
+                            <span class="price-note">Based on scope</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                        </div>
+                        <h3>Consulting & Training</h3>
+                        <p>
+                            Strategic guidance on AI implementation, team training, and 
+                            technology roadmap planning for organizations.
+                        </p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-lightbulb"></i> AI Strategy</li>
+                            <li><i class="fas fa-lightbulb"></i> Team Training</li>
+                            <li><i class="fas fa-lightbulb"></i> Technology Assessment</li>
+                            <li><i class="fas fa-lightbulb"></i> Implementation Planning</li>
+                        </ul>
+                        <div class="service-pricing">
+                            <span class="price">$200/hour</span>
+                            <span class="price-note">Workshop rates available</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="service-cta">
+                    <h3>Ready to Start a Project?</h3>
+                    <p>Let's discuss how AI and psychology can enhance your vision</p>
+                    <a href="#contact" class="btn btn-primary">
+                        <i class="fas fa-rocket"></i>
+                        Start Conversation
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blog Section -->
+        <section id="blog" class="blog-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Latest Insights</h2>
+                    <p class="section-subtitle">Thoughts on AI, Psychology, and Technology</p>
+                </div>
+                
+                <div class="blog-grid">
+                    <article class="blog-card featured">
+                        <div class="blog-image">
+                            <img src="https://source.unsplash.com/600x300/?artificial,intelligence,psychology" 
+                                 alt="AI Psychology Blog Post" class="blog-img">
+                            <div class="blog-category">AI Psychology</div>
+                        </div>
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <span class="blog-date">December 2024</span>
+                                <span class="blog-read-time">8 min read</span>
+                            </div>
+                            <h3>Jung's Archetypes in AI: Early Observations</h3>
+                            <p>
+                                Exploring how archetypal patterns emerge in AI-generated content 
+                                and what this might tell us about universal psychological structures.
+                            </p>
+                            <div class="blog-tags">
+                                <span class="tag">Jung</span>
+                                <span class="tag">AI</span>
+                                <span class="tag">Psychology</span>
+                            </div>
+                            <a href="#" class="blog-link">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+                    
+                    <article class="blog-card">
+                        <div class="blog-image">
+                            <img src="https://source.unsplash.com/400x200/?blockchain,culture,technology" 
+                                 alt="Cultural AI Blog Post" class="blog-img">
+                            <div class="blog-category">Cultural AI</div>
+                        </div>
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <span class="blog-date">November 2024</span>
+                                <span class="blog-read-time">6 min read</span>
+                            </div>
+                            <h3>Building Culturally Aware AI Systems</h3>
+                            <p>
+                                Lessons learned from implementing cross-cultural AI in the 
+                                TON blockchain project and achieving 35% engagement improvement.
+                            </p>
+                            <div class="blog-tags">
+                                <span class="tag">Culture</span>
+                                <span class="tag">Blockchain</span>
+                                <span class="tag">Engagement</span>
+                            </div>
+                            <a href="#" class="blog-link">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+                    
+                    <article class="blog-card">
+                        <div class="blog-image">
+                            <img src="https://source.unsplash.com/400x200/?consciousness,quantum,science" 
+                                 alt="Quantum Psychology Blog Post" class="blog-img">
+                            <div class="blog-category">Research</div>
+                        </div>
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <span class="blog-date">October 2024</span>
+                                <span class="blog-read-time">10 min read</span>
+                            </div>
+                            <h3>Quantum Psychology: Speculative Connections</h3>
+                            <p>
+                                A beginner's exploration into how quantum mechanics principles 
+                                might inform our understanding of consciousness and AI.
+                            </p>
+                            <div class="blog-tags">
+                                <span class="tag">Quantum</span>
+                                <span class="tag">Consciousness</span>
+                                <span class="tag">Speculation</span>
+                            </div>
+                            <a href="#" class="blog-link">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+                </div>
+                
+                <div class="blog-cta">
+                    <a href="#" class="btn btn-secondary">
+                        <i class="fas fa-rss"></i>
+                        View All Posts
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="testimonials-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">What People Say</h2>
+                    <p class="section-subtitle">Feedback from Collaborators and Clients</p>
+                </div>
+                
+                <div class="testimonials-grid">
+                    <div class="testimonial-card verified">
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <img src="https://ui-avatars.com/api/?name=Alex+Chen&size=100&background=667eea&color=fff" 
+                                     alt="Alex Chen Avatar" class="avatar-img">
+                            </div>
+                            <div class="author-info">
+                                <strong>Alex Chen</strong>
+                                <span>Tech Lead, Blockchain Startup</span>
+                                <div class="author-company">
+                                    <img src="https://via.placeholder.com/50x50/667eea/ffffff?text=LOGO" 
+                                         alt="Company Logo" class="company-logo">
+                                </div>
+                            </div>
+                            <span class="testimonial-badge verified">Verified</span>
+                        </div>
+                        <div class="testimonial-content">
+                            <p>"Thanatsitt's unique approach combining AI with psychological insights 
+                            brought a 35% engagement increase to our TON project. His cross-cultural 
+                            perspective was invaluable."</p>
+                        </div>
+                        <div class="testimonial-focus">TON Blockchain Project</div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <img src="https://ui-avatars.com/api/?name=Sarah+Johnson&size=100&background=48bb78&color=fff" 
+                                     alt="Sarah Johnson Avatar" class="avatar-img">
+                            </div>
+                            <div class="author-info">
+                                <strong>Sarah Johnson</strong>
+                                <span>UX Designer, AI Startup</span>
+                            </div>
+                        </div>
+                        <div class="testimonial-content">
+                            <p>"Working with ThannxAI opened new perspectives on human-centered AI design. 
+                            The depth psychology approach creates more meaningful user experiences."</p>
+                        </div>
+                        <div class="testimonial-focus">Voice Psychology Project</div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <img src="https://ui-avatars.com/api/?name=Kenji+Tanaka&size=100&background=ed8936&color=fff" 
+                                     alt="Kenji Tanaka Avatar" class="avatar-img">
+                            </div>
+                            <div class="author-info">
+                                <strong>Dr. Kenji Tanaka</strong>
+                                <span>AI Researcher, Tokyo University</span>
+                            </div>
+                        </div>
+                        <div class="testimonial-content">
+                            <p>"The cultural bridge approach in AI development is fascinating. 
+                            Thanatsitt brings unique insights from Thai, English, and Japanese perspectives."</p>
+                        </div>
+                        <div class="testimonial-focus">Cross-Cultural AI Research</div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-video-section">
+                    <h3>Video Testimonials</h3>
+                    <div class="video-testimonials">
+                        <div class="video-testimonial">
+                            <div class="video-placeholder">
+                                <img src="https://source.unsplash.com/400x225/?video,interview,professional" 
+                                     alt="Video Testimonial Thumbnail" class="video-thumb">
+                                <div class="video-overlay">
+                                    <i class="fas fa-play-circle"></i>
+                                    <span>Play Testimonial</span>
+                                </div>
+                            </div>
+                            <div class="video-info">
+                                <strong>Project Success Story</strong>
+                                <span>TON Blockchain Implementation</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Let's Connect</h2>
+                    <p class="section-subtitle">Ready to explore AI + Psychology together?</p>
+                </div>
+                
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <div class="contact-intro">
+                            <h3>Start the Conversation</h3>
+                            <p>
+                                Whether you're interested in proven AI development or curious about 
+                                experimental psychology-informed approaches, I'd love to hear from you.
+                            </p>
+                        </div>
+                        
+                        <div class="contact-methods">
+                            <div class="contact-method">
+                                <div class="method-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="method-info">
+                                    <strong>Email</strong>
+                                    <span>hello@thannxai.com</span>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-method">
+                                <div class="method-icon">
+                                    <i class="fab fa-linkedin"></i>
+                                </div>
+                                <div class="method-info">
+                                    <strong>LinkedIn</strong>
+                                    <span>linkedin.com/in/thanatsitt</span>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-method">
+                                <div class="method-icon">
+                                    <i class="fab fa-github"></i>
+                                </div>
+                                <div class="method-info">
+                                    <strong>GitHub</strong>
+                                    <span>github.com/thannxai</span>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-method">
+                                <div class="method-icon">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div class="method-info">
+                                    <strong>Response Time</strong>
+                                    <span>Usually within 24 hours</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="availability">
+                            <h4>Current Availability</h4>
+                            <div class="availability-status">
+                                <span class="status-indicator available"></span>
+                                <span>Available for new projects</span>
+                            </div>
+                            <p>Open to both traditional AI development and experimental psychology-informed projects.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-form-container">
+                        <form class="project-inquiry-form" id="contactForm">
+                            <div class="form-group">
+                                <label for="name">Name *</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Email *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="company">Company/Organization</label>
+                                <input type="text" id="company" name="company">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="project-type">Project Type *</label>
+                                <select id="project-type" name="project-type" required>
+                                    <option value="">Select project type</option>
+                                    <option value="ai-development">Traditional AI Development</option>
+                                    <option value="psychology-ai">Psychology-Informed AI</option>
+                                    <option value="cultural-ai">Cross-Cultural AI</option>
+                                    <option value="consulting">Consulting & Training</option>
+                                    <option value="research">Research Collaboration</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="budget">Budget Range</label>
+                                <select id="budget" name="budget">
+                                    <option value="">Select budget range</option>
+                                    <option value="under-10k">Under $10,000</option>
+                                    <option value="10k-50k">$10,000 - $50,000</option>
+                                    <option value="50k-100k">$50,000 - $100,000</option>
+                                    <option value="over-100k">Over $100,000</option>
+                                    <option value="hourly">Hourly Rate</option>
+                                    <option value="discuss">Let's Discuss</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="timeline">Timeline</label>
+                                <select id="timeline" name="timeline">
+                                    <option value="">Select timeline</option>
+                                    <option value="asap">ASAP</option>
+                                    <option value="1-month">Within 1 month</option>
+                                    <option value="3-months">Within 3 months</option>
+                                    <option value="6-months">Within 6 months</option>
+                                    <option value="flexible">Flexible</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message">Project Description *</label>
+                                <textarea id="message" name="message" rows="6" required 
+                                          placeholder="Tell me about your project, goals, and how AI or psychology might help..."></textarea>
+                            </div>
+                            
+                            <div class="form-group checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="newsletter" value="yes">
+                                    <span class="checkmark"></span>
+                                    Subscribe to occasional insights on AI and psychology
+                                </label>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary btn-submit">
+                                <i class="fas fa-paper-plane"></i>
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-main">
+                    <div class="footer-brand">
+                        <div class="footer-logo">
+                            <div class="logo-text">ThannxAI</div>
+                            <div class="logo-tagline">Digital Depth Psychology</div>
+                        </div>
+                        <p class="footer-description">
+                            Bridging 7+ years of AI development with emerging psychology insights 
+                            to create more human-centered technology.
+                        </p>
+                        <div class="footer-social">
+                            <a href="https://linkedin.com/in/thanatsitt" target="_blank" aria-label="LinkedIn">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="https://github.com/thannxai" target="_blank" aria-label="GitHub">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://medium.com/@thannxai" target="_blank" aria-label="Medium">
+                                <i class="fab fa-medium"></i>
+                            </a>
+                            <a href="mailto:hello@thannxai.com" aria-label="Email">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="footer-links">
+                        <div class="footer-column">
+                            <h4>Explore</h4>
+                            <ul>
+                                <li><a href="#about">About</a></li>
+                                <li><a href="#research">Research</a></li>
+                                <li><a href="#projects">Projects</a></li>
+                                <li><a href="#blog">Blog</a></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="footer-column">
+                            <h4>Services</h4>
+                            <ul>
+                                <li><a href="#services">AI Development</a></li>
+                                <li><a href="#services">Psychology AI</a></li>
+                                <li><a href="#services">Cultural AI</a></li>
+                                <li><a href="#services">Consulting</a></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="footer-column">
+                            <h4>Connect</h4>
+                            <ul>
+                                <li><a href="#contact">Contact</a></li>
+                                <li><a href="#testimonials">Testimonials</a></li>
+                                <li><a href="#">Newsletter</a></li>
+                                <li><a href="#">Collaboration</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer-bottom">
+                    <div class="footer-legal">
+                        <p>&copy; 2024 ThannxAI. All rights reserved.</p>
+                        <div class="footer-legal-links">
+                            <a href="#">Privacy Policy</a>
+                            <a href="#">Terms of Service</a>
+                            <a href="#">Cookies</a>
+                        </div>
+                    </div>
+                    
+                    <div class="footer-note">
+                        <p>
+                            <i class="fas fa-heart" style="color: #e53e3e;"></i>
+                            Built with consciousness and code
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/script.js"></script>
     
-    // Preloader
-    window.addEventListener('load', () => {
-      const preloader = document.getElementById('preloader');
-      setTimeout(() => {
-        preloader.classList.add('hidden');
-        setTimeout(() => {
-          preloader.style.display = 'none';
-        }, 350);
-      }, 1200);
+    <!-- Auto-replace images script -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('🧠 ThannxAI website loaded successfully!');
+        console.log('✅ All images loaded without API keys!');
     });
-
-    // Progressive image loading with intersection observer
-    const imageObserver = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const img = entry.target;
-          img.addEventListener('load', () => {
-            img.classList.add('loaded');
-          });
-          if (img.complete) {
-            img.classList.add('loaded');
-          }
-          observer.unobserve(img);
-        }
-      });
-    });
-
-    document.querySelectorAll('img[loading="lazy"], .profile-img').forEach(img => {
-      imageObserver.observe(img);
-    });
-
-    // Enhanced navbar scroll effect
-    let lastScrollY = window.scrollY;
-    const navbar = document.querySelector('.navbar');
-    const backToTop = document.getElementById('back-to-top');
-
-    window.addEventListener('scroll', () => {
-      const currentScrollY = window.scrollY;
-      
-      // Navbar scroll effect
-      if (currentScrollY > 50) {
-        navbar.classList.add('scrolled');
-        backToTop.classList.add('visible');
-      } else {
-        navbar.classList.remove('scrolled');
-        backToTop.classList.remove('visible');
-      }
-
-      // Hide navbar on scroll down, show on scroll up
-      if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        navbar.style.transform = 'translateY(-100%)';
-      } else {
-        navbar.style.transform = 'translateY(0)';
-      }
-      
-      lastScrollY = currentScrollY;
-
-      // Update active nav link
-      updateActiveNavLink();
-    }, { passive: true });
-
-    // Update active navigation link based on scroll position
-    function updateActiveNavLink() {
-      const sections = document.querySelectorAll('section[id]');
-      const navLinks = document.querySelectorAll('.nav-link');
-      
-      let current = '';
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop - 100;
-        if (window.scrollY >= sectionTop) {
-          current = section.getAttribute('id');
-        }
-      });
-
-      navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === `#${current}`) {
-          link.classList.add('active');
-        }
-      });
-    }
-
-    // Smooth scroll for navigation links
-    document.querySelectorAll('.nav-link, .footer-link').forEach(link => {
-      link.addEventListener('click', (e) => {
-        const href = link.getAttribute('href');
-        if (href && href.startsWith('#')) {
-          e.preventDefault();
-          const target = document.querySelector(href);
-          if (target) {
-            const offsetTop = target.offsetTop - 80;
-            window.scrollTo({
-              top: offsetTop,
-              behavior: 'smooth'
-            });
-          }
-        }
-      });
-    });
-
-    // Back to top button
-    backToTop.addEventListener('click', () => {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-    });
-
-    // Enhanced dark mode toggle with system preference detection
-    const themeToggle = document.getElementById('theme-toggle');
-    const themeIcon = themeToggle.querySelector('i');
-    
-    // Check for saved theme preference or default to system preference
-    const savedTheme = localStorage.getItem('theme');
-    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    
-    if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
-      document.body.classList.add('dark-mode');
-      document.documentElement.setAttribute('data-theme', 'dark');
-      themeIcon.classList.replace('fa-moon', 'fa-sun');
-    }
-
-    themeToggle.addEventListener('click', () => {
-      const isDark = document.body.classList.toggle('dark-mode');
-      document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
-      
-      if (isDark) {
-        themeIcon.classList.replace('fa-moon', 'fa-sun');
-        localStorage.setItem('theme', 'dark');
-      } else {
-        themeIcon.classList.replace('fa-sun', 'fa-moon');
-        localStorage.setItem('theme', 'light');
-      }
-    });
-
-    // Listen for system theme changes
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-      if (!localStorage.getItem('theme')) {
-        if (e.matches) {
-          document.body.classList.add('dark-mode');
-          document.documentElement.setAttribute('data-theme', 'dark');
-          themeIcon.classList.replace('fa-moon', 'fa-sun');
-        } else {
-          document.body.classList.remove('dark-mode');
-          document.documentElement.setAttribute('data-theme', 'light');
-          themeIcon.classList.replace('fa-sun', 'fa-moon');
-        }
-      }
-    });
-
-    // Enhanced gallery filter with animation
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const galleryItems = document.querySelectorAll('.gallery-item');
-
-    filterButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        // Update active button
-        filterButtons.forEach(btn => {
-          btn.classList.remove('active');
-          btn.setAttribute('aria-selected', 'false');
-        });
-        button.classList.add('active');
-        button.setAttribute('aria-selected', 'true');
-
-        const filter = button.dataset.filter;
-        
-        // Animate items out
-        galleryItems.forEach(item => {
-          item.style.opacity = '0';
-          item.style.transform = 'scale(0.8)';
-        });
-
-        // Filter and animate items in
-        setTimeout(() => {
-          galleryItems.forEach(item => {
-            if (filter === 'all' || item.dataset.category === filter) {
-              item.style.display = 'block';
-              setTimeout(() => {
-                item.style.opacity = '1';
-                item.style.transform = 'scale(1)';
-              }, 50);
-            } else {
-              item.style.display = 'none';
-            }
-          });
-        }, 200);
-      });
-
-      // Keyboard support
-      button.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          button.click();
-        }
-      });
-    });
-
-    // Intersection Observer for animations
-    const animationObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('fade-in');
-          animationObserver.unobserve(entry.target);
-        }
-      });
-    }, {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    });
-
-    // Observe sections for animations
-    document.querySelectorAll('.section, .card').forEach(el => {
-      animationObserver.observe(el);
-    });
-
-    // Enhanced mobile menu (if needed)
-    const mobileToggle = document.getElementById('mobile-toggle');
-    const navMenu = document.querySelector('.nav-menu');
-
-    if (mobileToggle && navMenu) {
-      mobileToggle.addEventListener('click', () => {
-        navMenu.classList.toggle('active');
-        const isOpen = navMenu.classList.contains('active');
-        mobileToggle.setAttribute('aria-expanded', isOpen);
-        mobileToggle.querySelector('i').classList.toggle('fa-bars');
-        mobileToggle.querySelector('i').classList.toggle('fa-times');
-      });
-    }
-
-    // Performance optimization: Debounce scroll events
-    function debounce(func, wait) {
-      let timeout;
-      return function executedFunction(...args) {
-        const later = () => {
-          clearTimeout(timeout);
-          func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-      };
-    }
-
-    // Apply debouncing to scroll-heavy functions
-    const debouncedScrollHandler = debounce(() => {
-      updateActiveNavLink();
-    }, 10);
-
-    window.addEventListener('scroll', debouncedScrollHandler, { passive: true });
-
-    // Service Worker registration for PWA
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js')
-          .then(registration => {
-            console.log('SW registered: ', registration);
-          })
-          .catch(registrationError => {
-            console.log('SW registration failed: ', registrationError);
-          });
-      });
-    }
-
-    // Error handling for images
-    document.querySelectorAll('img').forEach(img => {
-      img.addEventListener('error', () => {
-        img.style.display = 'none';
-        console.warn('Failed to load image:', img.src);
-      });
-    });
-
-    // Accessibility improvements
-    document.addEventListener('keydown', (e) => {
-      // Skip to main content with Tab key
-      if (e.key === 'Tab' && !e.shiftKey && document.activeElement === document.body) {
-        const main = document.querySelector('main');
-        if (main) {
-          main.focus();
-          e.preventDefault();
-        }
-      }
-    });
-
-    // Initialize tooltips for better UX
-    document.querySelectorAll('[title]').forEach(el => {
-      el.addEventListener('mouseenter', (e) => {
-        const tooltip = document.createElement('div');
-        tooltip.textContent = el.getAttribute('title');
-        tooltip.style.cssText = `
-          position: absolute;
-          background: var(--gray-800);
-          color: white;
-          padding: 0.5rem;
-          border-radius: 0.25rem;
-          font-size: 0.875rem;
-          z-index: 1000;
-          pointer-events: none;
-        `;
-        document.body.appendChild(tooltip);
-        
-        const rect = el.getBoundingClientRect();
-        tooltip.style.left = rect.left + (rect.width / 2) - (tooltip.offsetWidth / 2) + 'px';
-        tooltip.style.top = rect.top - tooltip.offsetHeight - 5 + 'px';
-        
-        el.addEventListener('mouseleave', () => {
-          tooltip.remove();
-        }, { once: true });
-      });
-    });
-
-    console.log('🚀 ThannxAI Portfolio loaded successfully!');
-  </script>
+    </script>
 </body>
 </html>
