@@ -1,59 +1,147 @@
-# Node.js dependencies
-node_modules/
-npm-debug.log
-yarn-error.log
-package-lock.json
-yarn.lock
+# ===== THANNXAI GITIGNORE =====
 
-# Build and distribution folders
-dist/
-build/
-
-# Temporary files
-*.tmp
-*.temp
-*.bak
-*.swp
-*~
-
-# OS-generated files
-.DS_Store
-Thumbs.db
-ehthumbs.db
-desktop.ini
-
-# Editor and IDE files
-.vscode/
-.idea/
-*.sublime-project
-*.sublime-workspace
-
-# Environment and sensitive files
+# Environment Variables (Future)
 .env
 .env.local
 .env.development
 .env.production
-config.json
-secrets.json
+.env.test
+*.env
 
-# Large design files (if not tracked with Git LFS)
-# designs/*.psd
-# designs/*.sketch
-# designs/*.fig
+# Dependencies (When you add Node.js)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
 
-# Logs and caches
+# Build Outputs (Future)
+dist/
+build/
+.next/
+.nuxt/
+.vuepress/dist/
+.serverless/
+
+# IDE & Editor Files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.settings/
+.classpath
+
+# OS Generated Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# Logs
 *.log
-*.cache
-.cache/
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Runtime Data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage & Testing
 coverage/
+.nyc_output/
+.coverage/
+*.lcov
+.jest/
 
-# Service worker cache (if applicable)
-sw-cache/
+# Cache Directories
+.cache/
+.parcel-cache/
+.eslintcache
+.stylelintcache
 
-# Miscellaneous
+# Temporary Folders
+tmp/
+temp/
+.tmp/
+
+# Database Files (Future)
+*.db
+*.sqlite
+*.sqlite3
+
+# Backup Files
+*.bak
+*.backup
+*.old
+
+# Archive Files
 *.zip
 *.tar.gz
 *.rar
 
-# Ignore local development server artifacts
-http-server.log
+# API Keys & Secrets (Future)
+config/secrets.js
+secrets.json
+credentials.json
+service-account-key.json
+
+# Analytics & Tracking (Future)
+.analytics/
+tracking-codes.txt
+
+# Documentation Drafts
+drafts/
+*.draft.md
+
+# Personal Notes
+notes.txt
+todo.txt
+.personal/
+
+# Deployment Configs (Future)
+.vercel/
+.netlify/
+.firebase/
+.aws/
+
+# Performance Monitoring
+.lighthouse/
+performance-reports/
+
+# AI Model Files (Future)
+*.model
+*.weights
+models/
+training-data/
+
+# Large Media Files
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.webm
+*.mp3
+*.wav
+*.flac
+
+# Design Files
+*.psd
+*.ai
+*.sketch
+*.fig
+*.xd
+
+# Comments
+# Add any project-specific ignores below this line
