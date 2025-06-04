@@ -3,6 +3,31 @@
    Complete JavaScript Functionality
    ================================== */
 
+// ===== FALLBACK IMAGE SYSTEM =====
+const FALLBACK_IMAGES = {
+    hero: 'https://via.placeholder.com/1920x1080/667eea/ffffff?text=ThannxAI+Hero',
+    profile: 'https://ui-avatars.com/api/?name=Thanatsitt+Santisamranwilai&size=400&background=667eea&color=fff',
+    project: 'https://via.placeholder.com/600x400/764ba2/ffffff?text=Project',
+    gallery: 'https://via.placeholder.com/600x400/f093fb/ffffff?text=Gallery',
+    blog: 'https://via.placeholder.com/600x300/667eea/ffffff?text=Blog+Post'
+};
+
+// Image error handler
+function handleImageError(img) {
+    const type = img.dataset.type || 'project';
+    img.src = FALLBACK_IMAGES[type] || FALLBACK_IMAGES.project;
+    img.onerror = null; // Prevent infinite loop
+}
+
+// Add error handlers to all images
+document.addEventListener('DOMContentLoaded', function() {
+    const images = document.querySelectorAll('img');
+    images.forEach(img => {
+        img.onerror = () => handleImageError(img);
+    });
+});
+
+
 // ===================================
 // GLOBAL VARIABLES & CONFIGURATION
 // ===================================
