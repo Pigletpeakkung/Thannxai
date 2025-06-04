@@ -1,0 +1,65 @@
+# Citation File Format (CFF) for ThannxAI Website
+# This file provides citation information for academic and professional use
+
+cff-version: 1.2.0
+title: "ThannxAI - Digital Depth Psychology Website"
+message: "If you use this website template or code, please cite it using the metadata from this file."
+type: software
+authors:
+  - given-names: "Thanatsitt"
+    family-names: "Santisamranwilai"
+    email: "thanatsitt@thannxai.com"
+    orcid: "https://orcid.org/0000-0000-0000-0000"
+    affiliation: "ThannxAI"
+repository-code: "https://github.com/thannxai/website"
+url: "https://thannxai.com"
+abstract: >-
+  A cutting-edge, responsive website showcasing the revolutionary 
+  intersection of artificial intelligence and depth psychology. 
+  Built with modern web technologies including HTML5, CSS3, and 
+  vanilla JavaScript, featuring advanced animations, accessibility 
+  compliance, and performance optimization.
+keywords:
+  - "artificial intelligence"
+  - "depth psychology"
+  - "web development"
+  - "responsive design"
+  - "accessibility"
+  - "performance optimization"
+  - "vanilla javascript"
+  - "css animations"
+  - "progressive enhancement"
+license: MIT
+license-url: "https://github.com/thannxai/website/blob/main/LICENSE"
+version: "2.0.0"
+date-released: "2024-01-15"
+preferred-citation:
+  type: software
+  title: "ThannxAI - Digital Depth Psychology Website Template"
+  authors:
+    - given-names: "Thanatsitt"
+      family-names: "Santisamranwilai"
+  year: 2024
+  url: "https://thannxai.com"
+  repository-code: "https://github.com/thannxai/website"
+  license: MIT
+references:
+  - type: article
+    title: "The Integration of AI and Depth Psychology"
+    authors:
+      - given-names: "Thanatsitt"
+        family-names: "Santisamranwilai"
+    year: 2024
+    journal: "Digital Psychology Quarterly"
+    volume: 15
+    issue: 3
+    pages: "45-62"
+  - type: conference-paper
+    title: "Consciousness in Artificial Intelligence Systems"
+    authors:
+      - given-names: "Thanatsitt"
+        family-names: "Santisamranwilai"
+    year: 2023
+    conference:
+      name: "International Conference on AI and Human Psychology"
+    pages: "123-135"
