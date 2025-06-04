@@ -1,14 +1,43 @@
+# ThannxAI - Digital Depth Psychology
+# Robots.txt file for search engine crawlers
+
+# Allow all bots to crawl everything
 User-agent: *
 Allow: /
 
-# Sitemaps
-Sitemap: https://pigletpeakkung.github.io/Thannxai/sitemap.xml
-
-# Crawl-delay
-Crawl-delay: 1
-
-# Disallow certain paths
+# Disallow crawling of admin areas (if any)
 Disallow: /admin/
 Disallow: /private/
-Disallow: /*.json$
-Disallow: /sw.js
+Disallow: /.git/
+Disallow: /node_modules/
+
+# Crawl delay (be nice to servers)
+Crawl-delay: 1
+
+# Sitemap location
+Sitemap: https://thannxai.com/sitemap.xml
+
+# Additional sitemaps (if you add them later)
+# Sitemap: https://thannxai.com/blog-sitemap.xml
+# Sitemap: https://thannxai.com/projects-sitemap.xml
+
+# Block specific bots (optional - uncomment if needed)
+# User-agent: BadBot
+# Disallow: /
+
+# Allow Google Image Bot
+User-agent: Googlebot-Image
+Allow: /
+
+# Allow social media bots for rich previews
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+# Cache directive for faster crawling
+Cache-delay: 86400
