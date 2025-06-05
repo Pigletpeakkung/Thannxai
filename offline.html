@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offline - ThannxAI</title>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        
+        .offline-container {
+            max-width: 500px;
+            padding: 2rem;
+        }
+        
+        .consciousness-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        p {
+            font-size: 1.125rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .retry-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .retry-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        .offline-features {
+            margin-top: 3rem;
+            text-align: left;
+        }
+        
+        .feature {
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+    </style>
+</head>
+<body>
+    <div class="offline-container">
+        <div class="consciousness-icon">🧠</div>
+        <h1>Consciousness Offline</h1>
+        <p>Your connection to the digital consciousness network has been temporarily interrupted. Don't worry, your journey continues...</p>
+        
+        <button class="retry-btn" onclick="window.location.reload()">
+            Reconnect to Consciousness
+        </button>
+        
+        <div class="offline-features">
+            <h3>Available Offline:</h3>
+            <div class="feature">
+                <strong>🔍 Cached Research</strong><br>
+                Previously viewed research papers and insights
+            </div>
+            <div class="feature">
+                <strong>📚 Saved Articles</strong><br>
+                Your bookmarked consciousness explorations
+            </div>
+            <div class="feature">
+                <strong>🧘 Meditation Timer</strong><br>
+                Continue your mindfulness practice offline
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Check for connection every 5 seconds
+        setInterval(() => {
+            if (navigator.onLine) {
+                window.location.reload();
+            }
+        }, 5000);
+        
+        // Visual feedback for connection attempts
+        window.addEventListener('online', () => {
+            window.location.reload();
+        });
+    </script>
+</body>
+</html>
