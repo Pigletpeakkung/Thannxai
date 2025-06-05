@@ -1,64 +1,58 @@
-/* ===================================
-   THANNXAI - DIGITAL DEPTH PSYCHOLOGY
-   Complete JavaScript Functionality
-   ================================== */
+/* ===== THANNXAI MAIN JAVASCRIPT ===== */
+/* Advanced Animations, Interactions & Consciousness Effects */
 
-// ===== FALLBACK IMAGE SYSTEM =====
-const FALLBACK_IMAGES = {
-    hero: 'https://via.placeholder.com/1920x1080/667eea/ffffff?text=ThannxAI+Hero',
-    profile: 'https://ui-avatars.com/api/?name=Thanatsitt+Santisamranwilai&size=400&background=667eea&color=fff',
-    project: 'https://via.placeholder.com/600x400/764ba2/ffffff?text=Project',
-    gallery: 'https://via.placeholder.com/600x400/f093fb/ffffff?text=Gallery',
-    blog: 'https://via.placeholder.com/600x300/667eea/ffffff?text=Blog+Post'
-};
+// ===== CORE INITIALIZATION =====
+class ThannxAI {
+    constructor() {
+        this.isLoaded = false;
+        this.scrollY = 0;
+        this.windowHeight = window.innerHeight;
+        this.windowWidth = window.innerWidth;
+        this.isMobile = window.innerWidth <= 768;
+        this.reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        
+        this.init();
+    }
 
-// Image error handler
-function handleImageError(img) {
-    const type = img.dataset.type || 'project';
-    img.src = FALLBACK_IMAGES[type] || FALLBACK_IMAGES.project;
-    img.onerror = null; // Prevent infinite loop
-}
+    init() {
+        this.setupEventListeners();
+        this.initializeComponents();
+        this.startAnimations();
+        this.setupIntersectionObserver();
+        this.initializeParticles();
+        this.setupSmoothScrolling();
+        this.initializeTypingAnimation();
+        this.setupConsciousnessEffects();
+        
+        // Mark as loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            this.isLoaded = true;
+            this.hideLoader();
+        });
+    }
 
-// Add error handlers to all images
-document.addEventListener('DOMContentLoaded', function() {
-    const images = document.querySelectorAll('img');
-    images.forEach(img => {
-        img.onerror = () => handleImageError(img);
-    });
-});
+    setupEventListeners() {
+        // Scroll events
+        window.addEventListener('scroll', this.throttle(this.handleScroll.bind(this), 16));
+        
+        // Resize events
+        window.addEventListener('resize', this.debounce(this.handleResize.bind(this), 250));
+        
+        // Mouse events for consciousness effects
+        document.addEventListener('mousemove', this.handleMouseMove.bind(this));
+        
+        // Touch events for mobile
+        document.addEventListener('touchstart', this.handleTouchStart.bind(this));
+        document.addEventListener('touchmove', this.handleTouchMove.bind(this));
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', this.handleKeyDown.bind(this));
+        
+        // Visibility change
+        document.addEventListener('visibilitychange', this.handleVisibilityChange.bind(this));
+    }
 
-
-// ===================================
-// GLOBAL VARIABLES & CONFIGURATION
-// ===================================
-
-const CONFIG = {
-    animationDuration: 600,
-    scrollOffset: 100,
-    typingSpeed: 100,
-    particleCount: 50,
-    debounceDelay: 250
-};
-
-// ===================================
-// UTILITY FUNCTIONS
-// ===================================
-
-const utils = {
-    // Debounce function for performance
-    debounce(func, wait) {
-        let timeout;
-        return function executedFunction(...args) {
-            const later = () => {
-                clearTimeout(timeout);
-                func(...args);
-            };
-            clearTimeout(timeout);
-            timeout = setTimeout(later, wait);
-        };
-    },
-
-    // Throttle function for scroll events
+    // Utility functions
     throttle(func, limit) {
         let inThrottle;
         return function() {
@@ -69,121 +63,52 @@ const utils = {
                 inThrottle = true;
                 setTimeout(() => inThrottle = false, limit);
             }
-        };
-    },
-
-    // Check if element is in viewport
-    isInViewport(element, offset = 0) {
-        const rect = element.getBoundingClientRect();
-        return (
-            rect.top >= -offset &&
-            rect.left >= 0 &&
-            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) + offset &&
-            rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-        );
-    },
-
-    // Smooth scroll to element
-    smoothScrollTo(element, offset = 0) {
-        const targetPosition = element.offsetTop - offset;
-        window.scrollTo({
-            top: targetPosition,
-            behavior: 'smooth'
-        });
-    },
-
-    // Generate random number between min and max
-    random(min, max) {
-        return Math.random() * (max - min) + min;
+        }
     }
-};
 
-// ===================================
-// NAVIGATION FUNCTIONALITY
-// ===================================
+    debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(timeout);
+                func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
+    }
 
+    lerp(start, end, factor) {
+        return start + (end - start) * factor;
+    }
+
+    map(value, start1, stop1, start2, stop2) {
+        return start2 + (stop2 - start2) * ((value - start1) / (stop1 - start1));
+    }
+}
+
+// ===== NAVIGATION SYSTEM =====
 class NavigationManager {
     constructor() {
         this.navbar = document.querySelector('.navbar');
         this.navToggle = document.querySelector('.nav-toggle');
         this.navMenu = document.querySelector('.nav-menu');
         this.navLinks = document.querySelectorAll('.nav-link');
+        this.isMenuOpen = false;
+        this.lastScrollY = 0;
         
         this.init();
     }
 
     init() {
-        this.setupScrollEffect();
+        this.setupNavigation();
         this.setupMobileMenu();
+        this.setupScrollEffects();
         this.setupActiveLinks();
-        this.setupSmoothScrolling();
     }
 
-    setupScrollEffect() {
-        const handleScroll = utils.throttle(() => {
-            if (window.scrollY > 50) {
-                this.navbar.classList.add('scrolled');
-            } else {
-                this.navbar.classList.remove('scrolled');
-            }
-        }, 100);
-
-        window.addEventListener('scroll', handleScroll);
-    }
-
-    setupMobileMenu() {
-        this.navToggle.addEventListener('click', () => {
-            this.navToggle.classList.toggle('active');
-            this.navMenu.classList.toggle('active');
-            document.body.classList.toggle('menu-open');
-        });
-
-        // Close menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!this.navbar.contains(e.target) && this.navMenu.classList.contains('active')) {
-                this.closeMobileMenu();
-            }
-        });
-
-        // Close menu on escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && this.navMenu.classList.contains('active')) {
-                this.closeMobileMenu();
-            }
-        });
-    }
-
-    closeMobileMenu() {
-        this.navToggle.classList.remove('active');
-        this.navMenu.classList.remove('active');
-        document.body.classList.remove('menu-open');
-    }
-
-    setupActiveLinks() {
-        const sections = document.querySelectorAll('section[id]');
-        
-        const handleScroll = utils.throttle(() => {
-            let current = '';
-            
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop - 150;
-                if (window.scrollY >= sectionTop) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            this.navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('active');
-                }
-            });
-        }, 100);
-
-        window.addEventListener('scroll', handleScroll);
-    }
-
-    setupSmoothScrolling() {
+    setupNavigation() {
+        // Smooth scroll for navigation links
         this.navLinks.forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -191,530 +116,1020 @@ class NavigationManager {
                 const targetElement = document.querySelector(targetId);
                 
                 if (targetElement) {
-                    utils.smoothScrollTo(targetElement, 80);
-                    this.closeMobileMenu();
+                    this.smoothScrollTo(targetElement);
+                    this.closeMenu();
                 }
             });
         });
     }
+
+    setupMobileMenu() {
+        if (this.navToggle) {
+            this.navToggle.addEventListener('click', () => {
+                this.toggleMenu();
+            });
+        }
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (this.isMenuOpen && !this.navbar.contains(e.target)) {
+                this.closeMenu();
+            }
+        });
+
+        // Close menu on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && this.isMenuOpen) {
+                this.closeMenu();
+            }
+        });
+    }
+
+    toggleMenu() {
+        this.isMenuOpen = !this.isMenuOpen;
+        this.navToggle.classList.toggle('active');
+        this.navMenu.classList.toggle('active');
+        document.body.classList.toggle('menu-open');
+        
+        // Animate menu items
+        if (this.isMenuOpen) {
+            this.animateMenuItems();
+        }
+    }
+
+    closeMenu() {
+        this.isMenuOpen = false;
+        this.navToggle.classList.remove('active');
+        this.navMenu.classList.remove('active');
+        document.body.classList.remove('menu-open');
+    }
+
+    animateMenuItems() {
+        gsap.fromTo('.nav-link', 
+            { 
+                opacity: 0, 
+                y: 20 
+            },
+            { 
+                opacity: 1, 
+                y: 0, 
+                duration: 0.3, 
+                stagger: 0.1,
+                ease: "power2.out"
+            }
+        );
+    }
+
+    setupScrollEffects() {
+        window.addEventListener('scroll', () => {
+            const currentScrollY = window.scrollY;
+            
+            // Add scrolled class
+            if (currentScrollY > 50) {
+                this.navbar.classList.add('scrolled');
+            } else {
+                this.navbar.classList.remove('scrolled');
+            }
+            
+            // Hide/show navbar on scroll
+            if (currentScrollY > this.lastScrollY && currentScrollY > 100) {
+                this.navbar.style.transform = 'translateY(-100%)';
+            } else {
+                this.navbar.style.transform = 'translateY(0)';
+            }
+            
+            this.lastScrollY = currentScrollY;
+        });
+    }
+
+    setupActiveLinks() {
+        const sections = document.querySelectorAll('section[id]');
+        
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            
+            sections.forEach(section => {
+                const sectionHeight = section.offsetHeight;
+                const sectionTop = section.offsetTop - 100;
+                const sectionId = section.getAttribute('id');
+                const correspondingLink = document.querySelector(`.nav-link[href="#${sectionId}"]`);
+                
+                if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                    this.navLinks.forEach(link => link.classList.remove('active'));
+                    if (correspondingLink) {
+                        correspondingLink.classList.add('active');
+                    }
+                }
+            });
+        });
+    }
+
+    smoothScrollTo(element) {
+        gsap.to(window, {
+            duration: 1.5,
+            scrollTo: {
+                y: element,
+                offsetY: 80
+            },
+            ease: "power2.inOut"
+        });
+    }
 }
 
-// ===================================
-// HERO SECTION ANIMATIONS
-// ===================================
-
-class HeroAnimations {
-    constructor() {
-        this.heroSection = document.querySelector('.hero');
-        this.typingElement = document.querySelector('.typing-animation');
-        this.particlesContainer = document.querySelector('.consciousness-particles');
+// ===== TYPING ANIMATION SYSTEM =====
+class TypingAnimation {
+    constructor(element, words, options = {}) {
+        this.element = element;
+        this.words = words;
+        this.options = {
+            typeSpeed: 100,
+            deleteSpeed: 50,
+            delayBetweenWords: 2000,
+            loop: true,
+            cursor: true,
+            ...options
+        };
+        
+        this.currentWordIndex = 0;
+        this.currentCharIndex = 0;
+        this.isDeleting = false;
+        this.isWaiting = false;
         
         this.init();
     }
 
     init() {
+        if (this.options.cursor) {
+            this.element.style.borderRight = '2px solid';
+            this.element.style.animation = 'blink 1s infinite';
+        }
+        
+        this.type();
+    }
+
+    type() {
+        const currentWord = this.words[this.currentWordIndex];
+        
+        if (this.isWaiting) {
+            setTimeout(() => {
+                this.isWaiting = false;
+                this.isDeleting = true;
+                this.type();
+            }, this.options.delayBetweenWords);
+            return;
+        }
+        
+        if (this.isDeleting) {
+            this.element.textContent = currentWord.substring(0, this.currentCharIndex - 1);
+            this.currentCharIndex--;
+            
+            if (this.currentCharIndex === 0) {
+                this.isDeleting = false;
+                this.currentWordIndex = (this.currentWordIndex + 1) % this.words.length;
+            }
+        } else {
+            this.element.textContent = currentWord.substring(0, this.currentCharIndex + 1);
+            this.currentCharIndex++;
+            
+            if (this.currentCharIndex === currentWord.length) {
+                this.isWaiting = true;
+            }
+        }
+        
+        const speed = this.isDeleting ? this.options.deleteSpeed : this.options.typeSpeed;
+        setTimeout(() => this.type(), speed);
+    }
+}
+
+// ===== CONSCIOUSNESS PARTICLES SYSTEM =====
+class ConsciousnessParticles {
+    constructor(container) {
+        this.container = container;
+        this.particles = [];
+        this.mouse = { x: 0, y: 0 };
+        this.canvas = null;
+        this.ctx = null;
+        
+        this.init();
+    }
+
+    init() {
+        this.createCanvas();
         this.createParticles();
-        this.startTypingAnimation();
-        this.animateStats();
+        this.setupMouseTracking();
+        this.animate();
+    }
+
+    createCanvas() {
+        this.canvas = document.createElement('canvas');
+        this.canvas.style.position = 'absolute';
+        this.canvas.style.top = '0';
+        this.canvas.style.left = '0';
+        this.canvas.style.pointerEvents = 'none';
+        this.canvas.style.zIndex = '-1';
+        
+        this.ctx = this.canvas.getContext('2d');
+        this.container.appendChild(this.canvas);
+        
+        this.resize();
+        window.addEventListener('resize', () => this.resize());
+    }
+
+    resize() {
+        this.canvas.width = this.container.offsetWidth;
+        this.canvas.height = this.container.offsetHeight;
     }
 
     createParticles() {
-        if (!this.particlesContainer) return;
-
-        for (let i = 0; i < CONFIG.particleCount; i++) {
-            const particle = document.createElement('div');
-            particle.className = 'consciousness-particle';
-            
-            const size = utils.random(2, 8);
-            const x = utils.random(0, 100);
-            const y = utils.random(0, 100);
-            const duration = utils.random(4, 8);
-            const delay = utils.random(0, 4);
-            
-            particle.style.cssText = `
-                width: ${size}px;
-                height: ${size}px;
-                left: ${x}%;
-                top: ${y}%;
-                animation-duration: ${duration}s;
-                animation-delay: ${delay}s;
-            `;
-            
-            this.particlesContainer.appendChild(particle);
+        const particleCount = Math.min(100, Math.floor(this.canvas.width * this.canvas.height / 10000));
+        
+        for (let i = 0; i < particleCount; i++) {
+            this.particles.push({
+                x: Math.random() * this.canvas.width,
+                y: Math.random() * this.canvas.height,
+                vx: (Math.random() - 0.5) * 0.5,
+                vy: (Math.random() - 0.5) * 0.5,
+                size: Math.random() * 3 + 1,
+                opacity: Math.random() * 0.5 + 0.2,
+                hue: Math.random() * 60 + 200, // Blue to purple range
+                connections: []
+            });
         }
     }
 
-    startTypingAnimation() {
-        if (!this.typingElement) return;
-
-        const text = this.typingElement.textContent;
-        this.typingElement.textContent = '';
-        this.typingElement.style.borderRight = '2px solid rgba(255,255,255,0.8)';
-        
-        let i = 0;
-        const typeWriter = () => {
-            if (i < text.length) {
-                this.typingElement.textContent += text.charAt(i);
-                i++;
-                setTimeout(typeWriter, CONFIG.typingSpeed);
-            } else {
-                // Remove cursor after typing is complete
-                setTimeout(() => {
-                    this.typingElement.style.borderRight = 'none';
-                }, 1000);
-            }
-        };
-        
-        setTimeout(typeWriter, 1000);
+    setupMouseTracking() {
+        this.container.addEventListener('mousemove', (e) => {
+            const rect = this.container.getBoundingClientRect();
+            this.mouse.x = e.clientX - rect.left;
+            this.mouse.y = e.clientY - rect.top;
+        });
     }
 
-    animateStats() {
-        const statNumbers = document.querySelectorAll('.stat-number');
+    animate() {
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         
-        const animateNumber = (element, target, duration = 2000) => {
-            const start = 0;
-            const increment = target / (duration / 16);
-            let current = start;
+        // Update particles
+        this.particles.forEach(particle => {
+            // Mouse attraction
+            const dx = this.mouse.x - particle.x;
+            const dy = this.mouse.y - particle.y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
             
-            const timer = setInterval(() => {
-                current += increment;
-                if (current >= target) {
-                    element.textContent = target;
-                    clearInterval(timer);
-                } else {
-                    element.textContent = Math.floor(current);
-                }
-            }, 16);
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const target = entry.target;
-                    const value = target.textContent;
-                    
-                    if (value.includes('+')) {
-                        const num = parseInt(value.replace('+', ''));
-                        animateNumber(target, num);
-                        target.textContent = num + '+';
-                    } else if (value.includes('%')) {
-                        const num = parseInt(value.replace('%', ''));
-                        animateNumber(target, num);
-                        target.textContent = num + '%';
-                    }
-                    
-                    observer.unobserve(target);
+            if (distance < 100) {
+                const force = (100 - distance) / 100;
+                particle.vx += dx * force * 0.001;
+                particle.vy += dy * force * 0.001;
+            }
+            
+            // Update position
+            particle.x += particle.vx;
+            particle.y += particle.vy;
+            
+            // Boundary check
+            if (particle.x < 0 || particle.x > this.canvas.width) particle.vx *= -1;
+            if (particle.y < 0 || particle.y > this.canvas.height) particle.vy *= -1;
+            
+            // Keep in bounds
+            particle.x = Math.max(0, Math.min(this.canvas.width, particle.x));
+            particle.y = Math.max(0, Math.min(this.canvas.height, particle.y));
+            
+            // Draw particle
+            this.ctx.beginPath();
+            this.ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+            this.ctx.fillStyle = `hsla(${particle.hue}, 70%, 60%, ${particle.opacity})`;
+            this.ctx.fill();
+            
+            // Draw connections
+            this.particles.forEach(otherParticle => {
+                const dx = particle.x - otherParticle.x;
+                const dy = particle.y - otherParticle.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                
+                if (distance < 80) {
+                    this.ctx.beginPath();
+                    this.ctx.moveTo(particle.x, particle.y);
+                    this.ctx.lineTo(otherParticle.x, otherParticle.y);
+                    this.ctx.strokeStyle = `hsla(${particle.hue}, 70%, 60%, ${0.1 * (1 - distance / 80)})`;
+                    this.ctx.lineWidth = 1;
+                    this.ctx.stroke();
                 }
             });
         });
-
-        statNumbers.forEach(stat => observer.observe(stat));
+        
+        requestAnimationFrame(() => this.animate());
     }
 }
 
-// ===================================
-// SCROLL ANIMATIONS
-// ===================================
-
+// ===== SCROLL ANIMATIONS =====
 class ScrollAnimations {
     constructor() {
-        this.animatedElements = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right');
+        this.elements = [];
         this.init();
     }
 
     init() {
-        this.setupIntersectionObserver();
-        this.addScrollAnimationClasses();
+        this.setupGSAPScrollTrigger();
+        this.setupRevealAnimations();
+        this.setupParallaxEffects();
+        this.setupCounterAnimations();
+        this.setupMorphingAnimations();
     }
 
-    addScrollAnimationClasses() {
-        // Add animation classes to elements that should animate on scroll
-        const elementsToAnimate = [
-            '.section-header',
-            '.about-content',
-            '.research-area',
-            '.project-card',
-            '.service-card',
-            '.blog-card',
-            '.testimonial-card'
-        ];
-
-        elementsToAnimate.forEach(selector => {
-            const elements = document.querySelectorAll(selector);
-            elements.forEach((element, index) => {
-                element.classList.add('animate-on-scroll');
-                element.style.transitionDelay = `${index * 100}ms`;
-            });
+    setupGSAPScrollTrigger() {
+        gsap.registerPlugin(ScrollTrigger);
+        
+        // Refresh ScrollTrigger on resize
+        window.addEventListener('resize', () => {
+            ScrollTrigger.refresh();
         });
     }
 
-    setupIntersectionObserver() {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
+    setupRevealAnimations() {
+        // Fade in from bottom
+        gsap.utils.toArray('.fade-in-up').forEach(element => {
+            gsap.fromTo(element, 
+                {
+                    opacity: 0,
+                    y: 50
+                },
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 1,
+                    ease: "power2.out",
+                    scrollTrigger: {
+                        trigger: element,
+                        start: "top 80%",
+                        end: "bottom 20%",
+                        toggleActions: "play none none reverse"
+                    }
+                }
+            );
+        });
+
+        // Slide in from left
+        gsap.utils.toArray('.slide-in-left').forEach(element => {
+            gsap.fromTo(element,
+                {
+                    opacity: 0,
+                    x: -100
+                },
+                {
+                    opacity: 1,
+                    x: 0,
+                    duration: 1,
+                    ease: "power2.out",
+                    scrollTrigger: {
+                        trigger: element,
+                        start: "top 80%",
+                        toggleActions: "play none none reverse"
+                    }
+                }
+            );
+        });
+
+        // Slide in from right
+        gsap.utils.toArray('.slide-in-right').forEach(element => {
+            gsap.fromTo(element,
+                {
+                    opacity: 0,
+                    x: 100
+                },
+                {
+                    opacity: 1,
+                    x: 0,
+                    duration: 1,
+                    ease: "power2.out",
+                    scrollTrigger: {
+                        trigger: element,
+                        start: "top 80%",
+                        toggleActions: "play none none reverse"
+                    }
+                }
+            );
+        });
+
+        // Scale in
+        gsap.utils.toArray('.scale-in').forEach(element => {
+            gsap.fromTo(element,
+                {
+                    opacity: 0,
+                    scale: 0.8
+                },
+                {
+                    opacity: 1,
+                    scale: 1,
+                    duration: 1,
+                    ease: "back.out(1.7)",
+                    scrollTrigger: {
+                        trigger: element,
+                        start: "top 80%",
+                        toggleActions: "play none none reverse"
+                    }
+                }
+            );
+        });
+
+        // Stagger animations
+        gsap.utils.toArray('.stagger-children').forEach(container => {
+            const children = container.children;
+            gsap.fromTo(children,
+                {
+                    opacity: 0,
+                    y: 30
+                },
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.8,
+                    stagger: 0.1,
+                    ease: "power2.out",
+                    scrollTrigger: {
+                        trigger: container,
+                        start: "top 80%",
+                        toggleActions: "play none none reverse"
+                    }
+                }
+            );
+        });
+    }
+
+    setupParallaxEffects() {
+        // Background parallax
+        gsap.utils.toArray('.parallax-bg').forEach(element => {
+            gsap.to(element, {
+                yPercent: -50,
+                ease: "none",
+                scrollTrigger: {
+                    trigger: element,
+                    start: "top bottom",
+                    end: "bottom top",
+                    scrub: true
                 }
             });
-        }, {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
         });
 
-        this.animatedElements.forEach(element => {
-            observer.observe(element);
-        });
-
-        // Also observe elements with animate-on-scroll class
-        document.querySelectorAll('.animate-on-scroll').forEach(element => {
-            observer.observe(element);
-        });
-    }
-}
-
-// ===================================
-// PROJECT FILTERING
-// ===================================
-
-class ProjectFilter {
-    constructor() {
-        this.filterButtons = document.querySelectorAll('.filter-btn');
-        this.projectCards = document.querySelectorAll('.project-card');
-        
-        this.init();
-    }
-
-    init() {
-        this.setupFilterButtons();
-    }
-
-    setupFilterButtons() {
-        this.filterButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const filter = button.getAttribute('data-filter');
-                
-                // Update active button
-                this.filterButtons.forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
-                
-                // Filter projects
-                this.filterProjects(filter);
-            });
-        });
-    }
-
-    filterProjects(filter) {
-        this.projectCards.forEach(card => {
-            const categories = card.getAttribute('data-categories');
-            
-            if (filter === 'all' || (categories && categories.includes(filter))) {
-                card.style.display = 'block';
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(20px)';
-                
-                setTimeout(() => {
-                    card.style.opacity = '1';
-                    card.style.transform = 'translateY(0)';
-                }, 100);
-            } else {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(20px)';
-                
-                setTimeout(() => {
-                    card.style.display = 'none';
-                }, 300);
-            }
-        });
-    }
-}
-
-// ===================================
-// FORM HANDLING
-// ===================================
-
-class FormHandler {
-    constructor() {
-        this.contactForm = document.getElementById('contactForm');
-        this.init();
-    }
-
-    init() {
-        if (this.contactForm) {
-            this.setupFormValidation();
-            this.setupFormSubmission();
-        }
-    }
-
-    setupFormValidation() {
-        const inputs = this.contactForm.querySelectorAll('input, select, textarea');
-        
-        inputs.forEach(input => {
-            input.addEventListener('blur', () => this.validateField(input));
-            input.addEventListener('input', () => this.clearFieldError(input));
-        });
-    }
-
-    validateField(field) {
-        const value = field.value.trim();
-        const isRequired = field.hasAttribute('required');
-        
-        if (isRequired && !value) {
-            this.showFieldError(field, 'This field is required');
-            return false;
-        }
-        
-        if (field.type === 'email' && value) {
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(value)) {
-                this.showFieldError(field, 'Please enter a valid email address');
-                return false;
-            }
-        }
-        
-        this.clearFieldError(field);
-        return true;
-    }
-
-    showFieldError(field, message) {
-        this.clearFieldError(field);
-        
-        field.style.borderColor = '#e53e3e';
-        
-        const errorElement = document.createElement('span');
-        errorElement.className = 'field-error';
-        errorElement.textContent = message;
-        errorElement.style.cssText = `
-            color: #e53e3e;
-            font-size: 0.875rem;
-            margin-top: 0.25rem;
-            display: block;
-        `;
-        
-        field.parentNode.appendChild(errorElement);
-    }
-
-    clearFieldError(field) {
-        field.style.borderColor = '#e2e8f0';
-        
-        const errorElement = field.parentNode.querySelector('.field-error');
-        if (errorElement) {
-            errorElement.remove();
-        }
-    }
-
-    setupFormSubmission() {
-        this.contactForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            
-            // Validate all fields
-            const inputs = this.contactForm.querySelectorAll('input[required], select[required], textarea[required]');
-            let isValid = true;
-            
-            inputs.forEach(input => {
-                if (!this.validateField(input)) {
-                    isValid = false;
+        // Element parallax
+        gsap.utils.toArray('.parallax-element').forEach(element => {
+            const speed = element.dataset.speed || 0.5;
+            gsap.to(element, {
+                y: () => -window.innerHeight * speed,
+                ease: "none",
+                scrollTrigger: {
+                    trigger: element,
+                    start: "top bottom",
+                    end: "bottom top",
+                    scrub: true
                 }
             });
-            
-            if (!isValid) {
-                this.showFormMessage('Please correct the errors above', 'error');
-                return;
-            }
-            
-            // Show loading state
-            const submitButton = this.contactForm.querySelector('.btn-submit');
-            const originalText = submitButton.innerHTML;
-            submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-            submitButton.disabled = true;
-            
-            try {
-                // Simulate form submission (replace with actual endpoint)
-                await this.submitForm();
-                
-                this.showFormMessage('Thank you! Your message has been sent successfully.', 'success');
-                this.contactForm.reset();
-            } catch (error) {
-                this.showFormMessage('Sorry, there was an error sending your message. Please try again.', 'error');
-            } finally {
-                submitButton.innerHTML = originalText;
-                submitButton.disabled = false;
-            }
+        });
+
+        // Rotation parallax
+        gsap.utils.toArray('.parallax-rotate').forEach(element => {
+            gsap.to(element, {
+                rotation: 360,
+                ease: "none",
+                scrollTrigger: {
+                    trigger: element,
+                    start: "top bottom",
+                    end: "bottom top",
+                    scrub: true
+                }
+            });
         });
     }
 
-    async submitForm() {
-        // Simulate API call
-        return new Promise((resolve) => {
-            setTimeout(resolve, 2000);
+    setupCounterAnimations() {
+        gsap.utils.toArray('.counter').forEach(counter => {
+            const target = parseInt(counter.dataset.target);
+            const duration = parseFloat(counter.dataset.duration) || 2;
+            
+            gsap.fromTo(counter,
+                { textContent: 0 },
+                {
+                    textContent: target,
+                    duration: duration,
+                    ease: "power2.out",
+                    snap: { textContent: 1 },
+                    scrollTrigger: {
+                        trigger: counter,
+                        start: "top 80%",
+                        toggleActions: "play none none reverse"
+                    },
+                    onUpdate: function() {
+                        counter.textContent = Math.ceil(this.targets()[0].textContent);
+                    }
+                }
+            );
         });
-        
-        // Replace with actual form submission:
-        /*
-        const formData = new FormData(this.contactForm);
-        const response = await fetch('/api/contact', {
-            method: 'POST',
-            body: formData
-        });
-        
-        if (!response.ok) {
-            throw new Error('Form submission failed');
-        }
-        
-        return response.json();
-        */
     }
 
-    showFormMessage(message, type) {
-        // Remove existing message
-        const existingMessage = this.contactForm.querySelector('.form-message');
-        if (existingMessage) {
-            existingMessage.remove();
-        }
-        
-        const messageElement = document.createElement('div');
-        messageElement.className = `form-message ${type}`;
-        messageElement.textContent = message;
-        messageElement.style.cssText = `
-            padding: 1rem;
-            border-radius: 6px;
-            margin-bottom: 1rem;
-            font-weight: 500;
-            ${type === 'success' 
-                ? 'background: #c6f6d5; color: #22543d; border: 1px solid #9ae6b4;'
-                : 'background: #fed7d7; color: #c53030; border: 1px solid #feb2b2;'
-            }
-        `;
-        
-        this.contactForm.insertBefore(messageElement, this.contactForm.firstChild);
-        
-        // Auto-remove success messages
-        if (type === 'success') {
-            setTimeout(() => {
-                messageElement.remove();
-            }, 5000);
-        }
+    setupMorphingAnimations() {
+        // Morphing shapes
+        gsap.utils.toArray('.morph-shape').forEach(element => {
+            gsap.to(element, {
+                borderRadius: "60% 40% 30% 70% / 60% 30% 70% 40%",
+                duration: 4,
+                ease: "sine.inOut",
+                repeat: -1,
+                yoyo: true
+            });
+        });
+
+        // Floating animations
+        gsap.utils.toArray('.float').forEach(element => {
+            gsap.to(element, {
+                y: -20,
+                duration: 2,
+                ease: "sine.inOut",
+                repeat: -1,
+                yoyo: true
+            });
+        });
+
+        // Pulse animations
+        gsap.utils.toArray('.pulse').forEach(element => {
+            gsap.to(element, {
+                scale: 1.05,
+                duration: 1.5,
+                ease: "sine.inOut",
+                repeat: -1,
+                yoyo: true
+            });
+        });
     }
 }
 
-// ===================================
-// GALLERY & MODAL FUNCTIONALITY
-// ===================================
-
-class GalleryModal {
+// ===== INTERACTIVE ELEMENTS =====
+class InteractiveElements {
     constructor() {
-        this.galleryImages = document.querySelectorAll('.gallery-img, .project-img, .demo-img');
         this.init();
     }
 
     init() {
-        this.createModal();
-        this.setupGalleryClicks();
+        this.setupMagneticButtons();
+        this.setupTiltEffects();
+        this.setupHoverAnimations();
+        this.setupRippleEffects();
+        this.setupGlitchEffects();
     }
 
-    createModal() {
-        const modal = document.createElement('div');
-        modal.className = 'image-modal';
-        modal.innerHTML = `
-            <div class="modal-backdrop"></div>
-            <div class="modal-content">
-                <button class="modal-close" aria-label="Close modal">
-                    <i class="fas fa-times"></i>
-                </button>
-                <img class="modal-image" src="" alt="">
-                <div class="modal-caption"></div>
-                <div class="modal-navigation">
-                    <button class="modal-prev" aria-label="Previous image">
-                        <i class="fas fa-chevron-left"></i>
-                    </button>
-                    <button class="modal-next" aria-label="Next image">
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
-                </div>
-            </div>
-        `;
+    setupMagneticButtons() {
+        gsap.utils.toArray('.btn-magnetic').forEach(button => {
+            const magnetic = button;
+            const magneticText = magnetic.querySelector('span') || magnetic;
+            
+            magnetic.addEventListener('mousemove', (e) => {
+                const rect = magnetic.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                
+                gsap.to(magnetic, {
+                    x: x * 0.3,
+                    y: y * 0.3,
+                    duration: 0.3,
+                    ease: "power2.out"
+                });
+                
+                gsap.to(magneticText, {
+                    x: x * 0.1,
+                    y: y * 0.1,
+                    duration: 0.3,
+                    ease: "power2.out"
+                });
+            });
+            
+            magnetic.addEventListener('mouseleave', () => {
+                gsap.to(magnetic, {
+                    x: 0,
+                    y: 0,
+                    duration: 0.5,
+                    ease: "elastic.out(1, 0.3)"
+                });
+                
+                gsap.to(magneticText, {
+                    x: 0,
+                    y: 0,
+                    duration: 0.5,
+                    ease: "elastic.out(1, 0.3)"
+                });
+            });
+        });
+    }
+
+    setupTiltEffects() {
+        gsap.utils.toArray('.tilt-effect').forEach(element => {
+            element.addEventListener('mousemove', (e) => {
+                const rect = element.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = (y - centerY) / centerY * -10;
+                const rotateY = (x - centerX) / centerX * 10;
+                
+                gsap.to(element, {
+                    rotateX: rotateX,
+                    rotateY: rotateY,
+                    transformPerspective: 1000,
+                    duration: 0.3,
+                    ease: "power2.out"
+                });
+            });
+            
+            element.addEventListener('mouseleave', () => {
+                gsap.to(element, {
+                    rotateX: 0,
+                    rotateY: 0,
+                    duration: 0.5,
+                    ease: "power2.out"
+                });
+            });
+        });
+    }
+
+    setupHoverAnimations() {
+        // Gallery items
+        gsap.utils.toArray('.gallery-item').forEach(item => {
+            const image = item.querySelector('.gallery-image');
+            const overlay = item.querySelector('.gallery-overlay');
+            const actions = item.querySelectorAll('.gallery-action');
+            
+            item.addEventListener('mouseenter', () => {
+                gsap.to(image, {
+                    scale: 1.1,
+                    duration: 0.5,
+                    ease: "power2.out"
+                });
+                
+                gsap.to(overlay, {
+                    opacity: 1,
+                    duration: 0.3,
+                    ease: "power2.out"
+                });
+                
+                gsap.fromTo(actions, 
+                    { y: 20, opacity: 0 },
+                    { 
+                        y: 0, 
+                        opacity: 1, 
+                        duration: 0.3, 
+                        stagger: 0.1,
+                        delay: 0.1,
+                        ease: "power2.out"
+                    }
+                );
+            });
+            
+            item.addEventListener('mouseleave', () => {
+                gsap.to(image, {
+                    scale: 1,
+                    duration: 0.5,
+                    ease: "power2.out"
+                });
+                
+                gsap.to(overlay, {
+                    opacity: 0,
+                    duration: 0.3,
+                    ease: "power2.out"
+                });
+            });
+        });
+    }
+
+    setupRippleEffects() {
+        gsap.utils.toArray('.ripple').forEach(element => {
+            element.addEventListener('click', (e) => {
+                const rect = element.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const ripple = document.createElement('span');
+                ripple.style.position = 'absolute';
+                ripple.style.borderRadius = '50%';
+                ripple.style.background = 'rgba(255, 255, 255, 0.6)';
+                ripple.style.transform = 'scale(0)';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                ripple.style.pointerEvents = 'none';
+                
+                element.appendChild(ripple);
+                
+                gsap.to(ripple, {
+                    scale: 4,
+                    opacity: 0,
+                    duration: 0.6,
+                    ease: "power2.out",
+                    onComplete: () => {
+                        ripple.remove();
+                    }
+                });
+            });
+        });
+    }
+
+    setupGlitchEffects() {
+        gsap.utils.toArray('.glitch').forEach(element => {
+            element.addEventListener('mouseenter', () => {
+                const tl = gsap.timeline();
+                
+                tl.to(element, {
+                    skewX: 2,
+                    duration: 0.1,
+                    ease: "power2.inOut"
+                })
+                .to(element, {
+                    skewX: -2,
+                    duration: 0.1,
+                    ease: "power2.inOut"
+                })
+                .to(element, {
+                    skewX: 0,
+                    duration: 0.1,
+                    ease: "power2.inOut"
+                });
+            });
+        });
+    }
+}
+
+// ===== CONSCIOUSNESS EFFECTS =====
+class ConsciousnessEffects {
+    constructor() {
+        this.mouse = { x: 0, y: 0 };
+        this.init();
+    }
+
+    init() {
+        this.setupMouseTracking();
+        this.setupConsciousnessOrbs();
+        this.setupNeuralConnections();
+        this.setupQuantumEffects();
+        this.setupMindWaves();
+    }
+
+    setupMouseTracking() {
+        document.addEventListener('mousemove', (e) => {
+            this.mouse.x = e.clientX;
+            this.mouse.y = e.clientY;
+            
+            this.updateConsciousnessField();
+        });
+    }
+
+    updateConsciousnessField() {
+        const orbs = document.querySelectorAll('.consciousness-orb');
         
-        modal.style.cssText = `
+        orbs.forEach((orb, index) => {
+            const rect = orb.getBoundingClientRect();
+            const orbX = rect.left + rect.width / 2;
+            const orbY = rect.top + rect.height / 2;
+            
+            const distance = Math.sqrt(
+                Math.pow(this.mouse.x - orbX, 2) + 
+                Math.pow(this.mouse.y - orbY, 2)
+            );
+            
+            const maxDistance = 200;
+            const influence = Math.max(0, 1 - distance / maxDistance);
+            
+            gsap.to(orb, {
+                scale: 1 + influence * 0.5,
+                rotation: influence * 180,
+                duration: 0.3,
+                ease: "power2.out"
+            });
+        });
+    }
+
+    setupConsciousnessOrbs() {
+        const orbContainer = document.querySelector('.consciousness-orbs');
+        if (!orbContainer) return;
+        
+        for (let i = 0; i < 5; i++) {
+            const orb = document.createElement('div');
+            orb.className = 'consciousness-orb';
+            orb.style.cssText = `
+                position: absolute;
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                background: radial-gradient(circle, rgba(99, 102, 241, 0.8), transparent);
+                pointer-events: none;
+                z-index: 1;
+            `;
+            
+            orbContainer.appendChild(orb);
+            
+            // Random positioning and animation
+            gsap.set(orb, {
+                x: Math.random() * window.innerWidth,
+                y: Math.random() * window.innerHeight
+            });
+            
+            gsap.to(orb, {
+                x: `+=${Math.random() * 200 - 100}`,
+                y: `+=${Math.random() * 200 - 100}`,
+                duration: Math.random() * 10 + 5,
+                repeat: -1,
+                yoyo: true,
+                ease: "sine.inOut"
+            });
+        }
+    }
+
+    setupNeuralConnections() {
+        const canvas = document.createElement('canvas');
+        canvas.id = 'neural-canvas';
+        canvas.style.cssText = `
             position: fixed;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: 9999;
-            display: none;
-            align-items: center;
-            justify-content: center;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.3;
         `;
         
-        document.body.appendChild(modal);
-        this.modal = modal;
+        document.body.appendChild(canvas);
         
-        this.setupModalEvents();
-    }
-
-    setupModalEvents() {
-        const closeBtn = this.modal.querySelector('.modal-close');
-        const backdrop = this.modal.querySelector('.modal-backdrop');
+        const ctx = canvas.getContext('2d');
+        const nodes = [];
         
-        closeBtn.addEventListener('click', () => this.closeModal());
-        backdrop.addEventListener('click', () => this.closeModal());
+        // Resize canvas
+        const resizeCanvas = () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        };
         
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && this.modal.style.display === 'flex') {
-                this.closeModal();
-            }
-        });
-    }
-
-    setupGalleryClicks() {
-        this.galleryImages.forEach((img, index) => {
-            img.addEventListener('click', () => {
-                this.openModal(img, index);
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+        
+        // Create nodes
+        for (let i = 0; i < 50; i++) {
+            nodes.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                vx: (Math.random() - 0.5) * 0.5,
+                vy: (Math.random() - 0.5) * 0.5,
+                size: Math.random() * 3 + 1
+            });
+        }
+        
+        // Animation loop
+        const animate = () => {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Update and draw nodes
+            nodes.forEach(node => {
+                node.x += node.vx;
+                node.y += node.vy;
+                
+                // Boundary check
+                if (node.x < 0 || node.x > canvas.width) node.vx *= -1;
+                if (node.y < 0 || node.y > canvas.height) node.vy *= -1;
+                
+                // Draw node
+                ctx.beginPath();
+                ctx.arc(node.x, node.y, node.size, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(99, 102, 241, 0.6)';
+                ctx.fill();
+                
+                // Draw connections
+                nodes.forEach(otherNode => {
+                    const distance = Math.sqrt(
+                        Math.pow(node.x - otherNode.x, 2) + 
+                        Math.pow(node.y - otherNode.y, 2)
+                    );
+                    
+                    if (distance < 100) {
+                        ctx.beginPath();
+                        ctx.moveTo(node.x, node.y);
+                        ctx.lineTo(otherNode.x, otherNode.y);
+                        ctx.strokeStyle = `rgba(99, 102, 241, ${0.2 * (1 - distance / 100)})`;
+                        ctx.lineWidth = 1;
+                        ctx.stroke();
+                    }
+                });
             });
             
-            img.style.cursor = 'pointer';
+            requestAnimationFrame(animate);
+        };
+        
+        animate();
+    }
+
+    setupQuantumEffects() {
+        // Quantum field fluctuations
+        const quantumElements = document.querySelectorAll('.quantum-effect');
+        
+        quantumElements.forEach(element => {
+            const fluctuate = () => {
+                gsap.to(element, {
+                    opacity: Math.random() * 0.5 + 0.5,
+                    scale: Math.random() * 0.2 + 0.9,
+                    rotation: Math.random() * 10 - 5,
+                    duration: Math.random() * 2 + 1,
+                    ease: "sine.inOut",
+                    onComplete: fluctuate
+                });
+            };
+            
+            fluctuate();
         });
     }
 
-    openModal(img, index) {
-        const modalImg = this.modal.querySelector('.modal-image');
-        const modalCaption = this.modal.querySelector('.modal-caption');
+    setupMindWaves() {
+        // Create mind wave visualization
+        const waveContainer = document.querySelector('.mind-waves');
+        if (!waveContainer) return;
         
-        modalImg.src = img.src;
-        modalImg.alt = img.alt;
-        modalCaption.textContent = img.alt || 'Project Image';
-        
-        this.modal.style.display = 'flex';
-        document.body.style.overflow = 'hidden';
-        
-        // Animate in
-        this.modal.style.opacity = '0';
-        setTimeout(() => {
-            this.modal.style.opacity = '1';
-        }, 10);
-    }
-
-    closeModal() {
-        this.modal.style.opacity = '0';
-        setTimeout(() => {
-            this.modal.style.display = 'none';
-            document.body.style.overflow = '';
-        }, 300);
+        for (let i = 0; i < 3; i++) {
+            const wave = document.createElement('div');
+            wave.className = 'mind-wave';
+            wave.style.cssText = `
+                position: absolute;
+                width: 100%;
+                height: 2px;
+                background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.5), transparent);
+                top: ${30 + i * 20}%;
+                left: 0;
+            `;
+            
+            waveContainer.appendChild(wave);
+            
+            gsap.fromTo(wave, 
+                { x: '-100%' },
+                { 
+                    x: '100%',
+                    duration: 3 + i,
+                    repeat: -1,
+                    ease: "sine.inOut"
+                }
+            );
+        }
     }
 }
 
-// ===================================
-// PERFORMANCE OPTIMIZATION
-// ===================================
-
-class PerformanceOptimizer {
+// ===== PERFORMANCE MONITOR =====
+class PerformanceMonitor {
     constructor() {
+        this.fps = 0;
+        this.lastTime = performance.now();
+        this.frameCount = 0;
+        
         this.init();
     }
 
     init() {
+        this.monitor();
         this.setupLazyLoading();
-        this.preloadCriticalImages();
         this.optimizeAnimations();
+    }
+
+    monitor() {
+        const currentTime = performance.now();
+        this.frameCount++;
+        
+        if (currentTime >= this.lastTime + 1000) {
+            this.fps = Math.round((this.frameCount * 1000) / (currentTime - this.lastTime));
+            this.frameCount = 0;
+            this.lastTime = currentTime;
+            
+            // Adjust quality based on performance
+            if (this.fps < 30) {
+                this.reduceQuality();
+            } else if (this.fps > 50) {
+                this.increaseQuality();
+            }
+        }
+        
+        requestAnimationFrame(() => this.monitor());
+    }
+
+    reduceQuality() {
+        // Reduce particle count
+        const particles = document.querySelectorAll('.particle');
+        particles.forEach((particle, index) => {
+            if (index % 2 === 0) {
+                particle.style.display = 'none';
+            }
+        });
+        
+        // Disable some animations
+        document.body.classList.add('reduced-motion');
+    }
+
+    increaseQuality() {
+        // Restore particles
+        const particles = document.querySelectorAll('.particle');
+        particles.forEach(particle => {
+            particle.style.display = '';
+        });
+        
+        // Enable animations
+        document.body.classList.remove('reduced-motion');
     }
 
     setupLazyLoading() {
@@ -730,166 +1145,110 @@ class PerformanceOptimizer {
                 }
             });
         });
-
+        
         images.forEach(img => imageObserver.observe(img));
     }
 
-    preloadCriticalImages() {
-        const criticalImages = [
-            THANNX_IMAGES.hero.background,
-            THANNX_IMAGES.profile.main
-        ];
-
-        criticalImages.forEach(src => {
-            const link = document.createElement('link');
-            link.rel = 'preload';
-            link.as = 'image';
-            link.href = src;
-            document.head.appendChild(link);
-        });
-    }
-
     optimizeAnimations() {
-        // Reduce animations on low-end devices
-        if (navigator.hardwareConcurrency && navigator.hardwareConcurrency < 4) {
-            document.documentElement.style.setProperty('--animation-duration', '0.3s');
-        }
-
-        // Pause animations when tab is not visible
-        document.addEventListener('visibilitychange', () => {
-            const animations = document.querySelectorAll('.consciousness-mandala, .consciousness-particle');
-            animations.forEach(element => {
-                if (document.hidden) {
-                    element.style.animationPlayState = 'paused';
-                } else {
-                    element.style.animationPlayState = 'running';
-                }
-            });
-        });
-    }
-}
-
-// ===================================
-// ACCESSIBILITY ENHANCEMENTS
-// ===================================
-
-class AccessibilityEnhancer {
-    constructor() {
-        this.init();
-    }
-
-    init() {
-        this.setupKeyboardNavigation();
-        this.setupFocusManagement();
-        this.setupARIALabels();
-        this.setupReducedMotion();
-    }
-
-    setupKeyboardNavigation() {
-        // Add keyboard support for custom interactive elements
-        const interactiveElements = document.querySelectorAll('[role="button"]:not(button)');
+        // Use will-change property for animated elements
+        const animatedElements = document.querySelectorAll('.animate, .parallax, .float, .pulse');
         
-        interactiveElements.forEach(element => {
-            element.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    element.click();
-                }
+        animatedElements.forEach(element => {
+            element.style.willChange = 'transform, opacity';
+            
+            // Remove will-change after animation
+            element.addEventListener('animationend', () => {
+                element.style.willChange = 'auto';
             });
         });
     }
+}
 
-    setupFocusManagement() {
-        // Ensure focus is visible
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Tab') {
-                document.body.classList.add('keyboard-navigation');
-            }
+// ===== INITIALIZATION =====
+document.addEventListener('DOMContentLoaded', () => {
+    // Initialize all systems
+    const app = new ThannxAI();
+    const navigation = new NavigationManager();
+    const scrollAnimations = new ScrollAnimations();
+    const interactiveElements = new InteractiveElements();
+    const consciousnessEffects = new ConsciousnessEffects();
+    const performanceMonitor = new PerformanceMonitor();
+    
+    // Initialize typing animation
+    const typingElement = document.querySelector('.typing-animation');
+    if (typingElement) {
+        new TypingAnimation(typingElement, [
+            'Consciousness Explorer',
+            'AI Researcher',
+            'Digital Philosopher',
+            'Mind-Tech Pioneer',
+            'Future Architect'
+        ]);
+    }
+    
+    // Initialize particles
+    const heroSection = document.querySelector('.hero');
+    if (heroSection) {
+        new ConsciousnessParticles(heroSection);
+    }
+    
+    // Add loading complete class
+    setTimeout(() => {
+        document.body.classList.add('loaded');
+    }, 1000);
+    
+    console.log('🧠 ThannxAI Website Initialized - Consciousness Activated! 🚀');
+});
+
+// ===== UTILITY FUNCTIONS =====
+const utils = {
+    // Smooth scroll to element
+    scrollTo: (element, offset = 0) => {
+        const targetPosition = element.offsetTop - offset;
+        window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
         });
-
-        document.addEventListener('mousedown', () => {
-            document.body.classList.remove('keyboard-navigation');
-        });
+    },
+    
+    // Check if element is in viewport
+    isInViewport: (element) => {
+        const rect = element.getBoundingClientRect();
+        return (
+            rect.top >= 0 &&
+            rect.left >= 0 &&
+            rect.bottom <= window.innerHeight &&
+            rect.right <= window.innerWidth
+        );
+    },
+    
+    // Generate random number between min and max
+    random: (min, max) => {
+        return Math.random() * (max - min) + min;
+    },
+    
+    // Clamp value between min and max
+    clamp: (value, min, max) => {
+        return Math.min(Math.max(value, min), max);
+    },
+    
+    // Linear interpolation
+    lerp: (start, end, factor) => {
+        return start + (end - start) * factor;
+    },
+    
+    // Map value from one range to another
+    map: (value, start1, stop1, start2, stop2) => {
+        return start2 + (stop2 - start2) * ((value - start1) / (stop1 - start1));
     }
+};
 
-    setupARIALabels() {
-        // Add ARIA labels to elements that need them
-        const navToggle = document.querySelector('.nav-toggle');
-        if (navToggle) {
-            navToggle.setAttribute('aria-expanded', 'false');
-            
-            navToggle.addEventListener('click', () => {
-                const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
-                navToggle.setAttribute('aria-expanded', !isExpanded);
-            });
-        }
-    }
-
-    setupReducedMotion() {
-        // Respect user's motion preferences
-        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-            document.documentElement.style.setProperty('--animation-duration', '0.01ms');
-            document.documentElement.style.setProperty('--transition-duration', '0.01ms');
-        }
-    }
-}
-
-// ===================================
-// MAIN INITIALIZATION
-// ===================================
-
-class ThannxAIWebsite {
-    constructor() {
-        this.components = {};
-        this.init();
-    }
-
-    init() {
-        // Wait for DOM to be fully loaded
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', () => this.initializeComponents());
-        } else {
-            this.initializeComponents();
-        }
-    }
-
-    initializeComponents() {
-        try {
-            // Initialize all components
-            this.components.navigation = new NavigationManager();
-            this.components.heroAnimations = new HeroAnimations();
-            this.components.scrollAnimations = new ScrollAnimations();
-            this.components.projectFilter = new ProjectFilter();
-            this.components.formHandler = new FormHandler();
-            this.components.galleryModal = new GalleryModal();
-            this.components.performanceOptimizer = new PerformanceOptimizer();
-            this.components.accessibilityEnhancer = new AccessibilityEnhancer();
-            
-            console.log('✅ ThannxAI website initialized successfully!');
-            
-            // Load images after components are initialized
-            this.loadImages();
-            
-        } catch (error) {
-            console.error('❌ Error initializing ThannxAI website:', error);
-        }
-    }
-
-    loadImages() {
-        // This function is called from the HTML script tag
-        // Images are loaded via the THANNX_IMAGES configuration
-        console.log('🖼️ Images loaded from free sources - no API keys needed!');
-    }
-}
-
-// ===================================
-// INITIALIZE WEBSITE
-// ===================================
-
-// Create global instance
-window.thannxAI = new ThannxAIWebsite();
-
-// Export for module usage if needed
-if (typeof module !== 'undefined' && module.exports) {
-    module.exports = ThannxAIWebsite;
-}
+// Export for use in other files
+window.ThannxAI = {
+    utils,
+    TypingAnimation,
+    ConsciousnessParticles,
+    ScrollAnimations,
+    InteractiveElements,
+    ConsciousnessEffects
+};
