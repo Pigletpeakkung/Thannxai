@@ -1,4 +1,0 @@
-AuthType Basic
-AuthName "ThannxAI Admin Area"
-AuthUserFile /path/to/.htpasswd
-Require valid-user
