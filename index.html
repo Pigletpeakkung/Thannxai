@@ -1,1774 +1,845 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ThannxAI - Advanced AI Solutions & Development</title>
+    <title>ThannxAI - Human-Centered AI for Meaningful Conversations</title>
     
     <!-- SEO Meta Tags -->
-    <meta name="description" content="ThannxAI delivers cutting-edge artificial intelligence solutions, machine learning projects, and innovative AI development services.">
-    <meta name="keywords" content="AI, artificial intelligence, machine learning, deep learning, neural networks, AI development, ThannxAI">
-    <meta name="author" content="ThannxAI">
-    <meta name="robots" content="index, follow">
+    <meta name="description" content="ThannxAI creates AI tools that make digital conversations more intentional, empathetic, and human. Founded by Thanatsitt Santisamranwilai to bridge cultures through technology.">
+    <meta name="keywords" content="AI, artificial intelligence, human-centered AI, cross-cultural communication, empathetic technology, meaningful conversations">
+    <meta name="author" content="Thanatsitt Santisamranwilai">
     
     <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="ThannxAI - Advanced AI Solutions">
-    <meta property="og:description" content="Cutting-edge artificial intelligence solutions and development services">
+    <meta property="og:title" content="ThannxAI - Human-Centered AI for Meaningful Conversations">
+    <meta property="og:description" content="Creating AI tools that foster genuine connection across cultures and experiences">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&h=630&fit=crop">
+    <meta property="og:url" content="https://thannxai.com">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://pigletpeakkung.github.io/Thannxai/">
-    <meta property="og:image" content="https://pigletpeakkung.github.io/Thannxai/assets/og-image.jpg">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="ThannxAI - Human-Centered AI">
+    <meta name="twitter:description" content="AI tools for meaningful conversations">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&h=630&fit=crop">
     
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧠</text></svg>">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>">
     
-    <!-- Google Fonts -->
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/animate.css">
     
     <!-- PWA Manifest -->
     <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#3b82f6">
+    <meta name="theme-color" content="#6366f1">
     
-    <style>
-        /* ===== CSS RESET & BASE ===== */
-        *, *::before, *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        html {
-            font-size: 16px;
-            scroll-behavior: smooth;
-            line-height: 1.6;
-        }
-        
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #0f172a;
-            color: #f8fafc;
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-        
-        /* ===== CSS CUSTOM PROPERTIES ===== */
-        :root {
-            --primary: #3b82f6;
-            --primary-dark: #1d4ed8;
-            --secondary: #10b981;
-            --accent: #8b5cf6;
-            --background: #0f172a;
-            --surface: #1e293b;
-            --surface-light: #334155;
-            --text-primary: #f8fafc;
-            --text-secondary: #cbd5e1;
-            --text-muted: #94a3b8;
-            --border: #334155;
-            --shadow: rgba(0, 0, 0, 0.25);
-            --gradient-primary: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-            --gradient-surface: linear-gradient(135deg, var(--surface) 0%, var(--surface-light) 100%);
-        }
-        
-        /* ===== TYPOGRAPHY ===== */
-        h1, h2, h3, h4, h5, h6 {
-            font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 1rem;
-        }
-        
-        h1 { font-size: clamp(2.5rem, 5vw, 4rem); }
-        h2 { font-size: clamp(2rem, 4vw, 3rem); }
-        h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
-        
-        p {
-            margin-bottom: 1rem;
-            line-height: 1.7;
-        }
-        
-        /* ===== LAYOUT ===== */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-        
-        @media (max-width: 768px) {
-            .container {
-                padding: 0 1rem;
-            }
-        }
-        
-        /* ===== HEADER ===== */
-        .header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border);
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
-        
-        .nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 0;
-        }
-        
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 800;
-            background: var(--gradient-primary);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-        
-        .nav-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-            position: relative;
-        }
-        
-        .nav-links a:hover,
-        .nav-links a.active {
-            color: var(--primary);
-        }
-        
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary);
-            transition: width 0.3s ease;
-        }
-        
-        .nav-links a:hover::after,
-        .nav-links a.active::after {
-            width: 100%;
-        }
-        
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--text-primary);
-            font-size: 1.5rem;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-        
-        /* ===== HERO SECTION ===== */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            background: var(--background);
-            overflow: hidden;
-        }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 30% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
-                        radial-gradient(circle at 70% 50%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
-            z-index: 1;
-        }
-        
-        .hero-content {
-            text-align: center;
-            z-index: 2;
-            position: relative;
-            max-width: 800px;
-        }
-        
-        .hero h1 {
-            background: var(--gradient-primary);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-            margin-bottom: 1.5rem;
-            font-weight: 900;
-        }
-        
-        .hero p {
-            font-size: 1.25rem;
-            color: var(--text-secondary);
-            margin-bottom: 2.5rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .cta-button {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 1rem 2rem;
-            background: var(--gradient-primary);
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
-        }
-        
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.4);
-        }
-        
-        /* ===== CONSCIOUSNESS MANDALA ANIMATIONS ===== */
-        .consciousness-mandala {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 600px;
-            height: 600px;
-            opacity: 0.08;
-            z-index: 1;
-            pointer-events: none;
-        }
-        
-        .mandala-circle {
-            position: absolute;
-            border: 2px solid var(--primary);
-            border-radius: 50%;
-            animation: rotate 20s linear infinite;
-        }
-        
-        .mandala-circle:nth-child(1) {
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-        }
-        
-        .mandala-circle:nth-child(2) {
-            width: 80%;
-            height: 80%;
-            top: 10%;
-            left: 10%;
-            animation-duration: 25s;
-            animation-direction: reverse;
-            border-color: var(--accent);
-        }
-        
-        .mandala-circle:nth-child(3) {
-            width: 60%;
-            height: 60%;
-            top: 20%;
-            left: 20%;
-            animation-duration: 30s;
-            border-color: var(--secondary);
-        }
-        
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-        
-        /* ===== FLOATING ELEMENTS ANIMATIONS ===== */
-        .floating-elements {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-        }
-        
-        .floating-element {
-            position: absolute;
-            font-size: 2rem;
-            opacity: 0.1;
-            animation: float 6s ease-in-out infinite;
-        }
-        
-        .floating-element:nth-child(1) {
-            top: 20%;
-            left: 10%;
-            animation-delay: 0s;
-        }
-        
-        .floating-element:nth-child(2) {
-            top: 60%;
-            right: 10%;
-            animation-delay: 2s;
-        }
-        
-        .floating-element:nth-child(3) {
-            bottom: 30%;
-            left: 20%;
-            animation-delay: 4s;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-        
-        /* ===== SECTIONS ===== */
-        .section {
-            padding: 6rem 0;
-            position: relative;
-        }
-        
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            background: var(--gradient-primary);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-        }
-        
-        .section-subtitle {
-            text-align: center;
-            color: var(--text-secondary);
-            font-size: 1.125rem;
-            max-width: 600px;
-            margin: 0 auto 4rem;
-            line-height: 1.6;
-        }
-        
-        /* ===== GRID SYSTEM ===== */
-        .grid {
-            display: grid;
-            gap: 2rem;
-        }
-        
-        .grid-2 { grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); }
-        .grid-3 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
-        .grid-4 { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
-        
-        /* ===== CARDS WITH ANIMATIONS ===== */
-        .card {
-            background: var(--gradient-surface);
-            padding: 2rem;
-            border-radius: 1rem;
-            border: 1px solid var(--border);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.1), transparent);
-            transition: left 0.6s ease;
-        }
-        
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px var(--shadow);
-            border-color: var(--primary);
-        }
-        
-        .card:hover::before {
-            left: 100%;
-        }
-        
-        .card-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            display: block;
-        }
-        
-        .card h3 {
-            color: var(--text-primary);
-            margin-bottom: 1rem;
-        }
-        
-        .card p {
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
-        
-        /* ===== PROJECT CARDS ===== */
-        .project-card {
-            background: var(--gradient-surface);
-            border-radius: 1rem;
-            overflow: hidden;
-            border: 1px solid var(--border);
-            transition: all 0.3s ease;
-        }
-        
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px var(--shadow);
-            border-color: var(--primary);
-        }
-        
-        .project-image {
-            aspect-ratio: 16/9;
-            background: var(--gradient-primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .project-info {
-            padding: 1.5rem;
-        }
-        
-        .project-title {
-            color: var(--text-primary);
-            margin-bottom: 0.5rem;
-        }
-        
-        .project-description {
-            color: var(--text-secondary);
-            margin-bottom: 1rem;
-            line-height: 1.6;
-        }
-        
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-        }
-        
-        .tag {
-            padding: 0.25rem 0.75rem;
-            background: rgba(59, 130, 246, 0.2);
-            color: var(--primary);
-            border-radius: 1rem;
-            font-size: 0.875rem;
-            font-weight: 500;
-        }
-        
-        .project-links {
-            display: flex;
-            gap: 1rem;
-        }
-        
-        .project-link {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-        
-        .project-link:hover {
-            color: var(--text-primary);
-        }
-        
-        /* ===== FORM STYLES ===== */
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        
-        .form-label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: var(--text-primary);
-            font-weight: 500;
-        }
-        
-        .form-input,
-        .form-textarea {
-            width: 100%;
-            padding: 1rem;
-            background: rgba(30, 41, 59, 0.8);
-            border: 1px solid var(--border);
-            border-radius: 0.5rem;
-            color: var(--text-primary);
-            font-family: inherit;
-            transition: all 0.3s ease;
-        }
-        
-        .form-input:focus,
-        .form-textarea:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-            transform: scale(1.02);
-        }
-        
-        .form-textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-        
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 1rem 2rem;
-            background: var(--gradient-primary);
-            color: white;
-            border: none;
-            border-radius: 0.5rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            font-family: inherit;
-        }
-        
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
-        }
-        
-        .btn:disabled {
-            opacity: 0.7;
-            cursor: not-allowed;
-        }
-        
-        /* ===== FOOTER ===== */
-        .footer {
-            background: var(--surface);
-            border-top: 1px solid var(--border);
-            padding: 3rem 0 1rem;
-            text-align: center;
-        }
-        
-        .footer-content {
-            margin-bottom: 2rem;
-        }
-        
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-        
-        .footer-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 1.5rem;
-            transition: all 0.3s ease;
-        }
-        
-        .footer-links a:hover {
-            color: var(--primary);
-            transform: translateY(-2px);
-        }
-        
-        .footer-text {
-            color: var(--text-muted);
-            font-size: 0.875rem;
-        }
-        
-        /* ===== MOBILE RESPONSIVE ===== */
-        @media (max-width: 768px) {
-            .nav-links {
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: rgba(15, 23, 42, 0.98);
-                backdrop-filter: blur(20px);
-                flex-direction: column;
-                padding: 1rem;
-                gap: 1rem;
-                transform: translateY(-100vh);
-                transition: transform 0.3s ease;
-                border-bottom: 1px solid var(--border);
-            }
-            
-            .nav-links.open {
-                transform: translateY(0);
-            }
-            
-            .mobile-menu-btn {
-                display: block;
-            }
-            
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .hero p {
-                font-size: 1.125rem;
-            }
-            
-            .section {
-                padding: 4rem 0;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .grid-2,
-            .grid-3,
-            .grid-4 {
-                grid-template-columns: 1fr;
-            }
-            
-            .footer-links {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            
-            .consciousness-mandala {
-                width: 300px;
-                height: 300px;
-            }
-        }
-        
-        /* ===== LOADING ANIMATION ===== */
-        .loading {
-            opacity: 0;
-            animation: fadeIn 0.6s ease-out 0.2s forwards;
-        }
-        
-        @keyframes fadeIn {
-            to { opacity: 1; }
-        }
-        
-        /* ===== PULSE ANIMATION FOR CTA BUTTON ===== */
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-        
-        .cta-button.pulse {
-            animation: pulse 2s ease-in-out infinite;
-        }
-        
-        /* ===== ACCESSIBILITY ===== */
-        @media (prefers-reduced-motion: reduce) {
-            *,
-            *::before,
-            *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-                scroll-behavior: auto !important;
-            }
-        }
-        
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border: 0;
-        }
-        
-        /* ===== NOTIFICATION STYLES ===== */
-        .notification {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: var(--surface);
-            color: var(--text-primary);
-            padding: 1rem 1.5rem;
-            border-radius: 0.5rem;
-            border-left: 4px solid var(--primary);
-            box-shadow: 0 10px 30px var(--shadow);
-            z-index: 10000;
-            max-width: 400px;
-            transform: translateX(100%);
-            transition: transform 0.3s ease;
-        }
-        
-        .notification.show {
-            transform: translateX(0);
-        }
-        
-        .notification-content {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-        
-        .notification-close {
-            background: none;
-            border: none;
-            color: var(--text-secondary);
-            font-size: 1.25rem;
-            cursor: pointer;
-            margin-left: auto;
-        }
-        
-        /* ===== NOTIFICATION TYPES ===== */
-        .notification-success { border-left-color: var(--secondary); }
-        .notification-error { border-left-color: #ef4444; }
-        .notification-warning { border-left-color: #f59e0b; }
-        .notification-info { border-left-color: var(--primary); }
-    </style>
+    <!-- GSAP CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/TextPlugin.min.js"></script>
 </head>
 
 <body class="loading">
-    <!-- Header -->
-    <header class="header">
-        <nav class="nav container">
-            <a href="#" class="logo">
-                🧠 ThannxAI
-            </a>
-            <ul class="nav-links">
-                <li><a href="#home" class="active">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <button class="mobile-menu-btn" aria-label="Toggle mobile menu">
-                ☰
-            </button>
-        </nav>
-    </header>
+    <!-- Loading Screen -->
+    <div id="loader" class="loader">
+        <div class="consciousness-loader">
+            <div class="neural-network">
+                <div class="node"></div>
+                <div class="node"></div>
+                <div class="node"></div>
+                <div class="connection"></div>
+                <div class="connection"></div>
+            </div>
+            <div class="loader-text">
+                <span class="typing-animation">Awakening Consciousness...</span>
+            </div>
+        </div>
+    </div>
 
-    <!-- Main Content -->
-    <main id="main-content">
-        <!-- Hero Section -->
-        <section id="home" class="hero">
-            <div class="consciousness-mandala" aria-hidden="true">
-                <div class="mandala-circle"></div>
-                <div class="mandala-circle"></div>
-                <div class="mandala-circle"></div>
-            </div>
-            
-            <div class="floating-elements" aria-hidden="true">
-                <div class="floating-element">🤖</div>
-                <div class="floating-element">⚡</div>
-                <div class="floating-element">🧠</div>
-            </div>
-            
-            <div class="hero-content container">
-                <h1>Welcome to ThannxAI</h1>
-                <p>Pioneering the future of artificial intelligence with innovative solutions, cutting-edge research, and transformative technology that empowers businesses and individuals worldwide.</p>
-                <a href="#projects" class="cta-button">
-                    Explore Projects <span>→</span>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="#home" class="brand-link">
+                    <div class="brand-icon">🧠</div>
+                    <span class="brand-text">ThannxAI</span>
                 </a>
             </div>
-        </section>
+            
+            <div class="nav-menu" id="nav-menu">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#mission" class="nav-link">Mission</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#gallery" class="nav-link">Gallery</a>
+                <a href="#testimonials" class="nav-link">Testimonials</a>
+                <a href="#blog" class="nav-link">Insights</a>
+                <a href="#contact" class="nav-link">Connect</a>
+            </div>
+            
+            <div class="nav-actions">
+                <button class="btn btn-outline btn-sm" id="demo-btn">Try Demo</button>
+                <button class="nav-toggle" id="nav-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
 
-        <!-- About Section -->
-        <section id="about" class="section">
-            <div class="container">
-                <h2 class="section-title">About ThannxAI</h2>
-                <p class="section-subtitle">
-                    We are dedicated to advancing artificial intelligence through innovative research, 
-                    practical applications, and collaborative solutions that shape the future of technology.
-                </p>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-background">
+            <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1920&h=1080&fit=crop&crop=center" 
+                 alt="AI Neural Network Visualization" 
+                 class="hero-bg-image parallax-bg">
+            <div class="hero-overlay"></div>
+        </div>
+        
+        <div class="consciousness-particles" id="consciousness-particles"></div>
+        
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text fade-in-up">
+                    <h1 class="hero-title">
+                        <span class="title-main">Human-Centered AI</span>
+                        <span class="title-sub">for Meaningful Conversations</span>
+                    </h1>
+                    
+                    <p class="hero-description">
+                        In a digital world flooded with noise, true connection often gets lost in translation. 
+                        ThannxAI creates AI tools that help us listen better, speak more meaningfully, 
+                        and build bridges across cultures and experiences.
+                    </p>
+                    
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <span class="stat-number counter" data-target="2023">0</span>
+                            <span class="stat-label">Founded</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number counter" data-target="15">0</span>
+                            <span class="stat-label">Countries Reached</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number counter" data-target="1000">0</span>
+                            <span class="stat-label">Conversations Enhanced</span>
+                        </div>
+                    </div>
+                    
+                    <div class="hero-actions">
+                        <button class="btn btn-primary btn-lg btn-magnetic ripple">
+                            <span>Explore Our Vision</span>
+                        </button>
+                        <button class="btn btn-outline btn-lg btn-magnetic">
+                            <span>Watch Story</span>
+                        </button>
+                    </div>
+                </div>
                 
-                <div class="grid grid-3">
-                    <div class="card">
-                        <span class="card-icon">🚀</span>
-                        <h3>Innovation</h3>
-                        <p>Pushing the boundaries of AI technology with groundbreaking research and development in machine learning, neural networks, and cognitive computing.</p>
-                    </div>
-                    
-                    <div class="card">
-                        <span class="card-icon">🎯</span>
-                        <h3>Precision</h3>
-                        <p>Delivering accurate, reliable AI solutions tailored to specific industry needs with meticulous attention to detail and performance optimization.</p>
-                    </div>
-                    
-                    <div class="card">
-                        <span class="card-icon">🌟</span>
-                        <h3>Excellence</h3>
-                        <p>Maintaining the highest standards in AI ethics, security, and performance while creating sustainable and scalable intelligent systems.</p>
+                <div class="hero-visual slide-in-right">
+                    <div class="consciousness-orb morph-shape">
+                        <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=600&h=600&fit=crop&crop=center" 
+                             alt="AI Consciousness Visualization" 
+                             class="orb-image">
+                        <div class="orb-glow"></div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+        
+        <div class="scroll-indicator">
+            <div class="scroll-arrow"></div>
+            <span>Discover More</span>
+        </div>
+    </section>
 
-        <!-- Projects Section -->
-        <section id="projects" class="section">
-            <div class="container">
-                <h2 class="section-title">Featured Projects</h2>
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="section-header text-center fade-in-up">
+                <h2 class="section-title">The Mind Behind ThannxAI</h2>
                 <p class="section-subtitle">
-                    Discover our latest AI innovations and breakthrough projects that demonstrate 
-                    the practical applications of artificial intelligence across various domains.
+                    Born from lived experience, shaped by cultural bridges, driven by human connection
                 </p>
-                
-                <div class="grid grid-2">
-                    <div class="project-card">
-                        <div class="project-image">
-                            🤖
-                        </div>
-                        <div class="project-info">
-                            <h3 class="project-title">Neural Network Optimizer</h3>
-                            <p class="project-description">
-                                Advanced neural network optimization framework using evolutionary algorithms 
-                                and automated hyperparameter tuning for improved model performance.
-                            </p>
-                            <div class="project-tags">
-                                <span class="tag">Python</span>
-                                <span class="tag">TensorFlow</span>
-                                <span class="tag">PyTorch</span>
-                                <span class="tag">Machine Learning</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="#" class="project-link">View Demo</a>
-                                <a href="#" class="project-link">GitHub</a>
-                            </div>
-                        </div>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-story slide-in-left">
+                    <div class="story-image">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=600&fit=crop&crop=face" 
+                             alt="Thanatsitt Santisamranwilai - Founder of ThannxAI" 
+                             class="founder-image tilt-effect">
+                        <div class="image-frame"></div>
                     </div>
                     
-                    <div class="project-card">
-                        <div class="project-image">
-                            🧠
-                        </div>
-                        <div class="project-info">
-                            <h3 class="project-title">Cognitive Assistant</h3>
-                            <p class="project-description">
-                                Intelligent personal assistant powered by natural language processing 
-                                and contextual understanding for enhanced human-computer interaction.
-                            </p>
-                            <div class="project-tags">
-                                <span class="tag">NLP</span>
-                                <span class="tag">React</span>
-                                <span class="tag">Node.js</span>
-                                <span class="tag">OpenAI</span>
+                    <div class="story-details">
+                        <h3>Thanatsitt Santisamranwilai</h3>
+                        <p class="role">Founder & Creative Technologist</p>
+                        <div class="story-highlights">
+                            <div class="highlight-item">
+                                <span class="highlight-icon">🇹🇭</span>
+                                <span>Born in Thailand</span>
                             </div>
-                            <div class="project-links">
-                                <a href="#" class="project-link">View Demo</a>
-                                <a href="#" class="project-link">GitHub</a>
+                            <div class="highlight-item">
+                                <span class="highlight-icon">🇬🇧</span>
+                                <span>Studied Design in UK</span>
                             </div>
-                        </div>
-                    </div>
-                    
-                    <div class="project-card">
-                        <div class="project-image">
-                            📊
-                        </div>
-                        <div class="project-info">
-                            <h3 class="project-title">Predictive Analytics Engine</h3>
-                            <p class="project-description">
-                                Real-time data analysis and prediction system using ensemble learning 
-                                methods for business intelligence and decision support.
-                            </p>
-                            <div class="project-tags">
-                                <span class="tag">Data Science</span>
-                                <span class="tag">Scikit-learn</span>
-                                <span class="tag">Apache Spark</span>
-                                <span class="tag">AWS</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="#" class="project-link">View Demo</a>
-                                <a href="#" class="project-link">GitHub</a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="project-card">
-                        <div class="project-image">
-                            🔮
-                        </div>
-                        <div class="project-info">
-                            <h3 class="project-title">AI Vision System</h3>
-                            <p class="project-description">
-                                Computer vision platform for object detection, image classification, 
-                                and real-time video analysis using deep learning architectures.
-                            </p>
-                            <div class="project-tags">
-                                <span class="tag">Computer Vision</span>
-                                <span class="tag">OpenCV</span>
-                                <span class="tag">YOLO</span>
-                                <span class="tag">FastAPI</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="#" class="project-link">View Demo</a>
-                                <a href="#" class="project-link">GitHub</a>
+                            <div class="highlight-item">
+                                <span class="highlight-icon">🤖</span>
+                                <span>AI Ethics Advocate</span>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <!-- Services Section -->
-        <section id="services" class="section">
-            <div class="container">
-                <h2 class="section-title">Our Services</h2>
-                <p class="section-subtitle">
-                    Comprehensive AI solutions and consulting services designed to transform 
-                    your business with cutting-edge artificial intelligence technology.
-                </p>
                 
-                <div class="grid grid-3">
-                    <div class="card">
-                        <span class="card-icon">⚙️</span>
-                        <h3>AI Development</h3>
-                        <p>Custom artificial intelligence solutions tailored to your specific business needs, from concept to deployment and maintenance.</p>
-                    </div>
-                    
-                    <div class="card">
-                        <span class="card-icon">📈</span>
-                        <h3>Machine Learning</h3>
-                        <p>Advanced machine learning models and algorithms for predictive analytics, pattern recognition, and automated decision-making.</p>
-                    </div>
-                    
-                    <div class="card">
-                        <span class="card-icon">💡</span>
-                        <h3>AI Consulting</h3>
-                        <p>Strategic consulting and guidance on AI implementation, digital transformation, and technology roadmap planning.</p>
-                    </div>
-                    
-                    <div class="card">
-                        <span class="card-icon">🔬</span>
-                        <h3>Research & Development</h3>
-                        <p>Cutting-edge research in artificial intelligence, exploring new frontiers and developing innovative solutions.</p>
-                    </div>
-                    
-                    <div class="card">
-                        <span class="card-icon">🛡️</span>
-                        <h3>AI Ethics & Security</h3>
-                        <p>Ensuring responsible AI development with focus on ethical considerations, bias mitigation, and security protocols.</p>
-                    </div>
-                    
-                    <div class="card">
-                        <span class="card-icon">📚</span>
-                        <h3>Training & Education</h3>
-                        <p>Comprehensive AI education programs and training workshops for teams and organizations at all levels.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="section">
-            <div class="container">
-                <h2 class="section-title">Get In Touch</h2>
-                <p class="section-subtitle">
-                    Ready to embark on your AI journey? Let's discuss how we can help transform 
-                    your business with innovative artificial intelligence solutions.
-                </p>
-                
-                <div class="grid grid-2">
-                    <div class="card">
-                        <h3>Contact Information</h3>
-                        <p>We're here to answer your questions and discuss potential collaborations. Reach out through any of the following channels:</p>
+                <div class="about-narrative slide-in-right">
+                    <div class="narrative-content">
+                        <h4>Origins Rooted in Lived Experience</h4>
+                        <p>
+                            ThannxAI was not created in a vacuum — it was shaped by Thanatsitt's own life. 
+                            Growing up in Thailand and studying design in the UK, he navigated the complexities 
+                            of cross-cultural communication, personal identity, and the silent weight of unspoken emotion.
+                        </p>
                         
-                        <div style="margin-top: 2rem;">
-                            <p><strong>📧 Email:</strong> hello@thannxai.com</p>
-                            <p><strong>📱 Phone:</strong> +1 (555) 123-4567</p>
-                            <p><strong>📍 Location:</strong> San Francisco, CA</p>
-                            <p><strong>⏰ Business Hours:</strong> Mon-Fri 9AM-6PM PST</p>
+                        <p>
+                            Social anxiety, unexpressed thoughts, and misunderstood feelings were more than just 
+                            abstract challenges — they were part of his daily life. These lived experiences 
+                            seeded a question that would later evolve into a company:
+                        </p>
+                        
+                        <blockquote class="founder-quote">
+                            "What if technology could help us not just communicate faster, 
+                            but communicate with more depth, empathy, and understanding?"
+                        </blockquote>
+                        
+                        <div class="current-focus">
+                            <h5>Current Focus: Learning by Doing</h5>
+                            <p>
+                                As an emerging creative technologist, I'm currently deepening my expertise through 
+                                hands-on experience—exploring innovative AI tools, developing multimedia projects, 
+                                and continuously learning through real-world application.
+                            </p>
+                            
+                            <div class="focus-quote">
+                                <em>"This phase is my creative incubation—where ideas, skills, and vision evolve through immersive practice."</em>
+                            </div>
                         </div>
-                    </div>
-                    
-                    <div class="card">
-                        <h3>Send Us a Message</h3>
-                        <form class="contact-form">
-                            <div class="form-group">
-                                <label for="name" class="form-label">Full Name</label>
-                                <input type="text" id="name" name="name" class="form-input" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="email" class="form-label">Email Address</label>
-                                <input type="email" id="email" name="email" class="form-input" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="subject" class="form-label">Subject</label>
-                                <input type="text" id="subject" name="subject" class="form-input" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="message" class="form-label">Message</label>
-                                <textarea id="message" name="message" class="form-textarea" required placeholder="Tell us about your project or inquiry..."></textarea>
-                            </div>
-                            
-                            <button type="submit" class="btn">
-                                Send Message <span>📤</span>
-                            </button>
-                        </form>
                     </div>
                 </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
+
+    <!-- Mission & Values Section -->
+    <section id="mission" class="mission-section">
+        <div class="container">
+            <div class="section-header text-center fade-in-up">
+                <h2 class="section-title">Our Mission & Values</h2>
+                <p class="section-subtitle">
+                    Building AI that serves humanity, not the other way around
+                </p>
+            </div>
+            
+            <div class="mission-grid stagger-children">
+                <div class="mission-card scale-in">
+                    <div class="card-icon">
+                        <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=100&h=100&fit=crop" 
+                             alt="Empathy Icon">
+                    </div>
+                    <h3>Empathy First</h3>
+                    <p>
+                        Every AI interaction should feel human, understanding context, 
+                        emotion, and cultural nuance to create genuine connections.
+                    </p>
+                </div>
+                
+                <div class="mission-card scale-in">
+                    <div class="card-icon">
+                        <img src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?w=100&h=100&fit=crop" 
+                             alt="Cultural Bridge Icon">
+                    </div>
+                    <h3>Cultural Bridges</h3>
+                    <p>
+                        Technology should unite, not divide. We build AI that respects 
+                        and celebrates diverse perspectives and communication styles.
+                    </p>
+                </div>
+                
+                <div class="mission-card scale-in">
+                    <div class="card-icon">
+                        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=100&h=100&fit=crop" 
+                             alt="Ethical AI Icon">
+                    </div>
+                    <h3>Ethical Innovation</h3>
+                    <p>
+                        We prioritize transparency, privacy, and human agency in every 
+                        AI system we create, ensuring technology serves human flourishing.
+                    </p>
+                </div>
+                
+                <div class="mission-card scale-in">
+                    <div class="card-icon">
+                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=100&h=100&fit=crop" 
+                             alt="Meaningful Connection Icon">
+                    </div>
+                    <h3>Meaningful Connection</h3>
+                    <p>
+                        Beyond efficiency, we focus on depth. Our AI helps people 
+                        have conversations that matter and relationships that last.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="mission-statement fade-in-up">
+                <div class="statement-content">
+                    <h3>Our Core Belief</h3>
+                    <p>
+                        In a world where AI often feels cold and transactional, we believe technology 
+                        can be a force for deeper human connection. ThannxAI exists to prove that 
+                        artificial intelligence can amplify our humanity, not replace it.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Showcase -->
+    <section id="projects" class="projects-section">
+        <div class="container">
+            <div class="section-header text-center fade-in-up">
+                <h2 class="section-title">Current Projects</h2>
+                <p class="section-subtitle">
+                    Exploring the intersection of AI, empathy, and human connection
+                </p>
+            </div>
+            
+            <div class="projects-grid">
+                <div class="project-card featured slide-in-left">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=500&fit=crop" 
+                             alt="EmpathyAI - Emotional Intelligence Platform">
+                        <div class="project-overlay">
+                            <div class="project-actions">
+                                <button class="project-action">View Details</button>
+                                <button class="project-action">Try Demo</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-meta">
+                            <span class="project-status">In Development</span>
+                            <span class="project-type">AI Platform</span>
+                        </div>
+                        <h3>EmpathyAI</h3>
+                        <p>
+                            An AI conversation assistant that understands emotional context and 
+                            cultural nuances, helping users communicate with greater empathy and clarity.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Natural Language Processing</span>
+                            <span class="tech-tag">Emotion Recognition</span>
+                            <span class="tech-tag">Cultural AI</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card slide-in-up">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=600&h=400&fit=crop" 
+                             alt="CrossCultural Connect - Communication Bridge">
+                    </div>
+                    <div class="project-content">
+                        <div class="project-meta">
+                            <span class="project-status">Research Phase</span>
+                            <span class="project-type">Research</span>
+                        </div>
+                        <h3>CrossCultural Connect</h3>
+                        <p>
+                            Research initiative exploring how AI can facilitate better 
+                            cross-cultural understanding and communication.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Cultural Analysis</span>
+                            <span class="tech-tag">Communication Patterns</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card slide-in-right">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=600&h=400&fit=crop" 
+                             alt="MindfulChat - Conscious Communication">
+                    </div>
+                    <div class="project-content">
+                        <div class="project-meta">
+                            <span class="project-status">Prototype</span>
+                            <span class="project-type">Mobile App</span>
+                        </div>
+                        <h3>MindfulChat</h3>
+                        <p>
+                            A mindfulness-integrated chat interface that encourages 
+                            thoughtful, intentional digital conversations.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Mindfulness AI</span>
+                            <span class="tech-tag">Conversation Design</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery-section">
+        <div class="container">
+            <div class="section-header text-center fade-in-up">
+                <h2 class="section-title">Visual Journey</h2>
+                <p class="section-subtitle">
+                    Moments, insights, and inspirations from our AI consciousness exploration
+                </p>
+            </div>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item" data-category="research">
+                    <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=300&fit=crop" 
+                         alt="AI Research Visualization">
+                    <div class="gallery-overlay">
+                        <div class="gallery-content">
+                            <h4>Neural Network Research</h4>
+                            <p>Exploring consciousness patterns in AI systems</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="culture">
+                    <img src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?w=400&h=300&fit=crop" 
+                         alt="Cross-Cultural Communication">
+                    <div class="gallery-overlay">
+                        <div class="gallery-content">
+                            <h4>Cultural Bridges</h4>
+                            <p>Building connections across diverse perspectives</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="technology">
+                    <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=400&h=300&fit=crop" 
+                         alt="AI Technology Development">
+                    <div class="gallery-overlay">
+                        <div class="gallery-content">
+                            <h4>Technology with Heart</h4>
+                            <p>Developing empathetic AI systems</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="team">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&h=300&fit=crop" 
+                         alt="Team Collaboration">
+                    <div class="gallery-overlay">
+                        <div class="gallery-content">
+                            <h4>Collaborative Innovation</h4>
+                            <p>Working together to shape the future of AI</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="inspiration">
+                    <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=300&fit=crop" 
+                         alt="Mindful Technology">
+                    <div class="gallery-overlay">
+                        <div class="gallery-content">
+                            <h4>Mindful Innovation</h4>
+                            <p>Bringing consciousness to technology design</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="future">
+                    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&h=300&fit=crop" 
+                         alt="Future of AI">
+                    <div class="gallery-overlay">
+                        <div class="gallery-content">
+                            <h4>Future Vision</h4>
+                            <p>Imagining tomorrow's human-AI collaboration</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="gallery-filters fade-in-up">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="research">Research</button>
+                <button class="filter-btn" data-filter="culture">Culture</button>
+                <button class="filter-btn" data-filter="technology">Technology</button>
+                <button class="filter-btn" data-filter="team">Team</button>
+                <button class="filter-btn" data-filter="inspiration">Inspiration</button>
+                <button class="filter-btn" data-filter="future">Future</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials-section">
+        <div class="container">
+            <div class="section-header text-center fade-in-up">
+                <h2 class="section-title">Voices of Impact</h2>
+                <p class="section-subtitle">
+                    Stories from those who've experienced the power of human-centered AI
+                </p>
+            </div>
+            
+            <div class="testimonials-carousel">
+                <div class="testimonial-card active">
+                    <div class="testimonial-content">
+                        <div class="testimonial-text">
+                            <p>
+                                "ThannxAI's approach to empathetic AI has transformed how our team 
+                                communicates across cultures. The technology doesn't just translate 
+                                words—it translates meaning and emotion."
+                            </p>
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=80&h=80&fit=crop&crop=face" 
+                                 alt="Sarah Chen">
+                            <div class="author-info">
+                                <h4>Sarah Chen</h4>
+                                <p>Global Communications Director, TechForward</p>
+                                <div class="author-location">🇸🇬 Singapore</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="testimonial-text">
+                            <p>
+                                "As someone who struggles with social anxiety, EmpathyAI has been 
+                                a game-changer. It helps me understand the emotional undertones 
+                                in conversations and respond with greater confidence."
+                            </p>
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face" 
+                                 alt="Marcus Rodriguez">
+                            <div class="author-info">
+                                <h4>Marcus Rodriguez</h4>
+                                <p>UX Designer, Creative Studio</p>
+                                <div class="author-location">🇲🇽 Mexico City</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="testimonial-text">
+                            <p>
+                                "The cultural sensitivity built into ThannxAI's systems is remarkable. 
+                                It's the first AI tool that truly understands the nuances of 
+                                cross-cultural business communication."
+                            </p>
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop&crop=face" 
+                                 alt="Aisha Patel">
+                            <div class="author-info">
+                                <h4>Aisha Patel</h4>
+                                <p>International Relations Manager, GlobalConnect</p>
+                                <div class="author-location">🇮🇳 Mumbai</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-navigation">
+                <button class="nav-dot active" data-slide="0"></button>
+                <button class="nav-dot" data-slide="1"></button>
+                <button class="nav-dot" data-slide="2"></button>
+            </div>
+            
+            <div class="impact-metrics fade-in-up">
+                <div class="metric-item">
+                    <span class="metric-number counter" data-target="94">0</span>
+                    <span class="metric-label">% User Satisfaction</span>
+                </div>
+                <div class="metric-item">
+                    <span class="metric-number counter" data-target="78">0</span>
+                    <span class="metric-label">% Improved Communication</span>
+                </div>
+                <div class="metric-item">
+                    <span class="metric-number counter" data-target="85">0</span>
+                    <span class="metric-label">% Cultural Understanding</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog/Insights Section -->
+    <section id="blog" class="blog-section">
+        <div class="container">
+            <div class="section-header text-center fade-in-up">
+                <h2 class="section-title">Insights & Reflections</h2>
+                <p class="section-subtitle">
+                    Thoughts on AI, consciousness, culture, and the future of human connection
+                </p>
+            </div>
+            
+            <div class="blog-grid">
+                <article class="blog-card featured slide-in-left">
+                    <div class="blog-image">
+                        <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=300&fit=crop" 
+                             alt="The Future of Empathetic AI">
+                        <div class="blog-category">Featured</div>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <time datetime="2024-01-15">January 15, 2024</time>
+                            <span class="read-time">8 min read</span>
+                        </div>
+                        <h3>The Future of Empathetic AI: Beyond Efficiency to Understanding</h3>
+                        <p>
+                            Exploring how artificial intelligence can evolve from task-oriented 
+                            tools to empathetic companions that truly understand human emotion and context.
+                        </p>
+                        <div class="blog-tags">
+                            <span class="tag">AI Ethics</span>
+                            <span class="tag">Empathy</span>
+                            <span class="tag">Future Tech</span>
+                        </div>
+                    </div>
+                </article>
+                
+                <article class="blog-card slide-in-up">
+                    <div class="blog-image">
+                        <img src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?w=400&h=200&fit=crop" 
+                             alt="Cross-Cultural AI Communication">
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <time datetime="2024-01-10">January 10, 2024</time>
+                            <span class="read-time">5 min read</span>
+                        </div>
+                        <h3>Building Bridges: AI and Cross-Cultural Communication</h3>
+                        <p>
+                            How AI can help us navigate cultural differences and build 
+                            meaningful connections across diverse backgrounds.
+                        </p>
+                        <div class="blog-tags">
+                            <span class="tag">Culture</span>
+                            <span class="tag">Communication</span>
+                        </div>
+                    </div>
+                </article>
+                
+                <article class="blog-card slide-in-right">
+                    <div class="blog-image">
+                        <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=200&fit=crop" 
+                             alt="Mindful Technology Design">
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <time datetime="2024-01-05">January 5, 2024</time>
+                            <span class="read-time">6 min read</span>
+                        </div>
+                        <h3>Mindful Technology: Designing AI with Consciousness</h3>
+                        <p>
+                            The principles and practices behind creating technology that 
+                            enhances rather than diminishes human consciousness.
+                        </p>
+                        <div class="blog-tags">
+                            <span class="tag">Mindfulness</span>
+                            <span class="tag">Design</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            
+            <div class="blog-cta text-center fade-in-up">
+                <button class="btn btn-outline btn-lg">View All Insights</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="section-header text-center fade-in-up">
+                <h2 class="section-title">Let's Connect</h2>
+                <p class="section-subtitle">
+                    Ready to explore the future of human-centered AI together?
+                </p>
+            </div>
+            
+            <div class="contact-content">
+                <div class="contact-info slide-in-left">
+                    <div class="contact-card">
+                        <h3>Start a Conversation</h3>
+                        <p>
+                            Whether you're interested in collaboration, have questions about our approach, 
+                            or want to share your own insights on AI and human connection, we'd love to hear from you.
+                        </p>
+                        
+                        <div class="contact-methods">
+                            <div class="contact-method">
+                                <div class="method-icon">📧</div>
+                                <div class="method-info">
+                                    <h4>Email</h4>
+                                    <p>hello@thannxai.com</p>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-method">
+                                <div class="method-icon">💬</div>
+                                <div class="method-info">
+                                    <h4>Social</h4>
+                                    <p>@ThannxAI on Twitter, LinkedIn</p>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-method">
+                                <div class="method-icon">🌍</div>
+                                <div class="method-info">
+                                    <h4>Location</h4>
+                                    <p>Global • Remote-First</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="social-links">
+                            <a href="#" class="social-link" aria-label="Twitter">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                                </svg>
+                            </a>
+                            <a href="#" class="social-link" aria-label="LinkedIn">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                                </svg>
+                            </a>
+                            <a href="#" class="social-link" aria-label="GitHub">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form slide-in-right">
+                    <form class="form" id="contact-form">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <select id="subject" name="subject" required>
+                                <option value="">Choose a topic</option>
+                                <option value="collaboration">Collaboration Opportunity</option>
+                                <option value="demo">Request Demo</option>
+                                <option value="feedback">Feedback & Insights</option>
+                                <option value="media">Media Inquiry</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" required 
+                                      placeholder="Share your thoughts, questions, or ideas..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-lg btn-magnetic ripple">
+                            <span>Send Message</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-links">
-                    <a href="https://github.com/pigletpeakkung" aria-label="GitHub Profile">🐙</a>
-                    <a href="https://linkedin.com/in/thannxai" aria-label="LinkedIn Profile">💼</a>
-                    <a href="https://twitter.com/thannxai" aria-label="Twitter Profile">🐦</a>
-                    <a href="mailto:hello@thannxai.com" aria-label="Email Contact">📧</a>
+                <div class="footer-brand">
+                    <div class="brand-icon">🧠</div>
+                    <h3>ThannxAI</h3>
+                    <p>Human-Centered AI for Meaningful Conversations</p>
                 </div>
-                <p class="footer-text">
-                    &copy; 2024 ThannxAI. All rights reserved. | 
-                    <a href="admin/dashboard.html" style="color: var(--text-muted); text-decoration: none;">Admin</a>
-                </p>
+                
+                <div class="footer-links">
+                    <div class="link-group">
+                        <h4>Explore</h4>
+                        <a href="#about">About</a>
+                        <a href="#mission">Mission</a>
+                        <a href="#projects">Projects</a>
+                        <a href="#blog">Insights</a>
+                    </div>
+                    
+                    <div class="link-group">
+                        <h4>Connect</h4>
+                        <a href="#contact">Contact</a>
+                        <a href="#">Twitter</a>
+                        <a href="#">LinkedIn</a>
+                        <a href="#">GitHub</a>
+                    </div>
+                    
+                    <div class="link-group">
+                        <h4>Resources</h4>
+                        <a href="#">Documentation</a>
+                        <a href="#">API</a>
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 ThannxAI. Built with consciousness and care.</p>
+                <div class="footer-meta">
+                    <span>Made with ❤️ for human connection</span>
+                </div>
             </div>
         </div>
     </footer>
 
-    <!-- JavaScript -->
+    <!-- PWA Install Button -->
+    <button id="install-pwa" class="install-pwa" style="display: none;">
+        <span class="install-icon">📱</span>
+        <span class="install-text">Install App</span>
+    </button>
+
+    <!-- Scripts -->
+    <script src="js/animate.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/pwa.js"></script>
+    
+    <!-- Analytics (Replace with your tracking ID) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
     <script>
-        // ===== THANNXAI ADVANCED JAVASCRIPT WITH ANIMATIONS =====
-        
-        console.log('🧠 ThannxAI initializing...');
-        
-        // Initialize when DOM is loaded
-        document.addEventListener('DOMContentLoaded', function() {
-            initializeNavigation();
-            initializeAnimations();
-            initializeContactForm();
-            initializeScrollEffects();
-            initializeEasterEggs();
-            initializePWA();
-            
-            // Remove loading class with delay for smooth fade-in
-            setTimeout(() => {
-                document.body.classList.remove('loading');
-                console.log('✅ ThannxAI initialized successfully');
-            }, 300);
-        });
-
-        // ===== NAVIGATION WITH ANIMATIONS =====
-        function initializeNavigation() {
-            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-            const navLinks = document.querySelector('.nav-links');
-                        const navLinksItems = document.querySelectorAll('.nav-links a');
-            
-            // Mobile menu toggle with animation
-            if (mobileMenuBtn && navLinks) {
-                mobileMenuBtn.addEventListener('click', function() {
-                    const isOpen = navLinks.classList.contains('open');
-                    
-                    navLinks.classList.toggle('open');
-                    
-                    // Animate menu button
-                    this.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(90deg)';
-                    this.textContent = isOpen ? '☰' : '✕';
-                });
-            }
-            
-            // Close mobile menu when clicking nav links
-            navLinksItems.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    // Remove active from all links
-                    navLinksItems.forEach(l => l.classList.remove('active'));
-                    
-                    // Add active to clicked link
-                    this.classList.add('active');
-                    
-                    // Close mobile menu
-                    if (navLinks) {
-                        navLinks.classList.remove('open');
-                        if (mobileMenuBtn) {
-                            mobileMenuBtn.style.transform = 'rotate(0deg)';
-                            mobileMenuBtn.textContent = '☰';
-                        }
-                    }
-                    
-                    // Smooth scroll to target
-                    const targetId = this.getAttribute('href');
-                    const targetSection = document.querySelector(targetId);
-                    
-                    if (targetSection) {
-                        const headerHeight = document.querySelector('.header').offsetHeight;
-                        const targetPosition = targetSection.offsetTop - headerHeight;
-                        
-                        window.scrollTo({
-                            top: targetPosition,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-            
-            // Active navigation highlighting on scroll
-            window.addEventListener('scroll', updateActiveNavigation);
-        }
-
-        function updateActiveNavigation() {
-            const sections = document.querySelectorAll('section[id]');
-            const navLinks = document.querySelectorAll('.nav-links a');
-            const headerHeight = document.querySelector('.header')?.offsetHeight || 80;
-            
-            let current = '';
-            
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop - headerHeight - 100;
-                const sectionHeight = section.offsetHeight;
-                
-                if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
-                    current = section.getAttribute('id');
-                }
-            });
-            
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('active');
-                }
-            });
-        }
-
-        // ===== ADVANCED ANIMATIONS =====
-        function initializeAnimations() {
-            // Intersection Observer for scroll animations
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
-            
-            const observer = new IntersectionObserver(function(entries) {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                        
-                        // Staggered animation for cards within the section
-                        const cards = entry.target.querySelectorAll('.card, .project-card');
-                        cards.forEach((card, index) => {
-                            setTimeout(() => {
-                                card.style.opacity = '1';
-                                card.style.transform = 'translateY(0)';
-                            }, index * 100);
-                        });
-                    }
-                });
-            }, observerOptions);
-            
-            // Observe sections for animation
-            const sections = document.querySelectorAll('.section');
-            sections.forEach(section => {
-                section.style.opacity = '0';
-                section.style.transform = 'translateY(30px)';
-                section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-                observer.observe(section);
-            });
-            
-            // Observe cards for individual animation
-            const animatedElements = document.querySelectorAll('.card, .project-card');
-            animatedElements.forEach(el => {
-                el.style.opacity = '0';
-                el.style.transform = 'translateY(30px)';
-                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            });
-            
-            // Parallax effect for hero elements
-            initializeParallax();
-            
-            // CTA button pulse animation
-            initializeCTAPulse();
-            
-            // Typing animation for hero title
-            initializeTypingAnimation();
-        }
-
-        function initializeParallax() {
-            const mandala = document.querySelector('.consciousness-mandala');
-            const floatingElements = document.querySelectorAll('.floating-element');
-            
-            window.addEventListener('scroll', () => {
-                const scrolled = window.pageYOffset;
-                
-                // Parallax mandala rotation
-                if (mandala) {
-                    const rotation = scrolled * 0.1;
-                    mandala.style.transform = `translate(-50%, -50%) rotate(${rotation}deg)`;
-                }
-                
-                // Parallax floating elements
-                floatingElements.forEach((element, index) => {
-                    const speed = 0.2 + (index * 0.1);
-                    const yPos = scrolled * speed;
-                    element.style.transform = `translateY(${yPos}px)`;
-                });
-            });
-        }
-
-        function initializeCTAPulse() {
-            const ctaButton = document.querySelector('.cta-button');
-            
-            if (ctaButton) {
-                // Add pulse class every 4 seconds
-                setInterval(() => {
-                    ctaButton.classList.add('pulse');
-                    setTimeout(() => {
-                        ctaButton.classList.remove('pulse');
-                    }, 2000);
-                }, 4000);
-            }
-        }
-
-        function initializeTypingAnimation() {
-            const heroTitle = document.querySelector('.hero h1');
-            
-            if (heroTitle) {
-                const text = heroTitle.textContent;
-                heroTitle.textContent = '';
-                heroTitle.style.borderRight = '2px solid var(--primary)';
-                
-                let i = 0;
-                const typeWriter = () => {
-                    if (i < text.length) {
-                        heroTitle.textContent += text.charAt(i);
-                        i++;
-                        setTimeout(typeWriter, 80);
-                    } else {
-                        // Remove cursor after typing is complete
-                        setTimeout(() => {
-                            heroTitle.style.borderRight = 'none';
-                        }, 1000);
-                    }
-                };
-                
-                // Start typing after a delay
-                setTimeout(typeWriter, 1000);
-            }
-        }
-
-        // ===== SCROLL EFFECTS =====
-        function initializeScrollEffects() {
-            const header = document.querySelector('.header');
-            let lastScrollY = window.scrollY;
-            
-            window.addEventListener('scroll', () => {
-                const currentScrollY = window.scrollY;
-                
-                if (header) {
-                    // Header background change
-                    if (currentScrollY > 100) {
-                        header.style.background = 'rgba(15, 23, 42, 0.98)';
-                        header.style.backdropFilter = 'blur(20px)';
-                        header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
-                    } else {
-                        header.style.background = 'rgba(15, 23, 42, 0.95)';
-                        header.style.boxShadow = 'none';
-                    }
-                    
-                    // Header hide/show on scroll
-                    if (currentScrollY > lastScrollY && currentScrollY > 200) {
-                        header.style.transform = 'translateY(-100%)';
-                    } else {
-                        header.style.transform = 'translateY(0)';
-                    }
-                }
-                
-                lastScrollY = currentScrollY;
-            });
-        }
-
-        // ===== CONTACT FORM WITH ANIMATIONS =====
-        function initializeContactForm() {
-            const contactForm = document.querySelector('.contact-form');
-            const formInputs = document.querySelectorAll('.form-input, .form-textarea');
-            
-            // Form input focus animations
-            formInputs.forEach(input => {
-                input.addEventListener('focus', () => {
-                    input.style.transform = 'scale(1.02)';
-                    input.style.boxShadow = '0 0 20px rgba(59, 130, 246, 0.2)';
-                });
-                
-                input.addEventListener('blur', () => {
-                    input.style.transform = 'scale(1)';
-                    input.style.boxShadow = 'none';
-                });
-                
-                // Real-time validation feedback
-                input.addEventListener('input', () => {
-                    validateField(input);
-                });
-            });
-            
-            if (contactForm) {
-                contactForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    
-                    // Get form data
-                    const formData = new FormData(this);
-                    const data = Object.fromEntries(formData);
-                    
-                    // Validate form
-                    if (validateContactForm(data)) {
-                        // Animate form submission
-                        const submitBtn = this.querySelector('button[type="submit"]');
-                        const originalText = submitBtn.innerHTML;
-                        
-                        // Loading state
-                        submitBtn.innerHTML = '⏳ Sending...';
-                        submitBtn.style.background = 'linear-gradient(135deg, #f59e0b, #d97706)';
-                        submitBtn.disabled = true;
-                        
-                        // Simulate form submission
-                        setTimeout(() => {
-                            // Success state
-                            submitBtn.innerHTML = '✅ Message Sent!';
-                            submitBtn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
-                            
-                            // Show success notification
-                            showNotification('Message sent successfully! We\'ll get back to you soon.', 'success');
-                            
-                            // Reset form after delay
-                            setTimeout(() => {
-                                this.reset();
-                                submitBtn.innerHTML = originalText;
-                                submitBtn.style.background = '';
-                                submitBtn.disabled = false;
-                            }, 2000);
-                        }, 1500);
-                    }
-                });
-            }
-        }
-
-        function validateField(field) {
-            const value = field.value.trim();
-            let isValid = true;
-            
-            // Remove previous validation styles
-            field.style.borderColor = '';
-            
-            switch (field.type) {
-                case 'email':
-                    isValid = isValidEmail(value);
-                    break;
-                case 'text':
-                    isValid = value.length >= 2;
-                    break;
-                case 'textarea':
-                    isValid = value.length >= 10;
-                    break;
-            }
-            
-            // Apply validation styles
-            if (value && !isValid) {
-                field.style.borderColor = '#ef4444';
-            } else if (value && isValid) {
-                field.style.borderColor = '#10b981';
-            }
-            
-            return isValid;
-        }
-
-        function validateContactForm(data) {
-            const { name, email, subject, message } = data;
-            
-            if (!name.trim()) {
-                showNotification('Please enter your name', 'error');
-                return false;
-            }
-            
-            if (!isValidEmail(email)) {
-                showNotification('Please enter a valid email address', 'error');
-                return false;
-            }
-            
-            if (!subject.trim()) {
-                showNotification('Please enter a subject', 'error');
-                return false;
-            }
-            
-            if (!message.trim() || message.trim().length < 10) {
-                showNotification('Please enter a message (at least 10 characters)', 'error');
-                return false;
-            }
-            
-            return true;
-        }
-
-        function isValidEmail(email) {
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            return emailRegex.test(email);
-        }
-
-        // ===== NOTIFICATIONS SYSTEM =====
-        function showNotification(message, type = 'info') {
-            const notification = document.createElement('div');
-            notification.className = `notification notification-${type}`;
-            
-            notification.innerHTML = `
-                <div class="notification-content">
-                    <span class="notification-icon">${getNotificationIcon(type)}</span>
-                    <span class="notification-message">${message}</span>
-                    <button class="notification-close" onclick="this.parentElement.parentElement.remove()">×</button>
-                </div>
-            `;
-            
-            document.body.appendChild(notification);
-            
-            // Animate in
-            setTimeout(() => {
-                notification.classList.add('show');
-            }, 100);
-            
-            // Auto remove after 5 seconds
-            setTimeout(() => {
-                notification.classList.remove('show');
-                setTimeout(() => {
-                    if (notification.parentNode) {
-                        notification.parentNode.removeChild(notification);
-                    }
-                }, 300);
-            }, 5000);
-        }
-
-        function getNotificationIcon(type) {
-            const icons = {
-                success: '✅',
-                error: '❌',
-                warning: '⚠️',
-                info: 'ℹ️'
-            };
-            return icons[type] || icons.info;
-        }
-
-        // ===== EASTER EGGS AND SPECIAL EFFECTS =====
-        function initializeEasterEggs() {
-            // Konami code easter egg
-            let konamiCode = [];
-            const konamiSequence = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65]; // ↑↑↓↓←→←→BA
-            
-            document.addEventListener('keydown', (e) => {
-                konamiCode.push(e.keyCode);
-                
-                if (konamiCode.length > konamiSequence.length) {
-                    konamiCode.shift();
-                }
-                
-                if (konamiCode.join(',') === konamiSequence.join(',')) {
-                    activateRainbowMode();
-                    konamiCode = [];
-                }
-            });
-            
-            // Mouse trail effect
-            initializeMouseTrail();
-            
-            // Double-click logo easter egg
-            const logo = document.querySelector('.logo');
-            if (logo) {
-                logo.addEventListener('dblclick', () => {
-                    activateMatrixMode();
-                });
-            }
-        }
-
-        function activateRainbowMode() {
-            const mandala = document.querySelector('.consciousness-mandala');
-            
-            if (mandala) {
-                // Add rainbow animation
-                const style = document.createElement('style');
-                style.id = 'rainbow-style';
-                style.textContent = `
-                    @keyframes rainbow {
-                        0% { filter: hue-rotate(0deg) brightness(1.2); }
-                        100% { filter: hue-rotate(360deg) brightness(1.2); }
-                    }
-                    .rainbow-mode {
-                        animation: rainbow 2s linear infinite !important;
-                    }
-                `;
-                document.head.appendChild(style);
-                
-                mandala.classList.add('rainbow-mode');
-                
-                showNotification('🌈 Rainbow mode activated! You found the easter egg!', 'success');
-                
-                // Reset after 10 seconds
-                setTimeout(() => {
-                    mandala.classList.remove('rainbow-mode');
-                    const rainbowStyle = document.getElementById('rainbow-style');
-                    if (rainbowStyle) {
-                        document.head.removeChild(rainbowStyle);
-                    }
-                }, 10000);
-            }
-        }
-
-        function activateMatrixMode() {
-            // Create matrix rain effect
-            const canvas = document.createElement('canvas');
-            canvas.style.cssText = `
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                pointer-events: none;
-                z-index: 9999;
-                opacity: 0.1;
-            `;
-            
-            document.body.appendChild(canvas);
-            
-            const ctx = canvas.getContext('2d');
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            
-            const matrix = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%+-/~{[|`]}";
-            const matrixArray = matrix.split("");
-            
-            const fontSize = 10;
-            const columns = canvas.width / fontSize;
-            const drops = [];
-            
-            for (let x = 0; x < columns; x++) {
-                drops[x] = 1;
-            }
-            
-            function drawMatrix() {
-                ctx.fillStyle = 'rgba(0, 0, 0, 0.04)';
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
-                
-                ctx.fillStyle = '#0F0';
-                ctx.font = fontSize + 'px monospace';
-                
-                for (let i = 0; i < drops.length; i++) {
-                    const text = matrixArray[Math.floor(Math.random() * matrixArray.length)];
-                    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-                    
-                    if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-                        drops[i] = 0;
-                    }
-                    drops[i]++;
-                }
-            }
-            
-            const matrixInterval = setInterval(drawMatrix, 35);
-            
-            showNotification('🔋 Matrix mode activated! Welcome to the digital realm!', 'success');
-            
-            // Remove matrix effect after 15 seconds
-            setTimeout(() => {
-                clearInterval(matrixInterval);
-                document.body.removeChild(canvas);
-            }, 15000);
-        }
-
-        function initializeMouseTrail() {
-            let mouseTrail = [];
-            
-            document.addEventListener('mousemove', (e) => {
-                mouseTrail.push({ x: e.clientX, y: e.clientY, time: Date.now() });
-                
-                // Limit trail length
-                if (mouseTrail.length > 20) {
-                    mouseTrail.shift();
-                }
-                
-                // Create trail particles occasionally
-                if (Math.random() > 0.95) {
-                    createTrailParticle(e.clientX, e.clientY);
-                }
-            });
-        }
-
-        function createTrailParticle(x, y) {
-            const particle = document.createElement('div');
-            particle.style.cssText = `
-                position: fixed;
-                left: ${x - 2}px;
-                top: ${y - 2}px;
-                width: 4px;
-                height: 4px;
-                background: var(--primary);
-                border-radius: 50%;
-                pointer-events: none;
-                z-index: 9998;
-                animation: particleFade 1s ease-out forwards;
-            `;
-            
-            // Add particle fade animation if not exists
-            if (!document.getElementById('particle-style')) {
-                const style = document.createElement('style');
-                style.id = 'particle-style';
-                style.textContent = `
-                    @keyframes particleFade {
-                        0% { opacity: 1; transform: scale(1); }
-                        100% { opacity: 0; transform: scale(0); }
-                    }
-                `;
-                document.head.appendChild(style);
-            }
-            
-            document.body.appendChild(particle);
-            
-            setTimeout(() => {
-                if (particle.parentNode) {
-                    particle.parentNode.removeChild(particle);
-                }
-            }, 1000);
-        }
-
-        // ===== PWA FUNCTIONALITY =====
-        function initializePWA() {
-            // Register service worker
-            if ('serviceWorker' in navigator) {
-                window.addEventListener('load', function() {
-                    navigator.serviceWorker.register('/Thannxai/sw.js')
-                        .then(function(registration) {
-                            console.log('✅ ServiceWorker registration successful');
-                        })
-                        .catch(function(err) {
-                            console.log('❌ ServiceWorker registration failed: ', err);
-                        });
-                });
-            }
-            
-            // PWA install prompt
-            let deferredPrompt;
-            
-            window.addEventListener('beforeinstallprompt', function(e) {
-                e.preventDefault();
-                deferredPrompt = e;
-                console.log('💡 PWA install available');
-            });
-            
-            window.addEventListener('appinstalled', function() {
-                console.log('✅ PWA installed successfully');
-                showNotification('ThannxAI installed successfully!', 'success');
-                deferredPrompt = null;
-            });
-        }
-
-        // ===== PERFORMANCE OPTIMIZATIONS =====
-        
-        // Throttle scroll events for better performance
-        function throttle(func, limit) {
-            let inThrottle;
-            return function() {
-                const args = arguments;
-                const context = this;
-                if (!inThrottle) {
-                    func.apply(context, args);
-                    inThrottle = true;
-                    setTimeout(() => inThrottle = false, limit);
-                }
-            }
-        }
-
-        // Debounce resize events
-        function debounce(func, wait) {
-            let timeout;
-            return function executedFunction(...args) {
-                const later = () => {
-                    clearTimeout(timeout);
-                    func(...args);
-                };
-                clearTimeout(timeout);
-                timeout = setTimeout(later, wait);
-            };
-        }
-
-        // Optimize scroll performance
-        window.addEventListener('scroll', throttle(() => {
-            updateActiveNavigation();
-        }, 100));
-
-        // Handle window resize
-        window.addEventListener('resize', debounce(() => {
-            // Recalculate any size-dependent animations
-            const mandala = document.querySelector('.consciousness-mandala');
-            if (mandala && window.innerWidth < 768) {
-                mandala.style.width = '300px';
-                mandala.style.height = '300px';
-            } else if (mandala) {
-                mandala.style.width = '600px';
-                mandala.style.height = '600px';
-            }
-        }, 250));
-
-        // ===== ERROR HANDLING =====
-        window.addEventListener('error', function(event) {
-            console.error('🚨 JavaScript error:', event.error);
-        });
-
-        window.addEventListener('unhandledrejection', function(event) {
-            console.error('🚨 Unhandled promise rejection:', event.reason);
-        });
-
-        // ===== ACCESSIBILITY ENHANCEMENTS =====
-        
-        // Keyboard navigation support
-        document.addEventListener('keydown', (e) => {
-            // ESC key closes mobile menu
-            if (e.key === 'Escape') {
-                const navLinks = document.querySelector('.nav-links');
-                const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-                
-                if (navLinks && navLinks.classList.contains('open')) {
-                    navLinks.classList.remove('open');
-                    if (mobileMenuBtn) {
-                        mobileMenuBtn.style.transform = 'rotate(0deg)';
-                        mobileMenuBtn.textContent = '☰';
-                    }
-                }
-            }
-        });
-
-        // Focus management for better accessibility
-        const focusableElements = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
-        
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Tab') {
-                const focusable = Array.from(document.querySelectorAll(focusableElements));
-                const index = focusable.indexOf(document.activeElement);
-                
-                if (e.shiftKey) {
-                    const prevIndex = index > 0 ? index - 1 : focusable.length - 1;
-                    focusable[prevIndex]?.focus();
-                } else {
-                    const nextIndex = index < focusable.length - 1 ? index + 1 : 0;
-                    focusable[nextIndex]?.focus();
-                }
-            }
-        });
-
-        console.log('🎬 All animations and features initialized successfully!');
-        console.log('🎯 Available Easter Eggs:');
-        console.log('   - Konami Code: ↑↑↓↓←→←→BA for rainbow mode');
-        console.log('   - Double-click logo for matrix mode');
-        console.log('   - Mouse trail particles on movement');
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID');
     </script>
 </body>
 </html>
