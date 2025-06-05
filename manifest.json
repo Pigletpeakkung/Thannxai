@@ -1,116 +1,217 @@
 {
-    "name": "ThannxAI - Advanced AI Solutions & Development",
-    "short_name": "ThannxAI",
-    "description": "Cutting-edge artificial intelligence solutions, machine learning projects, and innovative AI development services by ThannxAI",
-    "start_url": "/Thannxai/",
-    "scope": "/Thannxai/",
-    "display": "standalone",
-    "orientation": "portrait-primary",
-    "background_color": "#0f172a",
-    "theme_color": "#3b82f6",
-    "lang": "en",
-    "dir": "ltr",
-    "categories": [
-        "technology",
-        "artificial intelligence",
-        "machine learning",
-        "development",
-        "innovation"
-    ],
-    "screenshots": [
-        {
-            "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 800'><rect width='1200' height='800' fill='%230f172a'/><circle cx='600' cy='400' r='100' fill='none' stroke='%233b82f6' stroke-width='2'/><text x='600' y='420' text-anchor='middle' fill='%23f8fafc' font-size='48' font-family='Arial'>🧠 ThannxAI</text></svg>",
-            "sizes": "1200x800",
-            "type": "image/svg+xml",
-            "form_factor": "wide",
-            "label": "ThannxAI Desktop View"
-        },
-        {
-            "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 800'><rect width='400' height='800' fill='%230f172a'/><circle cx='200' cy='300' r='50' fill='none' stroke='%233b82f6' stroke-width='2'/><text x='200' y='320' text-anchor='middle' fill='%23f8fafc' font-size='24' font-family='Arial'>🧠 ThannxAI</text></svg>",
-            "sizes": "400x800",
-            "type": "image/svg+xml",
-            "form_factor": "narrow",
-            "label": "ThannxAI Mobile View"
-        }
-    ],
-    "icons": [
-        {
-            "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect width='192' height='192' fill='%230f172a' rx='24'/><circle cx='96' cy='96' r='60' fill='none' stroke='%233b82f6' stroke-width='4'/><circle cx='96' cy='96' r='40' fill='none' stroke='%238b5cf6' stroke-width='3'/><circle cx='96' cy='96' r='20' fill='none' stroke='%2310b981' stroke-width='2'/><text x='96' y='110' text-anchor='middle' fill='%23f8fafc' font-size='32'>🧠</text></svg>",
-            "sizes": "192x192",
-            "type": "image/svg+xml",
-            "purpose": "any"
-        },
-        {
-            "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect width='512' height='512' fill='%230f172a' rx='64'/><circle cx='256' cy='256' r='160' fill='none' stroke='%233b82f6' stroke-width='8'/><circle cx='256' cy='256' r='120' fill='none' stroke='%238b5cf6' stroke-width='6'/><circle cx='256' cy='256' r='80' fill='none' stroke='%2310b981' stroke-width='4'/><text x='256' y='290' text-anchor='middle' fill='%23f8fafc' font-size='96'>🧠</text></svg>",
-            "sizes": "512x512",
-            "type": "image/svg+xml",
-            "purpose": "any"
-        },
-        {
-            "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect width='192' height='192' fill='%233b82f6' rx='24'/><text x='96' y='120' text-anchor='middle' fill='white' font-size='64'>🧠</text></svg>",
-            "sizes": "192x192",
-            "type": "image/svg+xml",
-            "purpose": "maskable"
-        },
-        {
-            "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect width='512' height='512' fill='%233b82f6' rx='64'/><text x='256' y='320' text-anchor='middle' fill='white' font-size='192'>🧠</text></svg>",
-            "sizes": "512x512",
-            "type": "image/svg+xml",
-            "purpose": "maskable"
-        }
-    ],
-    "shortcuts": [
-        {
-            "name": "Projects",
-            "short_name": "Projects",
-            "description": "View AI projects and innovations",
-            "url": "/Thannxai/#projects",
-            "icons": [
-                {
-                    "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'><rect width='96' height='96' fill='%233b82f6' rx='12'/><text x='48' y='60' text-anchor='middle' fill='white' font-size='32'>🤖</text></svg>",
-                    "sizes": "96x96",
-                    "type": "image/svg+xml"
-                }
-            ]
-        },
-        {
-            "name": "Services",
-            "short_name": "Services",
-            "description": "Explore AI services and solutions",
-            "url": "/Thannxai/#services",
-            "icons": [
-                {
-                    "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'><rect width='96' height='96' fill='%2310b981' rx='12'/><text x='48' y='60' text-anchor='middle' fill='white' font-size='32'>⚙️</text></svg>",
-                    "sizes": "96x96",
-                    "type": "image/svg+xml"
-                }
-            ]
-        },
-        {
-            "name": "Contact",
-            "short_name": "Contact",
-            "description": "Get in touch with ThannxAI",
-            "url": "/Thannxai/#contact",
-            "icons": [
-                {
-                    "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'><rect width='96' height='96' fill='%238b5cf6' rx='12'/><text x='48' y='60' text-anchor='middle' fill='white' font-size='32'>📧</text></svg>",
-                    "sizes": "96x96",
-                    "type": "image/svg+xml"
-                }
-            ]
-        }
-    ],
-    "related_applications": [
-        {
-            "platform": "web",
-            "url": "https://pigletpeakkung.github.io/Thannxai/"
-        }
-    ],
-    "prefer_related_applications": false,
-    "edge_side_panel": {
-        "preferred_width": 400
+  "name": "ThannxAI - Consciousness & AI Research",
+  "short_name": "ThannxAI",
+  "description": "Exploring the intersection of consciousness, artificial intelligence, and human potential through cutting-edge research and innovative solutions.",
+  "version": "1.0.0",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#6366f1",
+  "background_color": "#ffffff",
+  "scope": "/",
+  "lang": "en-US",
+  "dir": "ltr",
+  
+  "icons": [
+    {
+      "src": "/icons/icon-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "maskable any"
     },
-    "launch_handler": {
-        "client_mode": "navigate-existing"
+    {
+      "src": "/icons/icon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-152x152.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-maskable-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icons/icon-maskable-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
+  ],
+  
+  "screenshots": [
+    {
+      "src": "/screenshots/desktop-home.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "platform": "wide",
+      "label": "ThannxAI Homepage - Desktop View"
+    },
+    {
+      "src": "/screenshots/mobile-home.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "platform": "narrow",
+      "label": "ThannxAI Homepage - Mobile View"
+    },
+    {
+      "src": "/screenshots/desktop-research.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "platform": "wide",
+      "label": "Research Section - Desktop View"
+    },
+    {
+      "src": "/screenshots/mobile-research.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "platform": "narrow",
+      "label": "Research Section - Mobile View"
+    }
+  ],
+  
+  "categories": [
+    "education",
+    "productivity",
+    "utilities",
+    "business",
+    "lifestyle"
+  ],
+  
+  "shortcuts": [
+    {
+      "name": "Research",
+      "short_name": "Research",
+      "description": "View latest consciousness and AI research",
+      "url": "/research",
+      "icons": [
+        {
+          "src": "/icons/shortcut-research.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Projects",
+      "short_name": "Projects",
+      "description": "Explore AI consciousness projects",
+      "url": "/projects",
+      "icons": [
+        {
+          "src": "/icons/shortcut-projects.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Blog",
+      "short_name": "Blog",
+      "description": "Read insights on AI and consciousness",
+      "url": "/blog",
+      "icons": [
+        {
+          "src": "/icons/shortcut-blog.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Contact",
+      "short_name": "Contact",
+      "description": "Get in touch for collaboration",
+      "url": "/contact",
+      "icons": [
+        {
+          "src": "/icons/shortcut-contact.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    }
+  ],
+  
+  "related_applications": [
+    {
+      "platform": "webapp",
+      "url": "https://thannxai.com/manifest.json"
+    }
+  ],
+  
+  "prefer_related_applications": false,
+  
+  "edge_side_panel": {
+    "preferred_width": 400
+  },
+  
+  "launch_handler": {
+    "client_mode": "navigate-existing"
+  },
+  
+  "handle_links": "preferred",
+  
+  "scope_extensions": [
+    {
+      "origin": "https://blog.thannxai.com"
+    },
+    {
+      "origin": "https://research.thannxai.com"
+    }
+  ],
+  
+  "protocol_handlers": [
+    {
+      "protocol": "web+thannxai",
+      "url": "/handle?type=%s"
+    }
+  ],
+  
+  "file_handlers": [
+    {
+      "action": "/handle-files",
+      "accept": {
+        "application/json": [".json"],
+        "text/plain": [".txt", ".md"],
+        "application/pdf": [".pdf"]
+      }
+    }
+  ]
 }
