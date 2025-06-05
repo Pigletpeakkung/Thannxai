@@ -1,487 +1,116 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ThannxAI - Human-Centered AI for Meaningful Conversations</title>
-    
-    <!-- Enhanced SEO Meta Tags -->
-    <meta name="description" content="ThannxAI creates empathetic AI tools that bridge cultures and foster authentic digital connections. Founded by Thanatsitt Santisamranwilai to amplify human empathy through technology.">
-    <meta name="keywords" content="AI, artificial intelligence, human-centered AI, cross-cultural communication, empathetic technology, meaningful conversations, consciousness AI, neural networks">
-    <meta name="author" content="Thanatsitt Santisamranwilai">
-    <meta name="robots" content="index, follow">
-    <meta name="language" content="English">
-    <meta name="revisit-after" content="7 days">
-    
-    <!-- Enhanced Open Graph Meta Tags -->
-    <meta property="og:title" content="ThannxAI - Human-Centered AI for Meaningful Conversations">
-    <meta property="og:description" content="Creating AI tools that foster genuine connection across cultures and experiences through empathetic technology">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&h=630&fit=crop">
-    <meta property="og:url" content="https://thannxai.com">
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="ThannxAI">
-    <meta property="og:locale" content="en_US">
-    
-    <!-- Enhanced Twitter Card Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@ThannxAI">
-    <meta name="twitter:creator" content="@ThannxAI">
-    <meta name="twitter:title" content="ThannxAI - Human-Centered AI">
-    <meta name="twitter:description" content="AI tools for meaningful conversations and cross-cultural understanding">
-    <meta name="twitter:image" content="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&h=630&fit=crop">
-    
-    <!-- Enhanced Favicon and Icons -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>">
-    <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
-    <link rel="manifest" href="/manifest.json">
-    
-    <!-- Preconnect for Performance -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://images.unsplash.com">
-    
-    <!-- Enhanced Font Loading -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Stylesheets with Optimized Loading -->
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/animate.css">
-    
-    <!-- PWA Configuration -->
-    <meta name="theme-color" content="#6366f1">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <meta name="apple-mobile-web-app-title" content="ThannxAI">
-    
-    <!-- Performance and Security -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="format-detection" content="telephone=no">
-    
-    <!-- GSAP CDN with Integrity -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" integrity="sha512-16esztaSRplJROstbIIdwX3N97V1+pZvV33ABoG1H2OyTttBxEGkTsoIVsiP1iaTtM8b3+hu2kB6pQ4Clr5yug==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" integrity="sha512-Ic9xkERjyZ1xgJ5svx3y0u3xrvfT/uPkV99LBwe68xjy/mGtO+4eURHZBW2xW4SZbFrF1Tf090XqB+EVgXnVjw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/TextPlugin.min.js" integrity="sha512-MDyvuCsv3fuEATKXPZUEv2eMRZZwJGnFbF2VJXLlZ7ELbzWRnXzZHjH3LK2b8FrEKNULzXgm7z0FjkLWyxdPEg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    
-    <!-- Structured Data for SEO -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "ThannxAI",
-        "url": "https://thannxai.com",
-        "logo": "https://thannxai.com/icons/logo.png",
-        "description": "Human-centered AI for meaningful conversations",
-        "founder": {
-            "@type": "Person",
-            "name": "Thanatsitt Santisamranwilai",
-            "nationality": "Thai",
-            "alumniOf": "University in UK"
-        },
-        "foundingDate": "2023",
-        "industry": "Artificial Intelligence",
-        "sameAs": [
-            "https://twitter.com/thannxai",
-            "https://linkedin.com/company/thannxai",
-            "https://github.com/thannxai"
-        ],
-        "contactPoint": {
-            "@type": "ContactPoint",
-            "email": "hello@thannxai.com",
-            "contactType": "customer service"
-        }
-    }
-    </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ThannxAI - Human-Centered AI for Meaningful Conversations</title>
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#6366f1" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" integrity="sha512-16esztaSRplJROstbIIdwX3N97V1+pZvV33ABoG1H2OyTttBxEGkTsoIVsiP1iaTtM8b3+hu2kB6pQ4Clr5yug==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" integrity="sha512-Ic9xkERjyZ1xgJ5svx3y0u3xrvfT/uPkV99LBwe68xjy/mGtO+4eURHZBW2xW4SZbFrF1Tf090XqB+EVgXnVjw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/TextPlugin.min.js" integrity="sha512-MDyvuCsv3fuEATKXPZUEv2eMRZZwJGnFbF2V1Tf090XqB+EVgXnVjw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
-
 <body class="loading font-inter">
-    <!-- Skip to Content for Accessibility -->
-    <a href="#main-content" class="skip-link">Skip to main content</a>
-    
-    <!-- Enhanced Loading Screen -->
-    <div id="loader" class="loader">
-        <div class="consciousness-loader">
-            <div class="neural-network">
-                <div class="node animate__neuralPulse"></div>
-                <div class="node animate__neuralPulse" style="animation-delay: 0.3s;"></div>
-                <div class="node animate__neuralPulse" style="animation-delay: 0.6s;"></div>
-                <div class="connection animate__neuralConnection"></div>
-                <div class="connection animate__neuralConnection" style="animation-delay: 0.5s;"></div>
-            </div>
-            <div class="loader-text">
-                <span class="typing-animation">Awakening Consciousness...</span>
-            </div>
-            <div class="loader-progress">
-                <div class="progress-bar"></div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Enhanced Navigation -->
-    <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
-        <div class="nav-container">
-            <div class="nav-brand">
-                <a href="#home" class="brand-link" aria-label="ThannxAI Home">
-                    <div class="brand-icon animate__neuralPulse">🧠</div>
-                    <div class="brand-text">
-                        <span class="brand-name">ThannxAI</span>
-                        <span class="brand-tagline">Human-Centered AI</span>
-                    </div>
-                </a>
-            </div>
-            
-            <div class="nav-menu" id="nav-menu" role="menubar">
-                <a href="#home" class="nav-link active" role="menuitem">Home</a>
-                <a href="#about" class="nav-link" role="menuitem">About</a>
-                <a href="#mission" class="nav-link" role="menuitem">Mission</a>
-                <a href="#projects" class="nav-link" role="menuitem">Projects</a>
-                <a href="#gallery" class="nav-link" role="menuitem">Gallery</a>
-                <a href="#testimonials" class="nav-link" role="menuitem">Testimonials</a>
-                <a href="#blog" class="nav-link" role="menuitem">Insights</a>
-                <a href="#contact" class="nav-link" role="menuitem">Connect</a>
-            </div>
-            
-            <div class="nav-actions">
-                <button class="btn btn-outline btn-sm btn-magnetic" id="demo-btn" aria-label="Try Demo">
-                    <span>Try Demo</span>
-                </button>
-                <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                </button>
-            </div>
-        </div>
+  <header class="header">
+    <nav class="nav" role="navigation">
+      <a href="index.html" class="nav-link" aria-current="page">Home</a>
+      <a href="blog.html" class="nav-link">Blog</a>
+      <a href="gallery.html" class="nav-link">Gallery</a>
+      <a href="job.html" class="nav-link">Join Us</a>
     </nav>
+  </header>
 
-    <!-- Main Content -->
-    <main id="main-content">
-        <!-- Enhanced Hero Section -->
-        <section id="home" class="hero" role="banner">
-            <div class="hero-background">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1920&h=1080&fit=crop&crop=center" 
-                     alt="AI Neural Network Visualization representing consciousness and connection" 
-                     class="hero-bg-image parallax-bg"
-                     loading="eager">
-                <div class="hero-overlay"></div>
-            </div>
-            
-            <!-- Enhanced Consciousness Particles -->
-            <canvas id="consciousness-particles" class="consciousness-particles" aria-hidden="true"></canvas>
-            
-            <div class="container">
-                <div class="hero-content">
-                    <div class="hero-text" data-animate="consciousnessAwakening">
-                        <h1 class="hero-title">
-                            <span class="title-main">Human-Centered AI</span>
-                            <span class="title-sub">for</span>
-                            <span class="typing-prefix">Meaningful</span>
-                            <span class="typing-animation" id="hero-typing"></span>
-                        </h1>
-                        
-                        <p class="hero-tagline">
-                            <em>Where technology meets empathy, and AI amplifies human connection</em>
-                        </p>
-                        
-                        <p class="hero-description">
-                            In a digital world flooded with noise, true connection often gets lost in translation. 
-                            ThannxAI creates AI tools that help us <strong>listen better</strong>, 
-                            <strong>speak more meaningfully</strong>, and <strong>build bridges</strong> 
-                            across cultures and experiences.
-                        </p>
-                        
-                        <!-- Enhanced Hero Stats -->
-                        <div class="hero-stats" data-animate="fadeInUp" data-animate-delay="500">
-                            <div class="stat-item">
-                                <span class="stat-number counter" data-target="2023">0</span>
-                                <span class="stat-label">Founded</span>
-                                <span class="stat-context">🚀 Innovation Year</span>
-                            </div>
-                            <div class="stat-item">
-                                <span class="stat-number counter" data-target="15">0</span>
-                                <span class="stat-label">Countries Reached</span>
-                                <span class="stat-context">🌍 Global Impact</span>
-                            </div>
-                            <div class="stat-item">
-                                <span class="stat-number counter" data-target="1000">0</span>
-                                <span class="stat-label">Conversations Enhanced</span>
-                                <span class="stat-context">💬 Human Connections</span>
-                            </div>
-                        </div>
-                        
-                        <!-- Enhanced Hero Actions -->
-                        <div class="hero-actions" data-animate="fadeInUp" data-animate-delay="800">
-                            <button class="btn btn-primary btn-large btn-magnetic ripple" id="explore-vision-btn">
-                                <span>Explore Our Vision</span>
-                            </button>
-                            <button class="btn btn-outline btn-large btn-magnetic" id="watch-story-btn">
-                                <span>Watch Our Story</span>
-                            </button>
-                        </div>
-                        
-                        <!-- Enhanced Social Proof -->
-                        <div class="hero-social" data-animate="fadeInUp" data-animate-delay="1000">
-                            <span class="social-label">Follow our journey:</span>
-                            <a href="https://twitter.com/thannxai" class="social-link" aria-label="Follow us on Twitter">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
-                                </svg>
-                            </a>
-                            <a href="https://linkedin.com/company/thannxai" class="social-link" aria-label="Connect on LinkedIn">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                                </svg>
-                            </a>
-                            <a href="https://github.com/thannxai" class="social-link" aria-label="View our code on GitHub">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <!-- Enhanced Hero Visual -->
-                    <div class="hero-visual" data-animate="slideInRight" data-animate-delay="300">
-                        <div class="consciousness-mandala">
-                            <div class="mandala-layer mandala-outer"></div>
-                            <div class="mandala-layer mandala-middle"></div>
-                            <div class="mandala-layer mandala-inner"></div>
-                            <div class="mandala-center animate__consciousnessFlow">🧠</div>
-                            
-                            <!-- Floating Elements -->
-                            <div class="floating-elements">
-                                <div class="float-element" style="--delay: 0s;">💭</div>
-                                <div class="float-element" style="--delay: 2s;">🌐</div>
-                                <div class="float-element" style="--delay: 4s;">💝</div>
-                                <div class="float-element" style="--delay: 6s;">🤝</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Enhanced Scroll Indicator -->
-            <div class="scroll-indicator" data-animate="fadeInUp" data-animate-delay="1200">
-                <a href="#about" class="scroll-link" aria-label="Scroll to About section">
-                    <span class="scroll-text">Discover More</span>
-                    <div class="scroll-arrow">↓</div>
-                </a>
-            </div>
-        </section>
-
-        <!-- Enhanced About Section -->
-        <section id="about" class="about-section section">
-            <div class="container">
-                <div class="section-header text-center" data-animate="fadeInUp">
-                    <h2 class="section-title">The Mind Behind ThannxAI</h2>
-                    <p class="section-subtitle">
-                        Born from lived experience, shaped by cultural bridges, driven by human connection
-                    </p>
-                </div>
-                
-                <div class="about-content">
-                    <div class="about-intro">
-                        <!-- Profile Section -->
-                        <div class="profile-section" data-animate="slideInLeft">
-                            <div class="profile-image">
-                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=600&fit=crop&crop=face" 
-                                     alt="Thanatsitt Santisamranwilai - Founder of ThannxAI" 
-                                     class="profile-img tilt-effect"
-                                     loading="lazy">
-                                <div class="profile-frame"></div>
-                                <div class="profile-glow"></div>
-                            </div>
-                            
-                            <div class="profile-details">
-                                <h3>Thanatsitt Santisamranwilai</h3>
-                                <p class="role">Founder & Creative Technologist</p>
-                                
-                                <div class="profile-highlights">
-                                    <div class="highlight-item">
-                                        <span class="highlight-icon">🇹🇭</span>
-                                        <div class="highlight-content">
-                                            <strong>Born in Thailand</strong>
-                                            <span>Cultural foundation</span>
-                                        </div>
-                                    </div>
-                                    <div class="highlight-item">
-                                        <span class="highlight-icon">🇬🇧</span>
-                                        <div class="highlight-content">
-                                            <strong>Studied Design in UK</strong>
-                                            <span>Cross-cultural perspective</span>
-                                        </div>
-                                    </div>
-                                    <div class="highlight-item">
-                                        <span class="highlight-icon">🤖</span>
-                                        <div class="highlight-content">
-                                            <strong>AI Ethics Advocate</strong>
-                                            <span>Human-first approach</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Story Content -->
-                        <div class="story-content" data-animate="slideInRight" data-animate-delay="200">
-                            <div class="story-section">
-                                <h4>Origins Rooted in Lived Experience</h4>
-                                <p>
-                                    ThannxAI was not created in a vacuum — it was shaped by Thanatsitt's own life journey. 
-                                    Growing up in Thailand and studying design in the UK, he navigated the complexities 
-                                    of cross-cultural communication, personal identity, and the silent weight of unspoken emotion.
-                                </p>
-                                
-                                <p>
-                                    Social anxiety, unexpressed thoughts, and misunderstood feelings were more than just 
-                                    abstract challenges — they were part of his daily reality. These lived experiences 
-                                    seeded a question that would later evolve into a company:
-                                </p>
-                                
-                                <blockquote class="founder-quote">
-                                    <p>"What if technology could help us not just communicate faster, 
-                                    but communicate with more depth, empathy, and understanding?"</p>
-                                    <cite>— Thanatsitt Santisamranwilai</cite>
-                                </blockquote>
-                            </div>
-                            
-                            <div class="story-section">
-                                <h4>Current Focus: Learning by Doing</h4>
-                                <p>
-                                    As an emerging creative technologist, I'm currently deepening my expertise through 
-                                    hands-on experience—exploring innovative AI tools, developing multimedia projects, 
-                                    and continuously learning through real-world application.
-                                </p>
-                                
-                                <div class="focus-highlight">
-                                    <em>"This phase is my creative incubation—where ideas, skills, and vision evolve through immersive practice."</em>
-                                </div>
-                                
-                                <div class="current-projects">
-                                    <h5>Current Learning Areas:</h5>
-                                    <ul>
-                                        <li>Advanced AI/ML frameworks and applications</li>
-                                        <li>Cross-cultural communication research</li>
-                                        <li>Empathetic technology design principles</li>
-                                        <li>Multimedia storytelling and user experience</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Continue with other sections... -->
-        <!-- [The rest of the sections would follow the same enhanced pattern] -->
-        
-    </main>
-
-    <!-- Enhanced Footer -->
-    <footer class="footer" role="contentinfo">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <div class="brand-icon animate__neuralPulse">🧠</div>
-                    <h3>ThannxAI</h3>
-                    <p>Human-Centered AI for Meaningful Conversations</p>
-                    <p class="footer-mission">Building bridges, not barriers, through empathetic technology.</p>
-                </div>
-                
-                <div class="footer-links">
-                    <div class="link-group">
-                        <h4>Explore</h4>
-                        <a href="#about">About</a>
-                        <a href="#mission">Mission</a>
-                        <a href="#projects">Projects</a>
-                        <a href="#blog">Insights</a>
-                    </div>
-                    
-                    <div class="link-group">
-                        <h4>Connect</h4>
-                        <a href="#contact">Contact</a>
-                        <a href="https://twitter.com/thannxai">Twitter</a>
-                        <a href="https://linkedin.com/company/thannxai">LinkedIn</a>
-                        <a href="https://github.com/thannxai">GitHub</a>
-                    </div>
-                    
-                    <div class="link-group">
-                        <h4>Resources</h4>
-                        <a href="/documentation">Documentation</a>
-                        <a href="/api">API</a>
-                        <a href="/privacy">Privacy Policy</a>
-                        <a href="/terms">Terms of Service</a>
-                    </div>
-                    
-                    <div class="link-group">
-                        <h4>Newsletter</h4>
-                        <p>Stay updated on our journey</p>
-                        <form class="newsletter-form" id="newsletter-form">
-                            <input type="email" placeholder="Enter your email" required aria-label="Email address">
-                            <button type="submit" class="btn btn-primary btn-sm">Subscribe</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <div class="footer-legal">
-                    <p>&copy; 2024 ThannxAI. Built with consciousness and care.</p>
-                    <div class="footer-meta">
-                        <span>Made with ❤️ for human connection</span>
-                        <span>•</span>
-                        <span>Powered by empathy</span>
-                    </div>
-                </div>
-                
-                <div class="footer-certifications">
-                    <span class="cert-badge">🌱 Carbon Neutral</span>
-                    <span class="cert-badge">♿ Accessible</span>
-                    <span class="cert-badge">🔒 Privacy First</span>
-                </div>
-            </div>
+  <section class="hero" id="home">
+    <div class="container">
+      <div class="hero-content">
+        <h1>Human-Centered AI for Meaningful Conversations</h1>
+        <p>Where artificial intelligence meets authentic human connection</p>
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn-primary btn-magnetic">Explore Projects</a>
+          <a href="job.html" class="btn btn-outline btn-magnetic">Hire Thanatsitt</a>
         </div>
-    </footer>
+      </div>
+    </div>
+  </section>
 
-    <!-- Enhanced PWA Install Button -->
-    <button id="install-pwa" class="install-pwa btn-magnetic" style="display: none;" aria-label="Install ThannxAI App">
-        <span class="install-icon">📱</span>
-        <span class="install-text">Install App</span>
-    </button>
+  <section id="projects" class="projects">
+    <div class="container">
+      <div class="section-header text-center">
+        <h2>Our Projects</h2>
+        <p>Tools that understand human emotion and culture</p>
+      </div>
+      <div class="project-grid">
+        <div class="project-card card-hover">
+          <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=300&fit=crop" alt="Project 1" loading="lazy" />
+          <h3>Consciousness Mapping</h3>
+          <p>Visualizing neural networks and human cognition</p>
+        </div>
+        <div class="project-card card-hover">
+          <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=300&fit=crop" alt="Project 2" loading="lazy" />
+          <h3>AI Ethical Framework</h3>
+          <p>Building responsible AI solutions</p>
+        </div>
+        <div class="project-card card-hover">
+          <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=300&fit=crop" alt="Project 3" loading="lazy" />
+          <h3>Quantum Learning</h3>
+          <p>Exploring AI at quantum scale</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <!-- Back to Top Button -->
-    <button id="back-to-top" class="back-to-top btn-magnetic" aria-label="Back to top" style="opacity: 0; pointer-events: none;">
-        <span>↑</span>
-    </button>
+  <section class="hire-section" id="hire">
+    <div class="container">
+      <div class="section-header text-center">
+        <h2>Hire Thanatsitt</h2>
+        <p>Available for freelance and long-term partnerships</p>
+      </div>
+      <div class="hire-features">
+        <div class="feature-box">
+          <h4>🤖 AI Development</h4>
+          <p>Specializing in empathetic AI tools for cross-cultural communication</p>
+        </div>
+        <div class="feature-box">
+          <h4>🌐 Cross-Cultural Design</h4>
+          <p>Experience in Thailand, UK, and global contexts</p>
+        </div>
+        <div class="feature-box">
+          <h4>💡 Consciousness Research</h4>
+          <p>Exploring AI that understands human emotion and intent</p>
+        </div>
+      </div>
+      <div class="hire-cta">
+        <h3>Let's Build Something Meaningful</h3>
+        <p>I'm currently available for freelance projects and research collaborations.</p>
+        <a href="job.html" class="btn btn-primary btn-magnetic">View Opportunities</a>
+      </div>
+    </div>
+  </section>
 
-    <!-- Enhanced Scripts Loading -->
-    <script src="js/animate.js" defer></script>
-    <script src="js/script.js" defer></script>
-    <script src="js/pwa.js" defer></script>
-    
-    <!-- Analytics with Privacy -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'GA_MEASUREMENT_ID', {
-            anonymize_ip: true,
-            cookie_flags: 'SameSite=None;Secure'
-        });
-    </script>
-    
-    <!-- Service Worker Registration -->
-    <script>
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/sw.js')
-                    .then(registration => console.log('SW registered'))
-                    .catch(error => console.log('SW registration failed'));
-            });
-        }
-    </script>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-brand">
+        <h2>ThannxAI</h2>
+        <p>AI tools that connect cultures through empathy</p>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="blog.html">Blog</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="job.html">Hire Thanatsitt</a>
+      </div>
+      <div class="footer-social">
+        <a href="https://twitter.com/thannxai" aria-label="Twitter">🐦</a>
+        <a href="https://linkedin.com/in/thanatsitt" aria-label="LinkedIn">💼</a>
+        <a href="https://github.com/thanatsitt" aria-label="GitHub">🐙</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 ThannxAI. Built with consciousness and care.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
