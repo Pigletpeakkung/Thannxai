@@ -110,7 +110,7 @@ body {
   left: 0;
   width: 100%;
   height: 100vh;
-  background-image: url("/assets/images/web03.webp");
+  background-image: url("https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe");
   background-size: cover;
   background-position: center;
   z-index: 0;
@@ -147,20 +147,20 @@ body {
 }
 
 .background-image.default {
-  background-image: url("/assets/images/wave-bg-001.webp");
+  background-image: url("https://images.unsplash.com/photo-1579546929518-9e396f3cc809");
   opacity: 0.6;
 }
 
 .background-image.cultural {
-  background-image: url("/assets/images/wave-bg-002.webp");
+  background-image: url("https://images.unsplash.com/photo-1519671482749-fd09be7ccebf");
 }
 
 .background-image.fusion {
-  background-image: url("/assets/images/wave-bg-003.webp");
+  background-image: url("https://images.unsplash.com/photo-1600585154340-be6161a56a0c");
 }
 
 .background-image.heritage {
-  background-image: url("/assets/images/wave-bg-004.webp");
+  background-image: url("https://images.unsplash.com/photo-1548681520-6a9c34134a49");
 }
 
 .background-image:not(.default) {
@@ -172,6 +172,7 @@ body {
   50% { opacity: 0.4; }
 }
 
+/* Rest of the styles remain unchanged */
 .text-background {
   position: fixed;
   width: 100%;
@@ -245,7 +246,6 @@ body {
   overflow: visible;
   z-index: 100;
   perspective: 1000px;
-  transform-style: none;
   transition: transform 0.3s ease, box-shadow 0.3s ease-in-out;
   animation: slideInCard 0.6s ease-in-out forwards;
   animation-delay: calc(var(--card-index) * 0.15s);
