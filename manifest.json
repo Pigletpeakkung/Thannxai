@@ -8,14 +8,14 @@
   "theme_color": "#ffcc00",
   "icons": [
     {
-      "src": "/Thannxai/assets/images/logo192.png",
+      "src": "https://source.unsplash.com/1587620962725-abab7fe55159/192x192",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/jpeg"
     },
     {
-      "src": "/Thannxai/assets/images/logo512.png",
+      "src": "https://source.unsplash.com/1587620962725-abab7fe55159/512x512",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/jpeg"
     }
   ]
 }
