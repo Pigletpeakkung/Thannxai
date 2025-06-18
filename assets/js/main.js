@@ -15,7 +15,7 @@ document.addEventListener('alpine:init', () => {
     },
 
     init() {
-      // Typing animation for hero section
+      // Typing effect for hero section
       const text = 'Thanatsitt';
       let i = 0;
       const typeWriter = () => {
