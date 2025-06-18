@@ -1,0 +1,74 @@
+/* Tailwind Customizations */
+@import url("https://fonts.cdnfonts.com/css/longsile");
+@import url("https://fonts.cdnfonts.com/css/thegoodmonolith");
+@import url("https://fonts.googleapis.com/css2?family=PP+Neue+Montreal&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --text: #ffcc00;
+  --bg: #000000;
+  --highlight-bg: #ffcc00;
+  --type-line-opacity: 0.02;
+}
+
+body {
+  background-color: var(--bg);
+  min-height: 100vh;
+  font-family: "Longsile", sans-serif;
+  position: relative;
+}
+
+/* Accessibility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* Cosmic Background */
+.cosmic-bg {
+  background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+}
+
+/* Background Frame and Images */
+.background-frame {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-image: url("/assets/images/web03.webp");
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0;
+  animation: fadeInFrame 2s ease-out forwards;
+}
+
+.background-image.default {
+  background-image: url("/assets/images/wave-bg-001.webp");
+  opacity: 0.6;
+}
+
+.background-image.cultural {
+  background-image: url("/assets/images/wave-bg-002.webp");
+}
+
+.background-image.fusion {
+  background-image: url("/assets/images/wave-bg-003.webp");
+}
+
+.background-image.heritage {
+  background-image: url("/assets/images/wave-bg-004.webp");
+}
+
+/* ... Rest of the styles from index.html <style> tag ... */
