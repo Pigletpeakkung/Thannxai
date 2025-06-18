@@ -1,9 +1,9 @@
-// Alpine.js Logic
 document.addEventListener('alpine:init', () => {
   Alpine.data('portfolioApp', () => ({
     mobileMenuOpen: false,
     scrolled: false,
     formStatus: null,
+    loading: false,
     typedText: '',
 
     scrollToSection(id) {
@@ -11,6 +11,22 @@ document.addEventListener('alpine:init', () => {
       if (element) {
         element.scrollIntoView({ behavior: 'smooth' });
         this.mobileMenuOpen = false;
+      }
+    },
+
+    async submitForm(e) {
+      e.preventDefault();
+      this.loading = true;
+      try {
+        await emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', e.target, 'YOUR_ACTUAL_USER_ID');
+        this.formStatus = 'Message sent successfully!';
+        e.target.reset();
+      } catch (error) {
+        this.formStatus = 'Failed to send message. Please try again.';
+        console.error('EmailJS Error:', error);
+      } finally {
+        this.loading = false;
+        setTimeout(() => (this.formStatus = null), 5000);
       }
     },
 
@@ -37,24 +53,6 @@ document.addEventListener('alpine:init', () => {
         }
       });
 
-      // EmailJS Form Submission
-      emailjs.init('YOUR_ACTUAL_USER_ID'); // Replace with your EmailJS User ID
-      const form = document.getElementById('contact-form');
-      if (form) {
-        form.addEventListener('submit', (e) => {
-          e.preventDefault();
-          emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', form)
-            .then(() => {
-              this.formStatus = 'Message sent successfully!';
-              form.reset();
-              setTimeout(() => this.formStatus = null, 5000);
-            }, (error) => {
-              this.formStatus = 'Failed to send message. Please try again.';
-              console.error('EmailJS Error:', error);
-            });
-        });
-      }
-
       // Dynamic Footer Year
       const yearElement = document.getElementById('current-year');
       if (yearElement) {
@@ -64,12 +62,14 @@ document.addEventListener('alpine:init', () => {
   }));
 });
 
-// GSAP and Interactive Text Animation
 gsap.registerPlugin(CustomEase, SplitText, ScrambleTextPlugin);
 
 document.addEventListener("DOMContentLoaded", function () {
   CustomEase.create("customEase", "0.86, 0, 0.07, 1");
   CustomEase.create("mouseEase", "0.25, 0.1, 0.25, 1");
+
+  // Check for reduced motion preference
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   document.fonts.ready.then(() => {
     initializeAnimation();
@@ -89,6 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     function switchBackgroundImage(id) {
+      if (prefersReducedMotion) return; // Skip animations for reduced motion
       Object.values(backgroundImages).forEach((bg) => {
         gsap.to(bg, {
           opacity: 0,
@@ -214,7 +215,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       textElement.style.visibility = "visible";
 
-      if (window.innerWidth >= 768) {
+      if (window.innerWidth >= 768 && !prefersReducedMotion) {
         row.addEventListener('mousemove', (e) => {
           const rect = row.getBoundingClientRect();
           const x = e.clientX - rect.left - rect.width / 2;
@@ -334,14 +335,18 @@ document.addEventListener("DOMContentLoaded", function () {
         filter: "blur(10px)"
       });
 
-      gsap.to(chars, {
-        opacity: 1,
-        filter: "blur(0px)",
-        duration: 0.6,
-        stagger: 0.07,
-        ease: "customEase",
-        delay: 0.1 * rowIndex
-      });
+      if (!prefersReducedMotion) {
+        gsap.to(chars, {
+          opacity: 1,
+          filter: "blur(0px)",
+          duration: 0.6,
+          stagger: 0.07,
+          ease: "customEase",
+          delay: 0.1 * rowIndex
+        });
+      } else {
+        gsap.set(chars, { opacity: 1, filter: "blur(0px)" });
+      }
     });
 
     function forceResetKineticAnimation() {
@@ -370,6 +375,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function startKineticAnimation(text) {
+      if (prefersReducedMotion) return; // Skip for reduced motion
       forceResetKineticAnimation();
 
       const kineticType = document.getElementById("kinetic-type");
@@ -475,7 +481,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function transitionBetweenRows(fromRow, toRow) {
-      if (state.transitionInProgress) return;
+      if (state.transitionInProgress || prefersReducedMotion) return;
 
       state.transitionInProgress = true;
 
@@ -545,6 +551,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function createTextRevealAnimation(rowId) {
+      if (prefersReducedMotion) return gsap.timeline();
       const timeline = gsap.timeline();
 
       timeline.to(backgroundTextItems, {
@@ -596,6 +603,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function resetBackgroundTextWithAnimation() {
+      if (prefersReducedMotion) return gsap.timeline();
       const timeline = gsap.timeline();
 
       timeline.call(() => {
@@ -643,9 +651,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function activateRow(row) {
       const rowId = row.dataset.rowId;
 
-      if (state.activeRowId === rowId) return;
-
-      if (state.transitionInProgress) return;
+      if (state.activeRowId === rowId || state.transitionInProgress) return;
 
       const activeRow = document.querySelector(".text-row.active");
 
@@ -696,9 +702,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function deactivateRow(row) {
       const rowId = row.dataset.rowId;
 
-      if (state.activeRowId !== rowId) return;
-
-      if (state.transitionInProgress) return;
+      if (state.activeRowId !== rowId || state.transitionInProgress) return;
 
       state.activeRowId = null;
       row.classList.remove("active");
@@ -740,6 +744,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function initializeParallax() {
+      if (prefersReducedMotion) return; // Skip for reduced motion
       const container = document.querySelector("body");
       const backgroundElements = [
         ...document.querySelectorAll("[id$='-bg']"),
@@ -828,22 +833,19 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       });
 
-      row.addEventListener("click", () => {
+      // Add focus/blur for keyboard accessibility
+      interactiveArea.addEventListener("focus", () => {
         activateRow(row);
+      });
+      interactiveArea.addEventListener("blur", () => {
+        if (state.activeRowId === row.dataset.rowId) {
+          deactivateRow(row);
+        }
       });
     });
 
-    window.testKineticAnimation = function (rowId) {
-      const row = document.querySelector(`.text-row[data-row-id="${rowId}"]`);
-      if (row) {
-        activateRow(row);
-        setTimeout(() => {
-          deactivateRow(row);
-        }, 2500);
-      }
-    };
-
     function scrambleRandomText() {
+      if (prefersReducedMotion) return;
       const randomIndex = Math.floor(Math.random() * backgroundTextItems.length);
       const randomItem = backgroundTextItems[randomIndex];
       const originalText = randomItem.dataset.text;
@@ -863,7 +865,9 @@ document.addEventListener("DOMContentLoaded", function () {
       setTimeout(scrambleRandomText, delay * 1000);
     }
 
-    setTimeout(scrambleRandomText, 800);
+    if (!prefersReducedMotion) {
+      setTimeout(scrambleRandomText, 800);
+    }
 
     const simplicity = document.querySelector('.text-item[data-text="IS THE KEY"]');
     if (simplicity) {
@@ -872,17 +876,25 @@ document.addEventListener("DOMContentLoaded", function () {
         charsClass: "simplicity-char"
       });
 
-      gsap.from(splitSimplicity.chars, {
-        opacity: 0,
-        scale: 0.6,
-        duration: 0.8,
-        stagger: 0.012,
-        ease: "customEase",
-        delay: 0.8
-      });
+      if (!prefersReducedMotion) {
+        gsap.from(splitSimplicity.chars, {
+          opacity: 0,
+          scale: 0.6,
+          duration: 0.8,
+          stagger: 0.012,
+          ease: "customEase",
+          delay: 0.8
+        });
+      } else {
+        gsap.set(splitSimplicity.chars, { opacity: 1, scale: 1 });
+      }
     }
 
     backgroundTextItems.forEach((item, index) => {
+      if (prefersReducedMotion) {
+        gsap.set(item, { opacity: 0.8 });
+        return;
+      }
       const delay = index * 0.08;
       gsap.to(item, {
         opacity: 0.8,
@@ -936,19 +948,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // Accessibility: Skip to Content Link
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Tab' && document.activeElement === document.body) {
-      const skipLink = document.createElement('a');
-      skipLink.href = '#home';
-      skipLink.textContent = 'Skip to main content';
-      skipLink.className = 'sr-only focus:not-sr-only bg-yellow-400 text-black p-2 rounded absolute top-4 left-4 z-50';
-      document.body.prepend(skipLink);
-      skipLink.focus();
-      skipLink.addEventListener('blur', () => skipLink.remove());
-    }
-  });
-
   // Prevent Double Tap Zoom on Mobile
   document.addEventListener('touchstart', (e) => {
     if (e.touches.length > 1) {
@@ -959,7 +958,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Service Worker Registration
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/Thannxai/service-worker.js')
+      navigator.serviceWorker.register('./service-worker.js')
         .then(reg => console.log('Service Worker registered:', reg))
         .catch(err => console.error('Service Worker registration failed:', err));
     });
