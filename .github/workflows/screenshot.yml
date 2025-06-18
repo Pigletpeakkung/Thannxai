@@ -30,3 +30,9 @@ jobs:
         with:
           name: screenshot-${{ matrix.width }}
           path: screenshots/screenshot-${{ matrix.width }}.png
+- name: Check if screenshot exists
+  run: |
+    if [ ! -f screenshots/screenshot-${{ matrix.width }}.png ]; then
+      echo "Screenshot not generated for width ${{ matrix.width }}."
+      exit 1
+    fi
