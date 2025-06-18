@@ -2,6 +2,12 @@
 
 A human-centered AI platform focused on empathetic communication and cross-cultural understanding. This repository contains the complete website for ThannxAI, showcasing our mission to create AI tools that amplify human connection rather than replace it.
 
+## Portfolio Screenshots
+![Desktop View](screenshots/static-1200.png)
+![Tablet View](screenshots/static-768.png)
+![Mobile View](screenshots/static-480.png)
+![Focus Animation](screenshots/focus-animation.png)
+
 ## 🌟 Project Overview
 
 ThannxAI represents a new approach to artificial intelligence—one that prioritizes empathy, cultural sensitivity, and human dignity. Our website serves as both a showcase of our technology and a testament to our values of authentic, meaningful digital communication.
