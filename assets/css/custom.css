@@ -103,17 +103,6 @@ body {
   background: linear-gradient(to right, var(--text), #f59e0b);
 }
 
-/* Typing Cursor */
-.typing-cursor::after {
-  content: '|';
-  @apply animate-blink inline-block ml-1;
-}
-
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
-}
-
 /* Background Frame and Images */
 .background-frame {
   position: fixed;
@@ -215,7 +204,6 @@ body {
   height: calc(100% + 4px);
   background-color: var(--highlight-bg);
   z-index: -1;
-  z-index: -1;
   transition: width 0.4s ease;
 }
 
@@ -241,18 +229,16 @@ body {
 
 .sliced-container {
   position: relative;
-  width: auto;
-  auto; max-width: 100%;
+  max-width: 100%;
   margin: 0 auto;
-  width: auto; margin margin: auto;
   transform: translateZ(0);
 }
 
 .text-row {
   position: relative;
-  width: auto100%;
+  width: 100%;
   height: calc(100px - 4px);
-  margin: 8px auto0;
+  margin: 8px 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -260,13 +246,8 @@ body {
   z-index: 100;
   perspective: 1000px;
   transform-style: none;
-  transition: transform 0.3s ease;
-  transform: rotateX(var(--tilt-x));
-  var(--tilt-x) rotateY(var(--tilt-y));
-  rotateY: var(--tilt-y(var(--tilt-x));
-  transition: transform ease-out0.3s ease, box-shadow 0.3s ease-in-out;
-  animation: slideInCard ease-out0.6s ease-in-out;
-  ease-out forwards;
+  transition: transform 0.3s ease, box-shadow 0.3s ease-in-out;
+  animation: slideInCard 0.6s ease-in-out forwards;
   animation-delay: calc(var(--card-index) * 0.15s);
 }
 
@@ -276,7 +257,7 @@ body {
 }
 
 .text-row:hover, .text-row:focus, .text-row.flipped {
-  transform: scale(1.03) rotateX(var(--tilt-x)) rotateY(var(--tilt-y));
+  transform: scale(1.03);
   box-shadow: 0 8px 16px rgba(255, 204, 0, 0.2);
 }
 
