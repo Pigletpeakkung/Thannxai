@@ -5,36 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Thanats's Portfolio</title>
   <base href="/Thannxai/">
-  <!-- PWA Manifest -->
   <link rel="manifest" href="/Thannxai/manifest.json">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <link rel="apple-touch-icon" href="/Thannxai/assets/images/logo192.png">
-  <!-- Tailwind CSS -->
+  <link rel="apple-touch-icon" href="https://images.unsplash.com/photo-1587620962725-abab7fe55159">
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <!-- Fonts -->
   <link href="https://fonts.cdnfonts.com/css/longsile" rel="stylesheet">
   <link href="https://fonts.cdnfonts.com/css/thegoodmonolith" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=PP+Neue+Montreal&display=swap" rel="stylesheet">
-  <!-- Font Awesome -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
-  <!-- EmailJS -->
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3.10.0/dist/email.min.js"></script>
-  <!-- Alpine.js -->
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.10.5/dist/cdn.min.js"></script>
-  <!-- GSAP and Plugins -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.3/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/CustomEase.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/TextPlugin.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrambleTextPlugin.min.js"></script>
   <script src="https://unpkg.com/split-text-js@1.0.2/dist/splittext.min.js"></script>
-  <!-- Custom CSS -->
-  <link href="/Thannxai/assets/css/custom.css" rel="stylesheet">
+  <link href="/Thannxai/assets/css/style.css" rel="stylesheet">
 </head>
 <body class="text-white font-sans antialiased overflow-x-hidden" x-data="portfolioApp()">
-  <!-- Skip to Main Content -->
   <a href="#home" class="sr-only focus:not-sr-only">Skip to main content</a>
-  <!-- Navigation -->
   <nav class="fixed top-0 left-0 right-0 z-50 glass-morphism">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between items-center h-16">
@@ -65,16 +55,13 @@
       </div>
     </div>
   </nav>
-  <!-- Scroll Progress Bar -->
   <div id="scroll-progress" class="fixed top-0 left-0 h-1 bg-yellow-400 z-50" style="width: 0;"></div>
-  <!-- Background Elements -->
   <div class="background-frame"></div>
   <div class="background-image default" id="default-bg"></div>
   <div class="background-image cultural" id="cultural-bg"></div>
   <div class="background-image fusion" id="fusion-bg"></div>
   <div class="background-image heritage" id="heritage-bg"></div>
   <div class="bottom-gradient"></div>
-  <!-- Text Background -->
   <div class="text-background">
     <div class="text-item" style="top: 10%; left: 5%;" data-text="BE">BE</div>
     <div class="text-item" style="top: 20%; left: 80%;" data-text="PRESENT">PRESENT</div>
@@ -93,7 +80,6 @@
     <div class="text-item" style="top: 75%; left: 90%;" data-text="T">T</div>
     <div class="text-item" style="top: 85%; left: 25%;" data-text="Y">Y</div>
   </div>
-  <!-- Kinetic Typography -->
   <div class="type" id="kinetic-type">
     <div class="type-line"></div>
     <div class="type-line"></div>
@@ -114,9 +100,7 @@
     <div class="type-line"></div>
     <div class="type-line"></div>
   </div>
-  <!-- Main Content -->
   <main class="main-content">
-    <!-- Home Section -->
     <section id="home" class="min-h-screen flex items-center justify-center">
       <div class="text-center">
         <h1 class="text-5xl md:text-7xl font-bold text-shadow">
@@ -129,7 +113,6 @@
         </a>
       </div>
     </section>
-    <!-- About Section -->
     <section id="about" class="py-20 px-4">
       <div class="max-w-4xl mx-auto text-center">
         <h2 class="text-4xl md:text-5xl font-bold text-shadow mb-8">About Me</h2>
@@ -138,12 +121,10 @@
         </p>
       </div>
     </section>
-    <!-- Skills Section -->
     <section id="skills" class="py-20 px-4 bg-gray-900/50">
       <div class="max-w-6xl mx-auto">
         <h2 class="text-4xl md:text-5xl font-bold text-shadow text-center mb-12">Skills</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <!-- Skill Card 1 -->
           <div class="card-container" tabindex="0">
             <div class="card glass-morphism p-6 rounded-xl text-center">
               <div class="card-front">
@@ -156,7 +137,6 @@
               </div>
             </div>
           </div>
-          <!-- Skill Card 2 -->
           <div class="card-container" tabindex="0">
             <div class="card glass-morphism p-6 rounded-xl text-center">
               <div class="card-front">
@@ -169,7 +149,6 @@
               </div>
             </div>
           </div>
-          <!-- Skill Card 3 -->
           <div class="card-container" tabindex="0">
             <div class="card glass-morphism p-6 rounded-xl text-center">
               <div class="card-front">
@@ -185,7 +164,6 @@
         </div>
       </div>
     </section>
-    <!-- Gallery Section -->
     <section id="gallery" class="py-20 px-4">
       <div class="max-w-6xl mx-auto">
         <h2 class="text-4xl md:text-5xl font-bold text-shadow text-center mb-12">Gallery</h2>
@@ -205,7 +183,6 @@
         </div>
       </div>
     </section>
-    <!-- Contact Section -->
     <section id="contact" class="py-20 px-4 bg-gray-900/50">
       <div class="max-w-4xl mx-auto">
         <h2 class="text-4xl md:text-5xl font-bold text-shadow text-center mb-12">Contact Me</h2>
@@ -234,11 +211,9 @@
       </div>
     </section>
   </main>
-  <!-- Footer -->
   <footer class="py-8 text-center bg-gray-900/50">
     <p class="text-gray-300">© <span id="current-year"></span> Thanatsitt Santisamranwilai. All rights reserved.</p>
   </footer>
-  <!-- Custom JavaScript -->
-  <script src="/Thannxai/assets/js/main.js"></script>
+  <script src="/Thannxai/assets/js/script.js"></script>
 </body>
 </html>
