@@ -1,0 +1,32 @@
+name: Capture Portfolio Screenshots
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch: # Allows manual triggering
+
+jobs:
+  screenshot:
+    name: Capture Screenshots
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        width: [1200, 768, 480] # Desktop, tablet, mobile resolutions
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Capture Screenshot
+        uses: swinton/screenshot-website@v1.x
+        with:
+          source: https://pigletpeakkung.github.io/Thannxai/
+          destination: screenshots/screenshot-${{ matrix.width }}.png
+          full-page: true
+          width: ${{ matrix.width }}
+
+      - name: Upload Screenshot Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: screenshot-${{ matrix.width }}
+          path: screenshots/screenshot-${{ matrix.width }}.png
