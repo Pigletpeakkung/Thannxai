@@ -4,12 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Thanats's Portfolio</title>
-  <base href="/Thannxai/">
-  <link rel="manifest" href="/Thannxai/manifest.json">
+  <!-- Remove <base> tag for GitHub Pages compatibility; use relative paths -->
+  <link rel="manifest" href="./manifest.json">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <link rel="apple-touch-icon" href="https://images.unsplash.com/photo-1587620962725-abab7fe55159">
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <!-- Use local icon instead of external Unsplash image -->
+  <link rel="apple-touch-icon" href="./assets/images/icon-192.png">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.3/dist/tailwind.min.css" rel="stylesheet">
   <link href="https://fonts.cdnfonts.com/css/longsile" rel="stylesheet">
   <link href="https://fonts.cdnfonts.com/css/thegoodmonolith" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=PP+Neue+Montreal&display=swap" rel="stylesheet">
@@ -21,10 +22,10 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/TextPlugin.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrambleTextPlugin.min.js"></script>
   <script src="https://unpkg.com/split-text-js@1.0.2/dist/splittext.min.js"></script>
-  <link href="/Thannxai/assets/css/style.css" rel="stylesheet">
+  <link href="./assets/css/style.css" rel="stylesheet">
 </head>
 <body class="text-white font-sans antialiased overflow-x-hidden" x-data="portfolioApp()">
-  <a href="#home" class="sr-only focus:not-sr-only">Skip to main content</a>
+  <a href="#home" class="sr-only focus:not-sr-only bg-yellow-400 text-black p-2 rounded absolute top-4 left-4 z-50">Skip to main content</a>
   <nav class="fixed top-0 left-0 right-0 z-50 glass-morphism">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between items-center h-16">
@@ -39,7 +40,10 @@
           <a href="#contact" @click="scrollToSection('contact')" class="hover:text-yellow-400">Contact</a>
         </div>
         <div class="md:hidden">
-          <button @click="mobileMenuOpen = !mobileMenuOpen" class="text-yellow-400 focus:outline-none">
+          <button @click="mobileMenuOpen = !mobileMenuOpen" 
+                  class="text-yellow-400 focus:outline-none" 
+                  aria-label="Toggle navigation menu" 
+                  :aria-expanded="mobileMenuOpen">
             <i class="fas fa-bars fa-lg"></i>
           </button>
         </div>
@@ -55,32 +59,32 @@
       </div>
     </div>
   </nav>
-  <div id="scroll-progress" class="fixed top-0 left-0 h-1 bg-yellow-400 z-50" style="width: 0;"></div>
+  <div id="scroll-progress" class="fixed top-0 left-0 h-1 bg-yellow-400 z-50"></div>
   <div class="background-frame"></div>
-  <div class="background-image default" id="default-bg"></div>
-  <div class="background-image cultural" id="cultural-bg"></div>
-  <div class="background-image fusion" id="fusion-bg"></div>
-  <div class="background-image heritage" id="heritage-bg"></div>
-  <div class="bottom-gradient"></div>
-  <div class="text-background">
-    <div class="text-item" style="top: 10%; left: 5%;" data-text="BE">BE</div>
-    <div class="text-item" style="top: 20%; left: 80%;" data-text="PRESENT">PRESENT</div>
-    <div class="text-item" style="top: 30%; left: 15%;" data-text="LISTEN">LISTEN</div>
-    <div class="text-item" style="top: 40%; left: 70%;" data-text="DEEPLY">DEEPLY</div>
-    <div class="text-item" style="top: 50%; left: 10%;" data-text="OBSERVE">OBSERVE</div>
-    <div class="text-item" style="top: 60%; left: 85%;" data-text="&">&</div>
-    <div class="text-item" style="top: 70%; left: 20%;" data-text="FEEL">FEEL</div>
-    <div class="text-item" style="top: 80%; left: 75%;" data-text="IS THE KEY">IS THE KEY</div>
-    <div class="text-item" style="top: 15%; left: 90%;" data-text="S">S</div>
-    <div class="text-item" style="top: 25%; left: 10%;" data-text="I">I</div>
-    <div class="text-item" style="top: 35%; left: 85%;" data-text="M">M</div>
-    <div class="text-item" style="top: 45%; left: 20%;" data-text="P">P</div>
-    <div class="text-item" style="top: 55%; left: 80%;" data-text="L">L</div>
-    <div class="text-item" style="top: 65%; left: 15%;" data-text="C">C</div>
-    <div class="text-item" style="top: 75%; left: 90%;" data-text="T">T</div>
-    <div class="text-item" style="top: 85%; left: 25%;" data-text="Y">Y</div>
+  <div class="background-image default" id="default-bg" aria-hidden="true"></div>
+  <div class="background-image cultural" id="cultural-bg" aria-hidden="true"></div>
+  <div class="background-image fusion" id="fusion-bg" aria-hidden="true"></div>
+  <div class="background-image heritage" id="heritage-bg" aria-hidden="true"></div>
+  <div class="bottom-gradient" aria-hidden="true"></div>
+  <div class="text-background" aria-hidden="true">
+    <div class="text-item" style="--top: 10%; --left: 5%;" data-text="BE">BE</div>
+    <div class="text-item" style="--top: 20%; --left: 80%;" data-text="PRESENT">PRESENT</div>
+    <div class="text-item" style="--top: 30%; --left: 15%;" data-text="LISTEN">LISTEN</div>
+    <div class="text-item" style="--top: 40%; --left: 70%;" data-text="DEEPLY">DEEPLY</div>
+    <div class="text-item" style="--top: 50%; --left: 10%;" data-text="OBSERVE">OBSERVE</div>
+    <div class="text-item" style="--top: 60%; --left: 85%;" data-text="&">&</div>
+    <div class="text-item" style="--top: 70%; --left: 20%;" data-text="FEEL">FEEL</div>
+    <div class="text-item" style="--top: 80%; --left: 75%;" data-text="IS THE KEY">IS THE KEY</div>
+    <div class="text-item" style="--top: 15%; --left: 90%;" data-text="S">S</div>
+    <div class="text-item" style="--top: 25%; --left: 10%;" data-text="I">I</div>
+      <div class="text-item" style="--top: 35%; --left: 85%;" data-text="M">M</div>
+    <div class="text-item" style="--top: 45%; --left: 20%;" data-text="P">P</div>
+    <div class="text-item" style="--top: 55%; --left: 80%;" data-text="L">L</div>
+    <div class="text-item" style="--top: 65%; --left: 15%;" data-text="C">C</div>
+    <div class="text-item" style="--top: 75%; --left: 90%;" data-text="T">T</div>
+    <div class="text-item" style="--top: 85%; --left: 25%;" data-text="Y">Y</div>
   </div>
-  <div class="type" id="kinetic-type">
+  <div class="type" id="kinetic-type" aria-hidden="true">
     <div class="type-line"></div>
     <div class="type-line"></div>
     <div class="type-line"></div>
@@ -104,7 +108,8 @@
     <section id="home" class="min-h-screen flex items-center justify-center">
       <div class="text-center">
         <h1 class="text-5xl md:text-7xl font-bold text-shadow">
-          <span x-text="typedText"></span>
+          <span x-text="typedText" aria-hidden="true"></span>
+          <span class="sr-only">Thanatsitt</span>
         </h1>
         <p class="mt-4 text-xl md:text-2xl text-gray-300">Bridging Thai Heritage with Modern Technology</p>
         <a href="#contact" @click="scrollToSection('contact')"
@@ -145,7 +150,7 @@
                 <p class="text-gray-300">Building responsive and interactive web applications.</p>
               </div>
               <div class="card-back glass-morphism p-6 rounded-xl">
-                <p class="text-gray-300">Proficient in HTML, CSS, JavaScript, React, and Node.js.</p>
+                <p class="text-gray-300">Proficient in HTML,text-gray-300">Proficient in HTML, CSS, JavaScript, React, and Node.js.</p>
               </div>
             </div>
           </div>
@@ -168,15 +173,15 @@
       <div class="max-w-6xl mx-auto">
         <h2 class="text-4xl md:text-5xl font-bold text-shadow text-center mb-12">Gallery</h2>
         <div class="sliced-container">
-          <div class="text-row" data-row-id="cultural" data-text="CULTURAL">
+          <div class="text-row" data-row-id="cultural" data-text="CULTURAL" tabindex="0">
             <div class="interactive-area"></div>
             <span class="text-content" data-text="CULTURAL">CULTURAL</span>
           </div>
-          <div class="text-row" data-row-id="fusion" data-text="FUSION">
+          <div class="text-row" data-row-id="fusion" data-text="FUSION" tabindex="0">
             <div class="interactive-area"></div>
             <span class="text-content" data-text="FUSION">FUSION</span>
           </div>
-          <div class="text-row" data-row-id="heritage" data-text="HERITAGE">
+          <div class="text-row" data-row-id="heritage" data-text="HERITAGE" tabindex="0">
             <div class="interactive-area"></div>
             <span class="text-content" data-text="HERITAGE">HERITAGE</span>
           </div>
@@ -186,7 +191,7 @@
     <section id="contact" class="py-20 px-4 bg-gray-900/50">
       <div class="max-w-4xl mx-auto">
         <h2 class="text-4xl md:text-5xl font-bold text-shadow text-center mb-12">Contact Me</h2>
-        <form id="contact-form" class="space-y-6">
+        <form id="contact-form" class="space-y-6" @submit="submitForm">
           <div>
             <label for="user_name" class="block text-lg">Name</label>
             <input type="text" id="user_name" name="user_name" required
@@ -203,8 +208,10 @@
                       class="w-full mt-2 p-3 rounded bg-gray-800 text-white border border-gray-700 focus:border-yellow-400"></textarea>
           </div>
           <button type="submit"
-                  class="w-full py-3 px-6 bg-yellow-400 text-black rounded-full hover:bg-yellow-500 transition">
-            Send Message
+                  class="w-full py-3 px-6 bg-yellow-400 text-black rounded-full hover:bg-yellow-500 transition"
+                  :disabled="loading">
+            <span x-show="!loading">Send Message</span>
+            <span x-show="loading">Sending...</span>
           </button>
           <p x-show="formStatus" x-text="formStatus" class="text-center mt-4"></p>
         </form>
@@ -214,6 +221,6 @@
   <footer class="py-8 text-center bg-gray-900/50">
     <p class="text-gray-300">© <span id="current-year"></span> Thanatsitt Santisamranwilai. All rights reserved.</p>
   </footer>
-  <script src="/Thannxai/assets/js/script.js"></script>
+  <script src="./assets/js/script.js"></script>
 </body>
 </html>
