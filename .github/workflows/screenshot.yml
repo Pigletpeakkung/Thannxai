@@ -36,3 +36,5 @@ jobs:
       echo "Screenshot not generated for width ${{ matrix.width }}."
       exit 1
     fi
+- name: Ensure screenshots directory exists
+  run: mkdir -p screenshots
