@@ -39,9 +39,45 @@
   <link href="/assets/css/custom.css" rel="stylesheet">
 </head>
 <body class="text-white font-sans antialiased overflow-x-hidden" x-data="portfolioApp()">
-  <!-- ... Rest of the HTML as provided ... -->
-  
-  <!-- Update Background Frame and Images in CSS (moved to custom.css) -->
+  <!-- Skip to Main Content -->
+  <a href="#home" class="sr-only focus:not-sr-only">Skip to main content</a>
+
+  <!-- Navigation -->
+  <nav class="fixed top-0 left-0 right-0 z-50 glass-morphism">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <div class="flex-shrink-0">
+          <a href="#" class="text-2xl font-bold text-yellow-400">Thanatsitt</a>
+        </div>
+        <div class="hidden md:flex space-x-8">
+          <a href="#home" @click="scrollToSection('home')" class="hover:text-yellow-400">Home</a>
+          <a href="#about" @click="scrollToSection('about')" class="hover:text-yellow-400">About</a>
+          <a href="#skills" @click="scrollToSection('skills')" class="hover:text-yellow-400">Skills</a>
+          <a href="#gallery" @click="scrollToSection('gallery')" class="hover:text-yellow-400">Gallery</a>
+          <a href="#contact" @click="scrollToSection('contact')" class="hover:text-yellow-400">Contact</a>
+        </div>
+        <div class="md:hidden">
+          <button @click="mobileMenuOpen = !mobileMenuOpen" class="text-yellow-400 focus:outline-none">
+            <i class="fas fa-bars fa-lg"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div x-show="mobileMenuOpen" class="md:hidden">
+      <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-gray-900/50">
+        <a href="#home" @click="scrollToSection('home')" class="block px-3 py-2 hover:text-yellow-400">Home</a>
+        <a href="#about" @click="scrollToSection('about')" class="block px-3 py-2 hover:text-yellow-400">About</a>
+        <a href="#skills" @click="scrollToSection('skills')" class="block px-3 py-2 hover:text-yellow-400">Skills</a>
+        <a href="#gallery" @click="scrollToSection('gallery')" class="block px-3 py-2 hover:text-yellow-400">Gallery</a>
+        <a href="#contact" @click="scrollToSection('contact')" class="block px-3 py-2 hover:text-yellow-400">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Scroll Progress Bar -->
+  <div id="scroll-progress" class="fixed top-0 left-0 h-1 bg-yellow-400 z-50" style="width: 0;"></div>
+
+  <!-- Background Elements -->
   <div class="background-frame"></div>
   <div class="background-image default" id="default-bg"></div>
   <div class="background-image cultural" id="cultural-bg"></div>
@@ -49,161 +85,179 @@
   <div class="background-image heritage" id="heritage-bg"></div>
   <div class="bottom-gradient"></div>
 
-  <!-- ... Rest of the sections ... -->
+  <!-- Text Background -->
+  <div class="text-background">
+    <div class="text-item" style="top: 10%; left: 5%;" data-text="BE">BE</div>
+    <div class="text-item" style="top: 20%; left: 80%;" data-text="PRESENT">PRESENT</div>
+    <div class="text-item" style="top: 30%; left: 15%;" data-text="LISTEN">LISTEN</div>
+    <div class="text-item" style="top: 40%; left: 70%;" data-text="DEEPLY">DEEPLY</div>
+    <div class="text-item" style="top: 50%; left: 10%;" data-text="OBSERVE">OBSERVE</div>
+    <div class="text-item" style="top: 60%; left: 85%;" data-text="&">&</div>
+    <div class="text-item" style="top: 70%; left: 20%;" data-text="FEEL">FEEL</div>
+    <div class="text-item" style="top: 80%; left: 75%;" data-text="IS THE KEY">IS THE KEY</div>
+    <div class="text-item" style="top: 15%; left: 90%;" data-text="S">S</div>
+    <div class="text-item" style="top: 25%; left: 10%;" data-text="I">I</div>
+    <div class="text-item" style="top: 35%; left: 85%;" data-text="M">M</div>
+    <div class="text-item" style="top: 45%; left: 20%;" data-text="P">P</div>
+    <div class="text-item" style="top: 55%; left: 80%;" data-text="L">L</div>
+    <div class="text-item" style="top: 65%; left: 15%;" data-text="C">C</div>
+    <div class="text-item" style="top: 75%; left: 90%;" data-text="T">T</div>
+    <div class="text-item" style="top: 85%; left: 25%;" data-text="Y">Y</div>
+  </div>
 
-  <script>
-    // Alpine.js Logic
-    document.addEventListener('alpine:init', () => {
-      Alpine.data('portfolioApp', () => ({
-        mobileMenuOpen: false,
-        scrolled: false,
-        formStatus: null,
-        typedText: '',
+  <!-- Kinetic Typography -->
+  <div class="type" id="kinetic-type">
+    <div class="type-line"></div>
+    <div class="type-line"></div>
+    <div class="type-line"></div>
+    <div class="type-line"></div>
+    <div class="type-line"></div>
+    <div class="type-line"></div>
+    <div class="type-line"></div>
+    <div class="type-line"></div>
+    <div class="type-line"></div>
+    <div class="type-line"></div>
+    <div class="type-line"></div>
+    <div class="type-line"></div>
+    <div class="type-line"></div>
+    <div class="type-line"></div>
+    <div class="type-line"></div>
+    <div class="type-line"></div>
+    <div class="type-line"></div>
+    <div class="type-line"></div>
+  </div>
 
-        scrollToSection(id) {
-          const element = document.getElementById(id);
-          if (element) {
-            element.scrollIntoView({ behavior: 'smooth' });
-            this.mobileMenuOpen = false;
-          }
-        },
+  <!-- Main Content -->
+  <main class="main-content">
+    <!-- Home Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center">
+      <div class="text-center">
+        <h1 class="text-5xl md:text-7xl font-bold text-shadow">
+          <span x-text="typedText" class="typing-cursor"></span>
+        </h1>
+        <p class="mt-4 text-xl md:text-2xl text-gray-300">Bridging Thai Heritage with Modern Technology</p>
+        <a href="#contact" @click="scrollToSection('contact')"
+           class="mt-8 inline-block px-8 py-3 bg-yellow-400 text-black rounded-full hover:bg-yellow-500 transition">
+          Get in Touch
+        </a>
+      </div>
+    </section>
 
-        init() {
-          // Typing animation
-          const text = 'Thanatsitt';
-          let i = 0;
-          const typeWriter = () => {
-            if (i < text.length) {
-              this.typedText += text.charAt(i);
-              i++;
-              setTimeout(typeWriter, 100);
-            }
-          };
-          typeWriter();
+    <!-- About Section -->
+    <section id="about" class="py-20 px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-4xl md:text-5xl font-bold text-shadow mb-8">About Me</h2>
+        <p class="text-lg text-gray-300 leading-relaxed">
+          I am Thanatsitt Santisamranwilai, a passionate creator from Thailand. My work blends the rich cultural heritage of Thailand with cutting-edge technology to craft unique digital experiences. From fashion design to AI-driven solutions, I strive to preserve tradition while embracing innovation.
+        </p>
+      </div>
+    </section>
 
-          // Scroll Progress Bar
-          window.addEventListener('scroll', () => {
-            const progress = document.getElementById('scroll-progress');
-            if (progress) {
-              const height = document.body.scrollHeight - window.innerHeight;
-              const scrolled = (window.scrollY / height) * 100;
-              progress.style.width = scrolled + '%';
-            }
-          });
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 px-4 bg-gray-900/50">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-4xl md:text-5xl font-bold text-shadow text-center mb-12">Skills</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Skill Card 1 -->
+          <div class="card-container" tabindex="0">
+            <div class="card glass-morphism p-6 rounded-xl text-center">
+              <div class="card-front">
+                <i class="fas fa-paint-brush fa-3x text-yellow-400 mb-4"></i>
+                <h3 class="text-2xl font-bold mb-2">Creative Design</h3>
+                <p class="text-gray-300">Crafting visually stunning designs inspired by Thai aesthetics.</p>
+              </div>
+              <div class="card-back glass-morphism p-6 rounded-xl">
+                <p class="text-gray-300">Expertise in Adobe Creative Suite, Figma, and traditional art techniques.</p>
+              </div>
+            </div>
+          </div>
+          <!-- Skill Card 2 -->
+          <div class="card-container" tabindex="0">
+            <div class="card glass-morphism p-6 rounded-xl text-center">
+              <div class="card-front">
+                <i class="fas fa-code fa-3x text-yellow-400 mb-4"></i>
+                <h3 class="text-2xl font-bold mb-2">Web Development</h3>
+                <p class="text-gray-300">Building responsive and interactive web applications.</p>
+              </div>
+              <div class="card-back glass-morphism p-6 rounded-xl">
+                <p class="text-gray-300">Proficient in HTML, CSS, JavaScript, React, and Node.js.</p>
+              </div>
+            </div>
+          </div>
+          <!-- Skill Card 3 -->
+          <div class="card-container" tabindex="0">
+            <div class="card glass-morphism p-6 rounded-xl text-center">
+              <div class="card-front">
+                <i class="fas fa-brain fa-3x text-yellow-400 mb-4"></i>
+                <h3 class="text-2xl font-bold mb-2">AI Innovation</h3>
+                <p class="text-gray-300">Leveraging AI to enhance creative and technical solutions.</p>
+              </div>
+              <div class="card-back glass-morphism p-6 rounded-xl">
+                <p class="text-gray-300">Experience with Python, TensorFlow, and AI-driven design tools.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-          // EmailJS Form Submission
-          emailjs.init(process.env.EMAILJS_USER_ID || 'YOUR_USER_ID'); // Use env variable or placeholder
-          const form = document.getElementById('contact-form');
-          if (form) {
-            form.addEventListener('submit', (e) => {
-              e.preventDefault();
-              emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', form)
-                .then(() => {
-                  this.formStatus = 'Message sent successfully!';
-                  form.reset();
-                  setTimeout(() => this.formStatus = null, 5000);
-                }, (error) => {
-                  this.formStatus = 'Failed to send message. Please try again.';
-                  console.error('EmailJS Error:', error);
-                });
-            });
-          }
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20 px-4">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-4xl md:text-5xl font-bold text-shadow text-center mb-12">Gallery</h2>
+        <div class="sliced-container">
+          <div class="text-row" data-row-id="cultural" data-text="CULTURAL">
+            <div class="interactive-area"></div>
+            <span class="text-content" data-text="CULTURAL">CULTURAL</span>
+          </div>
+          <div class="text-row" data-row-id="fusion" data-text="FUSION">
+            <div class="interactive-area"></div>
+            <span class="text-content" data-text="FUSION">FUSION</span>
+          </div>
+          <div class="text-row" data-row-id="heritage" data-text="HERITAGE">
+            <div class="interactive-area"></div>
+            <span class="text-content" data-text="HERITAGE">HERITAGE</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
-          // Dynamic Footer Year
-          const yearElement = document.getElementById('current-year');
-          if (yearElement) {
-            yearElement.textContent = new Date().getFullYear();
-          }
-        }
-      }));
-    });
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-4 bg-gray-900/50">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-4xl md:text-5xl font-bold text-shadow text-center mb-12">Contact Me</h2>
+        <form id="contact-form" class="space-y-6">
+          <div>
+            <label for="user_name" class="block text-lg">Name</label>
+            <input type="text" id="user_name" name="user_name" required
+                   class="w-full mt-2 p-3 rounded bg-gray-800 text-white border border-gray-700 focus:border-yellow-400">
+          </div>
+          <div>
+            <label for="user_email" class="block text-lg">Email</label>
+            <input type="email" id="user_email" name="user_email" required
+                   class="w-full mt-2 p-3 rounded bg-gray-800 text-white border border-gray-700 focus:border-yellow-400">
+          </div>
+          <div>
+            <label for="message" class="block text-lg">Message</label>
+            <textarea id="message" name="message" required rows="5"
+                      class="w-full mt-2 p-3 rounded bg-gray-800 text-white border border-gray-700 focus:border-yellow-400"></textarea>
+          </div>
+          <button type="submit"
+                  class="w-full py-3 px-6 bg-yellow-400 text-black rounded-full hover:bg-yellow-500 transition">
+            Send Message
+          </button>
+          <p x-show="formStatus" x-text="formStatus" class="text-center mt-4"></p>
+        </form>
+      </div>
+    </section>
+  </main>
 
-    // GSAP and Interactive Text Animation
-    gsap.registerPlugin(CustomEase, SplitText, ScrambleTextPlugin);
+  <!-- Footer -->
+  <footer class="py-8 text-center bg-gray-900/50">
+    <p class="text-gray-300">&copy; <span id="current-year"></span> Thanatsitt Santisamranwilai. All rights reserved.</p>
+  </footer>
 
-    document.addEventListener("DOMContentLoaded", function () {
-      CustomEase.create("customEase", "0.86, 0, 0.07, 1");
-      CustomEase.create("mouseEase", "0.25, 0.1, 0.25, 1");
-
-      document.fonts.ready.then(() => {
-        initializeAnimation();
-      });
-
-      // ... Rest of GSAP logic as provided ... 
-
-      // Card Flip for Skills Section (Fixed Syntax Error)
-      document.querySelectorAll('.card-container').forEach(card => {
-        card.addEventListener('click', () => {
-          card.classList.toggle('flipped');
-        });
-        card.addEventListener('keydown', e => {
-          if (e.key === 'Enter' || e.key === 'Space') {
-            e.preventDefault();
-            card.classList.toggle('flipped');
-          }
-        });
-      });
-
-      // Lazy Load Images (Remove if no img[data-src] exists)
-      // Commenting out since no images use data-src
-      /*
-      const lazyImages = document.querySelectorAll('img[data-src]');
-      const imageObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const img = entry.target;
-            img.src = img.dataset.src;
-            img.removeAttribute('data-src');
-            observer.unobserve(img);
-          }
-        });
-      }, { rootMargin: '0px 0px 200px 0px' });
-      lazyImages.forEach(img => imageObserver.observe(img));
-      */
-
-      // Optimize Scroll Event Listener
-      let lastScroll = 0;
-      let ticking = false;
-
-      window.addEventListener('scroll', () => {
-        if (!ticking) {
-          window.requestAnimationFrame(() => {
-            lastScroll = window.scrollY;
-            ticking = false;
-          });
-          ticking = true;
-        }
-      });
-
-      // Accessibility: Skip to Content Link
-      document.addEventListener('keydown', e => {
-        if (e.key === 'Tab' && document.activeElement === document.body) {
-          const skipLink = document.createElement('a');
-          skipLink.href = '#home';
-          skipLink.textContent = 'Skip to main content';
-          skipLink.className = 'sr-only focus:not-sr-only bg-yellow-400 text-black p-2 rounded absolute top-4 left-4 z-50';
-          document.body.prepend(skipLink);
-          skipLink.focus();
-          skipLink.addEventListener('blur', () => skipLink.remove());
-        }
-      });
-
-      // Prevent Double Tap Zoom on Mobile
-      document.addEventListener('touchstart', (e) => {
-        if (e.touches.length > 1) {
-          e.preventDefault();
-        }
-      }, { passive: false });
-
-      // Service Worker Registration
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-          navigator.serviceWorker.register('/sw.js')
-            .then(reg => console.log('Service Worker registered:', reg))
-            .catch(err => console.error('Service Worker registration failed:', err));
-        });
-      }
-    });
-  </script>
+  <!-- Custom JavaScript -->
+  <script src="/assets/js/main.js"></script>
 </body>
 </html>
