@@ -38,7 +38,7 @@ document.addEventListener('alpine:init', () => {
       });
 
       // EmailJS Form Submission
-      emailjs.init(process.env.EMAILJS_USER_ID || 'YOUR_USER_ID'); // Use env variable or placeholder
+      emailjs.init('YOUR_ACTUAL_USER_ID'); // Replace with your EmailJS User ID
       const form = document.getElementById('contact-form');
       if (form) {
         form.addEventListener('submit', (e) => {
@@ -959,7 +959,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Service Worker Registration
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/sw.js')
+      navigator.serviceWorker.register('/Thannxai/service-worker.js')
         .then(reg => console.log('Service Worker registered:', reg))
         .catch(err => console.error('Service Worker registration failed:', err));
     });
