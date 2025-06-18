@@ -62,16 +62,17 @@
             stellarPurple: '#0F3460',
           },
           animation: {
-            gradient: 'none', // Removed animation
+            gradient: 'none',
             float: 'float 6s ease-in-out infinite',
             glow: 'glow 2s ease-in-out infinite alternate',
             pulseSlow: 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
             bounceSlow: 'bounce 3s infinite',
             spinSlow: 'spin 8s linear infinite',
-            wiggle: 'none', // Removed wiggle
+            wiggle: 'none',
             slideLeft: 'none',
             slideRight: 'none',
             zoomIn: 'zoomIn 0.5s ease-out',
+            sparkle: 'sparkle 1.5s ease-out infinite',
           },
           keyframes: {
             float: {
@@ -83,6 +84,11 @@
               from: { boxShadow: '0 0 20px #D4AF37, 0 0 30px #D4AF37' },
               to: { boxShadow: '0 0 30px #D4AF37, 0 0 60px #D4AF37, 0 0 90px #D4AF37' },
             },
+            sparkle: {
+              '0%': { transform: 'scale(0)', opacity: '0' },
+              '50%': { transform: 'scale(1.2)', opacity: '0.8' },
+              '100%': { transform: 'scale(0)', opacity: '0' },
+            },
           },
         }
       }
@@ -91,6 +97,12 @@
 
   <!-- Custom CSS -->
   <style>
+    /* Smooth Scrolling */
+    html {
+      scroll-behavior: smooth;
+      overscroll-behavior-y: contain;
+    }
+    
     /* Static Cosmic Background */
     .cosmic-bg {
       background: radial-gradient(200% 100% at bottom center, #F4D03F 0%, #E96F92 30%, #0F3460 70%, #1A1A2E 100%),
@@ -105,11 +117,13 @@
       background: radial-gradient(circle at 30% 20%, rgba(212, 175, 55, 0.15) 0%, transparent 50%),
                   radial-gradient(circle at 70% 80%, rgba(15, 52, 96, 0.2) 0%, transparent 50%);
       opacity: 0.7;
+      will-change: transform;
     }
 
     .stars-layer {
       position: absolute;
       inset: 0;
+      will-change: transform;
     }
 
     .stars {
@@ -126,6 +140,7 @@
       background: #C0C0C8;
       border-radius: 50%;
       opacity: 0.7;
+      will-change: transform;
     }
 
     .star:nth-child(odd) {
@@ -149,6 +164,38 @@
       background: radial-gradient(circle at 50% 50%, #D4AF37 0%, #F4D03F 50%, transparent 100%);
       border-radius: 50%;
       box-shadow: 0 0 40px rgba(212, 175, 55, 0.5);
+      will-change: transform;
+    }
+
+    /* Enhanced 3D Card Effects */
+    .card-3d {
+      transform-style: preserve-3d;
+      transition: transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1), 
+                  box-shadow 0.5s ease;
+      will-change: transform;
+    }
+    
+    .card-3d:hover {
+      transform: translateY(-10px) rotateX(5deg) rotateY(5deg);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3),
+                  0 0 0 1px rgba(212, 175, 55, 0.2);
+    }
+    
+    .card-3d::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, transparent 50%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
+    
+    .card-3d:hover::before {
+      opacity: 1;
     }
 
     /* 3D Card Container */
@@ -261,10 +308,66 @@
       font-size: 12px;
     }
 
+    /* Sparkle Effects */
+    .sparkle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: white;
+      border-radius: 50%;
+      pointer-events: none;
+      opacity: 0;
+      transform: scale(0);
+      animation: sparkle 1.5s ease-out infinite;
+    }
+
+    /* Enhanced Hover Effects */
+    .hover-grow {
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    
+    .hover-grow:hover {
+      transform: scale(1.05);
+    }
+    
+    .hover-underline {
+      position: relative;
+    }
+    
+    .hover-underline::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #D4AF37, #F4D03F);
+      transition: width 0.3s ease;
+    }
+    
+    .hover-underline:hover::after {
+      width: 100%;
+    }
+    
+    /* Glow effect for interactive elements */
+    .interactive-glow {
+      transition: box-shadow 0.3s ease;
+    }
+    
+    .interactive-glow:hover {
+      box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+    }
+
     /* Reduced Motion */
     @media (prefers-reduced-motion: reduce) {
-      .skill-bar, .card-container, .card-front, .card-back {
+      .skill-bar, .card-container, .card-front, .card-back, .card-3d, .hover-grow, .hover-underline {
         transition: none;
+      }
+      html {
+        scroll-behavior: auto;
+      }
+      .sparkle {
+        display: none;
       }
     }
 
@@ -299,11 +402,11 @@
 
   <!-- Static Cosmic Background -->
   <div class="cosmic-bg fixed inset-0 z-[-2] pointer-events-none">
-    <div class="nebula-layer"></div>
-    <div class="stars-layer">
+    <div class="nebula-layer parallax-layer" data-speed="0.1"></div>
+    <div class="stars-layer parallax-layer" data-speed="0.2">
       <div class="stars" style="--star-count: 400;"></div>
     </div>
-    <div class="moon-glow"></div>
+    <div class="moon-glow parallax-layer" data-speed="0.15"></div>
   </div>
 
   <!-- Scroll Progress Bar -->
@@ -328,34 +431,34 @@
         
         <!-- Desktop Menu -->
         <div class="hidden md:flex space-x-8">
-          <a href="#home" class="nav-link relative group" @click="scrollToSection('home')">
+          <a href="#home" class="nav-link relative group hover-underline" @click="scrollToSection('home')">
             <span class="relative z-10">Home</span>
             <div class="absolute inset-0 bg-gold/20 rounded-lg scale-0 group-hover:scale-100 transition-transform duration-300"></div>
           </a>
-          <a href="#about" class="nav-link relative group" @click="scrollToSection('about')">
+          <a href="#about" class="nav-link relative group hover-underline" @click="scrollToSection('about')">
             <span class="relative z-10">About</span>
             <div class="absolute inset-0 bg-gold/20 rounded-lg scale-0 group-hover:scale-100 transition-transform duration-300"></div>
           </a>
-          <a href="#skills" class="nav-link relative group" @click="scrollToSection('skills')">
+          <a href="#skills" class="nav-link relative group hover-underline" @click="scrollToSection('skills')">
             <span class="relative z-10">Skills</span>
             <div class="absolute inset-0 bg-gold/20 rounded-lg scale-0 group-hover:scale-100 transition-transform duration-300"></div>
           </a>
-          <a href="#gallery" class="nav-link relative group" @click="scrollToSection('gallery')">
+          <a href="#gallery" class="nav-link relative group hover-underline" @click="scrollToSection('gallery')">
             <span class="relative z-10">Gallery</span>
             <div class="absolute inset-0 bg-gold/20 rounded-lg scale-0 group-hover:scale-100 transition-transform duration-300"></div>
           </a>
-          <a href="#testimonials" class="nav-link relative group" @click="scrollToSection('testimonials')">
+          <a href="#testimonials" class="nav-link relative group hover-underline" @click="scrollToSection('testimonials')">
             <span class="relative z-10">Reviews</span>
             <div class="absolute inset-0 bg-gold/20 rounded-lg scale-0 group-hover:scale-100 transition-transform duration-300"></div>
           </a>
-          <a href="#contact" class="nav-link relative group" @click="scrollToSection('contact')">
+          <a href="#contact" class="nav-link relative group hover-underline" @click="scrollToSection('contact')">
             <span class="relative z-10">Contact</span>
             <div class="absolute inset-0 bg-gold/20 rounded-lg scale-0 group-hover:scale-100 transition-transform duration-300"></div>
           </a>
         </div>
         
         <!-- Mobile Menu Button -->
-        <button @click="mobileMenuOpen = !mobileMenuOpen" class="md:hidden text-gold">
+        <button @click="mobileMenuOpen = !mobileMenuOpen" class="md:hidden text-gold interactive-glow">
           <i class="fas fa-bars text-xl"></i>
         </button>
       </div>
@@ -388,7 +491,8 @@
           <i class="fas fa-envelope mr-2"></i>Contact
         </a>
       </div>
-    </nav>
+    </div>
+  </nav>
 
   <!-- Hero Section -->
   <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden">
@@ -407,7 +511,7 @@
       </p>
       
       <div class="flex flex-col sm:flex-row gap-6 justify-center">
-        <button @click="scrollToSection('gallery')" class="group bg-gradient-to-r from-gold to-yellow-500 text-black px-10 py-5 rounded-full font-bold text-lg hover:scale-105 transform transition-all duration-300 hover:shadow-2xl hover:shadow-gold/50 relative overflow-hidden">
+        <button @click="scrollToSection('gallery')" class="group bg-gradient-to-r from-gold to-yellow-500 text-black px-10 py-5 rounded-full font-bold text-lg hover:scale-105 transform transition-all duration-300 hover:shadow-2xl hover:shadow-gold/50 relative overflow-hidden hover-grow">
           <span class="relative z-10 flex items-center justify-center">
             <i class="fas fa-eye mr-3"></i>
             Explore Portfolio
@@ -415,7 +519,7 @@
           <div class="absolute inset-0 bg-gradient-to-r from-yellow-400 to-gold opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
         </button>
         
-        <button @click="scrollToSection('contact')" class="group border-2 border-moonSilver text-moonSilver px-10 py-5 rounded-full font-bold text-lg hover:bg-moonSilver hover:text-black transition-all duration-300 relative overflow-hidden">
+        <button @click="scrollToSection('contact')" class="group border-2 border-moonSilver text-moonSilver px-10 py-5 rounded-full font-bold text-lg hover:bg-moonSilver hover:text-black transition-all duration-300 relative overflow-hidden hover-grow">
           <span class="relative z-10 flex items-center justify-center">
             <i class="fas fa-paper-plane mr-3"></i>
             Get In Touch
@@ -425,16 +529,16 @@
       
       <!-- Social Links -->
       <div class="flex justify-center space-x-8 mt-12">
-        <a href="https://www.linkedin.com/in/thanattsitts" target="_blank" class="text-3xl text-gray-400 hover:text-gold transition-colors duration-300 hover:animate-bounce">
+        <a href="https://www.linkedin.com/in/thanattsitts" target="_blank" class="text-3xl text-gray-400 hover:text-gold transition-colors duration-300 hover:animate-bounce interactive-glow">
           <i class="fab fa-linkedin"></i>
         </a>
-        <a href="https://github.com/Pigletpeakkung" target="_blank" class="text-3xl text-gray-400 hover:text-gold transition-colors duration-300 hover:animate-bounce">
+        <a href="https://github.com/Pigletpeakkung" target="_blank" class="text-3xl text-gray-400 hover:text-gold transition-colors duration-300 hover:animate-bounce interactive-glow">
           <i class="fab fa-github"></i>
         </a>
-        <a href="https://www.instagram.com/thanattsitt.s" target="_blank" class="text-3xl text-gray-400 hover:text-gold transition-colors duration-300 hover:animate-bounce">
+        <a href="https://www.instagram.com/thanattsitt.s" target="_blank" class="text-3xl text-gray-400 hover:text-gold transition-colors duration-300 hover:animate-bounce interactive-glow">
           <i class="fab fa-instagram"></i>
         </a>
-        <a href="https://x.com/ThanattsittS" target="_blank" class="text-3xl text-gray-400 hover:text-gold transition-colors duration-300 hover:animate-bounce">
+        <a href="https://x.com/ThanattsittS" target="_blank" class="text-3xl text-gray-400 hover:text-gold transition-colors duration-300 hover:animate-bounce interactive-glow">
           <i class="fab fa-twitter"></i>
         </a>
       </div>
@@ -907,7 +1011,7 @@
             <textarea name="message" rows="5" placeholder="Your Message" required
                       class="bg-gray-800/50 border border-gold/20 rounded-lg py-3 px-4 w-full text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gold"></textarea>
             <button type="submit" 
-                    class="w-full bg-gradient-to-r from-gold to-yellow-500 text-black font-bold py-3 px-6 rounded-lg hover:scale-105 transform transition-all duration-300 hover:shadow-2xl hover:shadow-gold/50">
+                    class="w-full bg-gradient-to-r from-gold to-yellow-500 text-black font-bold py-3 px-6 rounded-lg hover:scale-105 transform transition-all duration-300 hover:shadow-2xl hover:shadow-gold/50 hover-grow">
               Send Message
             </button>
           </form>
@@ -925,16 +1029,16 @@
     <div class="max-w-7xl mx-auto text-center">
       <p class="text-gray-400 text-sm mb-4">© 2025 Thanatsitt Santisamranwilai. All rights reserved.</p>
       <div class="flex justify-center space-x-6">
-        <a href="https://www.linkedin.com/in/thanattsitts" target="_blank" class="text-gray-400 hover:text-gold transition-colors">
+        <a href="https://www.linkedin.com/in/thanattsitts" target="_blank" class="text-gray-400 hover:text-gold transition-colors interactive-glow">
           <i class="fab fa-linkedin text-xl"></i>
         </a>
-        <a href="https://github.com/Pigletpeakkung" target="_blank" class="text-gray-400 hover:text-gold transition-colors">
+        <a href="https://github.com/Pigletpeakkung" target="_blank" class="text-gray-400 hover:text-gold transition-colors interactive-glow">
           <i class="fab fa-github text-xl"></i>
         </a>
-        <a href="https://www.instagram.com/thanattsitt.s" target="_blank" class="text-gray-400 hover:text-gold transition-colors">
+        <a href="https://www.instagram.com/thanattsitt.s" target="_blank" class="text-gray-400 hover:text-gold transition-colors interactive-glow">
           <i class="fab fa-instagram text-xl"></i>
         </a>
-        <a href="https://x.com/ThanattsittS" target="_blank" class="text-gray-400 hover:text-gold transition-colors">
+        <a href="https://x.com/ThanattsittS" target="_blank" class="text-gray-400 hover:text-gold transition-colors interactive-glow">
           <i class="fab fa-twitter text-xl"></i>
         </a>
       </div>
@@ -953,7 +1057,10 @@
         scrollToSection(id) {
           const element = document.getElementById(id);
           if (element) {
-            element.scrollIntoView({ behavior: 'smooth' });
+            window.scrollTo({
+              top: element.offsetTop - 80,
+              behavior: 'smooth'
+            });
             this.mobileMenuOpen = false;
           }
         },
@@ -994,10 +1101,7 @@
         }
       }));
     });
-  </script>
 
-  <!-- JavaScript for Static Stars and Card Interactions -->
-  <script>
     // Generate Static Stars
     document.addEventListener('DOMContentLoaded', () => {
       const starsContainer = document.querySelector('.stars');
@@ -1010,25 +1114,56 @@
         star.style.top = `${Math.random() * 100}%`;
         starsContainer.appendChild(star);
       }
-    });
 
-    // Click-to-Flip Cards
-    document.querySelectorAll('.card-container').forEach(card => {
-      card.addEventListener('click', () => {
-        card.classList.toggle('flipped');
+      // Add sparkles on hover
+      document.querySelectorAll('.card-3d, .interactive-glow').forEach(element => {
+        element.addEventListener('mouseenter', (e) => {
+          for (let i = 0; i < 6; i++) {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.style.left = `${Math.random() * 100}%`;
+            sparkle.style.top = `${Math.random() * 100}%`;
+            sparkle.style.animationDelay = `${Math.random() * 0.5}s`;
+            element.appendChild(sparkle);
+            
+            // Remove sparkle after animation
+            setTimeout(() => sparkle.remove(), 1500);
+          }
+        });
       });
-      card.addEventListener('keydown', e => {
-        if (e.key === 'Enter' || e.key === 'Space') {
-          e.preventDefault();
+
+      // Click-to-Flip Cards
+      document.querySelectorAll('.card-container').forEach(card => {
+        card.addEventListener('click', () => {
           card.classList.toggle('flipped');
-        }
+        });
+        card.addEventListener('keydown', e => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            card.classList.toggle('flipped');
+          }
+        });
       });
+
+      // Scroll-triggered animations
+      const animateOnScroll = (elements) => {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('animate');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.1 });
+        
+        elements.forEach(el => observer.observe(el));
+      };
+      
+      animateOnScroll(document.querySelectorAll('.card-3d, .skill-item'));
     });
   </script>
 
   <!-- EmailJS Integration -->
   <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2.6.4/dist/email.min.js"></script>
 </body>
-</html>
-
-
+  </html>
