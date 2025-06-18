@@ -1,25 +1,21 @@
 {
-  "name": "ThannxAI - Human-Centered AI for Meaningful Conversations",
-  "short_name": "ThannxAI",
-  "description": "AI tools that connect cultures through empathy",
+  "name": "Thanatsitt's Portfolio",
+  "short_name": "Thanatsitt",
+  "description": "Portfolio of Thanatsitt Santisamranwilai, showcasing Thai heritage and modern technology.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#6366f1",
+  "background_color": "#000000",
+  "theme_color": "#ffcc00",
   "icons": [
     {
-      "src": "icons/icon-192x192.png",
+      "src": "/assets/images/logo192.png",
       "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
+      "type": "image/png"
     },
     {
-      "src": "icons/icon-512x512.png",
+      "src": "/assets/images/logo512.png",
       "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
+      "type": "image/png"
     }
-  ],
-  "categories": ["technology", "ai", "consciousness"],
-  "lang": "en"
+  ]
 }
