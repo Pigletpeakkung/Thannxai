@@ -126,7 +126,20 @@
     <div class="type-line"></div>
     <div class="type-line"></div>
   </div>
-
+  
+<!-- Home Section -->
+<section id="home" class="min-h-screen flex items-center justify-center">
+  <div class="text-center">
+    <h1 class="text-5xl md:text-7xl font-bold text-shadow">
+      <span x-text="typedText"></span>
+    </h1>
+    <p class="mt-4 text-xl md:text-2xl text-gray-300">Bridging Thai Heritage with Modern Technology</p>
+    <a href="#contact" @click="scrollToSection('contact')"
+       class="mt-8 inline-block px-8 py-3 bg-yellow-400 text-black rounded-full hover:bg-yellow-500 transition">
+      Get in Touch
+    </a>
+  </div>
+</section>
   <!-- Main Content -->
   <main class="main-content">
     <!-- Home Section -->
