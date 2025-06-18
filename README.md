@@ -332,3 +332,20 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 **Built with consciousness and care by the ThannxAI team** 🧠💝
 
 *Creating AI that amplifies human empathy, one conversation at a time.*
+
+
+# Thanatsitt's Portfolio
+
+A portfolio website for Thanatsitt Santisamranwilai, showcasing Thai heritage and modern technology. Built with HTML, Tailwind CSS, Alpine.js, GSAP, Font Awesome, and EmailJS, with Progressive Web App (PWA) support.
+
+## Features
+- Cosmic-themed design with glass-morphism and animations.
+- Responsive layout for desktop and mobile.
+- Contact form powered by EmailJS.
+- PWA for offline access and installability.
+- Deployed on Netlify with continuous deployment.
+
+## Setup
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Pigletpeakkung/thanatsitt-portfolio.git
