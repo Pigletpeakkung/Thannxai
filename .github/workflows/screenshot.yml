@@ -4,7 +4,7 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
-  workflow_dispatch:
+  workflow_dispatch: # Manual trigger
 
 jobs:
   screenshot:
@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        width: [1200, 768, 480] # Desktop, tablet, mobile resolutions
+        width: [1200, 768, 480] # Desktop, tablet, mobile
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -23,7 +23,7 @@ jobs:
       - name: Capture Screenshot
         uses: swinton/screenshot-website@v1.x
         with:
-          source: https://pigletpeakkung.github.io/Thannxai/
+          source: https://your-portfolio-site.com/
           destination: screenshots/screenshot-${{ matrix.width }}.png
           full-page: true
           width: ${{ matrix.width }}
