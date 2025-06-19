@@ -3,6 +3,7 @@
 A human-centered AI platform focused on empathetic communication and cross-cultural understanding. This repository contains the complete website for ThannxAI, showcasing our mission to create AI tools that amplify human connection rather than replace it.
 
 ## Portfolio Screenshots
+![Screenshot](https://github.com/Pigletpeakkung/Thannxai/raw/main/screenshot.png)
 
 ## 🌟 Project Overview
 
