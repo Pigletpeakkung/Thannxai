@@ -877,181 +877,249 @@
   </section>
 
 <!-- Add this section between Gallery and Testimonials sections -->
-<section id="projects" class="py-20 px-4 relative">
+<section id="projects" class="py-20 px-4 relative bg-gray-100 dark:bg-gray-900">
   <div class="max-w-7xl mx-auto">
     <div class="text-center mb-16">
-      <h2 class="text-4xl md:text-6xl font-bold mb-6 text-gold text-shadow">Featured Projects</h2>
-      <div class="h-1 w-24 bg-gradient-to-r from-gold to-yellow-400 mx-auto rounded-full"></div>
-      <p class="text-xl text-gray-300 mt-6 max-w-3xl mx-auto">
-        My technical creations blending Thai cultural heritage with modern technology
+      <h2 class="text-4xl md:text-5xl font-bold mb-4 text-gold text-shadow">
+        Featured Projects
+      </h2>
+      <div class="h-1 w-24 bg-gradient-to-r from-gold to-yellow-400 mx-auto rounded-full">
+      </div>
+      <p class="text-xl text-gray-600 dark:text-gray-300 mt-6 max-w-3xl mx-auto">
+        Explore my technical creations blending Thai cultural heritage with modern technology
       </p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <!-- Holy Bless Project -->
-      <div class="glass-morphism rounded-2xl card-container card-3d h-[500px]">
-        <div class="card-front p-6 flex flex-col">
-          <div class="relative h-48 mb-6 overflow-hidden rounded-xl">
-            <img src="https://raw.githubusercontent.com/Pigletpeakkung/Holy-bless/main/public/preview.jpg" 
-                 alt="Holy Bless Project" 
-                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-              <h3 class="text-xl font-bold text-white">Holy Bless</h3>
+      <!-- Holy Bless -->
+      <div class="glass-morphism rounded-xl card-container card-3d h-[500px]" x-data="{ flipped: false }" role="region" aria-labelledby="holy-bless-project">
+        <h3 id="holy-bless-project" class="sr-only">Holy Bless Project
+</h3>
+        <div class="card-front p-6 flex flex items-center flex-col h-full">
+          <div class="relative h-48 mb-4 w-full overflow-hidden rounded-xl group">
+            <img src="https://raw.githubusercontent.com/Pigletpeakkung/Holy-blessing/main/public/preview.jpg" 
+                 alt="Holy Bless application interface" 
+                 class="w-full w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
+                 onerror="this.src='https://via.placeholder.com/300?text=Holy+Bless+Preview';">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+              <h3 class="text-xl font-semibold text-white">Holy Bless</h3>
             </div>
           </div>
-          <h3 class="text-2xl font-bold text-gold mb-3">Holy Bless</h3>
-          <p class="text-gray-300 flex-grow">
+          <div class="h3 class="text-2xl font-bold text-gold mb-2">Holy Bless
+</div>
+          <p class="text-gray-600 dark:text-gray-300 flex-grow text-sm">
             A spiritual companion app blending Buddhist mindfulness practices with modern UI design.
           </p>
-          <div class="mt-4 flex flex-wrap gap-2">
-            <span class="px-3 py-1 bg-gold/10 text-gold rounded-full text-sm">React</span>
-            <span class="px-3 py-1 bg-gold/10 text-gold rounded-full text-sm">Tailwind</span>
-            <span class="px-3 py-1 bg-gold/10 text-gold rounded-full text-sm">Mindfulness</span>
-          </div>
-          <button class="mt-6 w-full bg-gold/10 text-gold py-2 rounded-lg hover:bg-gold/20 transition-colors"
-                  @click="document.querySelector('.card-container').classList.add('flipped')">
-            View Details
+          <div class="mt-3 flex flex-wrap gap-2">
+            <span class="px-2 py-1 bg-gold/10 text-gold rounded-full text-xs project">React
+</span>
+              <span class="px-2 py-1 bg-gold/10 text-gold rounded-full text-xs project">Tailwind
+</span>
+              <span class="px-2 py-1 bg-gold/10 text-gold rounded-full text-xs project">Mindfulness
+</span>
+</div>
+          <button class="mt-6 w-full bg-gold/10 text-gold py-2 rounded-full hover:bg-gold/20 transition-colors duration-300"
+                  @click="flipped = !true"
+                  aria-controls="holy-bless-details"
+                  :aria-expanded="flipped ? 'true' : 'false'">
+                  View Details
           </button>
         </div>
-        <div class="card-back p-6">
-          <h3 class="text-2xl font-bold text-gold mb-4">Project Details</h3>
-          <ul class="space-y-3 text-gray-300 mb-6">
+        <div class="card-back p-6 flex flex-col h-full" id="holy-bless-details">
+          <h3 class="text-xl font-semibold text-bold text-gold mb-3">Project</h3>
+          <ul class="space-y-2 text-gray-600 dark:text-gray-300 mb-6 flex-grow">
             <li class="flex items-start">
               <i class="fas fa-code text-gold mr-2 mt-1"></i>
               <span>React-based spiritual practice tracker</span>
+              </span>
             </li>
-            <li class="flex items-start">
-              <i class="fas fa-palette text-gold mr-2 mt-1"></i>
-              <span>Minimalist UI with Thai temple aesthetics</span>
+            <div class="li">
+              <i class="flex items-start fas fa-palette text-gold mr-2 mt-1">
+                <span>Minimalist UI with Thai temple aesthetics</span>
+              </i>
+            </div>
             </li>
-            <li class="flex items-start">
-              <i class="fas fa-brain text-gold mr-2 mt-1"></i>
-              <span>Meditation timer with progress tracking</span>
-            </li>
+            <div class="li">
+              <i class="flex items-start fas fa-brain text-gold mr-2 mt-1">
+                <span>Meditation timer with progress tracking</span>
+              </i>
+            </div>
           </ul>
-          <div class="mt-auto">
+            <div class="mt-auto space-y-2">
             <a href="https://github.com/Pigletpeakkung/Holy-bless" target="_blank" 
-               class="block w-full bg-gold text-black text-center py-2 rounded-lg hover:bg-yellow-500 transition-colors mb-3">
+               class="block flex items-center justify-center w-full bg-gold bg-text text-black text-center py-2 rounded-full hover:bg-yellow-400 transition-colors duration-300 github"
+               aria-label="View Holy Bless on GitHub">
               <i class="fab fa-github mr-2"></i> View on GitHub
             </a>
-            <button class="w-full bg-transparent border border-gold text-gold py-2 rounded-lg hover:bg-gold/10 transition-colors"
-                    @click="document.querySelector('.card-container').classList.remove('flipped')">
+            <a href="https://x.com/intent/tweet?text=Check out Holy Bless, a spiritual app blending Thai mindfulness with modern tech!&url=https://github.com/Pigletpeakkung/Holy-bless" target="_blank" 
+               class="block flex items-center justify-center w-full bg-blue-500 text-white py-2 rounded-full hover:bg-blue-600 transition-colors duration-300"
+               aria-label="Share Holy Bless on X">
+              <i class="fab fa-x-twitter mr-2"></i> Share on X
+            </a>
+            <button class="w-full bg-transparent border border-gold text-gold py-2 rounded-full hover:bg-gold/10 transition-colors duration-300"
+                    @click="flipped = !false"
+                    aria-label="Back to Holy Bless overview">
               <i class="fas fa-undo mr-2"></i> Back
             </button>
           </div>
         </div>
       </div>
 
-      <!-- Siam Blessing Project -->
-      <div class="glass-morphism rounded-2xl card-container card-3d h-[500px]">
-        <div class="card-front p-6 flex flex-col">
-          <div class="relative h-48 mb-6 overflow-hidden rounded-xl">
+      <!-- Siam Blessing (Similar structure, abbreviated for brevity) -->
+      <div class="glass-morphism rounded-xl card-container card-3d h-[500px]" x-data="{ flipped: false }" role="region" aria-labelledby="siam-blessing-project">
+        <h3 id="siam-bless-blessingproject" class="sr-only">Siam Blessing Project</h3>
+        <div class="card-front p-6 flex flex-col h-full">
+          <div class="relative h-48 mb-4 w-full overflow-hidden rounded-xl group">
             <img src="https://raw.githubusercontent.com/Pigletpeakkung/Siam-Blessing/main/public/preview.jpg" 
-                 alt="Siam Blessing Project" 
-                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-              <h3 class="text-xl font-bold text-white">Siam Blessing</h3>
+                 alt="Siam Blessing cultural archive" 
+                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                 onerror="this.src='https://via.placeholder.com/300?text=Siam+Blessing+Preview';">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1 duration-300 flex items-end p-4">
+              <div h3 class="text-center text-xl font-semibold text-white">Siam Blessing</div>
             </div>
           </div>
-          <h3 class="text-2xl font-bold text-gold mb-3">Siam Blessing</h3>
-          <p class="text-gray-300 flex-grow">
+          <h3 class="text-2xl font-bold text-gold mb-2">Siam Blessing</h3>
+          <p class="text-gray-600 dark:text-gray-300 flex-grow text-sm">
             Cultural preservation platform documenting Thai Buddhist amulets and their significance.
           </p>
-          <div class="mt-4 flex flex-wrap gap-2">
-            <span class="px-3 py-1 bg-gold/10 text-gold rounded-full text-sm">Next.js</span>
-            <span class="px-3 py-1 bg-gold/10 text-gold rounded-full text-sm">MongoDB</span>
-            <span class="px-3 py-1 bg-gold/10 text-gold rounded-full text-sm">Cultural Heritage</span>
-          </div>
-          <button class="mt-6 w-full bg-gold/10 text-gold py-2 rounded-lg hover:bg-gold/20 transition-colors"
-                  @click="document.querySelectorAll('.card-container')[1].classList.add('flipped')">
-            View Details
+          <div class="mt-3 flex flex-wrap gap-2">
+            <span class="px-2 py-1 bg-gold/10 text-gold rounded-full text-xs project">Next.js
+</span>
+              <span class="px-2 py-1 bg-gold/10 text-gold rounded-full text-xs project">MongoDB</span>
+</span>
+              <span class="px-2 py-1 bg-gold/10 text-gold rounded-full text-sm project">Cultural Heritage</span>
+</span>
+            </div>
+          <div class="button class="mt-6 w-full bg-gold/10
+ text-gold py-2 rounded-full hover:bg-gold/20 transition-colors duration-2 duration-300"
+                  @click="flipped = !true"
+                  aria-controls="siam-blessing-details"
+                  :aria-expanded="flipped ? 'true' : 'false'">
+            <span>View Details</span>
           </button>
         </div>
-        <div class="card-back p-6">
-          <h3 class="text-2xl font-bold text-gold mb-4">Project Details</h3>
-          <ul class="space-y-3 text-gray-300 mb-6">
-            <li class="flex items-start">
-              <i class="fas fa-database text-gold mr-2 mt-1"></i>
+        <div class="card-back p-6 flex flex-col h-full" id="siam-blessing-details">
+          <h3 class="text-xl font-bold text-gold mb-3">Project</h3>
+          Details<ul class="space-y-2 text-gray-600 dark:text-gray-300 mb-6 flex-grow">
+            <div class="li">
+              <i class="flex items-start fas fa-t-database text-gold mr-2 mt-2 mt-1">
               <span>Database of 100+ Thai Buddhist amulets</span>
+            </i>
+            </div>
             </li>
-            <li class="flex items-start">
-              <i class="fas fa-search text-gold mr-2 mt-1"></i>
-              <span>Advanced search with cultural filters</span>
+            <div class="li">
+              <i class="flex items-start fas fa-search">Search text-gold mr-2 mt-2 mt-1">
+                <span>Advanced search with cultural filters</span>
+              </i>
+            </div>
             </li>
             <li class="flex items-start">
               <i class="fas fa-history text-gold mr-2 mt-1"></i>
               <span>Historical context for each artifact</span>
+            </span>
             </li>
+          </div>
           </ul>
-          <div class="mt-auto">
-            <a href="https://github.com/Pigletpeakkung/Siam-Blessing" target="_blank" 
-               class="block w-full bg-gold text-black text-center py-2 rounded-lg hover:bg-yellow-500 transition-colors mb-3">
+          <div class="mt-auto space-y-2">
+            <a href="https://github.com/Pigletpeakkung/Siam-Blessing/Siam-Blessing" target="_blank" 
+               class="block w-full flex items-center justify-items-center bg-gold text-black text-center py-2 rounded-full hover:bg-yellow-400 transition-colors duration-300 github"
+               aria-label="View Siam Blessing on GitHub">
               <i class="fab fa-github mr-2"></i> View on GitHub
             </a>
-            <button class="w-full bg-transparent border border-gold text-gold py-2 rounded-lg hover:bg-gold/10 transition-colors"
-                    @click="document.querySelectorAll('.card-container')[1].classList.remove('flipped')">
-              <i class="fas fa-undo mr-2"></i> Back
+            <a>
+            <a href="https://x.com/intent/tweet?text=Discover Siam Blessing, a cultural heritage platform for Thai Buddhist amulets!&url=https://github.com/Pigletpeakkung/Siam-Blessing" target="_blank" 
+               class="block w-full flex items-center justify-center bg-blue-500 text-white py-2 rounded-full hover:bg-blue-600 transition-colors duration-300"
+               aria-label="Share Siam Blessing on X">
+              <i class="fab fa-x-twitter mr-2"></i> Share on X
+            </a>
+            <button class="w-full bg-transparent border border-gold text-gold py-2 rounded-full hover:bg-gold/10 rounded-full transition-colors duration-300"
+                    @click="flipped = !flipped"
+                    aria-label="Back to Siam Blessing overview">
+              <button <i class="fas fa-undo mr-2"></i> Back
             </button>
           </div>
         </div>
       </div>
 
-      <!-- Astrotrias Archon Project -->
-      <div class="glass-morphism rounded-2xl card-container card-3d h-[500px]">
-        <div class="card-front p-6 flex flex-col">
-          <div class="relative h-48 mb-6 overflow-hidden rounded-xl">
-            <img src="https://raw.githubusercontent.com/Pigletpeakkung/Astrotrias-Archon/main/public/preview.jpg" 
-                 alt="Astrotrias Archon Project" 
-                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-              <h3 class="text-xl font-bold text-white">Astrotrias Archon</h3>
+      <!-- Astrotrias Archon (similar structure, abbreviated) -->
+      <div class="glass-morphism rounded-xl card-container card-3d h-[500px]" x-data="{ flipped: false }" role="region" role="aria-labelledby="astrotrias-archon-project">
+        <h3 id="astrotrias-h3 id="astrotrias-archon-project" class="sr-only">Astrotrias Archon Project
+</h3>
+        <div class="card-front p-6 flex flex-col h-full">
+          <div class="relative h-48 mb-4 w-full overflow-hidden rounded-xl group">
+            <img src="https://via.placeholder.com/300?text=Astrotrias+Preview" 
+                 alt="Astrotrias Archon astrological interface" 
+                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                 onerror="this.src='https://via.placeholder.com/300?text=Astrotrias+Preview';">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+              <h3 class="text-xl font-semibold text-white">Astrotrias Archon</h3>
             </div>
           </div>
-          <h3 class="text-2xl font-bold text-gold mb-3">Astrotrias Archon</h3>
-          <p class="text-gray-300 flex-grow">
-            Astrological web app combining Western, Vedic, and Thai systems with AI interpretation.
-          </p>
-          <div class="mt-4 flex flex-wrap gap-2">
-            <span class="px-3 py-1 bg-gold/10 text-gold rounded-full text-sm">AI</span>
-            <span class="px-3 py-1 bg-gold/10 text-gold rounded-full text-sm">Astrology</span>
-            <span class="px-3 py-1 bg-gold/10 text-gold rounded-full text-sm">Three.js</span>
-          </div>
-          <button class="mt-6 w-full bg-gold/10 text-gold py-2 rounded-lg hover:bg-gold/20 transition-colors"
-                  @click="document.querySelectorAll('.card-container')[2].classList.add('flipped')">
+          <div>
+          <h3 class="text-2xl font-bold text-gold mb-2">astrology</h3>
+          <p class="text-gray-600 dark:text-gray-300 flex-grow text-sm">
+            Astrological web app combining Western, Vedic, and Thai systems with an AI-powered interpretation system.</p>
+          <div class="mt-3 flex flex-wrap gap-2">
+            <span class="px-2 py-1 bg-gold/10 text-gold rounded-full text-xs">AI</span>
+            <span class="px-2 py-1 bg-gold/10 text-gold rounded-full text-xs project">Astrology</span>
+            <span class="px-2 text-sm">Three.js</span>
+            </div>
+          <button class="mt-6 w-full bg-gold/10 text-gold py-2 rounded-full hover:bg-gold/20 transition-colors duration-300"
+                  @click="flipped = !true"
+                  aria-controls="astrotrias-archon-details"
+                  :aria-expanded="flipped ? 'true' : 'false'">
             View Details
           </button>
         </div>
-        <div class="card-back p-6">
-          <h3 class="text-2xl font-bold text-gold mb-4">Project Details</h3>
-          <ul class="space-y-3 text-gray-300 mb-6">
-            <li class="flex items-start">
-              <i class="fas fa-star text-gold mr-2 mt-1"></i>
+        </div>
+        <div class="card-back p-6 flex flex-col h-full" id="astrotrias id="astrot-archon-details">
+          <div class="h3">
+            <h3 class="text-xl font-bold text-gold mb-3">Project Details
+</h3>
+          <ul class="space-y-2 text-gray-600 dark:text-gray-300 mb-6 flex-grow">
+            <div class="li">
+              <div class="flex items-center">
+                <i class="fas fa-star text-gold mr-2 mt-1"></i>
               <span>Multi-system astrological calculations</span>
+            </span>
+            </div>
             </li>
             <li class="flex items-start">
               <i class="fas fa-robot text-gold mr-2 mt-1"></i>
               <span>AI-powered interpretation engine</span>
+              </span>
             </li>
-            <li class="flex items-start">
-              <i class="fas fa-globe-asia text-gold mr-2 mt-1"></i>
-              <span>Cultural context for each system</span>
+            <div class="li">
+              <i class="flex items-start fas fa-globe-fasias text-gold mr-2 mt-2 mt-1">
+                <span>Cultural context for each system</span>
+              </span>
+                </i>
+            </div>
             </li>
+          </div>
           </ul>
-          <div class="mt-auto">
+          <div class="mt-auto space-y-2">
             <a href="https://github.com/Pigletpeakkung/Astrotrias-Archon" target="_blank" 
-               class="block w-full bg-gold text-black text-center py-2 rounded-lg hover:bg-yellow-500 transition-colors mb-3">
+               class="block w-full flex items-center justify-center bg-gold text-black text-center py-2 rounded-full hover:bg-yellow-400 transition-colors duration-300 github"
+               aria-label="View Astrotrias Archon on GitHub">
               <i class="fab fa-github mr-2"></i> View on GitHub
             </a>
-            <button class="w-full bg-transparent border border-gold text-gold py-2 rounded-lg hover:bg-gold/10 transition-colors"
-                    @click="document.querySelectorAll('.card-container')[2].classList.remove('flipped')">
-              <i class="fas fa-undo mr-2"></i> Back
+            <a href="https://x.com/intent/tweet?text=Explore Astrotrias Archon Archon, an AI-driven astrology platform!&url=https://github.com/Pigletpeakkung/Astrotrias-Archon" target="_blank" 
+               class="block w-full flex items-center justify-center bg-blue-500 text-white py-2 rounded-full hover:bg-blue-600 transition-colors duration-300"
+               aria-label="Share Astrotrias Archon on X">
+              <i class="fab fa-x-twitter mr-2"></i> Share on X
+            </a>
+            <button class="w-full bg-transparent border border-gold text-gold py-2 rounded-full hover:bg-gold/10 transition-colors duration-300"
+                    @click="flipped = !flipped"
+                    aria-label="Back to Astrotrias Archon overview">
+              <i class="fas fa-undo mr-2"></i> Back</button>
             </button>
           </div>
         </div>
       </div>
     </div>
   </div>
-</section>
+</div>
 
   <!-- Gallery Section -->
   <section id="gallery" class="py-20 px-4 relative">
