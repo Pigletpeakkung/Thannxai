@@ -358,6 +358,108 @@
       box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
     }
 
+/* Glassmorphism */
+.glass-morphism {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.dark .glass-morphism {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Gold Color */
+.text-gold {
+  color: #d4af37;
+}
+
+.bg-gold {
+  background-color: #d4af37;
+}
+
+/* Card Hover and 3D Effect */
+.card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  will-change: transform, box-shadow;
+}
+
+.card-hover:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(212, 175, 55, 0.2);
+}
+
+.card-3d {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.card-3d:hover {
+  transform: rotateX(2deg) rotateY(2deg);
+}
+
+/* Sparkle Animation */
+.sparkle {
+  position: relative;
+  animation: sparkle 2s infinite;
+}
+
+.sparkle-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.3) 10%, transparent 10%);
+  background-size: 200% 200%;
+  animation: sparkle-move 3s infinite ease-in-out;
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+@keyframes sparkle-move {
+  0% { background-position: 0% 0%; }
+  50% { background-position: 100% 100%; }
+  100% { background-position: 0% 0%; }
+}
+
+/* Carousel Animation */
+.carousel {
+  transition: transform 0.5s ease-in-out;
+}
+
+/* Responsive Adjustments */
+@media (min-width: 768px) {
+  .carousel .min-w-full {
+    min-width: 50%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .carousel .min-w-full {
+    min-width: 33.33%;
+  }
+}
+
+/* Lotus Background for Thai Aesthetic */
+#testimonials::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('https://via.placeholder.com/100x100?text=Lotus+Pattern') repeat;
+  opacity: 0.05;
+  z-index: -1;
+}
+
     /* Reduced Motion */
     @media (prefers-reduced-motion: reduce) {
       .skill-bar, .card-container, .card-front, .card-back, .card-3d, .hover-grow, .hover-underline {
@@ -1170,63 +1272,216 @@
     </div>
   </section>
 
-  <!-- Testimonials Section -->
-  <section id="testimonials" class="py-20 px-4 relative">
-    <div class="max-w-7xl mx-auto">
-      <div class="text-center mb-16">
-        <h2 class="text-4xl md:text-6xl font-bold mb-6 text-gold text-shadow">Client Reviews</h2>
-        <div class="h-1 w-24 bg-gradient-to-r from-gold to-yellow-400 mx-auto rounded-full"></div>
-      </div>
-      
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-        <!-- Testimonial 1 -->
-        <div class="glass-morphism rounded-2xl p-8 card-hover card-3d">
-          <div class="flex items-center mb-4">
-            <i class="fas fa-star text-yellow-300 mr-2 text-2xl"></i>
-            <i class="fas fa-star text-yellow-300 mr-2 text-2xl"></i>
-            <i class="fas fa-star text-yellow-300 mr-2 text-2xl"></i>
-            <i class="fas fa-star text-yellow-300 mr-2 text-2xl"></i>
-            <i class="fas fa-star text-yellow-300 text-2xl"></i>
-          </div>
-          <p class="text-gray-300 italic mb-6">
-            "Thanatsitt's ability to merge cultural depth with technological precision is extraordinary. Their AI projects feel deeply human."
-          </p>
-          <div class="flex items-center">
-            <div class="w-12 h-12 bg-gold/20 rounded-full flex items-center justify-center">
-              <i class="fas fa-user text-gold"></i>
+  <section id="testimonials" class="py-20 px-4 relative bg-gray-100 dark:bg-gray-900 overflow-hidden">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-12">
+      <h2 class="text-4xl md:text-5xl font-bold mb-4 text-gold text-shadow">Voices of Impact</h2>
+      <div class="h-1 w-24 bg-gradient-to-r from-gold to-yellow-400 mx-auto rounded-full"></div>
+      <p class="text-xl text-gray-600 dark:text-gray-300 mt-4 max-w-3xl mx-auto">
+        Discover how my fusion of Thai heritage, technology, and artistry has transformed lives and projects
+      </p>
+    </div>
+
+    <div class="relative">
+      <!-- Carousel Wrapper -->
+      <div x-data="carousel()" x-init="initCarousel" class="overflow-hidden" role="region" aria-label="Testimonials carousel">
+        <div class="flex transition-transform duration-500 ease-in-out" x-ref="carousel" :style="{ transform: `translateX(-${current * 100}%)` }">
+          <!-- Testimonial 1 -->
+          <div class="glass-morphism rounded-xl p-8 card-hover card-3d min-w-full md:min-w-[50%] lg:min-w-[33.33%] px-4">
+            <div class="flex items-center mb-4 relative">
+              <div class="star-container flex">
+                <i class="fas fa-star text-yellow-300 mr-1 text-xl sparkle"></i>
+                <i class="fas fa-star text-yellow-300 mr-1 text-xl sparkle"></i>
+                <i class="fas fa-star text-yellow-300 mr-1 text-xl sparkle"></i>
+                <i class="fas fa-star text-yellow-300 mr-1 text-xl sparkle"></i>
+                <i class="fas fa-star text-yellow-300 text-xl sparkle"></i>
+              </div>
             </div>
-            <div class="ml-4">
-              <h4 class="text-white font-semibold">Sarah Lin</h4>
-              <p class="text-gray-400 text-sm">Creative Director, London</p>
+            <p class="text-gray-600 dark:text-gray-300 italic mb-6 text-sm">
+              "Thanatsitt’s Holy Bless app brought our temple’s mindfulness practices to a global audience. The serene Thai-inspired UI and meditation tracker are both intuitive and deeply respectful of our traditions."
+            </p>
+            <div class="flex items-center">
+              <div class="w-12 h-12 bg-gold/20 rounded-full flex items-center justify-center relative overflow-hidden">
+                <i class="fas fa-user text-gold"></i>
+                <div class="sparkle-overlay"></div>
+              </div>
+              <div class="ml-4">
+                <h4 class="text-white font-semibold">Phra Ananda</h4>
+                <p class="text-gray-400 text-sm">Abbot, Wat Arun, Bangkok</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 2 -->
+          <div class="glass-morphism rounded-xl p-8 card-hover card-3d min-w-full md:min-w-[50%] lg:min-w-[33.33%] px-4">
+            <div class="flex items-center mb-4 relative">
+              <div class="star-container flex">
+                <i class="fas fa-star text-yellow-300 mr-1 text-xl sparkle"></i>
+                <i class="fas fa-star text-yellow-300 mr-1 text-xl sparkle"></i>
+                <i class="fas fa-star text-yellow-300 mr-1 text-xl sparkle"></i>
+                <i class="fas fa-star text-yellow-300 mr-1 text-xl sparkle"></i>
+                <i class="fas fa-star-half-alt text-yellow-300 text-xl sparkle"></i>
+              </div>
+            </div>
+            <p class="text-gray-600 dark:text-gray-300 italic mb-6 text-sm">
+              "Siam Blessing digitized our amulet archive with precision. Thanatsitt’s attention to cultural nuances and robust Next.js platform made our heritage accessible worldwide."
+            </p>
+            <div class="flex items-center">
+              <div class="w-12 h-12 bg-gold/20 rounded-full flex items-center justify-center relative overflow-hidden">
+                <i class="fas fa-user text-gold"></i>
+                <div class="sparkle-overlay"></div>
+              </div>
+              <div class="ml-4">
+                <h4 class="text-white font-semibold">Dr. Naree Chaisuwan</h4>
+                <p class="text-gray-400 text-sm">Historian, Ayutthaya Cultural Center</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 3 -->
+          <div class="glass-morphism rounded-xl p-8 card-hover card-3d min-w-full md:min-w-[50%] lg:min-w-[33.33%] px-4">
+            <div class="flex items-center mb-4 relative">
+              <div class="star-container flex">
+                <i class="fas fa-star text-yellow-300 mr-1 text-xl sparkle"></i>
+                <i class="fas fa-star text-yellow-300 mr-1 text-xl sparkle"></i>
+                <i class="fas fa-star text-yellow-300 mr-1 text-xl sparkle"></i>
+                <i class="fas fa-star text-yellow-300 mr-1 text-xl sparkle"></i>
+                <i class="fas fa-star text-yellow-300 text-xl sparkle"></i>
+              </div>
+            </div>
+            <p class="text-gray-600 dark:text-gray-300 italic mb-6 text-sm">
+              "Astrotrias Archon is a masterpiece. Thanatsitt’s AI-driven astrology platform, blending Thai and Western systems, is both innovative and visually stunning with its Three.js animations."
+            </p>
+            <div class="flex items-center">
+              <div class="w-12 h-12 bg-gold/20 rounded-full flex items-center justify-center relative overflow-hidden">
+                <i class="fas fa-user text-gold"></i>
+                <div class="sparkle-overlay"></div>
+              </div>
+              <div class="ml-4">
+                <h4 class="text-white font-semibold">Maya Patel</h4>
+                <p class="text-gray-400 text-sm">Founder, StarPath Tech, Singapore</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 4 -->
+          <div class="glass-morphism rounded-xl p-8 card-hover card-3d min-w-full md:min-w-[50%] lg:min-w-[33.33%] px-4">
+            <div class="flex items-center mb-4 relative">
+              <div class="star-container flex">
+                <i class="fas fa-star text-yellow-300 mr-1 text-xl sparkle"></i>
+                <i class="fas fa-star text-yellow-300 mr-1 text-xl sparkle"></i>
+                <i class="fas fa-star text-yellow-300 mr-1 text-xl sparkle"></i>
+                <i class="fas fa-star text-yellow-300 mr-1 text-xl sparkle"></i>
+                <i class="fas fa-star text-yellow-300 text-xl sparkle"></i>
+              </div>
+            </div>
+            <p class="text-gray-600 dark:text-gray-300 italic mb-6 text-sm">
+              "Thanatsitt created a breathtaking cuneiform-inspired logo for my brand. The celestial motifs and gold accents perfectly captured our mystical vision."
+            </p>
+            <div class="flex items-center">
+              <div class="w-12 h-12 bg-gold/20 rounded-full flex items-center justify-center relative overflow-hidden">
+                <i class="fas fa-user text-gold"></i>
+                <div class="sparkle-overlay"></div>
+              </div>
+              <div class="ml-4">
+                <h4 class="text-white font-semibold">Elena Rossi</h4>
+                <p class="text-gray-400 text-sm">Creative Director, Luxe Designs, Milan</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 5 -->
+          <div class="glass-morphism rounded-xl p-8 card-hover card-3d min-w-full md:min-w-[50%] lg:min-w-[33.33%] px-4">
+            <div class="flex items-center mb-4 relative">
+              <div class="star-container flex">
+                <i class="fas fa-star text-yellow-300 mr-1 text-xl sparkle"></i>
+                <i class="fas fa-star text-yellow-300 mr-1 text-xl sparkle"></i>
+                <i class="fas fa-star text-yellow-300 mr-1 text-xl sparkle"></i>
+                <i class="fas fa-star text-yellow-300 mr-1 text-xl sparkle"></i>
+                <i class="fas fa-star-half-alt text-yellow-300 text-xl sparkle"></i>
+              </div>
+            </div>
+            <p class="text-gray-600 dark:text-gray-300 italic mb-6 text-sm">
+              "The William Blake-inspired artwork Thanatsitt designed for our gallery was ethereal. The glowing mandalas and Sanskrit glyphs added a profound spiritual depth."
+            </p>
+            <div class="flex items-center">
+              <div class="w-12 h-12 bg-gold/20 rounded-full flex items-center justify-center relative overflow-hidden">
+                <i class="fas fa-user text-gold"></i>
+                <div class="sparkle-overlay"></div>
+              </div>
+              <div class="ml-4">
+                <h4 class="text-white font-semibold">Arun Vongkham</h4>
+                <p class="text-gray-400 text-sm">Art Curator, Chiang Rai Art Gallery</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 6 -->
+          <div class="glass-morphism rounded-xl p-8 card-hover card-3d min-w-full md:min-w-[50%] lg:min-w-[33.33%] px-4">
+            <div class="flex items-center mb-4 relative">
+              <div class="star-container flex">
+                <i class="fas fa-star text-yellow-300 mr-1 text-xl sparkle"></i>
+                <i class="fas fa-star text-yellow-300 mr-1 text-xl sparkle"></i>
+                <i class="fas fa-star text-yellow-300 mr-1 text-xl sparkle"></i>
+                <i class="fas fa-star text-yellow-300 mr-1 text-xl sparkle"></i>
+                <i class="fas fa-star text-yellow-300 text-xl sparkle"></i>
+              </div>
+            </div>
+            <p class="text-gray-600 dark:text-gray-300 italic mb-6 text-sm">
+              "Thanatsitt’s interactive role-play platform, with immersive sound effects and Thai-inspired narratives, elevated our cultural storytelling to new heights."
+            </p>
+            <div class="flex items-center">
+              <div class="w-12 h-12 bg-gold/20 rounded-full flex items-center justify-center relative overflow-hidden">
+                <i class="fas fa-user text-gold"></i>
+                <div class="sparkle-overlay"></div>
+              </div>
+              <div class="ml-4">
+                <h4 class="text-white font-semibold">Somsak Preecha</h4>
+                <p class="text-gray-400 text-sm">Director, Thai Cultural Council, Sukhothai</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 7 -->
+          <div class="glass-morphism rounded-xl p-8 card-hover card-3d min-w-full md:min-w-[50%] lg:min-w-[33.33%] px-4">
+            <div class="flex items-center mb-4 relative">
+              <div class="star-container flex">
+                <i class="fas fa-star text-yellow-300 mr-1 text-xl sparkle"></i>
+                <i class="fas fa-star text-yellow-300 mr-1 text-xl sparkle"></i>
+                <i class="fas fa-star text-yellow-300 mr-1 text-xl sparkle"></i>
+                <i class="fas fa-star text-yellow-300 mr-1 text-xl sparkle"></i>
+                <i class="fas fa-star text-yellow-300 text-xl sparkle"></i>
+              </div>
+            </div>
+            <p class="text-gray-600 dark:text-gray-300 italic mb-6 text-sm">
+              "The personalized Egyptian cartouche Thanatsitt designed for my brand was a perfect blend of ancient symbolism and modern elegance, with stunning gold and turquoise accents."
+            </p>
+            <div class="flex items-center">
+              <div class="w-12 h-12 bg-gold/20 rounded-full flex items-center justify-center relative overflow-hidden">
+                <i class="fas fa-user text-gold"></i>
+                <div class="sparkle-overlay"></div>
+              </div>
+              <div class="ml-4">
+                <h4 class="text-white font-semibold">Amira Khalil</h4>
+                <p class="text-gray-400 text-sm">Entrepreneur, Cairo Collective, Egypt</p>
+              </div>
             </div>
           </div>
         </div>
-        
-        <!-- Testimonial 2 -->
-        <div class="glass-morphism rounded-2xl p-8 card-hover card-3d">
-          <div class="flex items-center mb-4">
-            <i class="fas fa-star text-yellow-300 mr-2 text-2xl"></i>
-            <i class="fas fa-star text-yellow-300 mr-2 text-2xl"></i>
-            <i class="fas fa-star text-yellow-300 mr-2 text-2xl"></i>
-            <i class="fas fa-star text-yellow-300 mr-2 text-2xl"></i>
-            <i class="fas fa-star text-yellow-300 text-2xl"></i>
-          </div>
-          <p class="text-gray-300 italic mb-6">
-            "Working with Thanatsitt was a transformative experience. Their portfolio reflects both technical mastery and philosophical insight."
-          </p>
-          <div class="flex items-center">
-            <div class="w-12 h-12 bg-gold/20 rounded-full flex items-center justify-center">
-              <i class="fas fa-user text-gold"></i>
-            </div>
-            <div class="ml-4">
-              <h4 class="text-white font-semibold">James Wong</h4>
-              <p class="text-gray-400 text-sm">Tech Innovator, Bangkok</p>
-            </div>
-          </div>
-        </div>
+
+        <!-- Navigation Buttons -->
+        <button class="absolute top-1/2 left-0 transform -translate-y-1/2 bg-gold/20 text-gold p-3 rounded-full hover:bg-gold/30 transition-colors duration-300"
+                @click="prev" aria-label="Previous testimonial">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="absolute top-1/2 right-0 transform -translate-y-1/2 bg-gold/20 text-gold p-3 rounded-full hover:bg-gold/30 transition-colors duration-300"
+                @click="next" aria-label="Next testimonial">
+          <i class="fas fa-chevron-right"></i>
+        </button>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
   <!-- Contact Section -->
   <section id="contact" class="py-20 px-4 relative bg-gradient-to-br from-deepPurple/50 to-cosmicBlue/70">
@@ -1424,6 +1679,33 @@ projectCards.forEach(card => {
   card.style.transform = 'translateY(20px)';
   card.style.transition = 'all 0.6s ease-out';
   observer.observe(card);
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  Alpine.data('carousel', () => ({
+    current: 0,
+    total: 7, // Updated for 7 testimonials
+    autoScroll: null,
+    initCarousel() {
+      this.startAutoScroll();
+      this.$refs.carousel.parentElement.addEventListener('mouseenter', () => this.stopAutoScroll());
+      this.$refs.carousel.parentElement.addEventListener('mouseleave', () => this.startAutoScroll());
+    },
+    startAutoScroll() {
+      this.autoScroll = setInterval(() => {
+        this.next();
+      }, 5000); // Auto-scroll every 5 seconds
+    },
+    stopAutoScroll() {
+      clearInterval(this.autoScroll);
+    },
+    next() {
+      this.current = (this.current + 1) % this.total;
+    },
+    prev() {
+      this.current = (this.current - 1 + this.total) % this.total;
+    }
+  }));
 });
 
       // Scroll-triggered animations
