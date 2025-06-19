@@ -1,226 +1,1033 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Thanats's Portfolio</title>
-  <!-- Remove <base> tag for GitHub Pages compatibility; use relative paths -->
-  <link rel="manifest" href="./manifest.json">
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <!-- Use local icon instead of external Unsplash image -->
-  <link rel="apple-touch-icon" href="./assets/images/icon-192.png">
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.3/dist/tailwind.min.css" rel="stylesheet">
-  <link href="https://fonts.cdnfonts.com/css/longsile" rel="stylesheet">
-  <link href="https://fonts.cdnfonts.com/css/thegoodmonolith" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=PP+Neue+Montreal&display=swap" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3.10.0/dist/email.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.10.5/dist/cdn.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.3/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/CustomEase.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/TextPlugin.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrambleTextPlugin.min.js"></script>
-  <script src="https://unpkg.com/split-text-js@1.0.2/dist/splittext.min.js"></script>
-  <link href="./assets/css/style.css" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#1A1A2E" />
+  
+  <!-- SEO Meta Tags -->
+  <title>Thanatsitt Santisamranwilai - Thai AI Developer & Cultural Designer</title>
+  <meta name="description" content="Thai interdisciplinary creator bridging ancient wisdom with modern AI technology. Fashion designer turned developer, co-founder of ThannxAI." />
+  <meta name="keywords" content="Thanatsitt Santisamranwilai, Thai developer, AI developer, cultural designer, ThannxAI, London College of Fashion, web developer, UI/UX designer, cross-cultural technology, Buddhist philosophy, archetypal psychology, Carl Jung, fashion design, self-taught programmer" />
+  <meta name="author" content="Thanatsitt Santisamranwilai" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="Thanatsitt Santisamranwilai - Thai AI Developer & Cultural Designer" />
+  <meta property="og:description" content="Interdisciplinary creator bridging ancient wisdom with modern AI technology. Fashion designer turned developer, co-founder of ThannxAI." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://thanatsitt.dev" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&h=630&fit=crop" />
+
+  <!-- Twitter Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Thanatsitt Santisamranwilai - Thai AI Developer & Cultural Designer" />
+  <meta name="twitter:description" content="Interdisciplinary creator bridging ancient wisdom with modern AI technology. Fashion designer turned developer, co-founder of ThannxAI." />
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&h=630&fit=crop" />
+  <meta name="twitter:site" content="@ThanattsittS" />
+
+  <!-- Favicon (SVG Moon) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌙</text></svg>" type="image/svg+xml" />
+
+  <!-- Preconnect for Performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+  <link rel="preconnect" href="https://www.linkedin.com" />
+  <link rel="preconnect" href="https://api.emailjs.com" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet" />
+
+  <!-- Alpine.js and TailwindCSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Playfair Display', 'serif'],
+          },
+          colors: {
+            gold: '#D4AF37',
+            deepPurple: '#1A1A2E',
+            moonSilver: '#C0C0C8',
+            cosmicBlue: '#16213E',
+            stellarPurple: '#0F3460',
+          },
+          animation: {
+            gradient: 'none', // Removed animation
+            float: 'float 6s ease-in-out infinite',
+            glow: 'glow 2s ease-in-out infinite alternate',
+            pulseSlow: 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            bounceSlow: 'bounce 3s infinite',
+            spinSlow: 'spin 8s linear infinite',
+            wiggle: 'none', // Removed wiggle
+            slideLeft: 'none',
+            slideRight: 'none',
+            zoomIn: 'zoomIn 0.5s ease-out',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
+              '33%': { transform: 'translateY(-20px) rotate(1deg)' },
+              '66%': { transform: 'translateY(-10px) rotate(-1deg)' },
+            },
+            glow: {
+              from: { boxShadow: '0 0 20px #D4AF37, 0 0 30px #D4AF37' },
+              to: { boxShadow: '0 0 30px #D4AF37, 0 0 60px #D4AF37, 0 0 90px #D4AF37' },
+            },
+          },
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom CSS -->
+  <style>
+    /* Static Cosmic Background */
+    .cosmic-bg {
+      background: radial-gradient(200% 100% at bottom center, #F4D03F 0%, #E96F92 30%, #0F3460 70%, #1A1A2E 100%),
+                  radial-gradient(220% 105% at top center, #1A1A2E 10%, #0F3460 40%, #E96F92 65%, #D4AF37 100%);
+      background-attachment: fixed;
+      overflow: hidden;
+    }
+
+    .nebula-layer {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 30% 20%, rgba(212, 175, 55, 0.15) 0%, transparent 50%),
+                  radial-gradient(circle at 70% 80%, rgba(15, 52, 96, 0.2) 0%, transparent 50%);
+      opacity: 0.7;
+    }
+
+    .stars-layer {
+      position: absolute;
+      inset: 0;
+    }
+
+    .stars {
+      --star-count: 400;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+
+    .star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: #C0C0C8;
+      border-radius: 50%;
+      opacity: 0.7;
+    }
+
+    .star:nth-child(odd) {
+      width: 3px;
+      height: 3px;
+      opacity: 0.8;
+    }
+
+    .star:nth-child(even) {
+      width: 1.5px;
+      height: 1.5px;
+      opacity: 0.6;
+    }
+
+    .moon-glow {
+      position: absolute;
+      top: 10%;
+      right: 10%;
+      width: 100px;
+      height: 100px;
+      background: radial-gradient(circle at 50% 50%, #D4AF37 0%, #F4D03F 50%, transparent 100%);
+      border-radius: 50%;
+      box-shadow: 0 0 40px rgba(212, 175, 55, 0.5);
+    }
+
+    /* 3D Card Container */
+    .card-container {
+      perspective: 1000px;
+      transform-style: preserve-3d;
+      position: relative;
+      height: 400px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .card-container:hover, .card-container:focus, .card-container.flipped {
+      transform: scale(1.02);
+    }
+
+    .card-front, .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 1rem;
+      transition: transform 0.6s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .card-back {
+      transform: rotateY(180deg);
+      background: linear-gradient(135deg, #16213E 0%, #0F3460 100%);
+    }
+
+    .card-container:hover .card-front, .card-container.flipped .card-front {
+      transform: rotateY(180deg);
+    }
+
+    .card-container:hover .card-back, .card-container.flipped .card-back {
+      transform: rotateY(0deg);
+    }
+
+    /* Glass Morphism */
+    .glass-morphism {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* Skill Bar */
+    .skill-bar {
+      background: linear-gradient(90deg, #D4AF37, #F4D03F);
+      transition: width 1.5s ease-in-out;
+    }
+
+    /* Navigation Link Hover */
+    .nav-link {
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      transition: all 0.3s ease;
+      color: #C0C0C8;
+    }
+
+    .nav-link:hover {
+      color: #D4AF37;
+      transform: translateY(-2px);
+    }
+
+    /* Card Hover Effect */
+    .card-hover {
+      transition: all 0.3s ease;
+    }
+
+    .card-hover:hover {
+      transform: translateY(-5px);
+    }
+
+    /* Typing Cursor Effect */
+    .typing-cursor::after {
+      content: '|';
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      0%, 50% { opacity: 1; }
+      51%, 100% { opacity: 0; }
+    }
+
+    /* Scroll Progress Bar */
+    #scroll-progress {
+      background: linear-gradient(90deg, #D4AF37, #F4D03F);
+      height: 4px;
+      transition: width 0.3s ease;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 50;
+    }
+
+    #scroll-progress:hover::after {
+      content: 'Scroll Progress';
+      position: absolute;
+      top: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #16213E;
+      color: #D4AF37;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 12px;
+    }
+
+    /* Reduced Motion */
+    @media (prefers-reduced-motion: reduce) {
+      .skill-bar, .card-container, .card-front, .card-back {
+        transition: none;
+      }
+    }
+
+    /* Mobile Adjustments */
+    @media (max-width: 768px) {
+      .card-container {
+        height: 350px;
+      }
+      .moon-glow {
+        width: 60px;
+        height: 60px;
+      }
+      .stars {
+        --star-count: 200;
+      }
+    }
+  </style>
+
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="/manifest.json" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <link rel="apple-touch-icon" href="/logo192.png" />
 </head>
 <body class="text-white font-sans antialiased overflow-x-hidden" x-data="portfolioApp()">
-  <a href="#home" class="sr-only focus:not-sr-only bg-yellow-400 text-black p-2 rounded absolute top-4 left-4 z-50">Skip to main content</a>
-  <nav class="fixed top-0 left-0 right-0 z-50 glass-morphism">
+  <noscript>
+    <div class="text-center p-10 bg-gradient-to-r from-gold to-yellow-500 text-black">
+      <h1 class="text-4xl font-bold mb-4">JavaScript is Required</h1>
+      <p>Enable JavaScript to experience the full portfolio.</p>
+    </div>
+  </noscript>
+
+  <!-- Static Cosmic Background -->
+  <div class="cosmic-bg fixed inset-0 z-[-2] pointer-events-none">
+    <div class="nebula-layer"></div>
+    <div class="stars-layer">
+      <div class="stars" style="--star-count: 400;"></div>
+    </div>
+    <div class="moon-glow"></div>
+  </div>
+
+  <!-- Scroll Progress Bar -->
+  <div id="scroll-progress" class="fixed top-0 left-0 h-1 bg-gold/10 z-50"></div>
+
+  <!-- Navigation -->
+  <nav class="fixed w-full z-50 transition-all duration-500" 
+       :class="scrolled ? 'glass-morphism shadow-2xl' : 'bg-transparent'"
+       x-init="window.addEventListener('scroll', () => scrolled = window.scrollY > 50)">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center h-16">
-        <div class="flex-shrink-0">
-          <a href="#" class="text-2xl font-bold text-yellow-400">Thanatsitt</a>
-        </div>
+      <div class="flex justify-between items-center py-4">
+        <a href="#" class="text-2xl font-bold text-gold hover:animate-glow transition-all duration-300 flex items-center group">
+          <div class="relative mr-3">
+            <div class="w-8 h-8 bg-gradient-to-br from-gold to-yellow-400 rounded-full group-hover:animate-pulse">
+              <div class="absolute inset-0 bg-gradient-to-br from-gold/20 to-transparent rounded-full"></div>
+              <div class="absolute top-1 left-1 w-2 h-2 bg-white/30 rounded-full"></div>
+              <div class="absolute bottom-1 right-1 w-1 h-1 bg-white/20 rounded-full"></div>
+            </div>
+          </div>
+          <span class="text-shadow group-hover:text-yellow-300 transition-colors">Thanatsitt</span>
+        </a>
+        
+        <!-- Desktop Menu -->
         <div class="hidden md:flex space-x-8">
-          <a href="#home" @click="scrollToSection('home')" class="hover:text-yellow-400">Home</a>
-          <a href="#about" @click="scrollToSection('about')" class="hover:text-yellow-400">About</a>
-          <a href="#skills" @click="scrollToSection('skills')" class="hover:text-yellow-400">Skills</a>
-          <a href="#gallery" @click="scrollToSection('gallery')" class="hover:text-yellow-400">Gallery</a>
-          <a href="#contact" @click="scrollToSection('contact')" class="hover:text-yellow-400">Contact</a>
+          <a href="#home" class="nav-link relative group" @click="scrollToSection('home')">
+            <span class="relative z-10">Home</span>
+            <div class="absolute inset-0 bg-gold/20 rounded-lg scale-0 group-hover:scale-100 transition-transform duration-300"></div>
+          </a>
+          <a href="#about" class="nav-link relative group" @click="scrollToSection('about')">
+            <span class="relative z-10">About</span>
+            <div class="absolute inset-0 bg-gold/20 rounded-lg scale-0 group-hover:scale-100 transition-transform duration-300"></div>
+          </a>
+          <a href="#skills" class="nav-link relative group" @click="scrollToSection('skills')">
+            <span class="relative z-10">Skills</span>
+            <div class="absolute inset-0 bg-gold/20 rounded-lg scale-0 group-hover:scale-100 transition-transform duration-300"></div>
+          </a>
+          <a href="#gallery" class="nav-link relative group" @click="scrollToSection('gallery')">
+            <span class="relative z-10">Gallery</span>
+            <div class="absolute inset-0 bg-gold/20 rounded-lg scale-0 group-hover:scale-100 transition-transform duration-300"></div>
+          </a>
+          <a href="#testimonials" class="nav-link relative group" @click="scrollToSection('testimonials')">
+            <span class="relative z-10">Reviews</span>
+            <div class="absolute inset-0 bg-gold/20 rounded-lg scale-0 group-hover:scale-100 transition-transform duration-300"></div>
+          </a>
+          <a href="#contact" class="nav-link relative group" @click="scrollToSection('contact')">
+            <span class="relative z-10">Contact</span>
+            <div class="absolute inset-0 bg-gold/20 rounded-lg scale-0 group-hover:scale-100 transition-transform duration-300"></div>
+          </a>
         </div>
-        <div class="md:hidden">
-          <button @click="mobileMenuOpen = !mobileMenuOpen" 
-                  class="text-yellow-400 focus:outline-none" 
-                  aria-label="Toggle navigation menu" 
-                  :aria-expanded="mobileMenuOpen">
-            <i class="fas fa-bars fa-lg"></i>
-          </button>
-        </div>
+        
+        <!-- Mobile Menu Button -->
+        <button @click="mobileMenuOpen = !mobileMenuOpen" class="md:hidden text-gold">
+          <i class="fas fa-bars text-xl"></i>
+        </button>
       </div>
-    </div>
-    <div x-show="mobileMenuOpen" class="md:hidden">
-      <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-gray-900/50">
-        <a href="#home" @click="scrollToSection('home')" class="block px-3 py-2 hover:text-yellow-400">Home</a>
-        <a href="#about" @click="scrollToSection('about')" class="block px-3 py-2 hover:text-yellow-400">About</a>
-        <a href="#skills" @click="scrollToSection('skills')" class="block px-3 py-2 hover:text-yellow-400">Skills</a>
-        <a href="#gallery" @click="scrollToSection('gallery')" class="block px-3 py-2 hover:text-yellow-400">Gallery</a>
-        <a href="#contact" @click="scrollToSection('contact')" class="block px-3 py-2 hover:text-yellow-400">Contact</a>
-      </div>
-    </div>
-  </nav>
-  <div id="scroll-progress" class="fixed top-0 left-0 h-1 bg-yellow-400 z-50"></div>
-  <div class="background-frame"></div>
-  <div class="background-image default" id="default-bg" aria-hidden="true"></div>
-  <div class="background-image cultural" id="cultural-bg" aria-hidden="true"></div>
-  <div class="background-image fusion" id="fusion-bg" aria-hidden="true"></div>
-  <div class="background-image heritage" id="heritage-bg" aria-hidden="true"></div>
-  <div class="bottom-gradient" aria-hidden="true"></div>
-  <div class="text-background" aria-hidden="true">
-    <div class="text-item" style="--top: 10%; --left: 5%;" data-text="BE">BE</div>
-    <div class="text-item" style="--top: 20%; --left: 80%;" data-text="PRESENT">PRESENT</div>
-    <div class="text-item" style="--top: 30%; --left: 15%;" data-text="LISTEN">LISTEN</div>
-    <div class="text-item" style="--top: 40%; --left: 70%;" data-text="DEEPLY">DEEPLY</div>
-    <div class="text-item" style="--top: 50%; --left: 10%;" data-text="OBSERVE">OBSERVE</div>
-    <div class="text-item" style="--top: 60%; --left: 85%;" data-text="&">&</div>
-    <div class="text-item" style="--top: 70%; --left: 20%;" data-text="FEEL">FEEL</div>
-    <div class="text-item" style="--top: 80%; --left: 75%;" data-text="IS THE KEY">IS THE KEY</div>
-    <div class="text-item" style="--top: 15%; --left: 90%;" data-text="S">S</div>
-    <div class="text-item" style="--top: 25%; --left: 10%;" data-text="I">I</div>
-      <div class="text-item" style="--top: 35%; --left: 85%;" data-text="M">M</div>
-    <div class="text-item" style="--top: 45%; --left: 20%;" data-text="P">P</div>
-    <div class="text-item" style="--top: 55%; --left: 80%;" data-text="L">L</div>
-    <div class="text-item" style="--top: 65%; --left: 15%;" data-text="C">C</div>
-    <div class="text-item" style="--top: 75%; --left: 90%;" data-text="T">T</div>
-    <div class="text-item" style="--top: 85%; --left: 25%;" data-text="Y">Y</div>
-  </div>
-  <div class="type" id="kinetic-type" aria-hidden="true">
-    <div class="type-line"></div>
-    <div class="type-line"></div>
-    <div class="type-line"></div>
-    <div class="type-line"></div>
-    <div class="type-line"></div>
-    <div class="type-line"></div>
-    <div class="type-line"></div>
-    <div class="type-line"></div>
-    <div class="type-line"></div>
-    <div class="type-line"></div>
-    <div class="type-line"></div>
-    <div class="type-line"></div>
-    <div class="type-line"></div>
-    <div class="type-line"></div>
-    <div class="type-line"></div>
-    <div class="type-line"></div>
-    <div class="type-line"></div>
-    <div class="type-line"></div>
-  </div>
-  <main class="main-content">
-    <section id="home" class="min-h-screen flex items-center justify-center">
-      <div class="text-center">
-        <h1 class="text-5xl md:text-7xl font-bold text-shadow">
-          <span x-text="typedText" aria-hidden="true"></span>
-          <span class="sr-only">Thanatsitt</span>
-        </h1>
-        <p class="mt-4 text-xl md:text-2xl text-gray-300">Bridging Thai Heritage with Modern Technology</p>
-        <a href="#contact" @click="scrollToSection('contact')"
-           class="mt-8 inline-block px-8 py-3 bg-yellow-400 text-black rounded-full hover:bg-yellow-500 transition">
-          Get in Touch
+      
+      <!-- Mobile Menu -->
+      <div x-show="mobileMenuOpen" 
+           x-transition:enter="transition ease-out duration-300" 
+           x-transition:enter-start="opacity-0 transform -translate-y-2"
+           x-transition:enter-end="opacity-100 transform translate-y-0"
+           x-transition:leave="transition ease-in duration-200"
+           x-transition:leave-start="opacity-100 transform translate-y-0"
+           x-transition:leave-end="opacity-0 transform -translate-y-2"
+           class="md:hidden pb-4 glass-morphism rounded-b-2xl">
+        <a href="#home" class="block py-3 px-4 hover:bg-gold/20 rounded-lg transition-colors" @click="scrollToSection('home'); mobileMenuOpen = false">
+          <i class="fas fa-home mr-2"></i>Home
+        </a>
+        <a href="#about" class="block py-3 px-4 hover:bg-gold/20 rounded-lg transition-colors" @click="scrollToSection('about'); mobileMenuOpen = false">
+          <i class="fas fa-user mr-2"></i>About
+        </a>
+        <a href="#skills" class="block py-3 px-4 hover:bg-gold/20 rounded-lg transition-colors" @click="scrollToSection('skills'); mobileMenuOpen = false">
+          <i class="fas fa-cogs mr-2"></i>Skills
+        </a>
+        <a href="#gallery" class="block py-3 px-4 hover:bg-gold/20 rounded-lg transition-colors" @click="scrollToSection('gallery'); mobileMenuOpen = false">
+          <i class="fas fa-images mr-2"></i>Gallery
+        </a>
+        <a href="#testimonials" class="block py-3 px-4 hover:bg-gold/20 rounded-lg transition-colors" @click="scrollToSection('testimonials'); mobileMenuOpen = false">
+          <i class="fas fa-star mr-2"></i>Reviews
+        </a>
+        <a href="#contact" class="block py-3 px-4 hover:bg-gold/20 rounded-lg transition-colors" @click="scrollToSection('contact'); mobileMenuOpen = false">
+          <i class="fas fa-envelope mr-2"></i>Contact
         </a>
       </div>
-    </section>
-    <section id="about" class="py-20 px-4">
-      <div class="max-w-4xl mx-auto text-center">
-        <h2 class="text-4xl md:text-5xl font-bold text-shadow mb-8">About Me</h2>
-        <p class="text-lg text-gray-300 leading-relaxed">
-          I am Thanatsitt Santisamranwilai, a passionate creator from Thailand. My work blends the rich cultural heritage of Thailand with cutting-edge technology to craft unique digital experiences. From fashion design to AI-driven solutions, I strive to preserve tradition while embracing innovation.
-        </p>
+    </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden">
+    <div class="relative z-10 text-center max-w-6xl mx-auto px-4">
+      <div class="mb-8">
+        <h1 class="text-5xl md:text-7xl lg:text-8xl font-black mb-6 text-shadow">
+          <span class="bg-gradient-to-r from-gold via-yellow-400 to-gold bg-clip-text text-transparent typing-cursor" x-text="typedText || 'Thanatsitt'"></span>
+        </h1>
+        <div class="h-2 w-32 bg-gradient-to-r from-gold to-yellow-400 mx-auto rounded-full animate-pulse"></div>
       </div>
-    </section>
-    <section id="skills" class="py-20 px-4 bg-gray-900/50">
-      <div class="max-w-6xl mx-auto">
-        <h2 class="text-4xl md:text-5xl font-bold text-shadow text-center mb-12">Skills</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div class="card-container" tabindex="0">
-            <div class="card glass-morphism p-6 rounded-xl text-center">
-              <div class="card-front">
-                <i class="fas fa-paint-brush fa-3x text-yellow-400 mb-4"></i>
-                <h3 class="text-2xl font-bold mb-2">Creative Design</h3>
-                <p class="text-gray-300">Crafting visually stunning designs inspired by Thai aesthetics.</p>
+      
+      <p class="text-xl md:text-2xl lg:text-3xl mb-12 text-gray-300 leading-relaxed max-w-4xl mx-auto text-shadow">
+        Thai interdisciplinary creator bridging 
+        <span class="text-gold font-semibold">ancient wisdom</span> with 
+        <span class="text-gold font-semibold">modern technology</span>
+      </p>
+      
+      <div class="flex flex-col sm:flex-row gap-6 justify-center">
+        <button @click="scrollToSection('gallery')" class="group bg-gradient-to-r from-gold to-yellow-500 text-black px-10 py-5 rounded-full font-bold text-lg hover:scale-105 transform transition-all duration-300 hover:shadow-2xl hover:shadow-gold/50 relative overflow-hidden">
+          <span class="relative z-10 flex items-center justify-center">
+            <i class="fas fa-eye mr-3"></i>
+            Explore Portfolio
+          </span>
+          <div class="absolute inset-0 bg-gradient-to-r from-yellow-400 to-gold opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        </button>
+        
+        <button @click="scrollToSection('contact')" class="group border-2 border-moonSilver text-moonSilver px-10 py-5 rounded-full font-bold text-lg hover:bg-moonSilver hover:text-black transition-all duration-300 relative overflow-hidden">
+          <span class="relative z-10 flex items-center justify-center">
+            <i class="fas fa-paper-plane mr-3"></i>
+            Get In Touch
+          </span>
+        </button>
+      </div>
+      
+      <!-- Social Links -->
+      <div class="flex justify-center space-x-8 mt-12">
+        <a href="https://www.linkedin.com/in/thanattsitts" target="_blank" class="text-3xl text-gray-400 hover:text-gold transition-colors duration-300 hover:animate-bounce">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="https://github.com/Pigletpeakkung" target="_blank" class="text-3xl text-gray-400 hover:text-gold transition-colors duration-300 hover:animate-bounce">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://www.instagram.com/thanattsitt.s" target="_blank" class="text-3xl text-gray-400 hover:text-gold transition-colors duration-300 hover:animate-bounce">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://x.com/ThanattsittS" target="_blank" class="text-3xl text-gray-400 hover:text-gold transition-colors duration-300 hover:animate-bounce">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </div>
+    </div>
+    
+    <!-- Scroll Indicator -->
+    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+      <div class="w-6 h-10 border-2 border-gold rounded-full flex justify-center">
+        <div class="w-1 h-3 bg-gold rounded-full mt-2 animate-pulse"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-20 px-4 relative">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-6xl font-bold mb-6 text-gold text-shadow">About Me</h2>
+        <div class="h-1 w-24 bg-gradient-to-r from-gold to-yellow-400 mx-auto rounded-full"></div>
+      </div>
+      
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div class="relative">
+          <div class="glass-morphism rounded-3xl p-8 card-hover card-3d">
+            <div class="aspect-square bg-gradient-to-br from-gold/20 to-purple-600/20 rounded-2xl flex items-center justify-center relative overflow-hidden">
+              <div class="absolute inset-0 bg-gradient-to-br from-gold/10 to-transparent"></div>
+              <i class="fas fa-user text-8xl text-gold/50"></i>
+            </div>
+          </div>
+          
+          <div class="absolute -top-4 -right-4 glass-morphism rounded-full p-4 animate-float">
+            <i class="fas fa-palette text-2xl text-gold"></i>
+          </div>
+          <div class="absolute -bottom-4 -left-4 glass-morphism rounded-full p-4 animate-float" style="animation-delay: -1s;">
+            <i class="fas fa-brain text-2xl text-gold"></i>
+          </div>
+        </div>
+        
+        <div class="space-y-8">
+          <div class="glass-morphism rounded-2xl p-8 card-hover card-3d">
+            <h3 class="text-2xl font-bold mb-4 text-gold">
+              <i class="fas fa-star mr-3"></i>Cultural Navigator
+            </h3>
+            <p class="text-gray-300 leading-relaxed text-lg">
+              Born from the rich tapestry of Thai heritage and global innovation, I navigate the delicate balance between preserving ancient wisdom and embracing cutting-edge technology. My journey spans continents and disciplines, always seeking to bridge cultural divides through design and technology.
+            </p>
+          </div>
+          
+          <div class="glass-morphism rounded-2xl p-8 card-hover card-3d">
+            <h3 class="text-2xl font-bold mb-4 text-gold">
+              <i class="fas fa-graduation-cap mr-3"></i>Educational Journey
+            </h3>
+            <div class="space-y-4">
+              <div class="flex items-center space-x-4">
+                <div class="w-12 h-12 bg-gold/20 rounded-full flex items-center justify-center">
+                  <i class="fas fa-university text-gold"></i>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-white">London College of Fashion</h4>
+                  <p class="text-gray-400">Fashion Design & Cultural Studies</p>
+                </div>
               </div>
-              <div class="card-back glass-morphism p-6 rounded-xl">
-                <p class="text-gray-300">Expertise in Adobe Creative Suite, Figma, and traditional art techniques.</p>
+              <div class="flex items-center space-x-4">
+                <div class="w-12 h-12 bg-gold/20 rounded-full flex items-center justify-center">
+                  <i class="fas fa-robot text-gold"></i>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-white">AI & Technology</h4>
+                  <p class="text-gray-400">Self-taught Developer & Co-founder</p>
+                </div>
               </div>
             </div>
           </div>
-          <div class="card-container" tabindex="0">
-            <div class="card glass-morphism p-6 rounded-xl text-center">
-              <div class="card-front">
-                <i class="fas fa-code fa-3x text-yellow-400 mb-4"></i>
-                <h3 class="text-2xl font-bold mb-2">Web Development</h3>
-                <p class="text-gray-300">Building responsive and interactive web applications.</p>
+          
+          <div class="glass-morphism rounded-2xl p-8 card-hover card-3d">
+            <h3 class="text-2xl font-bold mb-4 text-gold">
+              <i class="fas fa-heart mr-3"></i>Philosophy
+            </h3>
+            <p class="text-gray-300 leading-relaxed text-lg">
+              I believe technology should enhance human connection, not replace it. Every project I undertake is guided by principles of cultural sensitivity, ethical innovation, and the timeless wisdom that beauty and function are inseparable.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="py-20 px-4 relative">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-6xl font-bold mb-6 text-gold text-shadow animate-zoomIn">Skills & Expertise</h2>
+        <div class="h-1 w-24 bg-gradient-to-r from-gold to-yellow-400 mx-auto rounded-full"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <!-- Design Skills Card -->
+        <div class="glass-morphism rounded-2xl card-container card-3d focus:outline-none focus:ring-2 focus:ring-gold" tabindex="0" aria-label="Design Skills Card">
+          <div class="card-front">
+            <div class="text-center mb-6">
+              <div class="w-16 h-16 bg-gradient-to-br from-gold to-yellow-400 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class="fas fa-palette text-2xl text-black"></i>
               </div>
-              <div class="card-back glass-morphism p-6 rounded-xl">
-                <p class="text-gray-300">Proficient in HTML,text-gray-300">Proficient in HTML, CSS, JavaScript, React, and Node.js.</p>
+              <h3 class="text-xl font-bold text-gold">Design</h3>
+            </div>
+            <div class="space-y-4" x-data="{ visible: false }" x-intersect="visible = true">
+              <div class="skill-item">
+                <div class="flex justify-between mb-2">
+                  <span class="text-white">Fashion Design</span>
+                  <span class="text-gold" aria-label="Fashion Design proficiency: 95 percent">95%</span>
+                </div>
+                <div class="w-full bg-gray-700 rounded-full h-2">
+                  <div class="skill-bar rounded-full h-2" :style="visible ? 'width: 95%' : 'width: 0%'"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="flex justify-between mb-2">
+                  <span class="text-white">UI/UX Design</span>
+                  <span class="text-gold" aria-label="UI/UX Design proficiency: 88 percent">88%</span>
+                </div>
+                <div class="w-full bg-gray-700 rounded-full h-2">
+                  <div class="skill-bar rounded-full h-2" :style="visible ? 'width: 88%' : 'width: 0%'"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="flex justify-between mb-2">
+                  <span class="text-white">Visual Identity</span>
+                  <span class="text-gold" aria-label="Visual Identity proficiency: 92 percent">92%</span>
+                </div>
+                <div class="w-full bg-gray-700 rounded-full h-2">
+                  <div class="skill-bar rounded-full h-2" :style="visible ? 'width: 92%' : 'width: 0%'"></div>
+                </div>
               </div>
             </div>
           </div>
-          <div class="card-container" tabindex="0">
-            <div class="card glass-morphism p-6 rounded-xl text-center">
-              <div class="card-front">
-                <i class="fas fa-brain fa-3x text-yellow-400 mb-4"></i>
-                <h3 class="text-2xl font-bold mb-2">AI Innovation</h3>
-                <p class="text-gray-300">Leveraging AI to enhance creative and technical solutions.</p>
+          <div class="card-back">
+            <h3 class="text-2xl font-bold text-gold mb-6">Design Expertise</h3>
+            <div class="space-y-4 text-white">
+              <div class="flex items-center justify-center space-x-2">
+                <i class="fas fa-tshirt text-gold"></i>
+                <span>Fashion Design - 95%</span>
               </div>
-              <div class="card-back glass-morphism p-6 rounded-xl">
-                <p class="text-gray-300">Experience with Python, TensorFlow, and AI-driven design tools.</p>
+              <div class="flex items-center justify-center space-x-2">
+                <i class="fas fa-desktop text-gold"></i>
+                <span>UI/UX Design - 88%</span>
+              </div>
+              <div class="flex items-center justify-center space-x-2">
+                <i class="fas fa-eye text-gold"></i>
+                <span>Visual Identity - 92%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Technology Skills Card -->
+        <div class="glass-morphism rounded-2xl card-container card-3d focus:outline-none focus:ring-2 focus:ring-gold" tabindex="0" aria-label="Technology Skills Card">
+          <div class="card-front">
+            <div class="text-center mb-6">
+              <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class="fas fa-code text-2xl text-white"></i>
+              </div>
+              <h3 class="text-xl font-bold text-gold">Technology</h3>
+            </div>
+            <div class="space-y-4" x-data="{ visible: false }" x-intersect="visible = true">
+              <div class="skill-item">
+                <div class="flex justify-between mb-2">
+                  <span class="text-white">AI Development</span>
+                  <span class="text-gold" aria-label="AI Development proficiency: 85 percent">85%</span>
+                </div>
+                <div class="w-full bg-gray-700 rounded-full h-2">
+                  <div class="skill-bar rounded-full h-2" :style="visible ? 'width: 85%' : 'width: 0%'"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="flex justify-between mb-2">
+                  <span class="text-white">Web Development</span>
+                  <span class="text-gold" aria-label="Web Development proficiency: 80 percent">80%</span>
+                </div>
+                <div class="w-full bg-gray-700 rounded-full h-2">
+                  <div class="skill-bar rounded-full h-2" :style="visible ? 'width: 80%' : 'width: 0%'"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="flex justify-between mb-2">
+                  <span class="text-white">Video Editing</span>
+                  <span class="text-gold" aria-label="Video Editing proficiency: 78 percent">78%</span>
+                </div>
+                <div class="w-full bg-gray-700 rounded-full h-2">
+                  <div class="skill-bar rounded-full h-2" :style="visible ? 'width: 78%' : 'width: 0%'"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-back">
+            <h3 class="text-2xl font-bold text-gold mb-6">Tech Stack</h3>
+            <div class="space-y-4 text-white">
+              <div class="flex items-center justify-center space-x-2">
+                <i class="fas fa-robot text-gold"></i>
+                <span>AI Development - 85%</span>
+              </div>
+              <div class="flex items-center justify-center space-x-2">
+                <i class="fas fa-globe text-gold"></i>
+                <span>Web Development - 80%</span>
+              </div>
+              <div class="flex items-center justify-center space-x-2">
+                <i class="fas fa-video text-gold"></i>
+                <span>Video Editing - 78%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Communication Skills Card -->
+        <div class="glass-morphism rounded-2xl card-container card-3d focus:outline-none focus:ring-2 focus:ring-gold" tabindex="0" aria-label="Communication Skills Card">
+          <div class="card-front">
+            <div class="text-center mb-6">
+              <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-teal-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class="fas fa-comments text-2xl text-white"></i>
+              </div>
+              <h3 class="text-xl font-bold text-gold">Communication</h3>
+            </div>
+            <div class="space-y-4" x-data="{ visible: false }" x-intersect="visible = true">
+              <div class="skill-item">
+                <div class="flex justify-between mb-2">
+                  <span class="text-white">Voice Acting</span>
+                  <span class="text-gold" aria-label="Voice Acting proficiency: 82 percent">82%</span>
+                </div>
+                <div class="w-full bg-gray-700 rounded-full h-2">
+                  <div class="skill-bar rounded-full h-2" :style="visible ? 'width: 82%' : 'width: 0%'"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="flex justify-between mb-2">
+                  <span class="text-white">Writing</span>
+                  <span class="text-gold" aria-label="Writing proficiency: 90 percent">90%</span>
+                </div>
+                <div class="w-full bg-gray-700 rounded-full h-2">
+                  <div class="skill-bar rounded-full h-2" :style="visible ? 'width: 90%' : 'width: 0%'"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="flex justify-between mb-2">
+                  <span class="text-white">Public Speaking</span>
+                  <span class="text-gold" aria-label="Public Speaking proficiency: 85 percent">85%</span>
+                </div>
+                <div class="w-full bg-gray-700 rounded-full h-2">
+                  <div class="skill-bar rounded-full h-2" :style="visible ? 'width: 85%' : 'width: 0%'"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-back">
+            <h3 class="text-2xl font-bold text-gold mb-6">Communication Skills</h3>
+            <ul class="space-y-3 text-white text-lg">
+              <li>🎙️ Voice Acting - 82%</li>
+              <li>✍️ Writing - 90%</li>
+              <li>📢 Public Speaking - 85%</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Leadership Skills Card -->
+        <div class="glass-morphism rounded-2xl card-container card-3d focus:outline-none focus:ring-2 focus:ring-gold" tabindex="0" aria-label="Leadership Skills Card">
+          <div class="card-front">
+            <div class="text-center mb-6">
+              <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class="fas fa-crown text-2xl text-white"></i>
+              </div>
+              <h3 class="text-xl font-bold text-gold">Leadership</h3>
+            </div>
+            <div class="space-y-4" x-data="{ visible: false }" x-intersect="visible = true">
+              <div class="skill-item">
+                <div class="flex justify-between mb-2">
+                  <span class="text-white">Team Management</span>
+                  <span class="text-gold" aria-label="Team Management proficiency: 88 percent">88%</span>
+                </div>
+                <div class="w-full bg-gray-700 rounded-full h-2">
+                  <div class="skill-bar rounded-full h-2" :style="visible ? 'width: 88%' : 'width: 0%'"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="flex justify-between mb-2">
+                  <span class="text-white">Project Planning</span>
+                  <span class="text-gold" aria-label="Project Planning proficiency: 92 percent">92%</span>
+                </div>
+                <div class="w-full bg-gray-700 rounded-full h-2">
+                  <div class="skill-bar rounded-full h-2" :style="visible ? 'width: 92%' : 'width: 0%'"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="flex justify-between mb-2">
+                  <span class="text-white">Strategic Thinking</span>
+                  <span class="text-gold" aria-label="Strategic Thinking proficiency: 90 percent">90%</span>
+                </div>
+                <div class="w-full bg-gray-700 rounded-full h-2">
+                  <div class="skill-bar rounded-full h-2" :style="visible ? 'width: 90%' : 'width: 0%'"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-back">
+            <h3 class="text-2xl font-bold text-gold mb-6">Leadership Skills</h3>
+            <div class="space-y-4 text-white">
+              <div class="flex items-center justify-center space-x-2">
+                <i class="fas fa-users-cog text-gold"></i>
+                <span>Team Management - 88%</span>
+              </div>
+              <div class="flex items-center justify-center space-x-2">
+                <i class="fas fa-tasks text-gold"></i>
+                <span>Project Planning - 92%</span>
+              </div>
+              <div class="flex items-center justify-center space-x-2">
+                <i class="fas fa-chess text-gold"></i>
+                <span>Strategic Thinking - 90%</span>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
-    <section id="gallery" class="py-20 px-4">
-      <div class="max-w-6xl mx-auto">
-        <h2 class="text-4xl md:text-5xl font-bold text-shadow text-center mb-12">Gallery</h2>
-        <div class="sliced-container">
-          <div class="text-row" data-row-id="cultural" data-text="CULTURAL" tabindex="0">
-            <div class="interactive-area"></div>
-            <span class="text-content" data-text="CULTURAL">CULTURAL</span>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section id="gallery" class="py-20 px-4 relative">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-6xl font-bold mb-6 text-gold text-shadow">Gallery</h2>
+        <div class="h-1 w-24 bg-gradient-to-r from-gold to-yellow-400 mx-auto rounded-full"></div>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Project Card 1 -->
+        <div class="glass-morphism rounded-2xl p-6 card-hover card-3d">
+          <div class="relative mb-6">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=500&fit=crop" 
+                 alt="Cultural AI Project" 
+                 class="rounded-2xl w-full h-64 object-cover shadow-gold transition-transform duration-500 transform hover:scale-105" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent rounded-2xl opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+              <h3 class="text-xl font-bold text-white">Cultural AI Project</h3>
+            </div>
           </div>
-          <div class="text-row" data-row-id="fusion" data-text="FUSION" tabindex="0">
-            <div class="interactive-area"></div>
-            <span class="text-content" data-text="FUSION">FUSION</span>
+        </div>
+        
+        <!-- Project Card 2 -->
+        <div class="glass-morphism rounded-2xl p-6 card-hover card-3d">
+          <div class="relative mb-6">
+            <img src="https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=800&h=500&fit=crop" 
+                 alt="Thai Design Fusion" 
+                 class="rounded-2xl w-full h-64 object-cover shadow-gold transition-transform duration-500 transform hover:scale-105" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent rounded-2xl opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+              <h3 class="text-xl font-bold text-white">Thai Design Fusion</h3>
+            </div>
           </div>
-          <div class="text-row" data-row-id="heritage" data-text="HERITAGE" tabindex="0">
-            <div class="interactive-area"></div>
-            <span class="text-content" data-text="HERITAGE">HERITAGE</span>
+        </div>
+        
+        <!-- Project Card 3 -->
+        <div class="glass-morphism rounded-2xl p-6 card-hover card-3d">
+          <div class="relative mb-6">
+            <img src="https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?w=800&h=500&fit=crop" 
+                 alt="Digital Heritage Collection" 
+                 class="rounded-2xl w-full h-64 object-cover shadow-gold transition-transform duration-500 transform hover:scale-105" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent rounded-2xl opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+              <h3 class="text-xl font-bold text-white">Digital Heritage Collection</h3>
+            </div>
           </div>
         </div>
       </div>
-    </section>
-    <section id="contact" class="py-20 px-4 bg-gray-900/50">
-      <div class="max-w-4xl mx-auto">
-        <h2 class="text-4xl md:text-5xl font-bold text-shadow text-center mb-12">Contact Me</h2>
-        <form id="contact-form" class="space-y-6" @submit="submitForm">
-          <div>
-            <label for="user_name" class="block text-lg">Name</label>
-            <input type="text" id="user_name" name="user_name" required
-                   class="w-full mt-2 p-3 rounded bg-gray-800 text-white border border-gray-700 focus:border-yellow-400">
-          </div>
-          <div>
-            <label for="user_email" class="block text-lg">Email</label>
-            <input type="email" id="user_email" name="user_email" required
-                   class="w-full mt-2 p-3 rounded bg-gray-800 text-white border border-gray-700 focus:border-yellow-400">
-          </div>
-          <div>
-            <label for="message" class="block text-lg">Message</label>
-            <textarea id="message" name="message" required rows="5"
-                      class="w-full mt-2 p-3 rounded bg-gray-800 text-white border border-gray-700 focus:border-yellow-400"></textarea>
-          </div>
-          <button type="submit"
-                  class="w-full py-3 px-6 bg-yellow-400 text-black rounded-full hover:bg-yellow-500 transition"
-                  :disabled="loading">
-            <span x-show="!loading">Send Message</span>
-            <span x-show="loading">Sending...</span>
-          </button>
-          <p x-show="formStatus" x-text="formStatus" class="text-center mt-4"></p>
-        </form>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section id="testimonials" class="py-20 px-4 relative">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-6xl font-bold mb-6 text-gold text-shadow">Client Reviews</h2>
+        <div class="h-1 w-24 bg-gradient-to-r from-gold to-yellow-400 mx-auto rounded-full"></div>
       </div>
-    </section>
-  </main>
-  <footer class="py-8 text-center bg-gray-900/50">
-    <p class="text-gray-300">© <span id="current-year"></span> Thanatsitt Santisamranwilai. All rights reserved.</p>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+        <!-- Testimonial 1 -->
+        <div class="glass-morphism rounded-2xl p-8 card-hover card-3d">
+          <div class="flex items-center mb-4">
+            <i class="fas fa-star text-yellow-300 mr-2 text-2xl"></i>
+            <i class="fas fa-star text-yellow-300 mr-2 text-2xl"></i>
+            <i class="fas fa-star text-yellow-300 mr-2 text-2xl"></i>
+            <i class="fas fa-star text-yellow-300 mr-2 text-2xl"></i>
+            <i class="fas fa-star text-yellow-300 text-2xl"></i>
+          </div>
+          <p class="text-gray-300 italic mb-6">
+            "Thanatsitt's ability to merge cultural depth with technological precision is extraordinary. Their AI projects feel deeply human."
+          </p>
+          <div class="flex items-center">
+            <div class="w-12 h-12 bg-gold/20 rounded-full flex items-center justify-center">
+              <i class="fas fa-user text-gold"></i>
+            </div>
+            <div class="ml-4">
+              <h4 class="text-white font-semibold">Sarah Lin</h4>
+              <p class="text-gray-400 text-sm">Creative Director, London</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Testimonial 2 -->
+        <div class="glass-morphism rounded-2xl p-8 card-hover card-3d">
+          <div class="flex items-center mb-4">
+            <i class="fas fa-star text-yellow-300 mr-2 text-2xl"></i>
+            <i class="fas fa-star text-yellow-300 mr-2 text-2xl"></i>
+            <i class="fas fa-star text-yellow-300 mr-2 text-2xl"></i>
+            <i class="fas fa-star text-yellow-300 mr-2 text-2xl"></i>
+            <i class="fas fa-star text-yellow-300 text-2xl"></i>
+          </div>
+          <p class="text-gray-300 italic mb-6">
+            "Working with Thanatsitt was a transformative experience. Their portfolio reflects both technical mastery and philosophical insight."
+          </p>
+          <div class="flex items-center">
+            <div class="w-12 h-12 bg-gold/20 rounded-full flex items-center justify-center">
+              <i class="fas fa-user text-gold"></i>
+            </div>
+            <div class="ml-4">
+              <h4 class="text-white font-semibold">James Wong</h4>
+              <p class="text-gray-400 text-sm">Tech Innovator, Bangkok</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-20 px-4 relative bg-gradient-to-br from-deepPurple/50 to-cosmicBlue/70">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-6xl font-bold mb-6 text-gold text-shadow">Get in Touch</h2>
+        <div class="h-1 w-24 bg-gradient-to-r from-gold to-yellow-400 mx-auto rounded-full"></div>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+        <!-- Contact Info -->
+        <div class="space-y-8">
+          <div class="glass-morphism rounded-2xl p-8 card-hover card-3d">
+            <div class="flex items-start">
+              <i class="fas fa-envelope text-3xl text-gold mr-4"></i>
+              <div>
+                <h3 class="text-xl font-bold text-white mb-2">Email</h3>
+                <p class="text-gray-300">thanatsitt@thannxai.com</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="glass-morphism rounded-2xl p-8 card-hover card-3d">
+            <div class="flex items-start">
+              <i class="fas fa-map-marker-alt text-3xl text-gold mr-4"></i>
+              <div>
+                <h3 class="text-xl font-bold text-white mb-2">Location</h3>
+                <p class="text-gray-300">London, UK / Bangkok, Thailand</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Contact Form -->
+        <div class="glass-morphism rounded-2xl p-8 card-hover card-3d">
+          <form id="contact-form" class="space-y-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <input type="text" name="user_name" placeholder="Your Name" required 
+                     class="bg-gray-800/50 border border-gold/20 rounded-lg py-3 px-4 w-full text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gold" />
+              <input type="email" name="user_email" placeholder="Your Email" required 
+                     class="bg-gray-800/50 border border-gold/20 rounded-lg py-3 px-4 w-full text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gold" />
+            </div>
+            <textarea name="message" rows="5" placeholder="Your Message" required
+                      class="bg-gray-800/50 border border-gold/20 rounded-lg py-3 px-4 w-full text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gold"></textarea>
+            <button type="submit" 
+                    class="w-full bg-gradient-to-r from-gold to-yellow-500 text-black font-bold py-3 px-6 rounded-lg hover:scale-105 transform transition-all duration-300 hover:shadow-2xl hover:shadow-gold/50">
+              Send Message
+            </button>
+          </form>
+          
+          <!-- Form Status -->
+          <div x-show="formStatus" x-text="formStatus" 
+               class="mt-4 text-center text-gold font-semibold"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-deepPurple py-12 px-4">
+    <div class="max-w-7xl mx-auto text-center">
+      <p class="text-gray-400 text-sm mb-4">© 2025 Thanatsitt Santisamranwilai. All rights reserved.</p>
+      <div class="flex justify-center space-x-6">
+        <a href="https://www.linkedin.com/in/thanattsitts" target="_blank" class="text-gray-400 hover:text-gold transition-colors">
+          <i class="fab fa-linkedin text-xl"></i>
+        </a>
+        <a href="https://github.com/Pigletpeakkung" target="_blank" class="text-gray-400 hover:text-gold transition-colors">
+          <i class="fab fa-github text-xl"></i>
+        </a>
+        <a href="https://www.instagram.com/thanattsitt.s" target="_blank" class="text-gray-400 hover:text-gold transition-colors">
+          <i class="fab fa-instagram text-xl"></i>
+        </a>
+        <a href="https://x.com/ThanattsittS" target="_blank" class="text-gray-400 hover:text-gold transition-colors">
+          <i class="fab fa-twitter text-xl"></i>
+        </a>
+      </div>
+    </div>
   </footer>
-  <script src="./assets/js/script.js"></script>
+
+  <!-- JavaScript for Alpine.js Logic -->
+  <script>
+    document.addEventListener('alpine:init', () => {
+      Alpine.data('portfolioApp', () => ({
+        mobileMenuOpen: false,
+        scrolled: false,
+        formStatus: null,
+        typedText: '',
+
+        scrollToSection(id) {
+          const element = document.getElementById(id);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+            this.mobileMenuOpen = false;
+          }
+        },
+
+        init() {
+          // Typing animation
+          const text = 'Thanatsitt';
+          let i = 0;
+          const typeWriter = () => {
+            if (i < text.length) {
+              this.typedText += text.charAt(i);
+              i++;
+              setTimeout(typeWriter, 150);
+            }
+          };
+          typeWriter();
+
+          // Scroll Progress Bar
+          window.addEventListener('scroll', () => {
+            const progress = document.getElementById('scroll-progress');
+            if (progress) {
+              const height = document.body.scrollHeight - window.innerHeight;
+              const scrolled = (window.scrollY / height) * 100;
+              progress.style.width = scrolled + '%';
+            }
+          });
+
+          // Form Submission (placeholder)
+          const form = document.getElementById('contact-form');
+          if (form) {
+            form.addEventListener('submit', (e) => {
+              e.preventDefault();
+              this.formStatus = 'Message sent successfully!';
+              form.reset();
+              setTimeout(() => this.formStatus = null, 5000);
+            });
+          }
+        }
+      }));
+    });
+  </script>
+
+  <!-- JavaScript for Static Stars and Card Interactions -->
+  <script>
+    // Generate Static Stars
+    document.addEventListener('DOMContentLoaded', () => {
+      const starsContainer = document.querySelector('.stars');
+      const starCount = parseInt(getComputedStyle(starsContainer).getPropertyValue('--star-count'));
+
+      for (let i = 0; i < starCount; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        star.style.left = `${Math.random() * 100}%`;
+        star.style.top = `${Math.random() * 100}%`;
+        starsContainer.appendChild(star);
+      }
+    });
+
+    // Click-to-Flip Cards
+    document.querySelectorAll('.card-container').forEach(card => {
+      card.addEventListener('click', () => {
+        card.classList.toggle('flipped');
+      });
+      card.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === 'Space') {
+          e.preventDefault();
+          card.classList.toggle('flipped');
+        }
+      });
+    });
+  </script>
+
+  <!-- EmailJS Integration -->
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2.6.4/dist/email.min.js"></script>
 </body>
 </html>
+
