@@ -1,1033 +1,2429 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#1A1A2E" />
-  
-  <!-- SEO Meta Tags -->
-  <title>Thanatsitt Santisamranwilai - Thai AI Developer & Cultural Designer</title>
-  <meta name="description" content="Thai interdisciplinary creator bridging ancient wisdom with modern AI technology. Fashion designer turned developer, co-founder of ThannxAI." />
-  <meta name="keywords" content="Thanatsitt Santisamranwilai, Thai developer, AI developer, cultural designer, ThannxAI, London College of Fashion, web developer, UI/UX designer, cross-cultural technology, Buddhist philosophy, archetypal psychology, Carl Jung, fashion design, self-taught programmer" />
-  <meta name="author" content="Thanatsitt Santisamranwilai" />
-  <meta name="robots" content="index, follow" />
-
-  <!-- Open Graph Meta Tags -->
-  <meta property="og:title" content="Thanatsitt Santisamranwilai - Thai AI Developer & Cultural Designer" />
-  <meta property="og:description" content="Interdisciplinary creator bridging ancient wisdom with modern AI technology. Fashion designer turned developer, co-founder of ThannxAI." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://thanatsitt.dev" />
-  <meta property="og:image" content="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&h=630&fit=crop" />
-
-  <!-- Twitter Meta Tags -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Thanatsitt Santisamranwilai - Thai AI Developer & Cultural Designer" />
-  <meta name="twitter:description" content="Interdisciplinary creator bridging ancient wisdom with modern AI technology. Fashion designer turned developer, co-founder of ThannxAI." />
-  <meta name="twitter:image" content="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&h=630&fit=crop" />
-  <meta name="twitter:site" content="@ThanattsittS" />
-
-  <!-- Favicon (SVG Moon) -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌙</text></svg>" type="image/svg+xml" />
-
-  <!-- Preconnect for Performance -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
-  <link rel="preconnect" href="https://www.linkedin.com" />
-  <link rel="preconnect" href="https://api.emailjs.com" />
-
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet" />
-
-  <!-- Alpine.js and TailwindCSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['Inter', 'sans-serif'],
-            display: ['Playfair Display', 'serif'],
-          },
-          colors: {
-            gold: '#D4AF37',
-            deepPurple: '#1A1A2E',
-            moonSilver: '#C0C0C8',
-            cosmicBlue: '#16213E',
-            stellarPurple: '#0F3460',
-          },
-          animation: {
-            gradient: 'none', // Removed animation
-            float: 'float 6s ease-in-out infinite',
-            glow: 'glow 2s ease-in-out infinite alternate',
-            pulseSlow: 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-            bounceSlow: 'bounce 3s infinite',
-            spinSlow: 'spin 8s linear infinite',
-            wiggle: 'none', // Removed wiggle
-            slideLeft: 'none',
-            slideRight: 'none',
-            zoomIn: 'zoomIn 0.5s ease-out',
-          },
-          keyframes: {
-            float: {
-              '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
-              '33%': { transform: 'translateY(-20px) rotate(1deg)' },
-              '66%': { transform: 'translateY(-10px) rotate(-1deg)' },
-            },
-            glow: {
-              from: { boxShadow: '0 0 20px #D4AF37, 0 0 30px #D4AF37' },
-              to: { boxShadow: '0 0 30px #D4AF37, 0 0 60px #D4AF37, 0 0 90px #D4AF37' },
-            },
-          },
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Exploring the intersection of consciousness, technology, and cultural heritage through open-source web projects that bridge ancient wisdom with quantum innovation.">
+    <meta name="keywords" content="Buddhist Philosophy, Quantum Consciousness, Open Source, Thai Culture, Technology, Web Development">
+    <meta name="author" content="Open Source Community">
+    <title>Quantum Consciousness - Bridging Ancient Wisdom & Modern Innovation</title>
+    
+    <!-- Preload Critical Resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&family=Noto+Sans+Thai:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* ===== CSS CUSTOM PROPERTIES ===== */
+        :root {
+            /* Colors - Thai Buddhist Inspired Palette */
+            --primary-bg: #FFFEF7; /* Lotus white */
+            --secondary-bg: #FFFFFF;
+            --accent-bg: #F5F5DC; /* Soft beige */
+            --text-primary: #2D1B20; /* Dark brown */
+            --text-secondary: #4A4A4A;
+            --text-muted: #6B7280;
+            --border-light: #E5E7EB;
+            --border-medium: #D1D5DB;
+            
+            /* Thai Temple Colors */
+            --primary-gold: #FFD700;
+            --temple-red: #8B0000;
+            --saffron: #FF9933;
+            --lotus-white: #FFFEF7;
+            --meditation-blue: #4A90E2;
+            --jade-green: #00A86B;
+            
+            /* Pastel Variants */
+            --pastel-pink: #FFE4E1;
+            --pastel-blue: #E6F3FF;
+            --pastel-mint: #E8F5E8;
+            --pastel-lavender: #F0E6FF;
+            --pastel-peach: #FFE5CC;
+            --pastel-sky: #E0F2FE;
+            --pastel-gold: #FFF8DC;
+            
+            /* Glassmorphism */
+            --glass-bg: rgba(255, 255, 255, 0.25);
+            --glass-border: rgba(255, 215, 0, 0.18);
+            --glass-shadow: 0 8px 32px 0 rgba(139, 0, 0, 0.2);
+            --glass-backdrop: blur(20px) saturate(180%);
+            
+            /* Quantum Gradients */
+            --quantum-gradient: linear-gradient(135deg, var(--meditation-blue), var(--primary-gold));
+            --consciousness-gradient: linear-gradient(45deg, var(--saffron), var(--jade-green));
+            --wisdom-gradient: linear-gradient(90deg, var(--temple-red), var(--primary-gold));
+            
+            /* Shadows */
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --shadow-gold: 0 8px 25px rgba(255, 215, 0, 0.3);
+            
+            /* Transitions */
+            --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-smooth: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            
+            /* Z-index Hierarchy */
+            --z-background: 1;
+            --z-content: 10;
+            --z-header: 100;
+            --z-modal: 1000;
+            --z-loading: 10000;
+            
+            /* Mandala Pattern */
+            --mandala-pattern: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><g fill="none" stroke="%23FFD700" stroke-width="0.5" opacity="0.3"><circle cx="100" cy="100" r="80"/><circle cx="100" cy="100" r="60"/><circle cx="100" cy="100" r="40"/><circle cx="100" cy="100" r="20"/><path d="M100 20 L100 180 M20 100 L180 100 M141.42 58.58 L58.58 141.42 M141.42 141.42 L58.58 58.58"/></g></svg>');
         }
-      }
-    }
-  </script>
 
-  <!-- Custom CSS -->
-  <style>
-    /* Static Cosmic Background */
-    .cosmic-bg {
-      background: radial-gradient(200% 100% at bottom center, #F4D03F 0%, #E96F92 30%, #0F3460 70%, #1A1A2E 100%),
-                  radial-gradient(220% 105% at top center, #1A1A2E 10%, #0F3460 40%, #E96F92 65%, #D4AF37 100%);
-      background-attachment: fixed;
-      overflow: hidden;
-    }
+        /* ===== RESET & BASE STYLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    .nebula-layer {
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 30% 20%, rgba(212, 175, 55, 0.15) 0%, transparent 50%),
-                  radial-gradient(circle at 70% 80%, rgba(15, 52, 96, 0.2) 0%, transparent 50%);
-      opacity: 0.7;
-    }
+        html {
+            scroll-behavior: smooth;
+        }
 
-    .stars-layer {
-      position: absolute;
-      inset: 0;
-    }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--quantum-gradient);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
 
-    .stars {
-      --star-count: 400;
-      position: absolute;
-      width: 100%;
-      height: 100%;
-    }
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--mandala-pattern);
+            opacity: 0.05;
+            z-index: var(--z-background);
+            pointer-events: none;
+        }
 
-    .star {
-      position: absolute;
-      width: 2px;
-      height: 2px;
-      background: #C0C0C8;
-      border-radius: 50%;
-      opacity: 0.7;
-    }
+        /* ===== ACCESSIBILITY ===== */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
 
-    .star:nth-child(odd) {
-      width: 3px;
-      height: 3px;
-      opacity: 0.8;
-    }
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
 
-    .star:nth-child(even) {
-      width: 1.5px;
-      height: 1.5px;
-      opacity: 0.6;
-    }
+        /* ===== LOADING SCREEN ===== */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--quantum-gradient);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: var(--z-loading);
+            transition: opacity var(--transition-slow);
+        }
 
-    .moon-glow {
-      position: absolute;
-      top: 10%;
-      right: 10%;
-      width: 100px;
-      height: 100px;
-      background: radial-gradient(circle at 50% 50%, #D4AF37 0%, #F4D03F 50%, transparent 100%);
-      border-radius: 50%;
-      box-shadow: 0 0 40px rgba(212, 175, 55, 0.5);
-    }
+        .loading-content {
+            text-align: center;
+            max-width: 500px;
+            padding: 0 2rem;
+        }
 
-    /* 3D Card Container */
-    .card-container {
-      perspective: 1000px;
-      transform-style: preserve-3d;
-      position: relative;
-      height: 400px;
-      cursor: pointer;
-      transition: transform 0.3s ease;
-    }
+        .loading-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            background: var(--wisdom-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
 
-    .card-container:hover, .card-container:focus, .card-container.flipped {
-      transform: scale(1.02);
-    }
+        .loading-subtitle {
+            font-size: 1.2rem;
+            color: var(--lotus-white);
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
 
-    .card-front, .card-back {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      backface-visibility: hidden;
-      border-radius: 1rem;
-      transition: transform 0.6s ease;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 2rem;
-    }
+        .loading-text {
+            color: var(--lotus-white);
+            margin-bottom: 3rem;
+            font-size: 1rem;
+            opacity: 0.9;
+        }
 
-    .card-back {
-      transform: rotateY(180deg);
-      background: linear-gradient(135deg, #16213E 0%, #0F3460 100%);
-    }
+        .loading-bar-container {
+            width: 100%;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 2px;
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
 
-    .card-container:hover .card-front, .card-container.flipped .card-front {
-      transform: rotateY(180deg);
-    }
+        .loading-bar {
+            height: 100%;
+            background: var(--wisdom-gradient);
+            border-radius: 2px;
+            transition: width var(--transition-smooth);
+            width: 0%;
+        }
 
-    .card-container:hover .card-back, .card-container.flipped .card-back {
-      transform: rotateY(0deg);
-    }
+        .loading-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+        }
 
-    /* Glass Morphism */
-    .glass-morphism {
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
+        .loading-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--primary-gold);
+            animation: pulse 1.5s ease-in-out infinite;
+        }
 
-    /* Skill Bar */
-    .skill-bar {
-      background: linear-gradient(90deg, #D4AF37, #F4D03F);
-      transition: width 1.5s ease-in-out;
-    }
+        .loading-dot:nth-child(2) { animation-delay: 0.3s; }
+        .loading-dot:nth-child(3) { animation-delay: 0.6s; }
 
-    /* Navigation Link Hover */
-    .nav-link {
-      padding: 0.5rem 1rem;
-      border-radius: 0.5rem;
-      transition: all 0.3s ease;
-      color: #C0C0C8;
-    }
+        @keyframes pulse {
+            0%, 60%, 100% { transform: scale(1); opacity: 0.7; }
+            30% { transform: scale(1.2); opacity: 1; }
+        }
 
-    .nav-link:hover {
-      color: #D4AF37;
-      transform: translateY(-2px);
-    }
+        /* ===== BACKGROUND EFFECTS ===== */
+        .stars-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: var(--z-background);
+            overflow: hidden;
+        }
 
-    /* Card Hover Effect */
-    .card-hover {
-      transition: all 0.3s ease;
-    }
+        .star {
+            position: absolute;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.8) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: twinkle 3s ease-in-out infinite;
+        }
 
-    .card-hover:hover {
-      transform: translateY(-5px);
-    }
+        .star.small { width: 2px; height: 2px; animation-duration: 2s; }
+        .star.medium { width: 3px; height: 3px; animation-duration: 3s; }
+        .star.large { width: 4px; height: 4px; animation-duration: 4s; }
 
-    /* Typing Cursor Effect */
-    .typing-cursor::after {
-      content: '|';
-      animation: blink 1s infinite;
-    }
+        .sparkle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: var(--consciousness-gradient);
+            border-radius: 50%;
+            animation: sparkle 2s ease-in-out infinite;
+        }
 
-    @keyframes blink {
-      0%, 50% { opacity: 1; }
-      51%, 100% { opacity: 0; }
-    }
+        .sparkle::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.4) 0%, transparent 70%);
+            border-radius: 50%;
+        }
 
-    /* Scroll Progress Bar */
-    #scroll-progress {
-      background: linear-gradient(90deg, #D4AF37, #F4D03F);
-      height: 4px;
-      transition: width 0.3s ease;
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 50;
-    }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
 
-    #scroll-progress:hover::after {
-      content: 'Scroll Progress';
-      position: absolute;
-      top: 8px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: #16213E;
-      color: #D4AF37;
-      padding: 4px 8px;
-      border-radius: 4px;
-      font-size: 12px;
-    }
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0) rotate(0deg); }
+            50% { opacity: 1; transform: scale(1) rotate(180deg); }
+        }
 
-    /* Reduced Motion */
-    @media (prefers-reduced-motion: reduce) {
-      .skill-bar, .card-container, .card-front, .card-back {
-        transition: none;
-      }
-    }
+        /* ===== PARTICLE CANVAS ===== */
+        .particle-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: var(--z-background);
+            opacity: 0.4;
+        }
 
-    /* Mobile Adjustments */
-    @media (max-width: 768px) {
-      .card-container {
-        height: 350px;
-      }
-      .moon-glow {
-        width: 60px;
-        height: 60px;
-      }
-      .stars {
-        --star-count: 200;
-      }
-    }
-  </style>
+        /* ===== NAVIGATION ===== */
+        .nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: var(--z-header);
+            background: rgba(255, 254, 247, 0.95);
+            backdrop-filter: blur(25px) saturate(180%);
+            -webkit-backdrop-filter: blur(25px) saturate(180%);
+            border-bottom: 1px solid var(--glass-border);
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition-smooth);
+        }
 
-  <!-- PWA Manifest -->
-  <link rel="manifest" href="/manifest.json" />
-  <meta name="mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <link rel="apple-touch-icon" href="/logo192.png" />
+        .nav.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: var(--shadow-md);
+            border-bottom-color: var(--primary-gold);
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: var(--wisdom-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            transition: transform var(--transition-smooth);
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            margin: 0;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.8rem 1.5rem;
+            border-radius: 12px;
+            transition: all var(--transition-smooth);
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: var(--glass-backdrop);
+        }
+
+        .nav-links a:hover,
+        .nav-links a:focus,
+        .nav-links a.active {
+            color: var(--text-primary);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-gold);
+            background: rgba(255, 215, 0, 0.1);
+            border-color: var(--primary-gold);
+        }
+
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .mobile-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--primary-gold);
+            margin: 3px 0;
+            transition: var(--transition-smooth);
+            border-radius: 2px;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            z-index: var(--z-content);
+            padding: 2rem;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 20%, var(--pastel-gold) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 80%, var(--pastel-mint) 0%, transparent 50%),
+                        radial-gradient(circle at 50% 50%, var(--pastel-lavender) 0%, transparent 70%);
+            opacity: 0.6;
+            z-index: -1;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            z-index: var(--z-content);
+            animation: fadeInUp 1s ease-out 0.5s both;
+        }
+
+        .hero-greeting {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            background: var(--wisdom-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+            line-height: 1.8;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all var(--transition-smooth);
+            cursor: pointer;
+            font-size: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left var(--transition-smooth);
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: var(--consciousness-gradient);
+            color: white;
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-gold);
+        }
+
+        .btn-secondary {
+            background: var(--glass-bg);
+            color: var(--text-primary);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: var(--glass-backdrop);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 215, 0, 0.1);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-gold);
+        }
+
+        /* ===== CULTURAL HERITAGE SECTION ===== */
+        .cultural-heritage {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 4rem auto;
+            max-width: 1000px;
+            backdrop-filter: var(--glass-backdrop);
+            box-shadow: var(--glass-shadow);
+            position: relative;
+        }
+
+        .cultural-heritage::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            background: var(--wisdom-gradient);
+            border-radius: 20px;
+            z-index: -1;
+            opacity: 0.3;
+        }
+
+        .cultural-heritage h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+            text-align: center;
+        }
+
+        .cultural-heritage p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            text-align: center;
+        }
+
+        .thai-text {
+            font-family: 'Noto Sans Thai', sans-serif;
+            font-size: 1rem;
+            color: var(--temple-red);
+            text-align: center;
+            margin-top: 1rem;
+            font-style: italic;
+        }
+
+        /* ===== HERO CARD ===== */
+        .hero-card {
+            position: absolute;
+            top: 20%;
+            right: 10%;
+            width: 320px;
+            height: 220px;
+            background: var(--glass-bg);
+            border: 2px solid var(--glass-border);
+            border-radius: 20px;
+            backdrop-filter: var(--glass-backdrop);
+            padding: 2rem;
+            box-shadow: var(--glass-shadow);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+            text-align: center;
+        }
+
+        .card-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-gold);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* ===== SECTION STYLING ===== */
+        .section {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--text-primary);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--wisdom-gradient);
+            border-radius: 2px;
+        }
+
+        /* ===== ABOUT SECTION ===== */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+            text-align: center;
+        }
+
+        .profile-pic {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: url('https://images.unsplash.com/photo-1544717297-fa95b6ee9643?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80') center/cover;
+            border: 3px solid var(--primary-gold);
+            backdrop-filter: var(--glass-backdrop);
+            box-shadow: var(--shadow-gold);
+            object-fit: cover;
+        }
+
+        .education-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--glass-bg);
+            border: 2px solid var(--primary-gold);
+            border-radius: 12px;
+            padding: 0.8rem 1.2rem;
+            backdrop-filter: var(--glass-backdrop);
+            box-shadow: var(--shadow-gold);
+            animation: pulse-glow 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: var(--shadow-gold); }
+            50% { box-shadow: var(--shadow-gold), 0 0 30px rgba(255, 215, 0, 0.5); }
+        }
+
+        .badge-text {
+            font-weight: 600;
+            color: var(--temple-red);
+            font-size: 0.9rem;
+        }
+
+        .about-content {
+            padding: 2rem;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .credentials {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .credential-item {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 8px;
+            padding: 0.5rem 1rem;
+            backdrop-filter: var(--glass-backdrop);
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            transition: all var(--transition-smooth);
+        }
+
+        .credential-item:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-gold);
+            background: rgba(255, 215, 0, 0.1);
+            border-color: var(--primary-gold);
+        }
+
+        /* ===== PROJECTS SECTION ===== */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            overflow: hidden;
+            backdrop-filter: var(--glass-backdrop);
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-smooth);
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-gold);
+            border-color: var(--primary-gold);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            background: url('https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80') center/cover;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--quantum-gradient);
+            opacity: 0.8;
+            transition: opacity var(--transition-smooth);
+        }
+
+        .project-card:hover .project-image::before {
+            opacity: 0.6;
+        }
+
+        .project-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3rem;
+            color: var(--lotus-white);
+            z-index: 2;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tech-tag {
+            background: var(--pastel-gold);
+            color: var(--text-primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-link {
+            padding: 0.6rem 1.2rem;
+            background: var(--consciousness-gradient);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all var(--transition-smooth);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .project-link:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* ===== GALLERY SECTION ===== */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .gallery-item {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            overflow: hidden;
+            backdrop-filter: var(--glass-backdrop);
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-smooth);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-gold);
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform var(--transition-smooth);
+        }
+
+        .gallery-item:hover .gallery-image {
+            transform: scale(1.05);
+        }
+
+        .gallery-content {
+            padding: 1.5rem;
+        }
+        .gallery-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .gallery-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* ===== FAQ SECTION ===== */
+        .faq {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 3rem auto;
+            max-width: 1000px;
+            backdrop-filter: var(--glass-backdrop);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .faq-grid {
+            display: grid;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .faq-item {
+            background: rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 12px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            transition: all var(--transition-smooth);
+        }
+
+        .faq-item:hover {
+            border-color: var(--primary-gold);
+            box-shadow: var(--shadow-gold);
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--text-primary);
+            background: transparent;
+            border: none;
+            width: 100%;
+            text-align: left;
+            transition: background var(--transition-smooth);
+        }
+
+        .faq-question:hover {
+            background: rgba(255, 215, 0, 0.1);
+        }
+
+        .faq-icon {
+            font-size: 1.2rem;
+            transition: transform var(--transition-smooth);
+            color: var(--primary-gold);
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: all var(--transition-smooth);
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 1.5rem 1.5rem 1.5rem;
+            max-height: 200px;
+        }
+
+        /* ===== CONTACT SECTION ===== */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            backdrop-filter: var(--glass-backdrop);
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-smooth);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-gold);
+            border-color: var(--primary-gold);
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            color: var(--primary-gold);
+            margin-bottom: 1rem;
+        }
+
+        .contact-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .contact-info {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.5rem;
+            background: var(--consciousness-gradient);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all var(--transition-smooth);
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* ===== PRIVACY ASSURANCE ===== */
+        .privacy-assurance {
+            background: rgba(255, 215, 0, 0.1);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .privacy-assurance h4 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--temple-red);
+        }
+
+        .privacy-assurance p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--glass-bg);
+            border-top: 1px solid var(--glass-border);
+            backdrop-filter: var(--glass-backdrop);
+            padding: 3rem 2rem 1rem;
+            margin-top: 5rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            line-height: 1.6;
+            transition: color var(--transition-smooth);
+        }
+
+        .footer-section a:hover {
+            color: var(--primary-gold);
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-light);
+            color: var(--text-secondary);
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: var(--glass-bg);
+                backdrop-filter: var(--glass-backdrop);
+                flex-direction: column;
+                padding: 2rem;
+                transform: translateX(-100%);
+                transition: transform var(--transition-smooth);
+            }
+
+            .nav-links.active {
+                transform: translateX(0);
+            }
+
+            .mobile-toggle {
+                display: flex;
+            }
+
+            .hero-card {
+                position: static;
+                width: 100%;
+                margin-top: 2rem;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+
+            .cultural-heritage {
+                padding: 2rem;
+                margin: 2rem 1rem;
+            }
+
+            .section {
+                padding: 4rem 1rem;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 1rem;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
 </head>
-<body class="text-white font-sans antialiased overflow-x-hidden" x-data="portfolioApp()">
-  <noscript>
-    <div class="text-center p-10 bg-gradient-to-r from-gold to-yellow-500 text-black">
-      <h1 class="text-4xl font-bold mb-4">JavaScript is Required</h1>
-      <p>Enable JavaScript to experience the full portfolio.</p>
-    </div>
-  </noscript>
-
-  <!-- Static Cosmic Background -->
-  <div class="cosmic-bg fixed inset-0 z-[-2] pointer-events-none">
-    <div class="nebula-layer"></div>
-    <div class="stars-layer">
-      <div class="stars" style="--star-count: 400;"></div>
-    </div>
-    <div class="moon-glow"></div>
-  </div>
-
-  <!-- Scroll Progress Bar -->
-  <div id="scroll-progress" class="fixed top-0 left-0 h-1 bg-gold/10 z-50"></div>
-
-  <!-- Navigation -->
-  <nav class="fixed w-full z-50 transition-all duration-500" 
-       :class="scrolled ? 'glass-morphism shadow-2xl' : 'bg-transparent'"
-       x-init="window.addEventListener('scroll', () => scrolled = window.scrollY > 50)">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center py-4">
-        <a href="#" class="text-2xl font-bold text-gold hover:animate-glow transition-all duration-300 flex items-center group">
-          <div class="relative mr-3">
-            <div class="w-8 h-8 bg-gradient-to-br from-gold to-yellow-400 rounded-full group-hover:animate-pulse">
-              <div class="absolute inset-0 bg-gradient-to-br from-gold/20 to-transparent rounded-full"></div>
-              <div class="absolute top-1 left-1 w-2 h-2 bg-white/30 rounded-full"></div>
-              <div class="absolute bottom-1 right-1 w-1 h-1 bg-white/20 rounded-full"></div>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-content">
+            <div class="loading-logo">Quantum Consciousness</div>
+            <div class="loading-subtitle">Bridging Ancient Wisdom & Modern Innovation</div>
+            <div class="loading-text">Exploring the fusion of Buddhist philosophy and quantum technology</div>
+            <div class="loading-bar-container">
+                <div class="loading-bar" id="loadingBar"></div>
             </div>
-          </div>
-          <span class="text-shadow group-hover:text-yellow-300 transition-colors">Thanatsitt</span>
-        </a>
-        
-        <!-- Desktop Menu -->
-        <div class="hidden md:flex space-x-8">
-          <a href="#home" class="nav-link relative group" @click="scrollToSection('home')">
-            <span class="relative z-10">Home</span>
-            <div class="absolute inset-0 bg-gold/20 rounded-lg scale-0 group-hover:scale-100 transition-transform duration-300"></div>
-          </a>
-          <a href="#about" class="nav-link relative group" @click="scrollToSection('about')">
-            <span class="relative z-10">About</span>
-            <div class="absolute inset-0 bg-gold/20 rounded-lg scale-0 group-hover:scale-100 transition-transform duration-300"></div>
-          </a>
-          <a href="#skills" class="nav-link relative group" @click="scrollToSection('skills')">
-            <span class="relative z-10">Skills</span>
-            <div class="absolute inset-0 bg-gold/20 rounded-lg scale-0 group-hover:scale-100 transition-transform duration-300"></div>
-          </a>
-          <a href="#gallery" class="nav-link relative group" @click="scrollToSection('gallery')">
-            <span class="relative z-10">Gallery</span>
-            <div class="absolute inset-0 bg-gold/20 rounded-lg scale-0 group-hover:scale-100 transition-transform duration-300"></div>
-          </a>
-          <a href="#testimonials" class="nav-link relative group" @click="scrollToSection('testimonials')">
-            <span class="relative z-10">Reviews</span>
-            <div class="absolute inset-0 bg-gold/20 rounded-lg scale-0 group-hover:scale-100 transition-transform duration-300"></div>
-          </a>
-          <a href="#contact" class="nav-link relative group" @click="scrollToSection('contact')">
-            <span class="relative z-10">Contact</span>
-            <div class="absolute inset-0 bg-gold/20 rounded-lg scale-0 group-hover:scale-100 transition-transform duration-300"></div>
-          </a>
+            <div class="loading-dots">
+                <div class="loading-dot"></div>
+                <div class="loading-dot"></div>
+                <div class="loading-dot"></div>
+            </div>
         </div>
-        
-        <!-- Mobile Menu Button -->
-        <button @click="mobileMenuOpen = !mobileMenuOpen" class="md:hidden text-gold">
-          <i class="fas fa-bars text-xl"></i>
-        </button>
-      </div>
-      
-      <!-- Mobile Menu -->
-      <div x-show="mobileMenuOpen" 
-           x-transition:enter="transition ease-out duration-300" 
-           x-transition:enter-start="opacity-0 transform -translate-y-2"
-           x-transition:enter-end="opacity-100 transform translate-y-0"
-           x-transition:leave="transition ease-in duration-200"
-           x-transition:leave-start="opacity-100 transform translate-y-0"
-           x-transition:leave-end="opacity-0 transform -translate-y-2"
-           class="md:hidden pb-4 glass-morphism rounded-b-2xl">
-        <a href="#home" class="block py-3 px-4 hover:bg-gold/20 rounded-lg transition-colors" @click="scrollToSection('home'); mobileMenuOpen = false">
-          <i class="fas fa-home mr-2"></i>Home
-        </a>
-        <a href="#about" class="block py-3 px-4 hover:bg-gold/20 rounded-lg transition-colors" @click="scrollToSection('about'); mobileMenuOpen = false">
-          <i class="fas fa-user mr-2"></i>About
-        </a>
-        <a href="#skills" class="block py-3 px-4 hover:bg-gold/20 rounded-lg transition-colors" @click="scrollToSection('skills'); mobileMenuOpen = false">
-          <i class="fas fa-cogs mr-2"></i>Skills
-        </a>
-        <a href="#gallery" class="block py-3 px-4 hover:bg-gold/20 rounded-lg transition-colors" @click="scrollToSection('gallery'); mobileMenuOpen = false">
-          <i class="fas fa-images mr-2"></i>Gallery
-        </a>
-        <a href="#testimonials" class="block py-3 px-4 hover:bg-gold/20 rounded-lg transition-colors" @click="scrollToSection('testimonials'); mobileMenuOpen = false">
-          <i class="fas fa-star mr-2"></i>Reviews
-        </a>
-        <a href="#contact" class="block py-3 px-4 hover:bg-gold/20 rounded-lg transition-colors" @click="scrollToSection('contact'); mobileMenuOpen = false">
-          <i class="fas fa-envelope mr-2"></i>Contact
-        </a>
-      </div>
+    </div>
+
+    <!-- Background Effects -->
+    <div class="stars-container" id="starsContainer"></div>
+    <canvas class="particle-canvas" id="particleCanvas"></canvas>
+
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="logo">Quantum Consciousness</div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="mobile-toggle" id="mobileToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
     </nav>
 
-  <!-- Hero Section -->
-  <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden">
-    <div class="relative z-10 text-center max-w-6xl mx-auto px-4">
-      <div class="mb-8">
-        <h1 class="text-5xl md:text-7xl lg:text-8xl font-black mb-6 text-shadow">
-          <span class="bg-gradient-to-r from-gold via-yellow-400 to-gold bg-clip-text text-transparent typing-cursor" x-text="typedText || 'Thanatsitt'"></span>
-        </h1>
-        <div class="h-2 w-32 bg-gradient-to-r from-gold to-yellow-400 mx-auto rounded-full animate-pulse"></div>
-      </div>
-      
-      <p class="text-xl md:text-2xl lg:text-3xl mb-12 text-gray-300 leading-relaxed max-w-4xl mx-auto text-shadow">
-        Thai interdisciplinary creator bridging 
-        <span class="text-gold font-semibold">ancient wisdom</span> with 
-        <span class="text-gold font-semibold">modern technology</span>
-      </p>
-      
-      <div class="flex flex-col sm:flex-row gap-6 justify-center">
-        <button @click="scrollToSection('gallery')" class="group bg-gradient-to-r from-gold to-yellow-500 text-black px-10 py-5 rounded-full font-bold text-lg hover:scale-105 transform transition-all duration-300 hover:shadow-2xl hover:shadow-gold/50 relative overflow-hidden">
-          <span class="relative z-10 flex items-center justify-center">
-            <i class="fas fa-eye mr-3"></i>
-            Explore Portfolio
-          </span>
-          <div class="absolute inset-0 bg-gradient-to-r from-yellow-400 to-gold opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-        </button>
-        
-        <button @click="scrollToSection('contact')" class="group border-2 border-moonSilver text-moonSilver px-10 py-5 rounded-full font-bold text-lg hover:bg-moonSilver hover:text-black transition-all duration-300 relative overflow-hidden">
-          <span class="relative z-10 flex items-center justify-center">
-            <i class="fas fa-paper-plane mr-3"></i>
-            Get In Touch
-          </span>
-        </button>
-      </div>
-      
-      <!-- Social Links -->
-      <div class="flex justify-center space-x-8 mt-12">
-        <a href="https://www.linkedin.com/in/thanattsitts" target="_blank" class="text-3xl text-gray-400 hover:text-gold transition-colors duration-300 hover:animate-bounce">
-          <i class="fab fa-linkedin"></i>
-        </a>
-        <a href="https://github.com/Pigletpeakkung" target="_blank" class="text-3xl text-gray-400 hover:text-gold transition-colors duration-300 hover:animate-bounce">
-          <i class="fab fa-github"></i>
-        </a>
-        <a href="https://www.instagram.com/thanattsitt.s" target="_blank" class="text-3xl text-gray-400 hover:text-gold transition-colors duration-300 hover:animate-bounce">
-          <i class="fab fa-instagram"></i>
-        </a>
-        <a href="https://x.com/ThanattsittS" target="_blank" class="text-3xl text-gray-400 hover:text-gold transition-colors duration-300 hover:animate-bounce">
-          <i class="fab fa-twitter"></i>
-        </a>
-      </div>
-    </div>
-    
-    <!-- Scroll Indicator -->
-    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-      <div class="w-6 h-10 border-2 border-gold rounded-full flex justify-center">
-        <div class="w-1 h-3 bg-gold rounded-full mt-2 animate-pulse"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- About Section -->
-  <section id="about" class="py-20 px-4 relative">
-    <div class="max-w-7xl mx-auto">
-      <div class="text-center mb-16">
-        <h2 class="text-4xl md:text-6xl font-bold mb-6 text-gold text-shadow">About Me</h2>
-        <div class="h-1 w-24 bg-gradient-to-r from-gold to-yellow-400 mx-auto rounded-full"></div>
-      </div>
-      
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-        <div class="relative">
-          <div class="glass-morphism rounded-3xl p-8 card-hover card-3d">
-            <div class="aspect-square bg-gradient-to-br from-gold/20 to-purple-600/20 rounded-2xl flex items-center justify-center relative overflow-hidden">
-              <div class="absolute inset-0 bg-gradient-to-br from-gold/10 to-transparent"></div>
-              <i class="fas fa-user text-8xl text-gold/50"></i>
-            </div>
-          </div>
-          
-          <div class="absolute -top-4 -right-4 glass-morphism rounded-full p-4 animate-float">
-            <i class="fas fa-palette text-2xl text-gold"></i>
-          </div>
-          <div class="absolute -bottom-4 -left-4 glass-morphism rounded-full p-4 animate-float" style="animation-delay: -1s;">
-            <i class="fas fa-brain text-2xl text-gold"></i>
-          </div>
-        </div>
-        
-        <div class="space-y-8">
-          <div class="glass-morphism rounded-2xl p-8 card-hover card-3d">
-            <h3 class="text-2xl font-bold mb-4 text-gold">
-              <i class="fas fa-star mr-3"></i>Cultural Navigator
-            </h3>
-            <p class="text-gray-300 leading-relaxed text-lg">
-              Born from the rich tapestry of Thai heritage and global innovation, I navigate the delicate balance between preserving ancient wisdom and embracing cutting-edge technology. My journey spans continents and disciplines, always seeking to bridge cultural divides through design and technology.
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-greeting">Welcome to the intersection of</div>
+            <h1 class="hero-title">Ancient Wisdom & Quantum Innovation</h1>
+            <p class="hero-subtitle">A Community Platform for Conscious Technology</p>
+            <p class="hero-description">
+                Exploring the profound intersection of consciousness, technology, and cultural heritage through open-source web projects that bridge Buddhist philosophy with cutting-edge quantum innovation.
             </p>
-          </div>
-          
-          <div class="glass-morphism rounded-2xl p-8 card-hover card-3d">
-            <h3 class="text-2xl font-bold mb-4 text-gold">
-              <i class="fas fa-graduation-cap mr-3"></i>Educational Journey
-            </h3>
-            <div class="space-y-4">
-              <div class="flex items-center space-x-4">
-                <div class="w-12 h-12 bg-gold/20 rounded-full flex items-center justify-center">
-                  <i class="fas fa-university text-gold"></i>
-                </div>
-                <div>
-                  <h4 class="font-semibold text-white">London College of Fashion</h4>
-                  <p class="text-gray-400">Fashion Design & Cultural Studies</p>
-                </div>
-              </div>
-              <div class="flex items-center space-x-4">
-                <div class="w-12 h-12 bg-gold/20 rounded-full flex items-center justify-center">
-                  <i class="fas fa-robot text-gold"></i>
-                </div>
-                <div>
-                  <h4 class="font-semibold text-white">AI & Technology</h4>
-                  <p class="text-gray-400">Self-taught Developer & Co-founder</p>
-                </div>
-              </div>
+            <div class="hero-cta">
+                <a href="#projects" class="btn btn-primary">
+                    <i class="fas fa-code"></i>
+                    Explore Projects
+                </a>
+                <a href="#about" class="btn btn-secondary">
+                    <i class="fas fa-heart"></i>
+                    Our Mission
+                </a>
             </div>
-          </div>
-          
-          <div class="glass-morphism rounded-2xl p-8 card-hover card-3d">
-            <h3 class="text-2xl font-bold mb-4 text-gold">
-              <i class="fas fa-heart mr-3"></i>Philosophy
-            </h3>
-            <p class="text-gray-300 leading-relaxed text-lg">
-              I believe technology should enhance human connection, not replace it. Every project I undertake is guided by principles of cultural sensitivity, ethical innovation, and the timeless wisdom that beauty and function are inseparable.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Skills Section -->
-  <section id="skills" class="py-20 px-4 relative">
-    <div class="max-w-7xl mx-auto">
-      <div class="text-center mb-16">
-        <h2 class="text-4xl md:text-6xl font-bold mb-6 text-gold text-shadow animate-zoomIn">Skills & Expertise</h2>
-        <div class="h-1 w-24 bg-gradient-to-r from-gold to-yellow-400 mx-auto rounded-full"></div>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        <!-- Design Skills Card -->
-        <div class="glass-morphism rounded-2xl card-container card-3d focus:outline-none focus:ring-2 focus:ring-gold" tabindex="0" aria-label="Design Skills Card">
-          <div class="card-front">
-            <div class="text-center mb-6">
-              <div class="w-16 h-16 bg-gradient-to-br from-gold to-yellow-400 rounded-full flex items-center justify-center mx-auto mb-4">
-                <i class="fas fa-palette text-2xl text-black"></i>
-              </div>
-              <h3 class="text-xl font-bold text-gold">Design</h3>
-            </div>
-            <div class="space-y-4" x-data="{ visible: false }" x-intersect="visible = true">
-              <div class="skill-item">
-                <div class="flex justify-between mb-2">
-                  <span class="text-white">Fashion Design</span>
-                  <span class="text-gold" aria-label="Fashion Design proficiency: 95 percent">95%</span>
-                </div>
-                <div class="w-full bg-gray-700 rounded-full h-2">
-                  <div class="skill-bar rounded-full h-2" :style="visible ? 'width: 95%' : 'width: 0%'"></div>
-                </div>
-              </div>
-              <div class="skill-item">
-                <div class="flex justify-between mb-2">
-                  <span class="text-white">UI/UX Design</span>
-                  <span class="text-gold" aria-label="UI/UX Design proficiency: 88 percent">88%</span>
-                </div>
-                <div class="w-full bg-gray-700 rounded-full h-2">
-                  <div class="skill-bar rounded-full h-2" :style="visible ? 'width: 88%' : 'width: 0%'"></div>
-                </div>
-              </div>
-              <div class="skill-item">
-                <div class="flex justify-between mb-2">
-                  <span class="text-white">Visual Identity</span>
-                  <span class="text-gold" aria-label="Visual Identity proficiency: 92 percent">92%</span>
-                </div>
-                <div class="w-full bg-gray-700 rounded-full h-2">
-                  <div class="skill-bar rounded-full h-2" :style="visible ? 'width: 92%' : 'width: 0%'"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="card-back">
-            <h3 class="text-2xl font-bold text-gold mb-6">Design Expertise</h3>
-            <div class="space-y-4 text-white">
-              <div class="flex items-center justify-center space-x-2">
-                <i class="fas fa-tshirt text-gold"></i>
-                <span>Fashion Design - 95%</span>
-              </div>
-              <div class="flex items-center justify-center space-x-2">
-                <i class="fas fa-desktop text-gold"></i>
-                <span>UI/UX Design - 88%</span>
-              </div>
-              <div class="flex items-center justify-center space-x-2">
-                <i class="fas fa-eye text-gold"></i>
-                <span>Visual Identity - 92%</span>
-              </div>
-            </div>
-          </div>
         </div>
 
-        <!-- Technology Skills Card -->
-        <div class="glass-morphism rounded-2xl card-container card-3d focus:outline-none focus:ring-2 focus:ring-gold" tabindex="0" aria-label="Technology Skills Card">
-          <div class="card-front">
-            <div class="text-center mb-6">
-              <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                <i class="fas fa-code text-2xl text-white"></i>
-              </div>
-              <h3 class="text-xl font-bold text-gold">Technology</h3>
+        <!-- Cultural Heritage Card -->
+        <div class="cultural-heritage">
+            <h3>Bridging Ancient Wisdom and Modern Innovation</h3>
+            <p>Our platform celebrates the intersection of traditional Buddhist practices and cutting-edge technology, drawing inspiration from Thai cultural heritage and quantum consciousness principles.</p>
+            <div class="thai-text">
+                การผสมผสานระหว่างปัญญาโบราณและนวัตกรรมสมัยใหม่
             </div>
-            <div class="space-y-4" x-data="{ visible: false }" x-intersect="visible = true">
-              <div class="skill-item">
-                <div class="flex justify-between mb-2">
-                  <span class="text-white">AI Development</span>
-                  <span class="text-gold" aria-label="AI Development proficiency: 85 percent">85%</span>
-                </div>
-                <div class="w-full bg-gray-700 rounded-full h-2">
-                  <div class="skill-bar rounded-full h-2" :style="visible ? 'width: 85%' : 'width: 0%'"></div>
-                </div>
-              </div>
-              <div class="skill-item">
-                <div class="flex justify-between mb-2">
-                  <span class="text-white">Web Development</span>
-                  <span class="text-gold" aria-label="Web Development proficiency: 80 percent">80%</span>
-                </div>
-                <div class="w-full bg-gray-700 rounded-full h-2">
-                  <div class="skill-bar rounded-full h-2" :style="visible ? 'width: 80%' : 'width: 0%'"></div>
-                </div>
-              </div>
-              <div class="skill-item">
-                <div class="flex justify-between mb-2">
-                  <span class="text-white">Video Editing</span>
-                  <span class="text-gold" aria-label="Video Editing proficiency: 78 percent">78%</span>
-                </div>
-                <div class="w-full bg-gray-700 rounded-full h-2">
-                  <div class="skill-bar rounded-full h-2" :style="visible ? 'width: 78%' : 'width: 0%'"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="card-back">
-            <h3 class="text-2xl font-bold text-gold mb-6">Tech Stack</h3>
-            <div class="space-y-4 text-white">
-              <div class="flex items-center justify-center space-x-2">
-                <i class="fas fa-robot text-gold"></i>
-                <span>AI Development - 85%</span>
-              </div>
-              <div class="flex items-center justify-center space-x-2">
-                <i class="fas fa-globe text-gold"></i>
-                <span>Web Development - 80%</span>
-              </div>
-              <div class="flex items-center justify-center space-x-2">
-                <i class="fas fa-video text-gold"></i>
-                <span>Video Editing - 78%</span>
-              </div>
-            </div>
-          </div>
         </div>
 
-        <!-- Communication Skills Card -->
-        <div class="glass-morphism rounded-2xl card-container card-3d focus:outline-none focus:ring-2 focus:ring-gold" tabindex="0" aria-label="Communication Skills Card">
-          <div class="card-front">
-            <div class="text-center mb-6">
-              <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-teal-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                <i class="fas fa-comments text-2xl text-white"></i>
-              </div>
-              <h3 class="text-xl font-bold text-gold">Communication</h3>
+        <!-- Stats Card -->
+        <div class="hero-card">
+            <div class="card-title">Community Impact</div>
+            <div class="card-stats">
+                <div class="stat">
+                    <div class="stat-number">15+</div>
+                    <div class="stat-label">Projects</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">95+</div>
+                    <div class="stat-label">Performance</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">100</div>
+                    <div class="stat-label">Accessibility</div>
+                </div>
             </div>
-            <div class="space-y-4" x-data="{ visible: false }" x-intersect="visible = true">
-              <div class="skill-item">
-                <div class="flex justify-between mb-2">
-                  <span class="text-white">Voice Acting</span>
-                  <span class="text-gold" aria-label="Voice Acting proficiency: 82 percent">82%</span>
-                </div>
-                <div class="w-full bg-gray-700 rounded-full h-2">
-                  <div class="skill-bar rounded-full h-2" :style="visible ? 'width: 82%' : 'width: 0%'"></div>
-                </div>
-              </div>
-              <div class="skill-item">
-                <div class="flex justify-between mb-2">
-                  <span class="text-white">Writing</span>
-                  <span class="text-gold" aria-label="Writing proficiency: 90 percent">90%</span>
-                </div>
-                <div class="w-full bg-gray-700 rounded-full h-2">
-                  <div class="skill-bar rounded-full h-2" :style="visible ? 'width: 90%' : 'width: 0%'"></div>
-                </div>
-              </div>
-              <div class="skill-item">
-                <div class="flex justify-between mb-2">
-                  <span class="text-white">Public Speaking</span>
-                  <span class="text-gold" aria-label="Public Speaking proficiency: 85 percent">85%</span>
-                </div>
-                <div class="w-full bg-gray-700 rounded-full h-2">
-                  <div class="skill-bar rounded-full h-2" :style="visible ? 'width: 85%' : 'width: 0%'"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="card-back">
-            <h3 class="text-2xl font-bold text-gold mb-6">Communication Skills</h3>
-            <ul class="space-y-3 text-white text-lg">
-              <li>🎙️ Voice Acting - 82%</li>
-              <li>✍️ Writing - 90%</li>
-              <li>📢 Public Speaking - 85%</li>
-            </ul>
-          </div>
         </div>
+    </section>
 
-        <!-- Leadership Skills Card -->
-        <div class="glass-morphism rounded-2xl card-container card-3d focus:outline-none focus:ring-2 focus:ring-gold" tabindex="0" aria-label="Leadership Skills Card">
-          <div class="card-front">
-            <div class="text-center mb-6">
-              <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                <i class="fas fa-crown text-2xl text-white"></i>
-              </div>
-              <h3 class="text-xl font-bold text-gold">Leadership</h3>
+    <!-- About Section -->
+    <section class="section" id="about">
+        <h2 class="section-title">Our Mission</h2>
+        <div class="about-grid">
+            <div class="about-image">
+                <div class="profile-pic"></div>
+                <div class="education-badge">
+                    <div class="badge-text">Open Source</div>
+                </div>
             </div>
-            <div class="space-y-4" x-data="{ visible: false }" x-intersect="visible = true">
-              <div class="skill-item">
-                <div class="flex justify-between mb-2">
-                  <span class="text-white">Team Management</span>
-                  <span class="text-gold" aria-label="Team Management proficiency: 88 percent">88%</span>
+            <div class="about-content">
+                <p class="about-text">
+                    We are dedicated to exploring the profound intersection of consciousness, technology, and cultural heritage through open-source web projects that bridge ancient wisdom with quantum innovation.
+                </p>
+                <p class="about-text">
+                    Our community focuses on creating transformational digital experiences that honor Buddhist philosophy while embracing cutting-edge web technologies, maintaining the highest standards of performance and accessibility.
+                </p>
+                <div class="credentials">
+                    <span class="credential-item">Buddhist Philosophy Integration</span>
+                    <span class="credential-item">Quantum Technology Research</span>
+                    <span class="credential-item">Cultural Preservation</span>
+                    <span class="credential-item">Open Source Advocacy</span>
                 </div>
-                <div class="w-full bg-gray-700 rounded-full h-2">
-                  <div class="skill-bar rounded-full h-2" :style="visible ? 'width: 88%' : 'width: 0%'"></div>
-                </div>
-              </div>
-              <div class="skill-item">
-                <div class="flex justify-between mb-2">
-                  <span class="text-white">Project Planning</span>
-                  <span class="text-gold" aria-label="Project Planning proficiency: 92 percent">92%</span>
-                </div>
-                <div class="w-full bg-gray-700 rounded-full h-2">
-                  <div class="skill-bar rounded-full h-2" :style="visible ? 'width: 92%' : 'width: 0%'"></div>
-                </div>
-              </div>
-              <div class="skill-item">
-                <div class="flex justify-between mb-2">
-                  <span class="text-white">Strategic Thinking</span>
-                  <span class="text-gold" aria-label="Strategic Thinking proficiency: 90 percent">90%</span>
-                </div>
-                <div class="w-full bg-gray-700 rounded-full h-2">
-                  <div class="skill-bar rounded-full h-2" :style="visible ? 'width: 90%' : 'width: 0%'"></div>
-                </div>
-              </div>
             </div>
-          </div>
-          <div class="card-back">
-            <h3 class="text-2xl font-bold text-gold mb-6">Leadership Skills</h3>
-            <div class="space-y-4 text-white">
-              <div class="flex items-center justify-center space-x-2">
-                <i class="fas fa-users-cog text-gold"></i>
-                <span>Team Management - 88%</span>
-              </div>
-              <div class="flex items-center justify-center space-x-2">
-                <i class="fas fa-tasks text-gold"></i>
-                <span>Project Planning - 92%</span>
-              </div>
-              <div class="flex items-center justify-center space-x-2">
-                <i class="fas fa-chess text-gold"></i>
-                <span>Strategic Thinking - 90%</span>
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Gallery Section -->
-  <section id="gallery" class="py-20 px-4 relative">
-    <div class="max-w-7xl mx-auto">
-      <div class="text-center mb-16">
-        <h2 class="text-4xl md:text-6xl font-bold mb-6 text-gold text-shadow">Gallery</h2>
-        <div class="h-1 w-24 bg-gradient-to-r from-gold to-yellow-400 mx-auto rounded-full"></div>
-      </div>
-      
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Project Card 1 -->
-        <div class="glass-morphism rounded-2xl p-6 card-hover card-3d">
-          <div class="relative mb-6">
-            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=500&fit=crop" 
-                 alt="Cultural AI Project" 
-                 class="rounded-2xl w-full h-64 object-cover shadow-gold transition-transform duration-500 transform hover:scale-105" />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent rounded-2xl opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-              <h3 class="text-xl font-bold text-white">Cultural AI Project</h3>
+    <!-- Featured Projects Section -->
+    <section class="section" id="projects">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-image">
+                    <div class="project-icon">
+                        <i class="fas fa-om"></i>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Siam-Blessing Platform</h3>
+                    <p class="project-description">
+                        A transformational web platform that integrates Buddhist meditation practices with modern technology, creating immersive spiritual experiences through quantum consciousness principles.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Quantum Computing</span>
+                        <span class="tech-tag">Buddhist Philosophy</span>
+                        <span class="tech-tag">Progressive Web App</span>
+                        <span class="tech-tag">Accessibility</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/open-source-community/siam-blessing" class="project-link">
+                            <i class="fab fa-github"></i>
+                            View Code
+                        </a>
+                        <a href="#" class="project-link">
+                            <i class="fas fa-external-link-alt"></i>
+                            Live Demo
+                        </a>
+                    </div>
+                </div>
             </div>
-          </div>
+
+            <div class="project-card">
+                <div class="project-image">
+                    <div class="project-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Astrotrias-Archon</h3>
+                    <p class="project-description">
+                        High-performance web application achieving 95+ Lighthouse scores, demonstrating technical excellence while maintaining spiritual and cultural authenticity in digital experiences.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Performance Optimization</span>
+                        <span class="tech-tag">Cultural Design</span>
+                        <span class="tech-tag">Accessibility</span>
+                        <span class="tech-tag">SEO Excellence</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/open-source-community/astrotrias-archon" class="project-link">
+                            <i class="fab fa-github"></i>
+                            View Code
+                        </a>
+                        <a href="#" class="project-link">
+                            <i class="fas fa-chart-line"></i>
+                            Performance
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image">
+                    <div class="project-icon">
+                        <i class="fas fa-infinity"></i>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Consciousness Bridge</h3>
+                    <p class="project-description">
+                        An experimental platform exploring the intersection of quantum mechanics and consciousness, creating digital mandalas that respond to user meditation states and biometric feedback.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Quantum Algorithms</span>
+                        <span class="tech-tag">Biometric Integration</span>
+                        <span class="tech-tag">Meditation Tech</span>
+                        <span class="tech-tag">Neural Networks</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/open-source-community/consciousness-bridge" class="project-link">
+                            <i class="fab fa-github"></i>
+                            View Code
+                        </a>
+                        <a href="#" class="project-link">
+                            <i class="fas fa-brain"></i>
+                            Research
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="section" id="gallery">
+        <h2 class="section-title">Community Gallery</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1604537529428-15bcbeecfe4d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Buddhist Temple Technology Integration" class="gallery-image">
+                <div class="gallery-content">
+                    <h3 class="gallery-title">Temple Tech Integration</h3>
+                    <p class="gallery-description">Modern technology harmoniously integrated with traditional Buddhist temple architecture.</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Quantum Meditation Space" class="gallery-image">
+                <div class="gallery-content">
+                    <h3 class="gallery-title">Quantum Meditation</h3>
+                    <p class="gallery-description">Serene spaces designed for quantum consciousness exploration and mindful technology interaction.</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Cultural Heritage Preservation" class="gallery-image">
+                <div class="gallery-content">
+                    <h3 class="gallery-title">Heritage Preservation</h3>
+                    <p class="gallery-description">Digital preservation of Thai cultural heritage through innovative web technologies.</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1544717297-fa95b6ee9643?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Community Collaboration" class="gallery-image">
+                <div class="gallery-content">
+                    <h3 class="gallery-title">Community Spirit</h3>
+                    <p class="gallery-description">Open-source collaboration fostering innovation in conscious technology development.</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Mindful Technology" class="gallery-image">
+                <div class="gallery-content">
+                    <h3 class="gallery-title">Mindful Technology</h3>
+                    <p class="gallery-description">Technology designed with mindfulness principles and Buddhist philosophy at its core.</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Digital Mandala Creation" class="gallery-image">
+                <div class="gallery-content">
+                    <h3 class="gallery-title">Digital Mandalas</h3>
+                    <p class="gallery-description">Interactive digital mandalas created through quantum algorithms and consciousness research.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section">
+        <div class="faq">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        What makes these projects unique?
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        Our featured projects uniquely combine spiritual and philosophical elements with cutting-edge web technologies, creating transformational digital experiences that bridge ancient Buddhist wisdom with quantum innovation.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        What technical standards do featured projects meet?
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        All showcased projects maintain high performance standards with 95+ Lighthouse scores, sub-2-second load times, and full accessibility compliance, ensuring exceptional user experience across all devices.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Are these projects production-ready?
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        Yes, all projects meet enterprise-grade performance standards with comprehensive browser support, accessibility compliance, and thorough documentation for production deployment.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        How can I contribute to the community?
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        We welcome contributions that explore consciousness and technology intersection, cultural preservation through innovative web applications, and high-performance, accessible implementations with open-source licensing.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <h2 class="section-title">Connect With Our Community</h2>
         
-        <!-- Project Card 2 -->
-        <div class="glass-morphism rounded-2xl p-6 card-hover card-3d">
-          <div class="relative mb-6">
-            <img src="https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=800&h=500&fit=crop" 
-                 alt="Thai Design Fusion" 
-                 class="rounded-2xl w-full h-64 object-cover shadow-gold transition-transform duration-500 transform hover:scale-105" />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent rounded-2xl opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-              <h3 class="text-xl font-bold text-white">Thai Design Fusion</h3>
-            </div>
-          </div>
+        <div class="privacy-assurance">
+            <h4>Your Privacy Matters</h4>
+            <p>We respect contributor privacy and maintain strict confidentiality. All communications are handled with discretion and data protection compliance.</p>
         </div>
+
+        <div class="contact-grid">
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <h3 class="contact-title">Community Forum</h3>
+                <p class="contact-info">Join our discussions on consciousness, technology, and cultural heritage projects</p>
+                <a href="mailto:community@quantumconsciousness.org" class="contact-btn">
+                    <i class="fas fa-paper-plane"></i>
+                    Join Discussion
+                </a>
+            </div>
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fab fa-github"></i>
+                </div>
+                <h3 class="contact-title">Open Source</h3>
+                <p class="contact-info">Contribute to our repositories and collaborate on innovative projects</p>
+                <a href="https://github.com/quantum-consciousness" class="contact-btn">
+                    <i class="fab fa-github"></i>
+                    View Repos
+                </a>
+            </div>
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <h3 class="contact-title">Support</h3>
+                <p class="contact-info">Support our mission of bridging ancient wisdom with modern innovation</p>
+                <a href="#" class="contact-btn">
+                    <i class="fas fa-donate"></i>
+                    Support Us
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About</h3>
+                <p>A community platform exploring the intersection of consciousness, technology, and cultural heritage through open-source projects that bridge Buddhist philosophy with quantum innovation.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Technologies</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Quantum Computing</a></li>
+                    <li><a href="#">Buddhist Philosophy</a></li>
+                    <li><a href="#">Progressive Web Apps</a></li>
+                    <li><a href="#">Accessibility</a></li>
+                    <li><a href="#">Performance Optimization</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Community</h3>
+                <ul class="footer-links">
+                    <li><a href="#">GitHub</a></li>
+                    <li><a href="#">Discord</a></li>
+                    <li><a href="#">Forum</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Documentation</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Quantum Consciousness Community. Open source project bridging ancient wisdom with modern innovation. 🕉️ Built with mindfulness and quantum love.</p>
+        </div>
+    </footer>
+
+    <script>
+        // ===== PERFORMANCE OPTIMIZED JAVASCRIPT =====
         
-        <!-- Project Card 3 -->
-        <div class="glass-morphism rounded-2xl p-6 card-hover card-3d">
-          <div class="relative mb-6">
-            <img src="https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?w=800&h=500&fit=crop" 
-                 alt="Digital Heritage Collection" 
-                 class="rounded-2xl w-full h-64 object-cover shadow-gold transition-transform duration-500 transform hover:scale-105" />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent rounded-2xl opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-              <h3 class="text-xl font-bold text-white">Digital Heritage Collection</h3>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+        // Utility Functions
+        const debounce = (func, wait) => {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        };
 
-  <!-- Testimonials Section -->
-  <section id="testimonials" class="py-20 px-4 relative">
-    <div class="max-w-7xl mx-auto">
-      <div class="text-center mb-16">
-        <h2 class="text-4xl md:text-6xl font-bold mb-6 text-gold text-shadow">Client Reviews</h2>
-        <div class="h-1 w-24 bg-gradient-to-r from-gold to-yellow-400 mx-auto rounded-full"></div>
-      </div>
-      
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-        <!-- Testimonial 1 -->
-        <div class="glass-morphism rounded-2xl p-8 card-hover card-3d">
-          <div class="flex items-center mb-4">
-            <i class="fas fa-star text-yellow-300 mr-2 text-2xl"></i>
-            <i class="fas fa-star text-yellow-300 mr-2 text-2xl"></i>
-            <i class="fas fa-star text-yellow-300 mr-2 text-2xl"></i>
-            <i class="fas fa-star text-yellow-300 mr-2 text-2xl"></i>
-            <i class="fas fa-star text-yellow-300 text-2xl"></i>
-          </div>
-          <p class="text-gray-300 italic mb-6">
-            "Thanatsitt's ability to merge cultural depth with technological precision is extraordinary. Their AI projects feel deeply human."
-          </p>
-          <div class="flex items-center">
-            <div class="w-12 h-12 bg-gold/20 rounded-full flex items-center justify-center">
-              <i class="fas fa-user text-gold"></i>
-            </div>
-            <div class="ml-4">
-              <h4 class="text-white font-semibold">Sarah Lin</h4>
-              <p class="text-gray-400 text-sm">Creative Director, London</p>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Testimonial 2 -->
-        <div class="glass-morphism rounded-2xl p-8 card-hover card-3d">
-          <div class="flex items-center mb-4">
-            <i class="fas fa-star text-yellow-300 mr-2 text-2xl"></i>
-            <i class="fas fa-star text-yellow-300 mr-2 text-2xl"></i>
-            <i class="fas fa-star text-yellow-300 mr-2 text-2xl"></i>
-            <i class="fas fa-star text-yellow-300 mr-2 text-2xl"></i>
-            <i class="fas fa-star text-yellow-300 text-2xl"></i>
-          </div>
-          <p class="text-gray-300 italic mb-6">
-            "Working with Thanatsitt was a transformative experience. Their portfolio reflects both technical mastery and philosophical insight."
-          </p>
-          <div class="flex items-center">
-            <div class="w-12 h-12 bg-gold/20 rounded-full flex items-center justify-center">
-              <i class="fas fa-user text-gold"></i>
-            </div>
-            <div class="ml-4">
-              <h4 class="text-white font-semibold">James Wong</h4>
-              <p class="text-gray-400 text-sm">Tech Innovator, Bangkok</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact Section -->
-  <section id="contact" class="py-20 px-4 relative bg-gradient-to-br from-deepPurple/50 to-cosmicBlue/70">
-    <div class="max-w-7xl mx-auto">
-      <div class="text-center mb-16">
-        <h2 class="text-4xl md:text-6xl font-bold mb-6 text-gold text-shadow">Get in Touch</h2>
-        <div class="h-1 w-24 bg-gradient-to-r from-gold to-yellow-400 mx-auto rounded-full"></div>
-      </div>
-      
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-        <!-- Contact Info -->
-        <div class="space-y-8">
-          <div class="glass-morphism rounded-2xl p-8 card-hover card-3d">
-            <div class="flex items-start">
-              <i class="fas fa-envelope text-3xl text-gold mr-4"></i>
-              <div>
-                <h3 class="text-xl font-bold text-white mb-2">Email</h3>
-                <p class="text-gray-300">thanatsitt@thannxai.com</p>
-              </div>
-            </div>
-          </div>
-          
-          <div class="glass-morphism rounded-2xl p-8 card-hover card-3d">
-            <div class="flex items-start">
-              <i class="fas fa-map-marker-alt text-3xl text-gold mr-4"></i>
-              <div>
-                <h3 class="text-xl font-bold text-white mb-2">Location</h3>
-                <p class="text-gray-300">London, UK / Bangkok, Thailand</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Contact Form -->
-        <div class="glass-morphism rounded-2xl p-8 card-hover card-3d">
-          <form id="contact-form" class="space-y-6">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <input type="text" name="user_name" placeholder="Your Name" required 
-                     class="bg-gray-800/50 border border-gold/20 rounded-lg py-3 px-4 w-full text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gold" />
-              <input type="email" name="user_email" placeholder="Your Email" required 
-                     class="bg-gray-800/50 border border-gold/20 rounded-lg py-3 px-4 w-full text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gold" />
-            </div>
-            <textarea name="message" rows="5" placeholder="Your Message" required
-                      class="bg-gray-800/50 border border-gold/20 rounded-lg py-3 px-4 w-full text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gold"></textarea>
-            <button type="submit" 
-                    class="w-full bg-gradient-to-r from-gold to-yellow-500 text-black font-bold py-3 px-6 rounded-lg hover:scale-105 transform transition-all duration-300 hover:shadow-2xl hover:shadow-gold/50">
-              Send Message
-            </button>
-          </form>
-          
-          <!-- Form Status -->
-          <div x-show="formStatus" x-text="formStatus" 
-               class="mt-4 text-center text-gold font-semibold"></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="bg-deepPurple py-12 px-4">
-    <div class="max-w-7xl mx-auto text-center">
-      <p class="text-gray-400 text-sm mb-4">© 2025 Thanatsitt Santisamranwilai. All rights reserved.</p>
-      <div class="flex justify-center space-x-6">
-        <a href="https://www.linkedin.com/in/thanattsitts" target="_blank" class="text-gray-400 hover:text-gold transition-colors">
-          <i class="fab fa-linkedin text-xl"></i>
-        </a>
-        <a href="https://github.com/Pigletpeakkung" target="_blank" class="text-gray-400 hover:text-gold transition-colors">
-          <i class="fab fa-github text-xl"></i>
-        </a>
-        <a href="https://www.instagram.com/thanattsitt.s" target="_blank" class="text-gray-400 hover:text-gold transition-colors">
-          <i class="fab fa-instagram text-xl"></i>
-        </a>
-        <a href="https://x.com/ThanattsittS" target="_blank" class="text-gray-400 hover:text-gold transition-colors">
-          <i class="fab fa-twitter text-xl"></i>
-        </a>
-      </div>
-    </div>
-  </footer>
-
-  <!-- JavaScript for Alpine.js Logic -->
-  <script>
-    document.addEventListener('alpine:init', () => {
-      Alpine.data('portfolioApp', () => ({
-        mobileMenuOpen: false,
-        scrolled: false,
-        formStatus: null,
-        typedText: '',
-
-        scrollToSection(id) {
-          const element = document.getElementById(id);
-          if (element) {
-            element.scrollIntoView({ behavior: 'smooth' });
-            this.mobileMenuOpen = false;
-          }
-        },
-
-        init() {
-          // Typing animation
-          const text = 'Thanatsitt';
-          let i = 0;
-          const typeWriter = () => {
-            if (i < text.length) {
-              this.typedText += text.charAt(i);
-              i++;
-              setTimeout(typeWriter, 150);
+        const throttle = (func, limit) => {
+            let inThrottle;
+            return function() {
+                const args = arguments;
+                const context = this;
+                if (!inThrottle) {
+                    func.apply(context, args);
+                    inThrottle = true;
+                    setTimeout(() => inThrottle = false, limit);
+                }
             }
-          };
-          typeWriter();
+        };
 
-          // Scroll Progress Bar
-          window.addEventListener('scroll', () => {
-            const progress = document.getElementById('scroll-progress');
-            if (progress) {
-              const height = document.body.scrollHeight - window.innerHeight;
-              const scrolled = (window.scrollY / height) * 100;
-              progress.style.width = scrolled + '%';
+        // ===== LOADING SCREEN =====
+        class LoadingScreen {
+            constructor() {
+                this.loadingScreen = document.getElementById('loadingScreen');
+                this.loadingBar = document.getElementById('loadingBar');
+                this.progress = 0;
+                this.init();
             }
-          });
 
-          // Form Submission (placeholder)
-          const form = document.getElementById('contact-form');
-          if (form) {
-            form.addEventListener('submit', (e) => {
-              e.preventDefault();
-              this.formStatus = 'Message sent successfully!';
-              form.reset();
-              setTimeout(() => this.formStatus = null, 5000);
+            init() {
+                this.simulateLoading();
+            }
+
+            simulateLoading() {
+                const interval = setInterval(() => {
+                    this.progress += Math.random() * 12 + 3;
+                    if (this.progress >= 100) {
+                        this.progress = 100;
+                        clearInterval(interval);
+                        setTimeout(() => this.hideLoading(), 800);
+                    }
+                    this.updateProgress();
+                }, 120);
+            }
+
+            updateProgress() {
+                this.loadingBar.style.width = `${this.progress}%`;
+            }
+
+            hideLoading() {
+                this.loadingScreen.style.opacity = '0';
+                setTimeout(() => {
+                    this.loadingScreen.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }, 600);
+            }
+        }
+
+        // ===== BACKGROUND EFFECTS =====
+        class BackgroundEffects {
+            constructor() {
+                this.starsContainer = document.getElementById('starsContainer');
+                this.particleCanvas = document.getElementById('particleCanvas');
+                this.ctx = this.particleCanvas.getContext('2d');
+                this.particles = [];
+                this.init();
+            }
+
+            init() {
+                this.createStars();
+                this.createSparkles();
+                this.initParticles();
+                this.setupCanvas();
+                this.animate();
+                this.setupEventListeners();
+            }
+
+            createStars() {
+                for (let i = 0; i < 40; i++) {
+                    const star = document.createElement('div');
+                    star.className = `star ${['small', 'medium', 'large'][Math.floor(Math.random()                    * 3)]}`;
+                    star.style.left = Math.random() * 100 + '%';
+                    star.style.top = Math.random() * 100 + '%';
+                    star.style.animationDelay = Math.random() * 3 + 's';
+                    this.starsContainer.appendChild(star);
+                }
+            }
+
+            createSparkles() {
+                for (let i = 0; i < 15; i++) {
+                    const sparkle = document.createElement('div');
+                    sparkle.className = 'sparkle';
+                    sparkle.style.left = Math.random() * 100 + '%';
+                    sparkle.style.top = Math.random() * 100 + '%';
+                    sparkle.style.animationDelay = Math.random() * 2 + 's';
+                    this.starsContainer.appendChild(sparkle);
+                }
+            }
+
+            setupCanvas() {
+                this.resizeCanvas();
+                window.addEventListener('resize', debounce(() => this.resizeCanvas(), 250));
+            }
+
+            resizeCanvas() {
+                this.particleCanvas.width = window.innerWidth;
+                this.particleCanvas.height = window.innerHeight;
+            }
+
+            initParticles() {
+                const particleCount = window.innerWidth < 768 ? 30 : 60;
+                for (let i = 0; i < particleCount; i++) {
+                    this.particles.push({
+                        x: Math.random() * this.particleCanvas.width,
+                        y: Math.random() * this.particleCanvas.height,
+                        vx: (Math.random() - 0.5) * 0.3,
+                        vy: (Math.random() - 0.5) * 0.3,
+                        size: Math.random() * 2 + 1,
+                        opacity: Math.random() * 0.5 + 0.2,
+                        color: `hsl(${Math.random() * 60 + 30}, 70%, 60%)`
+                    });
+                }
+            }
+
+            animate() {
+                this.ctx.clearRect(0, 0, this.particleCanvas.width, this.particleCanvas.height);
+                
+                this.particles.forEach(particle => {
+                    particle.x += particle.vx;
+                    particle.y += particle.vy;
+                    
+                    if (particle.x < 0 || particle.x > this.particleCanvas.width) particle.vx *= -1;
+                    if (particle.y < 0 || particle.y > this.particleCanvas.height) particle.vy *= -1;
+                    
+                    this.ctx.beginPath();
+                    this.ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+                    this.ctx.fillStyle = particle.color;
+                    this.ctx.globalAlpha = particle.opacity;
+                    this.ctx.fill();
+                });
+                
+                requestAnimationFrame(() => this.animate());
+            }
+
+            setupEventListeners() {
+                document.addEventListener('mousemove', throttle((e) => {
+                    this.particles.forEach(particle => {
+                        const dx = e.clientX - particle.x;
+                        const dy = e.clientY - particle.y;
+                        const distance = Math.sqrt(dx * dx + dy * dy);
+                        
+                        if (distance < 100) {
+                            particle.vx += dx * 0.00005;
+                            particle.vy += dy * 0.00005;
+                        }
+                    });
+                }, 16));
+            }
+        }
+
+        // ===== NAVIGATION =====
+        class Navigation {
+            constructor() {
+                this.nav = document.getElementById('nav');
+                this.navLinks = document.getElementById('navLinks');
+                this.mobileToggle = document.getElementById('mobileToggle');
+                this.lastScrollY = window.scrollY;
+                this.init();
+            }
+
+            init() {
+                this.setupScrollEffect();
+                this.setupActiveLink();
+                this.setupMobileToggle();
+                this.setupSmoothScroll();
+            }
+
+            setupScrollEffect() {
+                const handleScroll = throttle(() => {
+                    const currentScrollY = window.scrollY;
+                    
+                    if (currentScrollY > 100) {
+                        this.nav.classList.add('scrolled');
+                    } else {
+                        this.nav.classList.remove('scrolled');
+                    }
+                    
+                    this.lastScrollY = currentScrollY;
+                }, 16);
+
+                window.addEventListener('scroll', handleScroll);
+            }
+
+            setupActiveLink() {
+                const sections = document.querySelectorAll('section[id]');
+                const navLinks = document.querySelectorAll('.nav-links a');
+                
+                const updateActiveLink = throttle(() => {
+                    const scrollY = window.scrollY + 100;
+                    
+                    sections.forEach(section => {
+                        const sectionTop = section.offsetTop;
+                        const sectionHeight = section.offsetHeight;
+                        const sectionId = section.getAttribute('id');
+                        
+                        if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+                            navLinks.forEach(link => {
+                                link.classList.remove('active');
+                                if (link.getAttribute('href') === `#${sectionId}`) {
+                                    link.classList.add('active');
+                                }
+                            });
+                        }
+                    });
+                }, 16);
+
+                window.addEventListener('scroll', updateActiveLink);
+            }
+
+            setupMobileToggle() {
+                this.mobileToggle.addEventListener('click', () => {
+                    this.navLinks.classList.toggle('active');
+                    this.mobileToggle.classList.toggle('active');
+                });
+
+                // Close mobile menu when clicking outside
+                document.addEventListener('click', (e) => {
+                    if (!this.nav.contains(e.target)) {
+                        this.navLinks.classList.remove('active');
+                        this.mobileToggle.classList.remove('active');
+                    }
+                });
+            }
+
+            setupSmoothScroll() {
+                const links = document.querySelectorAll('a[href^="#"]');
+                links.forEach(link => {
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const targetId = link.getAttribute('href').substring(1);
+                        const targetElement = document.getElementById(targetId);
+                        
+                        if (targetElement) {
+                            const offsetTop = targetElement.offsetTop - 80;
+                            window.scrollTo({
+                                top: offsetTop,
+                                behavior: 'smooth'
+                            });
+                        }
+                        
+                        // Close mobile menu
+                        this.navLinks.classList.remove('active');
+                        this.mobileToggle.classList.remove('active');
+                    });
+                });
+            }
+        }
+
+        // ===== FAQ FUNCTIONALITY =====
+        class FAQManager {
+            constructor() {
+                this.faqItems = document.querySelectorAll('.faq-item');
+                this.init();
+            }
+
+            init() {
+                this.faqItems.forEach(item => {
+                    const question = item.querySelector('.faq-question');
+                    question.addEventListener('click', () => this.toggleFAQ(item));
+                });
+            }
+
+            toggleFAQ(item) {
+                const isActive = item.classList.contains('active');
+                
+                // Close all other FAQ items
+                this.faqItems.forEach(faqItem => {
+                    if (faqItem !== item) {
+                        faqItem.classList.remove('active');
+                    }
+                });
+                
+                // Toggle current item
+                item.classList.toggle('active', !isActive);
+            }
+        }
+
+        // ===== INTERSECTION OBSERVER FOR ANIMATIONS =====
+        class AnimationObserver {
+            constructor() {
+                this.observer = null;
+                this.init();
+            }
+
+            init() {
+                if ('IntersectionObserver' in window) {
+                    this.observer = new IntersectionObserver(
+                        (entries) => this.handleIntersection(entries),
+                        {
+                            threshold: 0.1,
+                            rootMargin: '0px 0px -50px 0px'
+                        }
+                    );
+                    
+                    this.observeElements();
+                }
+            }
+
+            observeElements() {
+                const elements = document.querySelectorAll(`
+                    .project-card,
+                    .gallery-item,
+                    .contact-card,
+                    .cultural-heritage,
+                    .about-content,
+                    .faq-item
+                `);
+                
+                elements.forEach(element => {
+                    this.observer.observe(element);
+                });
+            }
+
+            handleIntersection(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                        entry.target.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                    }
+                });
+            }
+        }
+
+        // ===== PERFORMANCE MONITORING =====
+        class PerformanceMonitor {
+            constructor() {
+                this.metrics = {};
+                this.init();
+            }
+
+            init() {
+                this.measurePageLoad();
+                this.measureFirstPaint();
+                this.measureResourceLoading();
+            }
+
+            measurePageLoad() {
+                window.addEventListener('load', () => {
+                    const navigation = performance.getEntriesByType('navigation')[0];
+                    this.metrics.pageLoad = navigation.loadEventEnd - navigation.loadEventStart;
+                    this.metrics.domContentLoaded = navigation.domContentLoadedEventEnd - navigation.domContentLoadedEventStart;
+                    
+                    console.log('📊 Performance Metrics:', {
+                        pageLoad: `${this.metrics.pageLoad}ms`,
+                        domContentLoaded: `${this.metrics.domContentLoaded}ms`
+                    });
+                });
+            }
+
+            measureFirstPaint() {
+                const observer = new PerformanceObserver((list) => {
+                    for (const entry of list.getEntries()) {
+                        if (entry.name === 'first-contentful-paint') {
+                            this.metrics.firstContentfulPaint = entry.startTime;
+                            console.log('🎨 First Contentful Paint:', `${entry.startTime}ms`);
+                        }
+                    }
+                });
+                
+                observer.observe({ entryTypes: ['paint'] });
+            }
+
+            measureResourceLoading() {
+                window.addEventListener('load', () => {
+                    const resources = performance.getEntriesByType('resource');
+                    const totalResources = resources.length;
+                    const avgLoadTime = resources.reduce((sum, resource) => 
+                        sum + resource.responseEnd - resource.requestStart, 0) / totalResources;
+                    
+                    console.log('📦 Resource Loading:', {
+                        totalResources,
+                        avgLoadTime: `${avgLoadTime.toFixed(2)}ms`
+                    });
+                });
+            }
+        }
+
+        // ===== ACCESSIBILITY ENHANCEMENTS =====
+        class AccessibilityManager {
+            constructor() {
+                this.init();
+            }
+
+            init() {
+                this.setupKeyboardNavigation();
+                this.setupAriaLabels();
+                this.setupFocusManagement();
+                this.setupReducedMotion();
+            }
+
+            setupKeyboardNavigation() {
+                // Enhanced keyboard navigation for interactive elements
+                const interactiveElements = document.querySelectorAll(`
+                    .btn, .project-link, .contact-btn, .faq-question, .nav-links a
+                `);
+                
+                interactiveElements.forEach(element => {
+                    element.addEventListener('keydown', (e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            element.click();
+                        }
+                    });
+                });
+            }
+
+            setupAriaLabels() {
+                // Dynamic aria-labels for better screen reader support
+                const projectCards = document.querySelectorAll('.project-card');
+                projectCards.forEach((card, index) => {
+                    const title = card.querySelector('.project-title').textContent;
+                    card.setAttribute('aria-label', `Project ${index + 1}: ${title}`);
+                });
+            }
+
+            setupFocusManagement() {
+                // Skip link for keyboard users
+                const skipLink = document.createElement('a');
+                skipLink.href = '#main-content';
+                skipLink.textContent = 'Skip to main content';
+                skipLink.className = 'sr-only';
+                skipLink.style.position = 'absolute';
+                skipLink.style.left = '-9999px';
+                
+                skipLink.addEventListener('focus', () => {
+                    skipLink.style.left = '0';
+                    skipLink.style.zIndex = '10000';
+                });
+                
+                skipLink.addEventListener('blur', () => {
+                    skipLink.style.left = '-9999px';
+                });
+                
+                document.body.insertBefore(skipLink, document.body.firstChild);
+            }
+
+            setupReducedMotion() {
+                // Respect user's motion preferences
+                const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+                
+                if (prefersReducedMotion.matches) {
+                    document.documentElement.style.setProperty('--transition-fast', '0.01ms');
+                    document.documentElement.style.setProperty('--transition-smooth', '0.01ms');
+                    document.documentElement.style.setProperty('--transition-slow', '0.01ms');
+                    
+                    // Disable particle animations
+                    const particleCanvas = document.getElementById('particleCanvas');
+                    if (particleCanvas) {
+                        particleCanvas.style.display = 'none';
+                    }
+                }
+            }
+        }
+
+        // ===== THEME MANAGER =====
+        class ThemeManager {
+            constructor() {
+                this.currentTheme = 'light';
+                this.init();
+            }
+
+            init() {
+                this.detectSystemTheme();
+                this.createThemeToggle();
+            }
+
+            detectSystemTheme() {
+                const darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)');
+                
+                darkModeQuery.addEventListener('change', (e) => {
+                    if (e.matches) {
+                        this.setTheme('dark');
+                    } else {
+                        this.setTheme('light');
+                    }
+                });
+            }
+
+            createThemeToggle() {
+                const themeToggle = document.createElement('button');
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+                themeToggle.className = 'theme-toggle';
+                themeToggle.setAttribute('aria-label', 'Toggle theme');
+                
+                themeToggle.style.cssText = `
+                    position: fixed;
+                    top: 50%;
+                    right: 20px;
+                    z-index: 1000;
+                    background: var(--glass-bg);
+                    border: 1px solid var(--glass-border);
+                    border-radius: 50%;
+                    width: 50px;
+                    height: 50px;
+                    backdrop-filter: var(--glass-backdrop);
+                    color: var(--text-primary);
+                    cursor: pointer;
+                    transition: all var(--transition-smooth);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 1.2rem;
+                `;
+                
+                themeToggle.addEventListener('click', () => this.toggleTheme());
+                document.body.appendChild(themeToggle);
+            }
+
+            setTheme(theme) {
+                this.currentTheme = theme;
+                document.documentElement.setAttribute('data-theme', theme);
+                
+                // Update theme toggle icon
+                const themeToggle = document.querySelector('.theme-toggle');
+                if (themeToggle) {
+                    themeToggle.innerHTML = theme === 'dark' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+                }
+            }
+
+            toggleTheme() {
+                const newTheme = this.currentTheme === 'light' ? 'dark' : 'light';
+                this.setTheme(newTheme);
+            }
+        }
+
+        // ===== LAZY LOADING MANAGER =====
+        class LazyLoadManager {
+            constructor() {
+                this.imageObserver = null;
+                this.init();
+            }
+
+            init() {
+                if ('IntersectionObserver' in window) {
+                    this.imageObserver = new IntersectionObserver(
+                        (entries) => this.handleImageIntersection(entries),
+                        {
+                            threshold: 0.1,
+                            rootMargin: '50px'
+                        }
+                    );
+                    
+                    this.observeImages();
+                }
+            }
+
+            observeImages() {
+                const images = document.querySelectorAll('img[data-src]');
+                images.forEach(img => this.imageObserver.observe(img));
+            }
+
+            handleImageIntersection(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src;
+                        img.classList.add('loaded');
+                        this.imageObserver.unobserve(img);
+                    }
+                });
+            }
+        }
+
+        // ===== ANALYTICS MANAGER =====
+        class AnalyticsManager {
+            constructor() {
+                this.events = [];
+                this.init();
+            }
+
+            init() {
+                this.trackPageView();
+                this.trackUserInteractions();
+                this.trackPerformance();
+            }
+
+            trackPageView() {
+                this.logEvent('page_view', {
+                    url: window.location.href,
+                    timestamp: new Date().toISOString(),
+                    userAgent: navigator.userAgent,
+                    referrer: document.referrer
+                });
+            }
+
+            trackUserInteractions() {
+                // Track button clicks
+                document.addEventListener('click', (e) => {
+                    if (e.target.matches('.btn, .project-link, .contact-btn')) {
+                        this.logEvent('button_click', {
+                            element: e.target.textContent.trim(),
+                            href: e.target.href || null,
+                            timestamp: new Date().toISOString()
+                        });
+                    }
+                });
+
+                // Track section views
+                const sections = document.querySelectorAll('section[id]');
+                const sectionObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            this.logEvent('section_view', {
+                                section: entry.target.id,
+                                timestamp: new Date().toISOString()
+                            });
+                        }
+                    });
+                }, { threshold: 0.5 });
+
+                sections.forEach(section => sectionObserver.observe(section));
+            }
+
+            trackPerformance() {
+                window.addEventListener('load', () => {
+                    const navigation = performance.getEntriesByType('navigation')[0];
+                    this.logEvent('performance', {
+                        loadTime: navigation.loadEventEnd - navigation.loadEventStart,
+                        domContentLoaded: navigation.domContentLoadedEventEnd - navigation.domContentLoadedEventStart,
+                        firstPaint: performance.getEntriesByName('first-paint')[0]?.startTime || 0,
+                        timestamp: new Date().toISOString()
+                    });
+                });
+            }
+
+            logEvent(event, data) {
+                this.events.push({ event, data });
+                
+                // Privacy-focused logging (no personal data)
+                if (window.location.hostname !== 'localhost') {
+                    console.log('📊 Event:', event, data);
+                }
+            }
+
+            getAnalytics() {
+                return this.events;
+            }
+        }
+
+        // ===== MAIN APPLICATION INITIALIZATION =====
+        class QuantumConsciousnessApp {
+            constructor() {
+                this.modules = [];
+                this.init();
+            }
+
+            init() {
+                // Initialize core modules
+                this.modules.push(new LoadingScreen());
+                this.modules.push(new BackgroundEffects());
+                this.modules.push(new Navigation());
+                this.modules.push(new FAQManager());
+                this.modules.push(new AnimationObserver());
+                this.modules.push(new PerformanceMonitor());
+                this.modules.push(new AccessibilityManager());
+                this.modules.push(new ThemeManager());
+                this.modules.push(new LazyLoadManager());
+                this.modules.push(new AnalyticsManager());
+                
+                // Initialize CSS animations for elements
+                this.initializeAnimations();
+                
+                // Setup error handling
+                this.setupErrorHandling();
+                
+                console.log('🚀 Quantum Consciousness Platform initialized successfully!');
+            }
+
+            initializeAnimations() {
+                // Set initial state for animated elements
+                const animatedElements = document.querySelectorAll(`
+                    .project-card,
+                    .gallery-item,
+                    .contact-card,
+                    .cultural-heritage,
+                    .about-content,
+                    .faq-item
+                `);
+                
+                animatedElements.forEach(element => {
+                    element.style.opacity = '0';
+                    element.style.transform = 'translateY(30px)';
+                });
+            }
+
+            setupErrorHandling() {
+                window.addEventListener('error', (event) => {
+                    console.error('🚨 JavaScript Error:', event.error);
+                    
+                    // Graceful fallback for critical functionality
+                    if (event.error.message.includes('IntersectionObserver')) {
+                        // Fallback for older browsers
+                        const elements = document.querySelectorAll('[style*="opacity: 0"]');
+                        elements.forEach(element => {
+                            element.style.opacity = '1';
+                            element.style.transform = 'translateY(0)';
+                        });
+                    }
+                });
+            }
+        }
+
+        // ===== INITIALIZE APPLICATION =====
+        document.addEventListener('DOMContentLoaded', () => {
+            new QuantumConsciousnessApp();
+        });
+
+        // ===== SERVICE WORKER REGISTRATION =====
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => {
+                        console.log('🔧 Service Worker registered successfully:', registration.scope);
+                    })
+                    .catch(error => {
+                        console.log('❌ Service Worker registration failed:', error);
+                    });
             });
-          }
         }
-      }));
-    });
-  </script>
 
-  <!-- JavaScript for Static Stars and Card Interactions -->
-  <script>
-    // Generate Static Stars
-    document.addEventListener('DOMContentLoaded', () => {
-      const starsContainer = document.querySelector('.stars');
-      const starCount = parseInt(getComputedStyle(starsContainer).getPropertyValue('--star-count'));
+        // ===== MANIFEST AND PWA FEATURES =====
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            
+            // Create install button
+            const installBtn = document.createElement('button');
+            installBtn.textContent = 'Install App';
+            installBtn.className = 'btn btn-primary';
+            installBtn.style.cssText = `
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                z-index: 1000;
+                animation: pulse 2s infinite;
+            `;
+            
+            installBtn.addEventListener('click', () => {
+                e.prompt();
+                e.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        console.log('📱 PWA installation accepted');
+                    }
+                    installBtn.remove();
+                });
+            });
+            
+            document.body.appendChild(installBtn);
+        });
 
-      for (let i = 0; i < starCount; i++) {
-        const star = document.createElement('div');
-        star.className = 'star';
-        star.style.left = `${Math.random() * 100}%`;
-        star.style.top = `${Math.random() * 100}%`;
-        starsContainer.appendChild(star);
-      }
-    });
+        // ===== EASTER EGG - QUANTUM MEDITATION =====
+        let keySequence = [];
+        const konamiCode = [
+            'ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown',
+            'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight',
+            'KeyB', 'KeyA'
+        ];
 
-    // Click-to-Flip Cards
-    document.querySelectorAll('.card-container').forEach(card => {
-      card.addEventListener('click', () => {
-        card.classList.toggle('flipped');
-      });
-      card.addEventListener('keydown', e => {
-        if (e.key === 'Enter' || e.key === 'Space') {
-          e.preventDefault();
-          card.classList.toggle('flipped');
-        }
-      });
-    });
-  </script>
-
-  <!-- EmailJS Integration -->
-  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2.6.4/dist/email.min.js"></script>
+        document.addEventListener('keydown', (e) => {
+            keySequence.push(e.code);
+            if (keySequence.length > konamiCode.length) {
+                keySequence.shift();
+            }
+            
+            if (keySequence.join('') === konamiCode.join('')) {
+                // Activate quantum meditation mode
+                document.body.style.filter = 'hue-rotate(60deg) saturate(1.2)';
+                
+                // Create quantum particles
+                for (let i = 0; i < 50; i++) {
+                    const particle = document.createElement('div');
+                    particle.style.cssText = `
+                        position: fixed;
+                        width: 4px;
+                        height: 4px;
+                        background: radial-gradient(circle, #FFD700, #FF9933);
+                        border-radius: 50%;
+                        pointer-events: none;
+                        z-index: 9999;
+                        animation: quantum-float 3s ease-in-out infinite;
+                        left: ${Math.random() * 100}vw;
+                        top: ${Math.random() * 100}vh;
+                        animation-delay: ${Math.random() * 3}s;
+                    `;
+                    
+                    document.body.appendChild(particle);
+                    
+                    setTimeout(() => particle.remove(), 3000);
+                }
+                
+                // Add quantum animation
+                const style = document.createElement('style');
+                style.textContent = `
+                    @keyframes quantum-float {
+                        0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.7; }
+                        50% { transform: translateY(-30px) rotate(180deg); opacity: 1; }
+                    }
+                `;
+                document.head.appendChild(style);
+                
+                // Show meditation message
+                const message = document.createElement('div');
+                message.innerHTML = `
+                    <div style="
+                        position: fixed;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        background: rgba(255, 215, 0, 0.95);
+                        color: #8B0000;
+                        padding: 2rem;
+                        border-radius: 20px;
+                        text-align: center;
+                        z-index: 10000;
+                        font-size: 1.2rem;
+                        font-weight: 600;
+                        box-shadow: 0 0 50px rgba(255, 215, 0, 0.7);
+                        animation: pulse-glow 2s ease-in-out infinite;
+                    ">
+                        🕉️ Quantum Meditation Mode Activated 🕉️<br>
+                        <small style="font-size: 0.9rem; opacity: 0.8;">
+                            Consciousness expanded. Reality transcended.
+                        </small>
+                    </div>
+                `;
+                
+                document.body.appendChild(message);
+                
+                setTimeout(() => {
+                    message.remove();
+                    document.body.style.filter = '';
+                    style.remove();
+                }, 5000);
+                
+                keySequence = [];
+            }
+        });
+    </script>
 </body>
 </html>
 
