@@ -1,0 +1,30 @@
+
+{
+    "name": "cultural-ai-portfolio",
+    "version": "2.0.0",
+    "description": "Cultural AI Innovation Portfolio for Thanatsitt Santisamranwilai",
+    "author": {
+        "name": "Thanatsitt Santisamranwilai",
+        "email": "thanattsitt.info@yahoo.co.uk",
+        "url": "https://thannxai.netlify.app"
+    },
+    "keywords": [
+        "portfolio", 
+        "cultural-ai", 
+        "artificial-intelligence", 
+        "cross-cultural", 
+        "innovation",
+        "vtuber",
+        "voice-acting",
+        "machine-learning",
+        "blockchain",
+        "e-commerce"
+    ],
+    "homepage": "https://thannxai.netlify.app",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Pigletpeakkung/cultural-ai-portfolio.git"
+    },
+    "license": "MIT",
+    [... rest of scripts remain the same ...]
+}
