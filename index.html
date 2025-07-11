@@ -524,63 +524,93 @@
             color: var(--primary-color);
             transform: translateX(10px);
         }
+/* Your existing hero CSS with small enhancements */
+.hero {
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
 
-        /* Enhanced Hero Section */
-        .hero {
-            height: 100vh;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-        }
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 120%;
+    height: 120%;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.8), rgba(139, 92, 246, 0.8)), /* Slightly reduced opacity for stars */
+                url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80') center/cover;
+    will-change: transform;
+    z-index: 0; /* Ensure background stays at bottom */
+}
 
-        .hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 120%;
-            height: 120%;
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.9), rgba(139, 92, 246, 0.9)),
-                        url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80') center/cover;
-            will-change: transform;
-        }
+.hero-content {
+    max-width: 900px;
+    padding: 0 var(--container-padding);
+    z-index: 3; /* Increased to stay above stars */
+    position: relative;
+}
 
-        .hero-content {
-            max-width: 900px;
-            padding: 0 var(--container-padding);
-            z-index: 2;
-            position: relative;
-        }
+.hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 6vw, 5rem);
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    transform: translateY(60px);
+    animation: fadeInUp 1.2s ease 0.5s forwards;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Better text visibility with stars */
+}
 
-        .hero h1 {
-            font-family: var(--font-display);
-            font-size: clamp(3rem, 6vw, 5rem);
-            font-weight: 800;
-            margin-bottom: 1.5rem;
-            opacity: 0;
-            transform: translateY(60px);
-            animation: fadeInUp 1.2s ease 0.5s forwards;
-        }
+.hero p {
+    font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+    margin-bottom: 2.5rem;
+    opacity: 0;
+    transform: translateY(60px);
+    animation: fadeInUp 1.2s ease 0.7s forwards;
+    font-weight: 300;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4); /* Better text visibility */
+}
 
-        .hero p {
-            font-size: clamp(1.2rem, 2.5vw, 1.5rem);
-            margin-bottom: 2.5rem;
-            opacity: 0;
-            transform: translateY(60px);
-            animation: fadeInUp 1.2s ease 0.7s forwards;
-            font-weight: 300;
-        }
+/* Stars canvas positioning - matches your structure */
+.rhythm-stars-canvas {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    pointer-events: none !important;
+    z-index: 1 !important; /* Between background and content */
+    mix-blend-mode: screen;
+    opacity: 0.8; /* Slightly reduced for better text readability */
+}
 
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
+/* Enhanced glow effect for buttons/CTAs in hero */
+.hero .btn {
+    animation: fadeInUp 1.2s ease 0.9s forwards;
+    opacity: 0;
+    transform: translateY(60px);
+    box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+    transition: all 0.3s ease;
+}
+
+.hero .btn:hover {
+    box-shadow: 0 15px 40px rgba(99, 102, 241, 0.5);
+    transform: translateY(-2px);
+}
+
+        
         /* Enhanced Section Layouts */
         section {
             padding: 8rem 0;
@@ -3171,8 +3201,229 @@
                 console.log('Performance metrics:', metrics);
             }
         });
-    </script>
+        // Modified to work perfectly with your hero structure
+function createRhythmShiningStars() {
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    
+    canvas.className = 'rhythm-stars-canvas';
+    canvas.style.cssText = `
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        pointer-events: none !important;
+        z-index: 1 !important;
+        mix-blend-mode: screen;
+        opacity: 0.8;
+    `;
+    
+    // Target your hero section specifically
+    const heroSection = document.querySelector('.hero');
+    if (heroSection) {
+        heroSection.appendChild(canvas);
+    }
+    
+    function resizeCanvas() {
+        const rect = heroSection.getBoundingClientRect();
+        canvas.width = rect.width;
+        canvas.height = rect.height;
+    }
+    resizeCanvas();
+    
+    const stars = [];
+    const rhythmBeats = [];
+    let time = 0;
+    let beatTime = 0;
+    
+    // Optimized color palettes that work well with your space background
+    const iridescent = [
+        ['#6366f1', '#8b5cf6', '#a855f7', '#3b82f6'], // Your brand colors
+        ['#60a5fa', '#a78bfa', '#f472b6', '#fb7185'], // Complementary
+        ['#34d399', '#60a5fa', '#a78bfa', '#f472b6'], // Accent colors
+        ['#fbbf24', '#f59e0b', '#d97706', '#92400e'], // Warm accents
+    ];
+    
+    function createStar() {
+        const palette = iridescent[Math.floor(Math.random() * iridescent.length)];
+        return {
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            size: Math.random() * 12 + 2, // Slightly smaller for better readability
+            baseSize: 0,
+            angle: Math.random() * Math.PI * 2,
+            speed: Math.random() * 0.015 + 0.005,
+            colors: palette,
+            colorIndex: 0,
+            opacity: Math.random() * 0.6 + 0.3, // Reduced max opacity
+            shimmerPhase: Math.random() * Math.PI * 2,
+            rhythmOffset: Math.random() * Math.PI * 2,
+            twinkleSpeed: Math.random() * 0.08 + 0.02,
+            drift: {
+                x: (Math.random() - 0.5) * 0.2,
+                y: (Math.random() - 0.5) * 0.2
+            }
+        };
+    }
+    
+    // Create fewer stars for better performance and readability
+    for (let i = 0; i < 40; i++) {
+        const star = createStar();
+        star.baseSize = star.size;
+        stars.push(star);
+    }
+    
+    function drawStar(star) {
+        const x = star.x;
+        const y = star.y;
+        const size = star.size;
+        
+        const gradient = ctx.createRadialGradient(x, y, 0, x, y, size * 2.5);
+        const color1 = star.colors[Math.floor(star.colorIndex) % star.colors.length];
+        const color2 = star.colors[Math.floor(star.colorIndex + 1) % star.colors.length];
+        
+        gradient.addColorStop(0, color1 + 'dd');
+        gradient.addColorStop(0.4, color2 + '88');
+        gradient.addColorStop(1, 'transparent');
+        
+        ctx.save();
+        ctx.translate(x, y);
+        ctx.rotate(star.angle);
+        ctx.globalAlpha = star.opacity;
+        
+        // Outer glow
+        ctx.fillStyle = gradient;
+        ctx.beginPath();
+        ctx.arc(0, 0, size * 2, 0, Math.PI * 2);
+        ctx.fill();
+        
+        // Main star
+        ctx.fillStyle = color1;
+        ctx.shadowBlur = 12;
+        ctx.shadowColor = color2;
+        ctx.beginPath();
+        
+        // 6-pointed star for cleaner look
+        for (let i = 0; i < 12; i++) {
+            const radius = i % 2 === 0 ? size : size * 0.4;
+            const angle = (i / 12) * Math.PI * 2;
+            const px = Math.cos(angle) * radius;
+            const py = Math.sin(angle) * radius;
+            
+            if (i === 0) ctx.moveTo(px, py);
+            else ctx.lineTo(px, py);
+        }
+        ctx.closePath();
+        ctx.fill();
+        
+        // Center sparkle
+        ctx.fillStyle = '#ffffff';
+        ctx.globalAlpha = star.opacity * 0.9;
+        ctx.beginPath();
+        ctx.arc(0, 0, size * 0.15, 0, Math.PI * 2);
+        ctx.fill();
+        
+        ctx.restore();
+    }
+    
+    function createBeat() {
+        rhythmBeats.push({
+            time: beatTime,
+            intensity: Math.random() * 0.4 + 0.3, // Reduced intensity
+            duration: 50 + Math.random() * 30
+        });
+        
+        if (rhythmBeats.length > 6) {
+            rhythmBeats.shift();
+        }
+    }
+    
+    function updateStarRhythm(star) {
+        let rhythmIntensity = 0;
+        
+        rhythmBeats.forEach(beat => {
+            const age = beatTime - beat.time;
+            if (age >= 0 && age < beat.duration) {
+                const influence = Math.exp(-age / 15) * beat.intensity;
+                rhythmIntensity += influence;
+            }
+        });
+        
+        const rhythmPulse = Math.sin(beatTime * 0.08 + star.rhythmOffset) * rhythmIntensity;
+        star.size = star.baseSize * (1 + rhythmPulse * 0.25);
+        
+        star.colorIndex += (0.015 + rhythmIntensity * 0.02);
+        
+        const shimmer = Math.sin(time * star.twinkleSpeed + star.shimmerPhase);
+        star.opacity = (0.3 + shimmer * 0.25) * (0.7 + rhythmIntensity * 0.3);
+        
+        star.angle += star.speed * (1 + rhythmIntensity * 0.5);
+        
+        star.x += star.drift.x;
+        star.y += star.drift.y;
+        
+        // Boundary checks
+        if (star.x < 0 || star.x > canvas.width) {
+            star.drift.x *= -1;
+            star.x = Math.max(0, Math.min(canvas.width, star.x));
+        }
+        if (star.y < 0 || star.y > canvas.height) {
+            star.drift.y *= -1;
+            star.y = Math.max(0, Math.min(canvas.height, star.y));
+        }
+    }
+    
+    function animate() {
+        time += 1;
+        beatTime += 1;
+        
+        if (Math.random() < 0.02) {
+            createBeat();
+        }
+        
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.06)'; // Slight trail
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        
+        stars.forEach(star => {
+            updateStarRhythm(star);
+            drawStar(star);
+        });
+        
+        requestAnimationFrame(animate);
+    }
+    
+    // Gentle mouse interaction
+    window.addEventListener('mousemove', throttle((e) => {
+        if (Math.random() < 0.05) {
+            createBeat();
+        }
+    }, 200));
+    
+    window.addEventListener('resize', resizeCanvas);
+    animate();
+}
 
+// Throttle function for performance
+function throttle(func, limit) {
+    let inThrottle;
+    return function() {
+        const args = arguments;
+        const context = this;
+        if (!inThrottle) {
+            func.apply(context, args);
+            inThrottle = true;
+            setTimeout(() => inThrottle = false, limit);
+        }
+    }
+}
+
+// Initialize after DOM loads
+document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(createRhythmShiningStars, 100);
+});
+
+    </script>
 </body>
 </html>
 
