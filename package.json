@@ -1,8 +1,8 @@
-
 {
     "name": "cultural-ai-portfolio",
     "version": "2.0.0",
-    "description": "Cultural AI Innovation Portfolio for Thanatsitt Santisamranwilai",
+    "description": "Cultural AI Innovation Portfolio for Thanatsitt Santisamranwilai - Leading specialist in cross-cultural AI solutions, VTuber development, and innovative voice acting",
+    "main": "index.html",
     "author": {
         "name": "Thanatsitt Santisamranwilai",
         "email": "thanattsitt.info@yahoo.co.uk",
@@ -12,19 +12,234 @@
         "portfolio", 
         "cultural-ai", 
         "artificial-intelligence", 
-        "cross-cultural", 
+        "cross-cultural-technology", 
         "innovation",
         "vtuber",
         "voice-acting",
         "machine-learning",
         "blockchain",
-        "e-commerce"
+        "e-commerce",
+        "netlify",
+        "responsive-design",
+        "pwa",
+        "thai-developer",
+        "multilingual",
+        "ai-solutions"
     ],
     "homepage": "https://thannxai.netlify.app",
     "repository": {
         "type": "git",
         "url": "https://github.com/Pigletpeakkung/cultural-ai-portfolio.git"
     },
+    "bugs": {
+        "url": "https://github.com/Pigletpeakkung/cultural-ai-portfolio/issues",
+        "email": "thanattsitt.info@yahoo.co.uk"
+    },
     "license": "MIT",
-    [... rest of scripts remain the same ...]
+    "private": false,
+    "scripts": {
+        "dev": "live-server --port=3000 --open=/",
+        "start": "serve -s . -l 3000",
+        "build": "npm run minify-css && npm run minify-js && npm run optimize-images && npm run generate-sitemap",
+        "build:prod": "npm run clean && npm run build && npm run validate",
+        "clean": "rimraf dist",
+        "minify-css": "cleancss -o assets/css/main.min.css assets/css/main.css",
+        "minify-js": "terser assets/js/main.js -o assets/js/main.min.js --compress --mangle",
+        "optimize-images": "imagemin 'assets/images/*.{jpg,jpeg,png,gif,svg}' --out-dir='assets/images/optimized'",
+        "generate-sitemap": "node scripts/generate-sitemap.js",
+        "lighthouse": "lighthouse https://thannxai.netlify.app --output=html --output-path=./reports/lighthouse-report.html --chrome-flags='--headless'",
+        "lighthouse-ci": "lhci autorun",
+        "test": "npm run test:html && npm run test:css && npm run test:js",
+        "test:html": "html-validate '*.html'",
+        "test:css": "stylelint 'assets/css/*.css'",
+        "test:js": "eslint 'assets/js/*.js'",
+        "test:lighthouse": "npm run lighthouse && echo 'Lighthouse audit complete'",
+        "validate": "npm run validate-html && npm run validate-css && npm run check-links",
+        "validate-html": "html-validate *.html",
+        "validate-css": "css-validator assets/css/main.css",
+        "check-links": "hyperlink *.html --internal --root .",
+        "audit": "npm audit && npm run lighthouse",
+        "security-audit": "npm audit --audit-level moderate",
+        "deploy": "npm run build:prod && echo 'Ready for Netlify deployment'",
+        "serve": "serve -s . -l 8080",
+        "serve:prod": "serve -s . -l 8080 --single",
+        "prebuild": "echo 'Starting build process...'",
+        "postbuild": "echo 'Build completed successfully!'",
+        "format": "prettier --write '**/*.{html,css,js,json,md}'",
+        "format:check": "prettier --check '**/*.{html,css,js,json,md}'",
+        "precommit": "npm run format && npm run validate",
+        "analyze": "webpack-bundle-analyzer",
+        "size-limit": "size-limit",
+        "performance": "npm run lighthouse && npm run size-limit"
+    },
+    "devDependencies": {
+        "serve": "^14.2.1",
+        "live-server": "^1.2.2",
+        "clean-css-cli": "^5.6.2",
+        "terser": "^5.24.0",
+        "imagemin-cli": "^7.0.0",
+        "lighthouse": "^11.4.0",
+        "@lhci/cli": "^0.12.0",
+        "html-validate": "^8.7.4",
+        "stylelint": "^15.11.0",
+        "eslint": "^8.55.0",
+        "hyperlink": "^5.0.4",
+        "css-validator": "^2.1.1",
+        "prettier": "^3.1.1",
+        "rimraf": "^5.0.5",
+        "webpack-bundle-analyzer": "^4.10.1",
+        "size-limit": "^11.0.1",
+        "@size-limit/preset-web": "^11.0.1"
+    },
+    "dependencies": {
+        "aos": "^3.0.0-beta.6",
+        "sweetalert2": "^11.10.1"
+    },
+    "browserslist": [
+        "> 1%",
+        "last 2 versions",
+        "not dead",
+        "not ie 11",
+        "maintained node versions"
+    ],
+    "engines": {
+        "node": ">=16.0.0",
+        "npm": ">=8.0.0"
+    },
+    "type": "module",
+    "funding": {
+        "type": "individual",
+        "url": "https://thannxai.netlify.app/#contact"
+    },
+    "config": {
+        "site_url": "https://thannxai.netlify.app",
+        "author_email": "thanattsitt.info@yahoo.co.uk",
+        "build_dir": "dist",
+        "assets_dir": "assets"
+    },
+    "size-limit": [
+        {
+            "path": "assets/css/main.css",
+            "limit": "50 KB"
+        },
+        {
+            "path": "assets/js/main.js",
+            "limit": "100 KB"
+        },
+        {
+            "path": "index.html",
+            "limit": "200 KB"
+        }
+    ],
+    "lighthouse-ci": {
+        "ci": {
+            "collect": {
+                "url": [
+                    "https://thannxai.netlify.app/",
+                    "https://thannxai.netlify.app/privacy",
+                    "https://thannxai.netlify.app/terms"
+                ],
+                "numberOfRuns": 3
+            },
+            "assert": {
+                "assertions": {
+                    "categories:performance": ["error", {"minScore": 0.9}],
+                    "categories:accessibility": ["error", {"minScore": 0.95}],
+                    "categories:best-practices": ["error", {"minScore": 0.9}],
+                    "categories:seo": ["error", {"minScore": 0.95}],
+                    "categories:pwa": ["error", {"minScore": 0.8}]
+                }
+            }
+        }
+    },
+    "stylelint": {
+        "extends": ["stylelint-config-standard"],
+        "rules": {
+            "color-hex-case": "lower",
+            "color-hex-length": "short",
+            "declaration-block-trailing-semicolon": "always",
+            "indentation": 2
+        }
+    },
+    "eslintConfig": {
+        "env": {
+            "browser": true,
+            "es2021": true
+        },
+        "extends": ["eslint:recommended"],
+        "parserOptions": {
+            "ecmaVersion": 12,
+            "sourceType": "module"
+        },
+        "rules": {
+            "no-console": "warn",
+            "no-unused-vars": "error",
+            "prefer-const": "error",
+            "no-var": "error"
+        }
+    },
+    "prettier": {
+        "semi": true,
+        "trailingComma": "es5",
+        "singleQuote": true,
+        "printWidth": 80,
+        "tabWidth": 2,
+        "useTabs": false
+    },
+    "netlify": {
+        "build": {
+            "command": "npm run build:prod",
+            "publish": ".",
+            "environment": {
+                "NODE_VERSION": "18.19.0"
+            }
+        },
+        "redirects": [
+            {
+                "from": "/old-portfolio",
+                "to": "/",
+                "status": 301
+            },
+            {
+                "from": "/contact-me",
+                "to": "/#contact",
+                "status": 301
+            }
+        ],
+        "headers": [
+            {
+                "for": "/*",
+                "values": {
+                    "X-Frame-Options": "DENY",
+                    "X-XSS-Protection": "1; mode=block",
+                    "X-Content-Type-Options": "nosniff",
+                    "Referrer-Policy": "strict-origin-when-cross-origin"
+                }
+            },
+            {
+                "for": "/assets/*",
+                "values": {
+                    "Cache-Control": "public, max-age=31536000, immutable"
+                }
+            }
+        ]
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "npm run precommit",
+            "pre-push": "npm run test"
+        }
+    },
+    "lint-staged": {
+        "*.{html,css,js}": [
+            "prettier --write",
+            "git add"
+        ],
+        "*.css": [
+            "stylelint --fix"
+        ],
+        "*.js": [
+            "eslint --fix"
+        ]
+    }
 }
