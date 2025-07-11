@@ -3448,6 +3448,257 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
     </script>
+    function createParticleSystem() {
+    // Scene setup
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ 
+        alpha: true, 
+        antialias: true 
+    });
+    
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setClearColor(0x000000, 0); // Transparent background
+    
+    // Add canvas to hero background
+    const canvas = renderer.domElement;
+    canvas.className = 'particle-canvas';
+    canvas.style.position = 'absolute';
+    canvas.style.top = '0';
+    canvas.style.left = '0';
+    canvas.style.width = '100%';
+    canvas.style.height = '100%';
+    canvas.style.pointerEvents = 'none';
+    canvas.style.zIndex = '1';
+    
+    const heroSection = document.querySelector('.hero-bg');
+    if (heroSection) {
+        heroSection.appendChild(canvas);
+    }
+
+    // Particle system arrays
+    const particles = [];
+    const connections = [];
+    const mousePosition = new THREE.Vector2();
+    
+    // AI-themed geometric shapes
+    const geometries = [
+        new THREE.SphereGeometry(0.5, 8, 8),
+        new THREE.BoxGeometry(0.8, 0.8, 0.8),
+        new THREE.OctahedronGeometry(0.6),
+        new THREE.TetrahedronGeometry(0.7),
+        new THREE.ConeGeometry(0.5, 1, 6)
+    ];
+
+    // Materials with AI theme colors
+    const materials = [
+        new THREE.MeshBasicMaterial({ 
+            color: 0x6366f1, 
+            transparent: true, 
+            opacity: 0.8 
+        }),
+        new THREE.MeshBasicMaterial({ 
+            color: 0x8b5cf6, 
+            transparent: true, 
+            opacity: 0.7 
+        }),
+        new THREE.MeshBasicMaterial({ 
+            color: 0xa855f7, 
+            transparent: true, 
+            opacity: 0.6 
+        }),
+        new THREE.MeshBasicMaterial({ 
+            color: 0x3b82f6, 
+            transparent: true, 
+            opacity: 0.9 
+        })
+    ];
+
+    // Create particles
+    function createParticles() {
+        for (let i = 0; i < 50; i++) {
+            const geometry = geometries[Math.floor(Math.random() * geometries.length)];
+            const material = materials[Math.floor(Math.random() * materials.length)].clone();
+            const particle = new THREE.Mesh(geometry, material);
+            
+            // Random position
+            particle.position.x = (Math.random() - 0.5) * 20;
+            particle.position.y = (Math.random() - 0.5) * 20;
+            particle.position.z = (Math.random() - 0.5) * 20;
+            
+            // Random rotation speed
+            particle.rotationSpeed = {
+                x: (Math.random() - 0.5) * 0.02,
+                y: (Math.random() - 0.5) * 0.02,
+                z: (Math.random() - 0.5) * 0.02
+            };
+            
+            // Random float speed
+            particle.floatSpeed = {
+                x: (Math.random() - 0.5) * 0.01,
+                y: (Math.random() - 0.5) * 0.01,
+                z: (Math.random() - 0.5) * 0.01
+            };
+            
+            // Store original position for mouse interaction
+            particle.originalPosition = particle.position.clone();
+            
+            scene.add(particle);
+            particles.push(particle);
+        }
+    }
+
+    // Create connections between nearby particles
+    function createConnections() {
+        const connectionMaterial = new THREE.LineBasicMaterial({
+            color: 0x6366f1,
+            transparent: true,
+            opacity: 0.3
+        });
+
+        for (let i = 0; i < particles.length; i++) {
+            for (let j = i + 1; j < particles.length; j++) {
+                const distance = particles[i].position.distanceTo(particles[j].position);
+                
+                if (distance < 5) {
+                    const geometry = new THREE.BufferGeometry().setFromPoints([
+                        particles[i].position,
+                        particles[j].position
+                    ]);
+                    
+                    const line = new THREE.Line(geometry, connectionMaterial);
+                    scene.add(line);
+                    connections.push({
+                        line: line,
+                        particleA: particles[i],
+                        particleB: particles[j],
+                        opacity: 0.3 - (distance / 5) * 0.3
+                    });
+                }
+            }
+        }
+    }
+
+    // Mouse interaction
+    function onMouseMove(event) {
+        mousePosition.x = (event.clientX / window.innerWidth) * 2 - 1;
+        mousePosition.y = -(event.clientY / window.innerHeight) * 2 + 1;
+        
+        // Convert mouse position to 3D world coordinates
+        const vector = new THREE.Vector3(mousePosition.x, mousePosition.y, 0.5);
+        vector.unproject(camera);
+        const dir = vector.sub(camera.position).normalize();
+        const distance = -camera.position.z / dir.z;
+        const pos = camera.position.clone().add(dir.multiplyScalar(distance));
+        
+        // Attract particles to mouse
+        particles.forEach(particle => {
+            const mouseDistance = particle.position.distanceTo(pos);
+            if (mouseDistance < 8) {
+                const force = 0.1 * (1 - mouseDistance / 8);
+                const direction = pos.clone().sub(particle.position).normalize();
+                particle.position.add(direction.multiplyScalar(force));
+                
+                // Increase opacity when near mouse
+                particle.material.opacity = Math.min(1, particle.material.opacity + 0.02);
+            } else {
+                // Return to original position
+                particle.position.lerp(particle.originalPosition, 0.02);
+                // Fade back to original opacity
+                particle.material.opacity *= 0.99;
+            }
+        });
+    }
+
+    // Animation loop
+    function animate() {
+        requestAnimationFrame(animate);
+        
+        // Rotate and float particles
+        particles.forEach(particle => {
+            particle.rotation.x += particle.rotationSpeed.x;
+            particle.rotation.y += particle.rotationSpeed.y;
+            particle.rotation.z += particle.rotationSpeed.z;
+            
+            // Subtle floating motion
+            particle.originalPosition.x += particle.floatSpeed.x;
+            particle.originalPosition.y += particle.floatSpeed.y;
+            
+            // Bounce off boundaries
+            if (particle.originalPosition.x > 10) particle.floatSpeed.x *= -1;
+            if (particle.originalPosition.x < -10) particle.floatSpeed.x *= -1;
+            if (particle.originalPosition.y > 10) particle.floatSpeed.y *= -1;
+            if (particle.originalPosition.y < -10) particle.floatSpeed.y *= -1;
+        });
+        
+        // Update connections
+        connections.forEach(connection => {
+            const distance = connection.particleA.position.distanceTo(connection.particleB.position);
+            
+            if (distance < 8) {
+                // Update line geometry
+                connection.line.geometry.setFromPoints([
+                    connection.particleA.position,
+                    connection.particleB.position
+                ]);
+                
+                // Update opacity based on distance
+                const opacity = 0.5 - (distance / 8) * 0.5;
+                connection.line.material.opacity = opacity;
+                connection.line.visible = true;
+            } else {
+                connection.line.visible = false;
+            }
+        });
+        
+        // Add pulsing effect
+        const time = Date.now() * 0.001;
+        particles.forEach((particle, index) => {
+            const pulseSpeed = 1 + index * 0.1;
+            const pulse = Math.sin(time * pulseSpeed) * 0.1 + 1;
+            particle.scale.setScalar(pulse);
+        });
+        
+        renderer.render(scene, camera);
+    }
+
+    // Initialize system
+    createParticles();
+    createConnections();
+    
+    // Set camera position
+    camera.position.z = 15;
+    
+    // Event listeners
+    window.addEventListener('mousemove', onMouseMove);
+    
+    // Handle window resize
+    window.addEventListener('resize', () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+    
+    // Start animation
+    animate();
+    
+    // Optional: Add performance monitoring
+    console.log('🚀 AI Particle System Initialized');
+    console.log(`📊 Particles: ${particles.length}`);
+    console.log(`🔗 Connections: ${connections.length}`);
+}
+
+// Initialize when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    // Small delay to ensure hero section is rendered
+    setTimeout(createParticleSystem, 100);
+});
+<!-- Add this before your closing </body> tag -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+// Your particle system code will go here
+</script>
+
 </body>
 </html>
 
