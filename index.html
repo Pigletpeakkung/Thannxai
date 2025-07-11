@@ -548,6 +548,30 @@
     z-index: 0; /* Ensure background stays at bottom */
 }
 
+.rhythm-stars-canvas {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    pointer-events: none !important;
+    z-index: 1 !important;
+    mix-blend-mode: screen; /* Creates beautiful glow effect */
+}
+
+/* Alternative blend modes for different effects */
+.rhythm-stars-canvas.soft {
+    mix-blend-mode: soft-light;
+}
+
+.rhythm-stars-canvas.multiply {
+    mix-blend-mode: multiply;
+}
+
+.rhythm-stars-canvas.overlay {
+    mix-blend-mode: overlay;
+}
+        
 .hero-content {
     max-width: 900px;
     padding: 0 var(--container-padding);
