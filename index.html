@@ -524,30 +524,36 @@
             color: var(--primary-color);
             transform: translateX(10px);
         }
-/* Your existing hero CSS with small enhancements */
-.hero {
-    height: 100vh;
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: white;
+
+
+        /* Hero paragraph - single clean version */
+.hero p {
+    font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+    margin-bottom: 2.5rem;
+    opacity: 0;
+    transform: translateY(60px);
+    animation: fadeInUp 1.2s ease 0.7s forwards;
+    font-weight: 300;
+    text-shadow: 0 2px 15px rgba(0, 0, 0, 0.5); /* Stronger shadow for better visibility */
 }
 
-.hero-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 120%;
-    height: 120%;
-    background: linear-gradient(135deg, rgba(99, 102, 241, 0.8), rgba(139, 92, 246, 0.8)), /* Slightly reduced opacity for stars */
-                url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80') center/cover;
-    will-change: transform;
-    z-index: 0; /* Ensure background stays at bottom */
+/* Enhanced text shadows for better visibility */
+.hero h1 {
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6), 0 2px 10px rgba(99, 102, 241, 0.3);
 }
 
+/* Particle system styling - for Three.js particles */
+.particle-canvas {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    pointer-events: none !important;
+    z-index: 1 !important;
+}
+
+/* Stars canvas styling - for 2D stars (if using alternative) */
 .rhythm-stars-canvas {
     position: absolute !important;
     top: 0 !important;
@@ -556,63 +562,17 @@
     height: 100% !important;
     pointer-events: none !important;
     z-index: 1 !important;
-    mix-blend-mode: screen; /* Creates beautiful glow effect */
-}
-
-/* Alternative blend modes for different effects */
-.rhythm-stars-canvas.soft {
-    mix-blend-mode: soft-light;
-}
-
-.rhythm-stars-canvas.multiply {
-    mix-blend-mode: multiply;
-}
-
-.rhythm-stars-canvas.overlay {
-    mix-blend-mode: overlay;
-}
-        
-.hero-content {
-    max-width: 900px;
-    padding: 0 var(--container-padding);
-    z-index: 3; /* Increased to stay above stars */
-    position: relative;
-}
-
-.hero h1 {
-    font-family: var(--font-display);
-    font-size: clamp(3rem, 6vw, 5rem);
-    font-weight: 800;
-    margin-bottom: 1.5rem;
-    opacity: 0;
-    transform: translateY(60px);
-    animation: fadeInUp 1.2s ease 0.5s forwards;
-    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Better text visibility with stars */
-}
-
-.hero p {
-    font-size: clamp(1.2rem, 2.5vw, 1.5rem);
-    margin-bottom: 2.5rem;
-    opacity: 0;
-    transform: translateY(60px);
-    animation: fadeInUp 1.2s ease 0.7s forwards;
-    font-weight: 300;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4); /* Better text visibility */
-}
-
-/* Stars canvas positioning - matches your structure */
-.rhythm-stars-canvas {
-    position: absolute !important;
-    top: 0 !important;
-    left: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
-    pointer-events: none !important;
-    z-index: 1 !important; /* Between background and content */
     mix-blend-mode: screen;
-    opacity: 0.8; /* Slightly reduced for better text readability */
+    opacity: 0.8;
 }
 
+/* Ensure hero content stays above particles */
+.hero-content {
+    position: relative;
+    z-index: 3; /* Above particles */
+}
+
+/* Animation keyframes */
 @keyframes fadeInUp {
     to {
         opacity: 1;
@@ -633,6 +593,33 @@
     box-shadow: 0 15px 40px rgba(99, 102, 241, 0.5);
     transform: translateY(-2px);
 }
+
+/* Performance optimizations */
+@media (max-width: 768px) {
+    .particle-canvas {
+        display: none; /* Hide particles on mobile for better performance */
+    }
+    
+    .rhythm-stars-canvas {
+        opacity: 0.5; /* Reduce stars opacity on mobile */
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .particle-canvas,
+    .rhythm-stars-canvas {
+        display: none; /* Respect accessibility preferences */
+    }
+    
+    .hero h1,
+    .hero p,
+    .hero .btn {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+    }
+}
+
 
         
         /* Enhanced Section Layouts */
@@ -1141,40 +1128,195 @@
             font-weight: 600;
         }
 
-        /* Enhanced Footer */
-        footer {
-            background: var(--text-primary);
-            color: white;
-            padding: 4rem 0 2rem;
-            text-align: center;
-        }
+/* Enhanced Footer with AI Network Pattern */
+footer {
+    background: #0f172a;
+    background-image: 
+        radial-gradient(circle at 1px 1px, rgba(99, 102, 241, 0.12) 1px, transparent 0);
+    background-size: 60px 60px;
+    color: white;
+    padding: 4rem 0 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border-top: 1px solid rgba(99, 102, 241, 0.2);
+}
 
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
+/* Subtle top glow effect */
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(99, 102, 241, 0.5) 25%, 
+        rgba(139, 92, 246, 0.5) 50%,
+        rgba(168, 85, 247, 0.5) 75%, 
+        transparent
+    );
+    animation: borderGlow 4s ease-in-out infinite;
+    z-index: 1;
+}
 
-        .social-link {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 50px;
-            height: 50px;
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            text-decoration: none;
-            border-radius: 50%;
-            transition: var(--transition-bounce);
-            font-size: 1.5rem;
-        }
+/* Gradient overlay for depth */
+footer::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(180deg, 
+        rgba(15, 23, 42, 0.7) 0%, 
+        rgba(15, 23, 42, 0.95) 100%
+    );
+    z-index: 0;
+}
 
-        .social-link:hover {
-            background: var(--primary-color);
-            transform: translateY(-5px) scale(1.1);
-            box-shadow: var(--shadow-lg);
-        }
+/* Ensure footer content stays above background */
+.footer-content {
+    position: relative;
+    z-index: 2;
+}
+
+/* Enhanced Social Links */
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    position: relative;
+    z-index: 2;
+}
+
+.social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    text-decoration: none;
+    border-radius: 50%;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 1.5rem;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Hover effect with glow */
+.social-link:hover {
+    background: linear-gradient(135deg, var(--primary-color), rgba(139, 92, 246, 0.8));
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 
+        0 10px 25px rgba(99, 102, 241, 0.4),
+        0 0 20px rgba(99, 102, 241, 0.3);
+    border-color: rgba(99, 102, 241, 0.5);
+}
+
+/* Ripple effect on click */
+.social-link::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.social-link:active::before {
+    width: 100px;
+    height: 100px;
+}
+
+/* Footer text styling */
+.footer-text {
+    color: #94a3b8;
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    position: relative;
+    z-index: 2;
+}
+
+.footer-text a {
+    color: #8b5cf6;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-text a:hover {
+    color: #a855f7;
+    text-shadow: 0 0 8px rgba(168, 85, 247, 0.3);
+}
+
+/* Copyright styling */
+.copyright {
+    color: #64748b;
+    font-size: 0.9rem;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    z-index: 2;
+}
+
+/* Animations */
+@keyframes borderGlow {
+    0%, 100% { 
+        opacity: 0.5; 
+        transform: scaleX(0.8);
+    }
+    50% { 
+        opacity: 1; 
+        transform: scaleX(1);
+    }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    footer {
+        padding: 3rem 0 1.5rem;
+        background-size: 40px 40px; /* Smaller pattern on mobile */
+    }
+    
+    .social-links {
+        gap: 1.5rem;
+    }
+    
+    .social-link {
+        width: 45px;
+        height: 45px;
+        font-size: 1.3rem;
+    }
+    
+    .footer-text {
+        font-size: 0.9rem;
+        padding: 0 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .social-links {
+        gap: 1rem;
+    }
+    
+    .social-link {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+}
+
 
         /* Responsive Design */
         @media (max-width: 768px) {
@@ -1922,68 +2064,57 @@
             </div>
         </div>
     </section>
+<footer>
+    <div class="footer-content">
+        <div class="max-w-6xl mx-auto px-4">
+            
+            <!-- Main Footer Content -->
+            <div class="footer-text">
+                <h3 style="color: #e2e8f0; font-size: 1.5rem; margin-bottom: 1rem; font-weight: 600;">
+                    Cultural AI Innovator
+                </h3>
+                <p style="max-width: 600px; margin: 0 auto; line-height: 1.6;">
+                    Building bridges between cultures through innovative AI solutions. 
+                    Transforming communities with technology that understands and respects diversity.
+                </p>
+            </div>
 
-    <!-- Enhanced Footer -->
-    <footer class="bg-gray-900 text-white">
-        <div class="container">
-            <div class="text-center py-8">
-                <div class="mb-6">
-                    <h3 class="text-2xl font-bold mb-2 font-display">Thanatsitt Santisamranwilai</h3>
-                    <p class="text-gray-400">Cultural AI Innovator</p>
-                </div>
+            <!-- Social Links -->
+            <div class="social-links">
+                <a href="#" class="social-link" aria-label="LinkedIn">
+                    <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
+                </a>
                 
-                <div class="social-links mb-6">
-                    <a href="https://www.linkedin.com/in/thanattsitts" 
-                       target="_blank" 
-                       rel="noopener noreferrer"
-                       class="social-link"
-                       aria-label="Connect on LinkedIn">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                        </svg>
-                    </a>
-                    <a href="https://github.com/Pigletpeakkung" 
-                       target="_blank" 
-                       rel="noopener noreferrer"
-                       class="social-link"
-                       aria-label="View GitHub profile">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 0C5.374 0 0 5.373 0 12 0 17.302 3.438 21.8 8.207 23.387c.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
-                        </svg>
-                    </a>
-                    <a href="https://x.com/SThanattsitt" 
-                       target="_blank" 
-                       rel="noopener noreferrer"
-                       class="social-link"
-                       aria-label="Follow on Twitter/X">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                        </svg>
-                    </a>
-                    <a href="https://linktr.ee/ThanttEzekiel" 
-                       target="_blank" 
-                       rel="noopener noreferrer"
-                       class="social-link"
-                       aria-label="View Linktree profile">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 22.5c5.799 0 10.5-4.701 10.5-10.5S17.799 1.5 12 1.5 1.5 6.201 1.5 12 6.201 22.5 12 22.5zm-1.125-12.75h2.25v-2.25h-2.25v2.25zm0 3h2.25V9.75h-2.25v2.25zm0 3h2.25v-2.25h-2.25v2.25z"/>
-                        </svg>
-                    </a>
-                </div>
+                <a href="#" class="social-link" aria-label="GitHub">
+                    <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                </a>
                 
-                <div class="border-t border-gray-800 pt-6">
-                    <p class="text-gray-400 text-sm">
-                        © 2024 Thanatsitt Santisamranwilai. All rights reserved. | 
-                        <a href="/privacy" class="hover:text-white transition-colors">Privacy Policy</a> | 
-                        <a href="/terms" class="hover:text-white transition-colors">Terms of Service</a>
-                    </p>
-                    <p class="text-gray-500 text-xs mt-2">
-                        Bridging cultures through innovative AI solutions
-                    </p>
-                </div>
+                <a href="#" class="social-link" aria-label="Twitter">
+                    <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                    </svg>
+                </a>
+                
+                <a href="#" class="social-link" aria-label="Email">
+                    <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-.904.732-1.636 1.636-1.636h.98L12 10.856l9.382-7.035h.982C23.268 3.821 24 4.553 24 5.457z"/>
+                    </svg>
+                </a>
+            </div>
+
+            <!-- Copyright -->
+            <div class="copyright">
+                <p>&copy; 2024 Cultural AI Innovator. All rights reserved.</p>
             </div>
         </div>
-    </footer>
+    </div>
+</footer>
+
+
 
     <!-- Scroll to Top Button -->
     <button id="scroll-to-top" class="scroll-to-top" aria-label="Scroll to top">
@@ -3448,7 +3579,17 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
     </script>
-    function createParticleSystem() {
+<!-- Add Three.js library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+<script>
+function createParticleSystem() {
+    // Check if Three.js is loaded
+    if (typeof THREE === 'undefined') {
+        console.error('Three.js not loaded!');
+        return;
+    }
+
     // Scene setup
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -3460,20 +3601,25 @@ document.addEventListener('DOMContentLoaded', () => {
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setClearColor(0x000000, 0); // Transparent background
     
-    // Add canvas to hero background
+    // Add canvas to hero section
     const canvas = renderer.domElement;
     canvas.className = 'particle-canvas';
-    canvas.style.position = 'absolute';
-    canvas.style.top = '0';
-    canvas.style.left = '0';
-    canvas.style.width = '100%';
-    canvas.style.height = '100%';
-    canvas.style.pointerEvents = 'none';
-    canvas.style.zIndex = '1';
+    canvas.style.cssText = `
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        pointer-events: none !important;
+        z-index: 1 !important;
+    `;
     
-    const heroSection = document.querySelector('.hero-bg');
+    const heroSection = document.querySelector('.hero');
     if (heroSection) {
         heroSection.appendChild(canvas);
+    } else {
+        console.error('Hero section not found!');
+        return;
     }
 
     // Particle system arrays
@@ -3490,25 +3636,25 @@ document.addEventListener('DOMContentLoaded', () => {
         new THREE.ConeGeometry(0.5, 1, 6)
     ];
 
-    // Materials with AI theme colors
+    // Materials with your brand colors
     const materials = [
         new THREE.MeshBasicMaterial({ 
-            color: 0x6366f1, 
+            color: 0x6366f1, // Indigo
             transparent: true, 
             opacity: 0.8 
         }),
         new THREE.MeshBasicMaterial({ 
-            color: 0x8b5cf6, 
+            color: 0x8b5cf6, // Purple
             transparent: true, 
             opacity: 0.7 
         }),
         new THREE.MeshBasicMaterial({ 
-            color: 0xa855f7, 
+            color: 0xa855f7, // Violet
             transparent: true, 
             opacity: 0.6 
         }),
         new THREE.MeshBasicMaterial({ 
-            color: 0x3b82f6, 
+            color: 0x3b82f6, // Blue
             transparent: true, 
             opacity: 0.9 
         })
@@ -3516,12 +3662,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Create particles
     function createParticles() {
-        for (let i = 0; i < 50; i++) {
+        for (let i = 0; i < 35; i++) { // Optimized count
             const geometry = geometries[Math.floor(Math.random() * geometries.length)];
             const material = materials[Math.floor(Math.random() * materials.length)].clone();
             const particle = new THREE.Mesh(geometry, material);
             
-            // Random position
+            // Random position in 3D space
             particle.position.x = (Math.random() - 0.5) * 20;
             particle.position.y = (Math.random() - 0.5) * 20;
             particle.position.z = (Math.random() - 0.5) * 20;
@@ -3572,7 +3718,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         line: line,
                         particleA: particles[i],
                         particleB: particles[j],
-                        opacity: 0.3 - (distance / 5) * 0.3
+                        maxDistance: 5
                     });
                 }
             }
@@ -3595,17 +3741,17 @@ document.addEventListener('DOMContentLoaded', () => {
         particles.forEach(particle => {
             const mouseDistance = particle.position.distanceTo(pos);
             if (mouseDistance < 8) {
-                const force = 0.1 * (1 - mouseDistance / 8);
+                const force = 0.08 * (1 - mouseDistance / 8);
                 const direction = pos.clone().sub(particle.position).normalize();
                 particle.position.add(direction.multiplyScalar(force));
                 
                 // Increase opacity when near mouse
-                particle.material.opacity = Math.min(1, particle.material.opacity + 0.02);
+                particle.material.opacity = Math.min(1, particle.material.opacity + 0.03);
             } else {
                 // Return to original position
-                particle.position.lerp(particle.originalPosition, 0.02);
+                particle.position.lerp(particle.originalPosition, 0.015);
                 // Fade back to original opacity
-                particle.material.opacity *= 0.99;
+                particle.material.opacity *= 0.98;
             }
         });
     }
@@ -3627,8 +3773,8 @@ document.addEventListener('DOMContentLoaded', () => {
             // Bounce off boundaries
             if (particle.originalPosition.x > 10) particle.floatSpeed.x *= -1;
             if (particle.originalPosition.x < -10) particle.floatSpeed.x *= -1;
-            if (particle.originalPosition.y > 10) particle.floatSpeed.y *= -1;
-            if (particle.originalPosition.y < -10) particle.floatSpeed.y *= -1;
+            if (particle.originalPosition.y > 8) particle.floatSpeed.y *= -1;
+            if (particle.originalPosition.y < -8) particle.floatSpeed.y *= -1;
         });
         
         // Update connections
@@ -3637,15 +3783,17 @@ document.addEventListener('DOMContentLoaded', () => {
             
             if (distance < 8) {
                 // Update line geometry
-                connection.line.geometry.setFromPoints([
-                    connection.particleA.position,
-                    connection.particleB.position
+                const positions = new Float32Array([
+                    connection.particleA.position.x, connection.particleA.position.y, connection.particleA.position.z,
+                    connection.particleB.position.x, connection.particleB.position.y, connection.particleB.position.z
                 ]);
                 
+                connection.line.geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+                
                 // Update opacity based on distance
-                const opacity = 0.5 - (distance / 8) * 0.5;
+                const opacity = Math.max(0, 0.5 - (distance / 8) * 0.5);
                 connection.line.material.opacity = opacity;
-                connection.line.visible = true;
+                connection.line.visible = opacity > 0.05;
             } else {
                 connection.line.visible = false;
             }
@@ -3655,7 +3803,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const time = Date.now() * 0.001;
         particles.forEach((particle, index) => {
             const pulseSpeed = 1 + index * 0.1;
-            const pulse = Math.sin(time * pulseSpeed) * 0.1 + 1;
+            const pulse = Math.sin(time * pulseSpeed) * 0.15 + 1;
             particle.scale.setScalar(pulse);
         });
         
@@ -3674,31 +3822,28 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Handle window resize
     window.addEventListener('resize', () => {
-        camera.aspect = window.innerWidth / window.innerHeight;
+        const width = window.innerWidth;
+        const height = window.innerHeight;
+        
+        camera.aspect = width / height;
         camera.updateProjectionMatrix();
-        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setSize(width, height);
     });
     
     // Start animation
     animate();
     
-    // Optional: Add performance monitoring
-    console.log('🚀 AI Particle System Initialized');
+    // Success logging
+    console.log('🚀 AI Particle System Initialized Successfully!');
     console.log(`📊 Particles: ${particles.length}`);
     console.log(`🔗 Connections: ${connections.length}`);
 }
 
 // Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-    // Small delay to ensure hero section is rendered
-    setTimeout(createParticleSystem, 100);
+    // Delay to ensure everything is loaded
+    setTimeout(createParticleSystem, 200);
 });
-<!-- Add this before your closing </body> tag -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script>
-// Your particle system code will go here
 </script>
-
 </body>
 </html>
-
