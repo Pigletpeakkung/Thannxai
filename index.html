@@ -1670,6 +1670,525 @@ section {
     }
 }
 
+        /* ============ ANALYTICS DASHBOARD STYLES ============ */
+
+.analytics-dashboard {
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    position: relative;
+}
+
+.analytics-dashboard::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        radial-gradient(circle at 20% 50%, rgba(99, 102, 241, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.03) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+    position: relative;
+    z-index: 2;
+}
+
+/* Metric Cards */
+.metric-card {
+    background: white;
+    border-radius: var(--border-radius-lg);
+    padding: 2rem;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition-slow);
+    border: 1px solid rgba(99, 102, 241, 0.1);
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(40px);
+}
+
+.metric-card.animate-in {
+    animation: metricCardAppear 0.8s ease forwards;
+}
+
+@keyframes metricCardAppear {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.metric-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--gradient-primary);
+    transform: scaleX(0);
+    transition: transform 0.6s ease;
+}
+
+.metric-card:hover::before {
+    transform: scaleX(1);
+}
+
+.metric-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-xl);
+}
+
+.metric-card h3 {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.metric-card h3::before {
+    content: '';
+    width: 12px;
+    height: 12px;
+    background: var(--gradient-primary);
+    border-radius: 50%;
+}
+
+/* Engagement Chart */
+#engagement-chart {
+    height: 180px;
+    width: 100%;
+    background: linear-gradient(45deg, #f8fafc 25%, transparent 25%), 
+                linear-gradient(-45deg, #f8fafc 25%, transparent 25%), 
+                linear-gradient(45deg, transparent 75%, #f8fafc 75%), 
+                linear-gradient(-45deg, transparent 75%, #f8fafc 75%);
+    background-size: 20px 20px;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid #e2e8f0;
+}
+
+#engagement-chart::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 75%;
+    background: linear-gradient(
+        45deg,
+        rgba(99, 102, 241, 0.8) 0%,
+        rgba(139, 92, 246, 0.6) 50%,
+        rgba(168, 85, 247, 0.4) 100%
+    );
+    clip-path: polygon(
+        0% 100%,
+        10% 85%,
+        20% 90%,
+        30% 70%,
+        40% 75%,
+        50% 60%,
+        60% 65%,
+        70% 45%,
+        80% 50%,
+        90% 30%,
+        100% 35%,
+        100% 100%
+    );
+    animation: chartFillUp 2s ease-out 0.5s both;
+}
+
+@keyframes chartFillUp {
+    from {
+        clip-path: polygon(
+            0% 100%,
+            10% 100%,
+            20% 100%,
+            30% 100%,
+            40% 100%,
+            50% 100%,
+            60% 100%,
+            70% 100%,
+            80% 100%,
+            90% 100%,
+            100% 100%,
+            100% 100%
+        );
+    }
+}
+
+.metric-value {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.metric-value .value {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--primary-color);
+    font-family: var(--font-display);
+}
+
+.trend {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.trend.up {
+    background: rgba(16, 185, 129, 0.1);
+    color: #059669;
+}
+
+.trend.down {
+    background: rgba(239, 68, 68, 0.1);
+    color: #dc2626;
+}
+
+/* Project Breakdown */
+.project-breakdown {
+    space-y: 1rem;
+}
+
+.breakdown-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: rgba(99, 102, 241, 0.05);
+    border-radius: 12px;
+    margin-bottom: 0.75rem;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.breakdown-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: var(--percentage, 45%);
+    background: linear-gradient(90deg, 
+        rgba(99, 102, 241, 0.1), 
+        rgba(139, 92, 246, 0.05)
+    );
+    transition: width 1.5s ease;
+    z-index: 0;
+}
+
+.breakdown-item:nth-child(1)::before { width: 45%; animation: fillBar 2s ease 0.2s both; }
+.breakdown-item:nth-child(2)::before { width: 30%; animation: fillBar 2s ease 0.4s both; }
+.breakdown-item:nth-child(3)::before { width: 25%; animation: fillBar 2s ease 0.6s both; }
+
+@keyframes fillBar {
+    from { width: 0%; }
+}
+
+.breakdown-item:hover {
+    background: rgba(99, 102, 241, 0.1);
+    transform: translateX(5px);
+}
+
+.breakdown-item span {
+    position: relative;
+    z-index: 1;
+}
+
+.breakdown-item span:first-child {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.breakdown-item span:last-child {
+    font-weight: 700;
+    color: var(--primary-color);
+    font-size: 1.1rem;
+}
+
+/* Visitor Map */
+#visitor-map {
+    height: 200px;
+    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+#visitor-map::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 150px;
+    height: 100px;
+    background: rgba(99, 102, 241, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: mapPulse 3s ease-in-out infinite;
+}
+
+#visitor-map::after {
+    content: '🌍';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3rem;
+    filter: grayscale(0.3);
+    animation: globeRotate 10s linear infinite;
+}
+
+@keyframes mapPulse {
+    0%, 100% { 
+        transform: translate(-50%, -50%) scale(1); 
+        opacity: 0.6; 
+    }
+    50% { 
+        transform: translate(-50%, -50%) scale(1.2); 
+        opacity: 0.3; 
+    }
+}
+
+@keyframes globeRotate {
+    from { transform: translate(-50%, -50%) rotateY(0deg); }
+    to { transform: translate(-50%, -50%) rotateY(360deg); }
+}
+
+.reach-stats {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.reach-stats span {
+    background: rgba(99, 102, 241, 0.1);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    display: inline-block;
+    font-weight: 600;
+}
+
+/* Insights Panel */
+.insights-panel {
+    background: white;
+    border-radius: var(--border-radius-lg);
+    padding: 2.5rem;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid rgba(99, 102, 241, 0.1);
+    position: relative;
+    z-index: 2;
+}
+
+.insights-panel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, 
+        var(--primary-color), 
+        var(--secondary-color),
+        var(--accent-color),
+        var(--success-color)
+    );
+    border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
+}
+
+.insights-panel h3 {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.insights-panel h3::before {
+    content: '🤖';
+    font-size: 1.5rem;
+}
+
+.insight-items {
+    display: grid;
+    gap: 1rem;
+}
+
+.insight {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.05), rgba(139, 92, 246, 0.05));
+    border: 1px solid rgba(99, 102, 241, 0.1);
+    border-radius: 12px;
+    padding: 1.25rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-primary);
+    position: relative;
+    transition: var(--transition);
+    opacity: 0;
+    transform: translateX(-30px);
+}
+
+.insight.animate-in {
+    animation: insightSlideIn 0.6s ease forwards;
+}
+
+.insight:nth-child(1) { animation-delay: 0.2s; }
+.insight:nth-child(2) { animation-delay: 0.4s; }
+.insight:nth-child(3) { animation-delay: 0.6s; }
+
+@keyframes insightSlideIn {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.insight::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 4px;
+    background: var(--gradient-primary);
+    border-radius: 2px;
+}
+
+.insight:hover {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.08));
+    transform: translateX(8px);
+    box-shadow: var(--shadow-md);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .metric-card {
+        padding: 1.5rem;
+    }
+    
+    #engagement-chart {
+        height: 150px;
+    }
+    
+    .metric-value .value {
+        font-size: 1.75rem;
+    }
+    
+    .insights-panel {
+        padding: 2rem;
+    }
+    
+    .breakdown-item {
+        padding: 0.75rem;
+    }
+    
+    #visitor-map {
+        height: 150px;
+    }
+    
+    #visitor-map::after {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .metric-value {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    
+    .breakdown-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    
+    .breakdown-item span:last-child {
+        font-size: 1.25rem;
+        color: var(--success-color);
+    }
+    
+    .insights-panel h3 {
+        font-size: 1.25rem;
+        flex-direction: column;
+        text-align: center;
+        gap: 0.5rem;
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .analytics-dashboard {
+        background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    }
+    
+    .metric-card,
+    .insights-panel {
+        background: #1f2937;
+        border-color: rgba(99, 102, 241, 0.2);
+        color: #f9fafb;
+    }
+    
+    .metric-card h3,
+    .insights-panel h3 {
+        color: #f9fafb;
+    }
+    
+    #engagement-chart {
+        border-color: #374151;
+        background: #374151;
+    }
+    
+    .breakdown-item {
+        background: rgba(99, 102, 241, 0.1);
+    }
+    
+    .breakdown-item span:first-child {
+        color: #e2e8f0;
+    }
+    
+    .insight {
+        background: rgba(99, 102, 241, 0.1);
+        border-color: rgba(99, 102, 241, 0.2);
+        color: #e2e8f0;
+    }
+}
+
+/* Animation delays for staggered effect */
+.metric-card:nth-child(1) { animation-delay: 0.1s; }
+.metric-card:nth-child(2) { animation-delay: 0.3s; }
+.metric-card:nth-child(3) { animation-delay: 0.5s; }
+
+
 /* ============ END OF CSS ============ */
 
 
@@ -1982,6 +2501,66 @@ section {
         </div>
     </section>
 
+<!-- Portfolio Analytics -->
+<section class="analytics-dashboard py-20 bg-gray-100">
+    <div class="container">
+        <h2 class="section-title">Portfolio Impact Analytics</h2>
+        
+        <div class="dashboard-grid">
+            <div class="metric-card">
+                <h3>Visitor Engagement</h3>
+                <div class="metric-chart" id="engagement-chart"></div>
+                <div class="metric-value">
+                    <span class="value">4.8/5</span>
+                    <span class="trend up">↑ 12%</span>
+                </div>
+            </div>
+            
+            <div class="metric-card">
+                <h3>Project Interest</h3>
+                <div class="project-breakdown">
+                    <div class="breakdown-item">
+                        <span>Cultural Translation</span>
+                        <span>45%</span>
+                    </div>
+                    <div class="breakdown-item">
+                        <span>AI Assistants</span>
+                        <span>30%</span>
+                    </div>
+                    <div class="breakdown-item">
+                        <span>Research</span>
+                        <span>25%</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="metric-card">
+                <h3>Global Reach</h3>
+                <div id="visitor-map"></div>
+                <div class="reach-stats">
+                    <span>visitors from 47 countries</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="insights-panel">
+            <h3>AI-Generated Insights</h3>
+            <div class="insight-items">
+                <div class="insight">
+                    🎯 "Cultural translation projects get 40% more interest"
+                </div>
+                <div class="insight">
+                    📱 "Mobile users spend 60% more time on interactive demos"
+                </div>
+                <div class="insight">
+                    🌍 "Visitors from Asia show highest engagement with cultural content"
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    
     <!-- Enhanced Testimonials Section -->
     <section id="testimonials" class="section">
         <div class="container">
@@ -2703,912 +3282,20 @@ section {
         </div>
     </div>
 
-    <!-- Scripts -->
-    <!-- AOS (Animate On Scroll) JS -->
-    <script src="https://cdn.rawgit.com/michalsnik/aos/2.3.1/dist/aos.js"></script>
 
-    <!-- Sweet Alert JS -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<!-- ============ ALL SCRIPTS ============ -->
 
-    <!-- Service Worker Registration -->
-    <script>
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/sw.js')
-                .then((registration) => {
-                    console.log('ServiceWorker registration successful');
-                })
-                .catch((err) => {
-                    console.log('ServiceWorker registration failed: ', err);
-                });
-        }
-    </script>
+<!-- External Libraries -->
+<script src="https://cdn.rawgit.com/michalsnik/aos/2.3.1/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
-    <!-- Main JavaScript -->
-    <script>
-        // Enhanced loading simulation with progress
-        document.addEventListener('DOMContentLoaded', function() {
-            const loadingScreen = document.getElementById('loading-screen');
-            const progressBar = document.getElementById('loading-progress-bar');
-            const loadingText = document.getElementById('loading-text');
-            
-            const loadingSteps = [
-                { progress: 20, text: 'Loading AI Models...' },
-                { progress: 40, text: 'Initializing Cultural Database...' },
-                { progress: 60, text: 'Connecting Cross-Cultural Networks...' },
-                { progress: 80, text: 'Optimizing User Experience...' },
-                { progress: 100, text: 'Ready!' }
-            ];
-            
-            let currentStep = 0;
-            
-            const updateProgress = () => {
-                if (currentStep < loadingSteps.length) {
-                    const step = loadingSteps[currentStep];
-                    progressBar.style.width = step.progress + '%';
-                    loadingText.textContent = step.text;
-                    currentStep++;
-                    
-                    if (currentStep < loadingSteps.length) {
-                        setTimeout(updateProgress, 600);
-                    } else {
-                        setTimeout(() => {
-                            loadingScreen.classList.add('loaded');
-                        }, 500);
-                    }
-                }
-            };
-            
-            setTimeout(updateProgress, 300);
-        });
-
-        // Enhanced Mobile Menu
-        document.getElementById('mobile-menu-toggle').addEventListener('click', function() {
-            const mobileMenu = document.getElementById('mobile-menu');
-            const toggle = this;
-            
-            toggle.classList.toggle('active');
-            mobileMenu.classList.toggle('active');
-            
-            // Update aria attributes
-            const expanded = toggle.classList.contains('active');
-            toggle.setAttribute('aria-expanded', expanded);
-        });
-
-        // Close mobile menu when clicking links
-        document.querySelectorAll('.mobile-nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                document.getElementById('mobile-menu').classList.remove('active');
-                document.getElementById('mobile-menu-toggle').classList.remove('active');
-                document.getElementById('mobile-menu-toggle').setAttribute('aria-expanded', 'false');
-            });
-        });
-
-        // Enhanced Header scroll effect
-        window.addEventListener('scroll', function() {
-            const header = document.getElementById('header');
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            
-            if (scrollTop > 100) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-
-        // Enhanced Parallax Hero Background
-        window.addEventListener('scroll', function() {
-            const heroBg = document.getElementById('hero-bg');
-            const scrollTop = window.pageYOffset;
-            const rate = scrollTop * -0.5;
-            
-            if (heroBg) {
-                heroBg.style.transform = `translate3d(0, ${rate}px, 0)`;
-            }
-        });
-
-        // Enhanced Navigation Highlighting
-        function updateActiveNavLink() {
-            const sections = document.querySelectorAll('section[id]');
-            const navLinks = document.querySelectorAll('.nav-link');
-            const scrollTop = window.pageYOffset + 100;
-
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.offsetHeight;
-                const sectionId = section.getAttribute('id');
-
-                if (scrollTop >= sectionTop && scrollTop < sectionTop + sectionHeight) {
-                    navLinks.forEach(link => {
-                        link.classList.remove('active');
-                        link.removeAttribute('aria-current');
-                        if (link.getAttribute('href') === `#${sectionId}`) {
-                            link.classList.add('active');
-                            link.setAttribute('aria-current', 'page');
-                        }
-                    });
-                }
-            });
-        }
-
-        window.addEventListener('scroll', updateActiveNavLink);
-
-        // Enhanced Statistics Counter Animation
-        function animateCounters() {
-            const counters = document.querySelectorAll('[data-count]');
-            
-            counters.forEach(counter => {
-                const target = parseInt(counter.getAttribute('data-count'));
-                let count = 0;
-                const increment = target / 50;
-                
-                const updateCounter = () => {
-                    if (count < target) {
-                        count += increment;
-                        if (target >= 1000) {
-                            counter.textContent = Math.floor(count).toLocaleString() + '+';
-                        } else {
-                            counter.textContent = Math.floor(count) + '+';
-                        }
-                        requestAnimationFrame(updateCounter);
-                    } else {
-                        if (target >= 1000) {
-                            counter.textContent = target.toLocaleString() + '+';
-                        } else {
-                            counter.textContent = target + '+';
-                        }
-                    }
-                };
-                
-                updateCounter();
-            });
-        }
-
-        // Intersection Observer for animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate-in');
-                    
-                    // Trigger counter animation for stats
-                    if (entry.target.classList.contains('stat-card') && !entry.target.classList.contains('counted')) {
-                        entry.target.classList.add('counted');
-                        setTimeout(animateCounters, 200);
-                    }
-                }
-            });
-        }, observerOptions);
-
-        // Observe elements for animation
-        document.querySelectorAll('.card, .project-card, .testimonial-card, .stat-card').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Enhanced Carousel functionality
-        function initCarousel(carouselId, navId) {
-            const carousel = document.getElementById(carouselId);
-            const nav = document.getElementById(navId);
-            const items = carousel.querySelectorAll('.carousel-item');
-            const dots = nav.querySelectorAll('.carousel-dot');
-            
-            let currentSlide = 0;
-            
-            function updateCarousel() {
-                const translateX = -currentSlide * (100 / Math.min(items.length, 3));
-                carousel.style.transform = `translateX(${translateX}%)`;
-                
-                dots.forEach((dot, index) => {
-                    dot.classList.toggle('active', index === currentSlide);
-                });
-            }
-            
-            dots.forEach((dot, index) => {
-                dot.addEventListener('click', () => {
-                    currentSlide = index;
-                    updateCarousel();
-                });
-            });
-            
-            // Auto-advance carousel
-            setInterval(() => {
-                currentSlide = (currentSlide + 1) % items.length;
-                updateCarousel();
-            }, 7000);
-            // Touch/swipe support for mobile
-            let startX = 0;
-            let endX = 0;
-            
-            carousel.addEventListener('touchstart', (e) => {
-                startX = e.touches[0].clientX;
-            });
-            
-            carousel.addEventListener('touchend', (e) => {
-                endX = e.changedTouches[0].clientX;
-                handleSwipe();
-            });
-            
-            function handleSwipe() {
-                const threshold = 50;
-                const diff = startX - endX;
-                
-                if (Math.abs(diff) > threshold) {
-                    if (diff > 0) {
-                        // Swipe left - next slide
-                        currentSlide = (currentSlide + 1) % items.length;
-                    } else {
-                        // Swipe right - previous slide
-                        currentSlide = (currentSlide - 1 + items.length) % items.length;
-                    }
-                    updateCarousel();
-                }
-            }
-        }
-
-        // Initialize carousels
-        initCarousel('projects-carousel', 'carousel-nav');
-        initCarousel('testimonials-carousel', 'testimonials-nav');
-
-        // Enhanced Modal functionality
-        function openModal(modalId) {
-            const modal = document.getElementById(modalId);
-            if (modal) {
-                modal.style.display = 'flex';
-                modal.setAttribute('aria-hidden', 'false');
-                document.body.style.overflow = 'hidden';
-                
-                // Focus management
-                const focusableElements = modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
-                if (focusableElements.length > 0) {
-                    focusableElements[0].focus();
-                }
-                
-                setTimeout(() => {
-                    modal.classList.add('active');
-                }, 10);
-                
-                // Track modal open events
-                if (typeof gtag !== 'undefined') {
-                    gtag('event', 'modal_open', {
-                        'modal_id': modalId,
-                        'event_category': 'engagement'
-                    });
-                }
-            }
-        }
-
-        function closeModal(modalId) {
-            const modal = document.getElementById(modalId);
-            if (modal) {
-                modal.classList.remove('active');
-                modal.setAttribute('aria-hidden', 'true');
-                document.body.style.overflow = '';
-                
-                setTimeout(() => {
-                    modal.style.display = 'none';
-                }, 300);
-            }
-        }
-
-        // Close modal on outside click
-        document.querySelectorAll('.modal').forEach(modal => {
-            modal.addEventListener('click', (e) => {
-                if (e.target === modal) {
-                    closeModal(modal.id);
-                }
-            });
-        });
-
-        // Close modal on escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                const activeModal = document.querySelector('.modal.active');
-                if (activeModal) {
-                    closeModal(activeModal.id);
-                }
-            }
-        });
-
-        // Enhanced Contact Form
-        document.getElementById('contact-form').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            const formData = new FormData(this);
-            const submitButton = this.querySelector('button[type="submit"]');
-            const originalText = submitButton.innerHTML;
-            
-            // Show loading state
-            submitButton.innerHTML = `
-                <svg class="animate-spin" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M12 2L12 6M12 18L12 22M4.93 4.93L7.76 7.76M16.24 16.24L19.07 19.07M2 12L6 12M18 12L22 12M4.93 19.07L7.76 16.24M16.24 7.76L19.07 4.93"/>
-                </svg>
-                Sending...
-            `;
-            submitButton.disabled = true;
-
-            try {
-                // Simulate form submission (replace with actual endpoint)
-                await new Promise(resolve => setTimeout(resolve, 2000));
-                
-                // Show success message
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Message Sent Successfully!',
-                    text: 'Thank you for reaching out. I\'ll get back to you within 24 hours.',
-                    confirmButtonColor: '#6366f1',
-                    confirmButtonText: 'Great!'
-                });
-                
-                // Reset form
-                this.reset();
-                
-                // Track form submission
-                if (typeof gtag !== 'undefined') {
-                    gtag('event', 'form_submit', {
-                        'form_name': 'contact_form',
-                        'event_category': 'engagement'
-                    });
-                }
-                
-            } catch (error) {
-                // Show error message
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops! Something went wrong',
-                    text: 'Sorry, there was an issue sending your message. Please try again or contact me directly via email.',
-                    confirmButtonColor: '#6366f1',
-                    confirmButtonText: 'Try Again'
-                });
-            } finally {
-                // Restore button
-                submitButton.innerHTML = originalText;
-                submitButton.disabled = false;
-            }
-        });
-
-        // Enhanced Scroll to Top
-        const scrollToTopBtn = document.getElementById('scroll-to-top');
-        
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                scrollToTopBtn.classList.add('visible');
-            } else {
-                scrollToTopBtn.classList.remove('visible');
-            }
-        });
-
-        scrollToTopBtn.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-
-        // Enhanced Smooth Scrolling for Navigation
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                
-                if (target) {
-                    const headerHeight = document.querySelector('header').offsetHeight;
-                    const targetPosition = target.offsetTop - headerHeight;
-                    
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
-                    
-                    // Close mobile menu if open
-                    const mobileMenu = document.getElementById('mobile-menu');
-                    const mobileToggle = document.getElementById('mobile-menu-toggle');
-                    if (mobileMenu.classList.contains('active')) {
-                        mobileMenu.classList.remove('active');
-                        mobileToggle.classList.remove('active');
-                        mobileToggle.setAttribute('aria-expanded', 'false');
-                    }
-                }
-            });
-        });
-
-        // Enhanced Lazy Loading for Images
-        function initLazyLoading() {
-            const imageObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const img = entry.target;
-                        const src = img.getAttribute('data-src');
-                        
-                        if (src) {
-                            img.setAttribute('src', src);
-                            img.removeAttribute('data-src');
-                        }
-                        
-                        img.classList.add('loaded');
-                        observer.unobserve(img);
-                    }
-                });
-            });
-
-            document.querySelectorAll('.lazy-load').forEach(img => {
-                imageObserver.observe(img);
-            });
-        }
-
-        // Initialize AOS (Animate On Scroll)
-        AOS.init({
-            duration: 800,
-            easing: 'ease-in-out-cubic',
-            once: true,
-            offset: 50
-        });
-
-        // Initialize lazy loading
-        initLazyLoading();
-
-        // Enhanced Error Handling
-        window.addEventListener('unhandledrejection', (event) => {
-            console.error('Unhandled promise rejection:', event.reason);
-            
-            // Optional: Send to monitoring service
-            if (typeof gtag !== 'undefined') {
-                gtag('event', 'exception', {
-                    'description': 'Unhandled promise rejection',
-                    'fatal': false
-                });
-            }
-        });
-
-        window.addEventListener('error', (event) => {
-            console.error('JavaScript error:', event.error);
-            
-            // Optional: Send to monitoring service
-            if (typeof gtag !== 'undefined') {
-                gtag('event', 'exception', {
-                    'description': event.error ? event.error.toString() : 'Unknown error',
-                    'fatal': false
-                });
-            }
-        });
-
-        // Enhanced Performance Monitoring
-        window.addEventListener('load', () => {
-            // Track page load time
-            if ('performance' in window && 'timing' in performance) {
-                const loadTime = performance.timing.loadEventEnd - performance.timing.navigationStart;
-                
-                if (typeof gtag !== 'undefined') {
-                    gtag('event', 'timing_complete', {
-                        'name': 'page_load',
-                        'value': loadTime
-                    });
-                }
-            }
-            
-            // Track Core Web Vitals
-            if ('web-vitals' in window) {
-                // This would require the web-vitals library
-                // getCLS, getFID, getFCP, getLCP, getTTFB
-            }
-        });
-
-        // Enhanced Accessibility Features
-        document.addEventListener('keydown', (e) => {
-            // Skip to main content on Tab
-            if (e.key === 'Tab' && !e.shiftKey && document.activeElement === document.body) {
-                const mainContent = document.querySelector('main') || document.querySelector('#home');
-                if (mainContent) {
-                    mainContent.focus();
-                    e.preventDefault();
-                }
-            }
-        });
-
-        // Enhanced Dark Mode Support (if implemented)
-        function initThemeToggle() {
-            const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
-            const currentTheme = localStorage.getItem('theme');
-            
-            if (currentTheme === 'dark' || (!currentTheme && prefersDarkScheme.matches)) {
-                document.documentElement.classList.add('dark');
-            }
-            
-            // Listen for theme preference changes
-            prefersDarkScheme.addEventListener('change', (e) => {
-                if (!localStorage.getItem('theme')) {
-                    if (e.matches) {
-                        document.documentElement.classList.add('dark');
-                    } else {
-                        document.documentElement.classList.remove('dark');
-                    }
-                }
-            });
-        }
-
-        // Initialize theme toggle (if dark mode is implemented)
-        // initThemeToggle();
-
-        // Enhanced Social Share Tracking
-        document.querySelectorAll('a[href^="https://"]').forEach(link => {
-            if (link.hostname !== window.location.hostname) {
-                link.addEventListener('click', () => {
-                    if (typeof gtag !== 'undefined') {
-                        gtag('event', 'click', {
-                            'event_category': 'outbound',
-                            'event_label': link.href,
-                            'transport_type': 'beacon'
-                        });
-                    }
-                });
-            }
-        });
-
-        // Enhanced Search Functionality (if implemented)
-        function initSearch() {
-            // This would implement search functionality
-            // for the portfolio content
-        }
-
-        // Enhanced Print Styles Handler
-        window.addEventListener('beforeprint', () => {
-            // Expand all collapsed content for printing
-            document.querySelectorAll('.modal').forEach(modal => {
-                modal.style.display = 'none';
-            });
-        });
-
-        // Enhanced Copy to Clipboard (for contact info)
-        function copyToClipboard(text, element) {
-            if (navigator.clipboard && window.isSecureContext) {
-                navigator.clipboard.writeText(text).then(() => {
-                    showCopyFeedback(element);
-                });
-            } else {
-                // Fallback for older browsers
-                const textArea = document.createElement('textarea');
-                textArea.value = text;
-                document.body.appendChild(textArea);
-                textArea.select();
-                document.execCommand('copy');
-                document.body.removeChild(textArea);
-                showCopyFeedback(element);
-            }
-        }
-
-        function showCopyFeedback(element) {
-            const originalText = element.textContent;
-            element.textContent = 'Copied!';
-            element.style.color = '#10b981';
-            
-            setTimeout(() => {
-                element.textContent = originalText;
-                element.style.color = '';
-            }, 2000);
-        }
-
-        // Add copy functionality to email link
-        const emailLink = document.querySelector('a[href^="mailto:"]');
-        if (emailLink) {
-            emailLink.addEventListener('click', (e) => {
-                e.preventDefault();
-                const email = emailLink.href.replace('mailto:', '');
-                copyToClipboard(email, emailLink);
-            });
-        }
-
-        // Enhanced Analytics Event Tracking
-        function trackEvent(eventName, parameters = {}) {
-            if (typeof gtag !== 'undefined') {
-                gtag('event', eventName, parameters);
-            }
-        }
-
-        // Track section viewing
-        const sectionObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
-                    trackEvent('section_view', {
-                        'section_name': entry.target.id,
-                        'event_category': 'engagement'
-                    });
-                }
-            });
-        }, { threshold: 0.5 });
-
-        document.querySelectorAll('section[id]').forEach(section => {
-            sectionObserver.observe(section);
-        });
-
-        // Enhanced PWA Support
-        let deferredPrompt;
-
-        window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault();
-            deferredPrompt = e;
-            
-            // Show install button/banner if desired
-            // showInstallPromotion();
-        });
-
-        window.addEventListener('appinstalled', () => {
-            trackEvent('app_installed', {
-                'event_category': 'engagement'
-            });
-            deferredPrompt = null;
-        });
-
-        // Enhanced Offline Support Detection
-        window.addEventListener('online', () => {
-            console.log('Back online');
-            // Handle reconnection
-        });
-
-        window.addEventListener('offline', () => {
-            console.log('Gone offline');
-            // Handle offline state
-        });
-
-        // Enhanced Focus Management for Accessibility
-        let focusedElementBeforeModal;
-
-        function trapFocus(element) {
-            const focusableElements = element.querySelectorAll(
-                'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-            );
-            const firstFocusableElement = focusableElements[0];
-            const lastFocusableElement = focusableElements[focusableElements.length - 1];
-
-            element.addEventListener('keydown', (e) => {
-                if (e.key === 'Tab') {
-                    if (e.shiftKey) {
-                        if (document.activeElement === firstFocusableElement) {
-                            lastFocusableElement.focus();
-                            e.preventDefault();
-                        }
-                    } else {
-                        if (document.activeElement === lastFocusableElement) {
-                            firstFocusableElement.focus();
-                            e.preventDefault();
-                        }
-                    }
-                }
-            });
-        }
-
-        // Apply focus trap to modals
-        document.querySelectorAll('.modal').forEach(modal => {
-            trapFocus(modal);
-        });
-
-        // Enhanced Content Security
-        function sanitizeInput(str) {
-            const div = document.createElement('div');
-            div.textContent = str;
-            return div.innerHTML;
-        }
-
-        // Enhanced Feature Detection
-        function detectFeatures() {
-            const features = {
-                webp: false,
-                avif: false,
-                intersectionObserver: 'IntersectionObserver' in window,
-                serviceWorker: 'serviceWorker' in navigator,
-                webShare: 'share' in navigator
-            };
-
-            // Test for WebP support
-            const webpTest = new Image();
-            webpTest.onload = () => features.webp = true;
-            webpTest.src = 'data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA';
-
-            return features;
-        }
-
-        const supportedFeatures = detectFeatures();
-        console.log('Supported features:', supportedFeatures);
-
-        // Log successful initialization
-        console.log('🚀 Cultural AI Portfolio initialized successfully');
-        console.log('🌟 Ready to showcase cross-cultural innovation');
-        
-        // Global functions for modal access
-        window.openModal = openModal;
-        window.closeModal = closeModal;
-    </script>
-
-    <!-- Service Worker -->
-    <script>
-        // Service Worker for PWA functionality
-        const swContent = `
-            const CACHE_NAME = 'cultural-ai-v1.0.0';
-            const urlsToCache = [
-                '/',
-                '/assets/css/main.css',
-                '/assets/js/main.js',
-                '/assets/images/hero-bg.jpg',
-                'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&display=swap',
-                'https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css',
-                'https://cdn.rawgit.com/michalsnik/aos/2.3.1/dist/aos.css',
-                'https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css'
-            ];
-
-            self.addEventListener('install', event => {
-                event.waitUntil(
-                    caches.open(CACHE_NAME)
-                        .then(cache => cache.addAll(urlsToCache))
-                );
-            });
-
-            self.addEventListener('fetch', event => {
-                event.respondWith(
-                    caches.match(event.request)
-                        .then(response => {
-                            if (response) {
-                                return response;
-                            }
-                            return fetch(event.request);
-                        }
-                    )
-                );
-            });
-
-            self.addEventListener('activate', event => {
-                event.waitUntil(
-                    caches.keys().then(cacheNames => {
-                        return Promise.all(
-                            cacheNames.map(cacheName => {
-                                if (cacheName !== CACHE_NAME) {
-                                    return caches.delete(cacheName);
-                                }
-                            })
-                        );
-                    })
-                );
-            });
-        `;
-
-        // Create and register service worker
-        if ('serviceWorker' in navigator) {
-            const blob = new Blob([swContent], { type: 'text/javascript' });
-            const swUrl = URL.createObjectURL(blob);
-            
-            navigator.serviceWorker.register(swUrl)
-                .then(registration => {
-                    console.log('ServiceWorker registration successful');
-                })
-                .catch(err => {
-                    console.log('ServiceWorker registration failed: ', err);
-                });
-        }
-    </script>
-
-    <!-- Web App Manifest -->
-    <script>
-        const manifestContent = {
-            "name": "Thanatsitt Santisamranwilai - Cultural AI Innovator",
-            "short_name": "Cultural AI Portfolio",
-            "description": "Leading Cultural AI Innovator specializing in cross-cultural technology solutions",
-            "start_url": "/",
-            "display": "standalone",
-            "background_color": "#6366f1",
-            "theme_color": "#6366f1",
-            "orientation": "portrait-primary",
-            "icons": [
-                {
-                    "src": "/favicon-192x192.png",
-                    "sizes": "192x192",
-                    "type": "image/png"
-                },
-                {
-                    "src": "/favicon-512x512.png",
-                    "sizes": "512x512",
-                    "type": "image/png"
-                }
-            ],
-            "categories": ["technology", "education", "portfolio"],
-            "lang": "en",
-            "dir": "ltr"
-        };
-
-        // Create manifest blob and link
-        const manifestBlob = new Blob([JSON.stringify(manifestContent)], { type: 'application/json' });
-        const manifestUrl = URL.createObjectURL(manifestBlob);
-        const manifestLink = document.createElement('link');
-        manifestLink.rel = 'manifest';
-        manifestLink.href = manifestUrl;
-        document.head.appendChild(manifestLink);
-    </script>
-
-    <!-- Schema Markup for Portfolio Items -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "ItemList",
-        "name": "Cultural AI Innovation Projects",
-        "numberOfItems": 4,
-        "itemListElement": [
-            {
-                "@type": "CreativeWork",
-                "position": 1,
-                "name": "Siam-Blessing VTuber AI",
-                "description": "Pioneering AI-driven VTuber technology with cultural awareness",
-                "creator": {
-                    "@type": "Person",
-                    "name": "Thanatsitt Santisamranwilai"
-                },
-                "dateCreated": "2023",
-                "keywords": "AI, VTuber, Cultural Technology, Machine Learning"
-            },
-            {
-                "@type": "CreativeWork",
-                "position": 2,
-                "name": "Cross-Border E-commerce AI",
-                "description": "Revolutionary blockchain-based e-commerce platform with AI-powered cultural adaptation",
-                "creator": {
-                    "@type": "Person",
-                    "name": "Thanatsitt Santisamranwilai"
-                },
-                "dateCreated": "2023",
-                "keywords": "Blockchain, E-commerce, AI, Cultural Adaptation"
-            },
-            {
-                "@type": "CreativeWork",
-                "position": 3,
-                "name": "Cultural Translation AI",
-                "description": "Advanced multilingual AI system that preserves cultural context",
-                "creator": {
-                    "@type": "Person",
-                    "name": "Thanatsitt Santisamranwilai"
-                },
-                "dateCreated": "2022",
-                "keywords": "NLP, Machine Translation, Cultural Analysis, Multilingual AI"
-            },
-            {
-                "@type": "CreativeWork",
-                "position": 4,
-                "name": "Smart Real Estate AI",
-                "description": "Intelligent property matching system with cultural preference analysis",
-                "creator": {
-                    "@type": "Person",
-                    "name": "Thanatsitt Santisamranwilai"
-                },
-                "dateCreated": "2023",
-                "keywords": "PropTech, AI, Cultural Insights, Predictive Analytics"
-            }
-        ]
-    }
-    </script>
-
-    <!-- Performance Monitoring -->
-    <script>
-        // Web Vitals monitoring
-        function measureWebVitals() {
-            // This would integrate with web-vitals library
-            // to measure Core Web Vitals metrics
-        }
-
-        // Resource timing monitoring
-        window.addEventListener('load', () => {
-            if ('performance' in window && 'timing' in performance) {
-                const timing = performance.timing;
-                const metrics = {
-                    dns: timing.domainLookupEnd - timing.domainLookupStart,
-                    tcp: timing.connectEnd - timing.connectStart,
-                    ttfb: timing.responseStart - timing.requestStart,
-                    download: timing.responseEnd - timing.responseStart,
-                    dom: timing.domContentLoadedEventEnd - timing.domLoading,
-                    load: timing.loadEventEnd - timing.loadEventStart
-                };
-                
-                console.log('Performance metrics:', metrics);
-            }
-        });
-        // Modified to work perfectly with your hero structure
+<!-- ============ ANIMATED STARS SYSTEM ============ -->
+<script>
 function createRhythmShiningStars() {
+    console.log('🌟 Initializing Animated Stars System...');
+    
+    // Create canvas
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d');
     
@@ -3622,76 +3309,93 @@ function createRhythmShiningStars() {
         pointer-events: none !important;
         z-index: 1 !important;
         mix-blend-mode: screen;
-        opacity: 0.8;
+        opacity: 0.9;
     `;
     
-    // Target your hero section specifically
+    // Add to hero section
     const heroSection = document.querySelector('.hero');
-    if (heroSection) {
-        heroSection.appendChild(canvas);
+    if (!heroSection) {
+        console.error('❌ Hero section not found!');
+        return null;
     }
     
+    heroSection.appendChild(canvas);
+    
+    // Canvas sizing
     function resizeCanvas() {
         const rect = heroSection.getBoundingClientRect();
-        canvas.width = rect.width;
-        canvas.height = rect.height;
+        const dpr = window.devicePixelRatio || 1;
+        canvas.width = rect.width * dpr;
+        canvas.height = rect.height * dpr;
+        canvas.style.width = rect.width + 'px';
+        canvas.style.height = rect.height + 'px';
+        ctx.scale(dpr, dpr);
     }
+    
     resizeCanvas();
     
+    // Animation variables
     const stars = [];
     const rhythmBeats = [];
     let time = 0;
     let beatTime = 0;
+    let animationRunning = false;
     
-    // Optimized color palettes that work well with your space background
-    const iridescent = [
-        ['#6366f1', '#8b5cf6', '#a855f7', '#3b82f6'], // Your brand colors
+    // Color palettes
+    const colorPalettes = [
+        ['#6366f1', '#8b5cf6', '#a855f7', '#3b82f6'], // Primary
         ['#60a5fa', '#a78bfa', '#f472b6', '#fb7185'], // Complementary
-        ['#34d399', '#60a5fa', '#a78bfa', '#f472b6'], // Accent colors
-        ['#fbbf24', '#f59e0b', '#d97706', '#92400e'], // Warm accents
+        ['#34d399', '#10b981', '#059669', '#047857'], // Green
+        ['#fbbf24', '#f59e0b', '#d97706', '#b45309'], // Gold
+        ['#ef4444', '#f97316', '#84cc16', '#22c55e']  // Spectrum
     ];
     
+    // Star creation
     function createStar() {
-        const palette = iridescent[Math.floor(Math.random() * iridescent.length)];
+        const palette = colorPalettes[Math.floor(Math.random() * colorPalettes.length)];
         return {
-            x: Math.random() * canvas.width,
-            y: Math.random() * canvas.height,
-            size: Math.random() * 12 + 2, // Slightly smaller for better readability
+            x: Math.random() * (canvas.width / (window.devicePixelRatio || 1)),
+            y: Math.random() * (canvas.height / (window.devicePixelRatio || 1)),
+            size: Math.random() * 6 + 2,
             baseSize: 0,
             angle: Math.random() * Math.PI * 2,
-            speed: Math.random() * 0.015 + 0.005,
+            speed: Math.random() * 0.02 + 0.01,
             colors: palette,
-            colorIndex: 0,
-            opacity: Math.random() * 0.6 + 0.3, // Reduced max opacity
+            colorIndex: Math.random() * palette.length,
+            opacity: Math.random() * 0.8 + 0.2,
+            baseOpacity: 0,
             shimmerPhase: Math.random() * Math.PI * 2,
             rhythmOffset: Math.random() * Math.PI * 2,
             twinkleSpeed: Math.random() * 0.08 + 0.02,
             drift: {
                 x: (Math.random() - 0.5) * 0.2,
                 y: (Math.random() - 0.5) * 0.2
-            }
+            },
+            life: 1,
+            maxLife: Math.random() * 500 + 300
         };
     }
     
-    // Create fewer stars for better performance and readability
-    for (let i = 0; i < 40; i++) {
+    // Initialize stars
+    for (let i = 0; i < 60; i++) {
         const star = createStar();
         star.baseSize = star.size;
+        star.baseOpacity = star.opacity;
         stars.push(star);
     }
     
+    // Star drawing
     function drawStar(star) {
+        if (star.opacity <= 0.01) return;
+        
         const x = star.x;
         const y = star.y;
         const size = star.size;
         
-        const gradient = ctx.createRadialGradient(x, y, 0, x, y, size * 2.5);
-        const color1 = star.colors[Math.floor(star.colorIndex) % star.colors.length];
-        const color2 = star.colors[Math.floor(star.colorIndex + 1) % star.colors.length];
-        
-        gradient.addColorStop(0, color1 + 'dd');
-        gradient.addColorStop(0.4, color2 + '88');
-        gradient.addColorStop(1, 'transparent');
+        const colorIndex = Math.floor(star.colorIndex) % star.colors.length;
+        const nextIndex = (colorIndex + 1) % star.colors.length;
+        const color1 = star.colors[colorIndex];
+        const color2 = star.colors[nextIndex];
         
         ctx.save();
         ctx.translate(x, y);
@@ -3699,21 +3403,26 @@ function createRhythmShiningStars() {
         ctx.globalAlpha = star.opacity;
         
         // Outer glow
+        const gradient = ctx.createRadialGradient(0, 0, 0, 0, 0, size * 3);
+        gradient.addColorStop(0, color1 + 'ff');
+        gradient.addColorStop(0.3, color2 + 'aa');
+        gradient.addColorStop(0.7, color1 + '44');
+        gradient.addColorStop(1, 'transparent');
+        
         ctx.fillStyle = gradient;
         ctx.beginPath();
-        ctx.arc(0, 0, size * 2, 0, Math.PI * 2);
+        ctx.arc(0, 0, size * 2.5, 0, Math.PI * 2);
         ctx.fill();
         
         // Main star
         ctx.fillStyle = color1;
-        ctx.shadowBlur = 12;
+        ctx.shadowBlur = 10;
         ctx.shadowColor = color2;
         ctx.beginPath();
         
-        // 6-pointed star for cleaner look
-        for (let i = 0; i < 12; i++) {
+        for (let i = 0; i < 16; i++) {
             const radius = i % 2 === 0 ? size : size * 0.4;
-            const angle = (i / 12) * Math.PI * 2;
+            const angle = (i / 16) * Math.PI * 2;
             const px = Math.cos(angle) * radius;
             const py = Math.sin(angle) * radius;
             
@@ -3725,7 +3434,8 @@ function createRhythmShiningStars() {
         
         // Center sparkle
         ctx.fillStyle = '#ffffff';
-        ctx.globalAlpha = star.opacity * 0.9;
+        ctx.shadowBlur = 5;
+        ctx.globalAlpha = star.opacity * 1.5;
         ctx.beginPath();
         ctx.arc(0, 0, size * 0.15, 0, Math.PI * 2);
         ctx.fill();
@@ -3733,126 +3443,157 @@ function createRhythmShiningStars() {
         ctx.restore();
     }
     
+    // Beat creation
     function createBeat() {
         rhythmBeats.push({
             time: beatTime,
-            intensity: Math.random() * 0.4 + 0.3, // Reduced intensity
-            duration: 50 + Math.random() * 30
+            intensity: Math.random() * 0.8 + 0.3,
+            duration: 80 + Math.random() * 40,
+            type: Math.random() < 0.3 ? 'major' : 'minor'
         });
         
-        if (rhythmBeats.length > 6) {
-            rhythmBeats.shift();
-        }
+        if (rhythmBeats.length > 10) rhythmBeats.shift();
     }
     
-    function updateStarRhythm(star) {
+    // Star animation
+    function updateStar(star) {
+        // Calculate rhythm influence
         let rhythmIntensity = 0;
+        let majorBeat = 0;
         
         rhythmBeats.forEach(beat => {
             const age = beatTime - beat.time;
             if (age >= 0 && age < beat.duration) {
-                const influence = Math.exp(-age / 15) * beat.intensity;
+                const influence = Math.exp(-age / 25) * beat.intensity;
                 rhythmIntensity += influence;
+                if (beat.type === 'major') majorBeat += influence;
             }
         });
         
-        const rhythmPulse = Math.sin(beatTime * 0.08 + star.rhythmOffset) * rhythmIntensity;
-        star.size = star.baseSize * (1 + rhythmPulse * 0.25);
+        // Size pulsing
+        const rhythmPulse = Math.sin(beatTime * 0.1 + star.rhythmOffset);
+        star.size = star.baseSize * (1 + rhythmPulse * rhythmIntensity * 0.5 + majorBeat * 0.3);
         
-        star.colorIndex += (0.015 + rhythmIntensity * 0.02);
+        // Color cycling
+        star.colorIndex += (0.02 + rhythmIntensity * 0.04);
         
+        // Opacity animation
         const shimmer = Math.sin(time * star.twinkleSpeed + star.shimmerPhase);
-        star.opacity = (0.3 + shimmer * 0.25) * (0.7 + rhythmIntensity * 0.3);
+        const pulse = Math.sin(beatTime * 0.05 + star.rhythmOffset);
+        star.opacity = star.baseOpacity * 
+                      (0.5 + shimmer * 0.3 + pulse * 0.2) * 
+                      (0.7 + rhythmIntensity * 0.5);
         
-        star.angle += star.speed * (1 + rhythmIntensity * 0.5);
+        // Rotation
+        star.angle += star.speed * (1 + rhythmIntensity);
         
+        // Movement
         star.x += star.drift.x;
         star.y += star.drift.y;
         
-        // Boundary checks
-        if (star.x < 0 || star.x > canvas.width) {
-            star.drift.x *= -1;
-            star.x = Math.max(0, Math.min(canvas.width, star.x));
-        }
-        if (star.y < 0 || star.y > canvas.height) {
-            star.drift.y *= -1;
-            star.y = Math.max(0, Math.min(canvas.height, star.y));
+        // Boundary handling
+        const canvasWidth = canvas.width / (window.devicePixelRatio || 1);
+        const canvasHeight = canvas.height / (window.devicePixelRatio || 1);
+        
+        if (star.x < -20) star.x = canvasWidth + 20;
+        if (star.x > canvasWidth + 20) star.x = -20;
+        if (star.y < -20) star.y = canvasHeight + 20;
+        if (star.y > canvasHeight + 20) star.y = -20;
+        
+        // Life cycle
+        star.life++;
+        if (star.life > star.maxLife) {
+            // Reset star
+            Object.assign(star, createStar());
+            star.baseSize = star.size;
+            star.baseOpacity = star.opacity;
         }
     }
     
+    // Main animation loop
     function animate() {
-        time += 1;
-        beatTime += 1;
+        if (!animationRunning) return;
         
-        if (Math.random() < 0.02) {
-            createBeat();
-        }
+        time++;
+        beatTime++;
         
-        ctx.fillStyle = 'rgba(0, 0, 0, 0.06)'; // Slight trail
+        // Random beats
+        if (Math.random() < 0.025) createBeat();
+        
+        // Clear with trail
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         
+        // Update and draw stars
         stars.forEach(star => {
-            updateStarRhythm(star);
+            updateStar(star);
             drawStar(star);
         });
         
         requestAnimationFrame(animate);
     }
     
-    // Gentle mouse interaction
-    window.addEventListener('mousemove', throttle((e) => {
-        if (Math.random() < 0.05) {
-            createBeat();
+    // Mouse interaction
+    let lastMouseTime = 0;
+    function handleMouseMove(e) {
+        const now = Date.now();
+        if (now - lastMouseTime < 50) return; // Throttle
+        lastMouseTime = now;
+        
+        if (Math.random() < 0.1) createBeat();
+        
+        // Occasionally add star near mouse
+        if (Math.random() < 0.02 && stars.length < 80) {
+            const rect = heroSection.getBoundingClientRect();
+            const mouseX = e.clientX - rect.left;
+            const mouseY = e.clientY - rect.top;
+            
+            const newStar = createStar();
+            newStar.x = mouseX + (Math.random() - 0.5) * 100;
+            newStar.y = mouseY + (Math.random() - 0.5) * 100;
+            newStar.baseSize = newStar.size;
+            newStar.baseOpacity = newStar.opacity;
+            stars.push(newStar);
         }
-    }, 200));
+    }
     
+    // Event listeners
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
     window.addEventListener('resize', resizeCanvas);
+    
+    // Start animation
+    animationRunning = true;
     animate();
+    
+    console.log('✨ Animated Stars System Active!');
+    
+    return {
+        stop: () => { animationRunning = false; },
+        start: () => { animationRunning = true; animate(); },
+        addBeat: createBeat,
+        getStats: () => ({ stars: stars.length, beats: rhythmBeats.length })
+    };
 }
+</script>
 
-// Throttle function for performance
-function throttle(func, limit) {
-    let inThrottle;
-    return function() {
-        const args = arguments;
-        const context = this;
-        if (!inThrottle) {
-            func.apply(context, args);
-            inThrottle = true;
-            setTimeout(() => inThrottle = false, limit);
-        }
-    }
-}
-
-// Initialize after DOM loads
-document.addEventListener('DOMContentLoaded', () => {
-    setTimeout(createRhythmShiningStars, 100);
-});
-
-    </script>
-<!-- Add Three.js library -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-
+<!-- ============ 3D PARTICLE SYSTEM ============ -->
 <script>
-function createParticleSystem() {
-    // Check if Three.js is loaded
+function create3DParticleSystem() {
+    console.log('🔷 Initializing 3D Particle System...');
+    
     if (typeof THREE === 'undefined') {
-        console.error('Three.js not loaded!');
-        return;
+        console.warn('⚠️ Three.js not loaded, skipping 3D particles');
+        return null;
     }
-
+    
     // Scene setup
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({ 
-        alpha: true, 
-        antialias: true 
-    });
+    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
     
     renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setClearColor(0x000000, 0); // Transparent background
+    renderer.setClearColor(0x000000, 0);
     
-    // Add canvas to hero section
     const canvas = renderer.domElement;
     canvas.className = 'particle-canvas';
     canvas.style.cssText = `
@@ -3862,239 +3603,1299 @@ function createParticleSystem() {
         width: 100% !important;
         height: 100% !important;
         pointer-events: none !important;
-        z-index: 1 !important;
+        z-index: 2 !important;
     `;
     
     const heroSection = document.querySelector('.hero');
     if (heroSection) {
         heroSection.appendChild(canvas);
     } else {
-        console.error('Hero section not found!');
-        return;
+        console.error('❌ Hero section not found for 3D particles');
+        return null;
     }
-
-    // Particle system arrays
+    
+    // Particle data
     const particles = [];
     const connections = [];
-    const mousePosition = new THREE.Vector2();
     
-    // AI-themed geometric shapes
+    // Geometries
     const geometries = [
-        new THREE.SphereGeometry(0.5, 8, 8),
-        new THREE.BoxGeometry(0.8, 0.8, 0.8),
-        new THREE.OctahedronGeometry(0.6),
-        new THREE.TetrahedronGeometry(0.7),
-        new THREE.ConeGeometry(0.5, 1, 6)
+        new THREE.SphereGeometry(0.4, 8, 8),
+        new THREE.BoxGeometry(0.6, 0.6, 0.6),
+        new THREE.OctahedronGeometry(0.5),
+        new THREE.TetrahedronGeometry(0.6),
+        new THREE.ConeGeometry(0.4, 0.8, 6)
     ];
-
-    // Materials with your brand colors
+    
+    // Materials
     const materials = [
-        new THREE.MeshBasicMaterial({ 
-            color: 0x6366f1, // Indigo
-            transparent: true, 
-            opacity: 0.8 
-        }),
-        new THREE.MeshBasicMaterial({ 
-            color: 0x8b5cf6, // Purple
-            transparent: true, 
-            opacity: 0.7 
-        }),
-        new THREE.MeshBasicMaterial({ 
-            color: 0xa855f7, // Violet
-            transparent: true, 
-            opacity: 0.6 
-        }),
-        new THREE.MeshBasicMaterial({ 
-            color: 0x3b82f6, // Blue
-            transparent: true, 
-            opacity: 0.9 
-        })
+        new THREE.MeshBasicMaterial({ color: 0x6366f1, transparent: true, opacity: 0.4 }),
+        new THREE.MeshBasicMaterial({ color: 0x8b5cf6, transparent: true, opacity: 0.35 }),
+        new THREE.MeshBasicMaterial({ color: 0xa855f7, transparent: true, opacity: 0.3 }),
+        new THREE.MeshBasicMaterial({ color: 0x3b82f6, transparent: true, opacity: 0.45 })
     ];
-
+    
     // Create particles
     function createParticles() {
-        for (let i = 0; i < 35; i++) { // Optimized count
+        for (let i = 0; i < 20; i++) {
             const geometry = geometries[Math.floor(Math.random() * geometries.length)];
             const material = materials[Math.floor(Math.random() * materials.length)].clone();
             const particle = new THREE.Mesh(geometry, material);
             
-            // Random position in 3D space
-            particle.position.x = (Math.random() - 0.5) * 20;
-            particle.position.y = (Math.random() - 0.5) * 20;
-            particle.position.z = (Math.random() - 0.5) * 20;
+            particle.position.set(
+                (Math.random() - 0.5) * 16,
+                (Math.random() - 0.5) * 16,
+                (Math.random() - 0.5) * 16
+            );
             
-            // Random rotation speed
             particle.rotationSpeed = {
                 x: (Math.random() - 0.5) * 0.02,
                 y: (Math.random() - 0.5) * 0.02,
                 z: (Math.random() - 0.5) * 0.02
             };
             
-            // Random float speed
             particle.floatSpeed = {
-                x: (Math.random() - 0.5) * 0.01,
-                y: (Math.random() - 0.5) * 0.01,
-                z: (Math.random() - 0.5) * 0.01
+                x: (Math.random() - 0.5) * 0.008,
+                y: (Math.random() - 0.5) * 0.008,
+                z: (Math.random() - 0.5) * 0.008
             };
             
-            // Store original position for mouse interaction
             particle.originalPosition = particle.position.clone();
+            particle.baseScale = 1;
             
             scene.add(particle);
             particles.push(particle);
         }
     }
-
-    // Create connections between nearby particles
-    function createConnections() {
-        const connectionMaterial = new THREE.LineBasicMaterial({
-            color: 0x6366f1,
-            transparent: true,
-            opacity: 0.3
-        });
-
-        for (let i = 0; i < particles.length; i++) {
-            for (let j = i + 1; j < particles.length; j++) {
-                const distance = particles[i].position.distanceTo(particles[j].position);
-                
-                if (distance < 5) {
-                    const geometry = new THREE.BufferGeometry().setFromPoints([
-                        particles[i].position,
-                        particles[j].position
-                    ]);
-                    
-                    const line = new THREE.Line(geometry, connectionMaterial);
-                    scene.add(line);
-                    connections.push({
-                        line: line,
-                        particleA: particles[i],
-                        particleB: particles[j],
-                        maxDistance: 5
-                    });
-                }
-            }
-        }
-    }
-
-    // Mouse interaction
-    function onMouseMove(event) {
-        mousePosition.x = (event.clientX / window.innerWidth) * 2 - 1;
-        mousePosition.y = -(event.clientY / window.innerHeight) * 2 + 1;
-        
-        // Convert mouse position to 3D world coordinates
-        const vector = new THREE.Vector3(mousePosition.x, mousePosition.y, 0.5);
-        vector.unproject(camera);
-        const dir = vector.sub(camera.position).normalize();
-        const distance = -camera.position.z / dir.z;
-        const pos = camera.position.clone().add(dir.multiplyScalar(distance));
-        
-        // Attract particles to mouse
-        particles.forEach(particle => {
-            const mouseDistance = particle.position.distanceTo(pos);
-            if (mouseDistance < 8) {
-                const force = 0.08 * (1 - mouseDistance / 8);
-                const direction = pos.clone().sub(particle.position).normalize();
-                particle.position.add(direction.multiplyScalar(force));
-                
-                // Increase opacity when near mouse
-                particle.material.opacity = Math.min(1, particle.material.opacity + 0.03);
-            } else {
-                // Return to original position
-                particle.position.lerp(particle.originalPosition, 0.015);
-                // Fade back to original opacity
-                particle.material.opacity *= 0.98;
-            }
-        });
-    }
-
+    
     // Animation loop
+    let animationId;
     function animate() {
-        requestAnimationFrame(animate);
+        animationId = requestAnimationFrame(animate);
         
-        // Rotate and float particles
-        particles.forEach(particle => {
+        const time = Date.now() * 0.001;
+        
+        particles.forEach((particle, index) => {
+            // Rotation
             particle.rotation.x += particle.rotationSpeed.x;
             particle.rotation.y += particle.rotationSpeed.y;
             particle.rotation.z += particle.rotationSpeed.z;
             
-            // Subtle floating motion
+            // Floating movement
             particle.originalPosition.x += particle.floatSpeed.x;
             particle.originalPosition.y += particle.floatSpeed.y;
+            particle.originalPosition.z += particle.floatSpeed.z;
             
-            // Bounce off boundaries
-            if (particle.originalPosition.x > 10) particle.floatSpeed.x *= -1;
-            if (particle.originalPosition.x < -10) particle.floatSpeed.x *= -1;
-            if (particle.originalPosition.y > 8) particle.floatSpeed.y *= -1;
-            if (particle.originalPosition.y < -8) particle.floatSpeed.y *= -1;
-        });
-        
-        // Update connections
-        connections.forEach(connection => {
-            const distance = connection.particleA.position.distanceTo(connection.particleB.position);
+            // Boundaries
+            if (Math.abs(particle.originalPosition.x) > 8) particle.floatSpeed.x *= -1;
+            if (Math.abs(particle.originalPosition.y) > 8) particle.floatSpeed.y *= -1;
+            if (Math.abs(particle.originalPosition.z) > 8) particle.floatSpeed.z *= -1;
             
-            if (distance < 8) {
-                // Update line geometry
-                const positions = new Float32Array([
-                    connection.particleA.position.x, connection.particleA.position.y, connection.particleA.position.z,
-                    connection.particleB.position.x, connection.particleB.position.y, connection.particleB.position.z
-                ]);
-                
-                connection.line.geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-                
-                // Update opacity based on distance
-                const opacity = Math.max(0, 0.5 - (distance / 8) * 0.5);
-                connection.line.material.opacity = opacity;
-                connection.line.visible = opacity > 0.05;
-            } else {
-                connection.line.visible = false;
-            }
-        });
-        
-        // Add pulsing effect
-        const time = Date.now() * 0.001;
-        particles.forEach((particle, index) => {
-            const pulseSpeed = 1 + index * 0.1;
-            const pulse = Math.sin(time * pulseSpeed) * 0.15 + 1;
-            particle.scale.setScalar(pulse);
+            particle.position.copy(particle.originalPosition);
+            
+            // Pulsing effect
+            const pulseSpeed = 0.8 + index * 0.1;
+            const pulse = Math.sin(time * pulseSpeed) * 0.2 + 1;
+            particle.scale.setScalar(pulse * particle.baseScale);
+            
+            // Opacity pulsing
+            const opacityPulse = Math.sin(time * 0.5 + index) * 0.1 + 0.9;
+            particle.material.opacity *= opacityPulse;
         });
         
         renderer.render(scene, camera);
     }
-
-    // Initialize system
+    
+    // Initialize
     createParticles();
-    createConnections();
+    camera.position.z = 12;
     
-    // Set camera position
-    camera.position.z = 15;
-    
-    // Event listeners
-    window.addEventListener('mousemove', onMouseMove);
-    
-    // Handle window resize
+    // Resize handler
     window.addEventListener('resize', () => {
-        const width = window.innerWidth;
-        const height = window.innerHeight;
-        
-        camera.aspect = width / height;
+        camera.aspect = window.innerWidth / window.innerHeight;
         camera.updateProjectionMatrix();
-        renderer.setSize(width, height);
+        renderer.setSize(window.innerWidth, window.innerHeight);
     });
     
-    // Start animation
     animate();
     
-    // Success logging
-    console.log('🚀 AI Particle System Initialized Successfully!');
-    console.log(`📊 Particles: ${particles.length}`);
-    console.log(`🔗 Connections: ${connections.length}`);
+    console.log('🚀 3D Particle System Active!');
+    
+    return {
+        stop: () => { if (animationId) cancelAnimationFrame(animationId); }
+    };
+}
+</script>
+
+<!-- ============ MAIN PORTFOLIO JAVASCRIPT ============ -->
+<script>
+// Global variables
+let starsSystem = null;
+let particleSystem = null;
+
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('🚀 Cultural AI Portfolio Initializing...');
+    
+    // ============ LOADING SCREEN ============
+    const loadingScreen = document.getElementById('loading-screen');
+    const progressBar = document.getElementById('loading-progress-bar');
+    const loadingText = document.getElementById('loading-text');
+    
+    if (loadingScreen && progressBar && loadingText) {
+        const loadingSteps = [
+            { progress: 20, text: 'Loading AI Models...' },
+            { progress: 40, text: 'Initializing Cultural Database...' },
+            { progress: 60, text: 'Connecting Cross-Cultural Networks...' },
+            { progress: 80, text: 'Optimizing User Experience...' },
+            { progress: 100, text: 'Welcome to Cultural AI!' }
+        ];
+        
+        let currentStep = 0;
+        
+        const updateProgress = () => {
+            if (currentStep < loadingSteps.length) {
+                const step = loadingSteps[currentStep];
+                progressBar.style.width = step.progress + '%';
+                loadingText.textContent = step.text;
+                currentStep++;
+                
+                setTimeout(() => {
+                    if (currentStep < loadingSteps.length) {
+                        updateProgress();
+                    } else {
+                        setTimeout(() => {
+                            loadingScreen.classList.add('loaded');
+                            
+                            // Initialize visual effects after loading
+                            setTimeout(() => {
+                                starsSystem = createRhythmShiningStars();
+                                particleSystem = create3DParticleSystem();
+                                
+                                if (starsSystem) {
+                                    // Add initial beats for immediate effect
+                                    setTimeout(() => starsSystem.addBeat(), 1000);
+                                    setTimeout(() => starsSystem.addBeat(), 2000);
+                                }
+                            }, 500);
+                        }, 800);
+                    }
+                }, 600);
+            }
+        };
+        
+        setTimeout(updateProgress, 300);
+    }
+    
+    // ============ NAVIGATION ============
+    
+    // Mobile menu toggle
+    const mobileToggle = document.getElementById('mobile-menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    if (mobileToggle && mobileMenu) {
+        mobileToggle.addEventListener('click', function() {
+            mobileToggle.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            
+            const expanded = mobileToggle.classList.contains('active');
+            mobileToggle.setAttribute('aria-expanded', expanded);
+            
+            // Prevent body scroll when menu is open
+            document.body.style.overflow = expanded ? 'hidden' : '';
+        });
+        
+        // Close mobile menu when clicking links
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                mobileToggle.classList.remove('active');
+                mobileToggle.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
+            });
+        });
+    }
+    
+    // Header scroll effect
+    const header = document.getElementById('header');
+    if (header) {
+        window.addEventListener('scroll', function() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    }
+    
+    // ============ SMOOTH SCROLLING ============
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            
+            if (target) {
+                const headerHeight = header ? header.offsetHeight : 80;
+                const targetPosition = target.offsetTop - headerHeight;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                if (mobileMenu && mobileMenu.classList.contains('active')) {
+                    mobileMenu.classList.remove('active');
+                    mobileToggle.classList.remove('active');
+                    mobileToggle.setAttribute('aria-expanded', 'false');
+                    document.body.style.overflow = '';
+                }
+            }
+        });
+    });
+    
+    // ============ ACTIVE NAVIGATION HIGHLIGHTING ============
+    function updateActiveNavLink() {
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const scrollTop = window.pageYOffset + 150;
+
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            const sectionId = section.getAttribute('id');
+
+            if (scrollTop >= sectionTop && scrollTop < sectionTop + sectionHeight) {
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    link.removeAttribute('aria-current');
+                    if (link.getAttribute('href') === `#${sectionId}`) {
+                        link.classList.add('active');
+                        link.setAttribute('aria-current', 'page');
+                    }
+                });
+            }
+        });
+    }
+
+    window.addEventListener('scroll', updateActiveNavLink);
+    
+    // ============ PARALLAX EFFECTS ============
+    const heroBg = document.getElementById('hero-bg');
+    if (heroBg) {
+        window.addEventListener('scroll', function() {
+            const scrollTop = window.pageYOffset;
+            const rate = scrollTop * -0.3;
+            heroBg.style.transform = `translate3d(0, ${rate}px, 0)`;
+        });
+    }
+    
+    // ============ STATISTICS COUNTER ============
+    function animateCounters() {
+        const counters = document.querySelectorAll('[data-count]');
+        
+        counters.forEach(counter => {
+            const target = parseInt(counter.getAttribute('data-count'));
+            const duration = 2000; // 2 seconds
+            const start = 0;
+            const increment = target / (duration / 16); // 60fps
+            let current = start;
+            
+            const updateCounter = () => {
+                current += increment;
+                if (current < target) {
+                    if (target >= 1000) {
+                        counter.textContent = Math.floor(current).toLocaleString() + '+';
+                    } else {
+                        counter.textContent = Math.floor(current) + '+';
+                    }
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    if (target >= 1000) {
+                        counter.textContent = target.toLocaleString() + '+';
+                    } else {
+                        counter.textContent = target + '+';
+                    }
+                }
+            };
+            
+            updateCounter();
+        });
+    }
+    
+    // ============ INTERSECTION OBSERVER ============
+    const observerOptions = {
+        threshold: 0.2,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate-in');
+                
+                // Trigger counter animation
+                if (entry.target.classList.contains('stat-card') && !entry.target.classList.contains('counted')) {
+                    entry.target.classList.add('counted');
+                    setTimeout(animateCounters, 300);
+                }
+            }
+        });
+    }, observerOptions);
+
+    // Observe elements
+    document.querySelectorAll('.card, .project-card, .testimonial-card, .stat-card, .skill-card').forEach(el => {
+        observer.observe(el);
+    });
+    
+    // ============ CAROUSEL FUNCTIONALITY ============
+    function initCarousel(carouselId, navId) {
+        const carousel = document.getElementById(carouselId);
+        const nav = document.getElementById(navId);
+        
+        if (!carousel || !nav) return;
+        
+        const items = carousel.querySelectorAll('.carousel-item');
+        const dots = nav.querySelectorAll('.carousel-dot');
+        
+        if (items.length === 0 || dots.length === 0) return;
+        
+        let currentSlide = 0;
+        let autoPlayInterval;
+        
+        function updateCarousel() {
+            const itemWidth = 100 / Math.min(items.length, 3);
+            const translateX = -currentSlide * itemWidth;
+            carousel.style.transform = `translateX(${translateX}%)`;
+            
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+                dot.setAttribute('aria-selected', index === currentSlide);
+            });
+        }
+        
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % items.length;
+            updateCarousel();
+        }
+        
+        function goToSlide(index) {
+            currentSlide = index;
+            updateCarousel();
+        }
+        
+        function startAutoPlay() {
+            autoPlayInterval = setInterval(nextSlide, 7000);
+        }
+        
+        function stopAutoPlay() {
+            if (autoPlayInterval) {
+                clearInterval(autoPlayInterval);
+            }
+        }
+        
+        // Dot navigation
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                stopAutoPlay();
+                goToSlide(index);
+                startAutoPlay();
+            });
+        });
+        
+        // Touch/swipe support
+        let startX = 0;
+        let endX = 0;
+        
+        carousel.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+            stopAutoPlay();
+        }, { passive: true });
+        
+        carousel.addEventListener('touchend', (e) => {
+            endX = e.changedTouches[0].clientX;
+            handleSwipe();
+            startAutoPlay();
+        }, { passive: true });
+        
+        function handleSwipe() {
+            const threshold = 50;
+            const diff = startX - endX;
+            
+            if (Math.abs(diff) > threshold) {
+                if (diff > 0) {
+                    // Swipe left - next slide
+                    nextSlide();
+                } else {
+                    // Swipe right - previous slide
+                    currentSlide = (currentSlide - 1 + items.length) % items.length;
+                    updateCarousel();
+                }
+            }
+        }
+        
+        // Pause on hover
+        carousel.addEventListener('mouseenter', stopAutoPlay);
+        carousel.addEventListener('mouseleave', startAutoPlay);
+        
+        // Initialize
+        updateCarousel();
+        startAutoPlay();
+        
+        return {
+            next: nextSlide,
+            prev: () => {
+                currentSlide = (currentSlide - 1 + items.length) % items.length;
+                updateCarousel();
+            },
+            goTo: goToSlide,
+            stop: stopAutoPlay,
+            start: startAutoPlay
+        };
+    }
+
+    // Initialize carousels
+    const projectCarousel = initCarousel('projects-carousel', 'carousel-nav');
+    const testimonialCarousel = initCarousel('testimonials-carousel', 'testimonials-nav');
+    
+    // ============ MODAL FUNCTIONALITY ============
+    window.openModal = function(modalId) {
+        const modal = document.getElementById(modalId);
+        if (!modal) return;
+        
+        modal.style.display = 'flex';
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        
+        setTimeout(() => {
+            modal.classList.add('active');
+        }, 10);
+        
+        // Focus management
+        const focusableElements = modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+        if (focusableElements.length > 0) {
+            focusableElements[0].focus();
+        }
+        
+        // Analytics
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'modal_open', {
+                'modal_id': modalId,
+                'event_category': 'engagement'
+            });
+        }
+    };
+
+    window.closeModal = function(modalId) {
+        const modal = document.getElementById(modalId);
+        if (!modal) return;
+        
+        modal.classList.remove('active');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        
+        setTimeout(() => {
+            modal.style.display = 'none';
+        }, 300);
+    };
+
+    // Modal event listeners
+    document.querySelectorAll('.modal').forEach(modal => {
+        // Close on outside click
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal(modal.id);
+            }
+        });
+        
+        // Focus trap
+        modal.addEventListener('keydown', (e) => {
+            if (e.key === 'Tab') {
+                const focusableElements = modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+                const firstElement = focusableElements[0];
+                const lastElement = focusableElements[focusableElements.length - 1];
+                
+                if (e.shiftKey) {
+                    if (document.activeElement === firstElement) {
+                        lastElement.focus();
+                        e.preventDefault();
+                    }
+                } else {
+                    if (document.activeElement === lastElement) {
+                        firstElement.focus();
+                        e.preventDefault();
+                    }
+                }
+            }
+        });
+    });
+
+    // Close modal on escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            const activeModal = document.querySelector('.modal.active');
+            if (activeModal) {
+                closeModal(activeModal.id);
+            }
+        }
+    });
+    
+    // ============ CONTACT FORM ============
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const submitButton = this.querySelector('button[type="submit"]');
+            const originalText = submitButton.innerHTML;
+            
+            // Show loading state
+            submitButton.innerHTML = `
+                <svg class="animate-spin w-4 h-4 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2L12 6M12 18L12 22M4.93 4.93L7.76 7.76M16.24 16.24L19.07 19.07M2 12L6 12M18 12L22 12M4.93 19.07L7.76 16.24M16.24 7.76L19.07 4.93"/>
+                </svg>
+                Sending Message...
+            `;
+            submitButton.disabled = true;
+
+            try {
+                // Simulate form submission (replace with actual endpoint)
+                await new Promise(resolve => setTimeout(resolve, 2000));
+                
+                // Show success message
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Message Sent Successfully!',
+                    text: 'Thank you for reaching out. I\'ll get back to you within 24 hours.',
+                    confirmButtonColor: '#6366f1',
+                    confirmButtonText: 'Great!',
+                    customClass: {
+                        popup: 'cultural-ai-modal'
+                    }
+                });
+                
+                // Reset form
+                this.reset();
+                
+                // Create celebration effect
+                if (starsSystem) {
+                    for (let i = 0; i < 5; i++) {
+                        setTimeout(() => starsSystem.addBeat(), i * 200);
+                    }
+                }
+                
+                // Analytics
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'form_submit', {
+                        'form_name': 'contact_form',
+                        'event_category': 'engagement'
+                    });
+                }
+                
+            } catch (error) {
+                console.error('Form submission error:', error);
+                
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops! Something went wrong',
+                    text: 'Sorry, there was an issue sending your message. Please try again or contact me directly via email.',
+                    confirmButtonColor: '#6366f1',
+                    confirmButtonText: 'Try Again',
+                    customClass: {
+                        popup: 'cultural-ai-modal'
+                    }
+                });
+            } finally {
+                // Restore button
+                submitButton.innerHTML = originalText;
+                submitButton.disabled = false;
+            }
+        });
+    }
+    
+    // ============ SCROLL TO TOP ============
+    const scrollToTopBtn = document.getElementById('scroll-to-top');
+    if (scrollToTopBtn) {
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 500) {
+                scrollToTopBtn.classList.add('visible');
+            } else {
+                scrollToTopBtn.classList.remove('visible');
+            }
+        });
+
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+            
+            // Add beat effect
+            if (starsSystem) starsSystem.addBeat();
+        });
+    }
+    
+    // ============ LAZY LOADING ============
+    if ('IntersectionObserver' in window) {
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    const src = img.getAttribute('data-src');
+                    
+                    if (src) {
+                        img.setAttribute('src', src);
+                        img.removeAttribute('data-src');
+                        img.classList.add('loaded');
+                    }
+                    
+                    observer.unobserve(img);
+                }
+            });
+        });
+
+        document.querySelectorAll('img[data-src]').forEach(img => {
+            imageObserver.observe(img);
+        });
+    }
+    
+    // ============ COPY TO CLIPBOARD ============
+    function copyToClipboard(text, element) {
+        if (navigator.clipboard && window.isSecureContext) {
+            navigator.clipboard.writeText(text).then(() => {
+                showCopyFeedback(element);
+            }).catch(() => {
+                fallbackCopyToClipboard(text, element);
+            });
+        } else {
+            fallbackCopyToClipboard(text, element);
+        }
+    }
+
+    function fallbackCopyToClipboard(text, element) {
+        const textArea = document.createElement('textarea');
+        textArea.value = text;
+        textArea.style.position = 'fixed';
+        textArea.style.left = '-999999px';
+        textArea.style.top = '-999999px';
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        
+        try {
+            document.execCommand('copy');
+            showCopyFeedback(element);
+        } catch (err) {
+            console.error('Fallback copy failed:', err);
+        }
+        
+        document.body.removeChild(textArea);
+    }
+
+    function showCopyFeedback(element) {
+        const originalText = element.textContent;
+        const originalColor = element.style.color;
+        
+        element.textContent = '✓ Copied!';
+        element.style.color = '#10b981';
+        
+        setTimeout(() => {
+            element.textContent = originalText;
+            element.style.color = originalColor;
+        }, 2000);
+        
+        // Add celebration effect
+        if (starsSystem) starsSystem.addBeat();
+    }
+
+    // Email copy functionality
+     const emailLinks = document.querySelectorAll('a[href^="mailto:"]');
+    emailLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const email = link.href.replace('mailto:', '');
+            copyToClipboard(email, link);
+        });
+    });
+    
+    // ============ ANALYTICS & TRACKING ============
+    function trackEvent(eventName, parameters = {}) {
+        // Console logging for development
+        console.log('📊 Event:', eventName, parameters);
+        
+        // Google Analytics (if available)
+        if (typeof gtag !== 'undefined') {
+            gtag('event', eventName, parameters);
+        }
+        
+        // Custom analytics can be added here
+    }
+
+    // Track section viewing
+    const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
+                trackEvent('section_view', {
+                    'section_name': entry.target.id,
+                    'event_category': 'engagement',
+                    'visibility_ratio': entry.intersectionRatio
+                });
+            }
+        });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('section[id]').forEach(section => {
+        sectionObserver.observe(section);
+    });
+
+    // Track external links
+    document.querySelectorAll('a[href^="https://"]').forEach(link => {
+        if (link.hostname !== window.location.hostname) {
+            link.addEventListener('click', () => {
+                trackEvent('external_link_click', {
+                    'link_url': link.href,
+                    'link_text': link.textContent.trim(),
+                    'event_category': 'outbound'
+                });
+            });
+        }
+    });
+    
+    // ============ KEYBOARD ACCESSIBILITY ============
+    document.addEventListener('keydown', (e) => {
+        // Skip to main content on Tab key
+        if (e.key === 'Tab' && !e.shiftKey && document.activeElement === document.body) {
+            const mainContent = document.querySelector('main') || document.querySelector('#home');
+            if (mainContent) {
+                mainContent.focus();
+                e.preventDefault();
+            }
+        }
+        
+        // Escape key handling
+        if (e.key === 'Escape') {
+            // Close mobile menu
+            if (mobileMenu && mobileMenu.classList.contains('active')) {
+                mobileMenu.classList.remove('active');
+                mobileToggle.classList.remove('active');
+                mobileToggle.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
+            }
+        }
+    });
+    
+    // ============ PERFORMANCE MONITORING ============
+    window.addEventListener('load', () => {
+        // Track page load performance
+        if ('performance' in window && 'timing' in performance) {
+            const timing = performance.timing;
+            const loadTime = timing.loadEventEnd - timing.navigationStart;
+            const domContentLoaded = timing.domContentLoadedEventEnd - timing.navigationStart;
+            
+            console.log('📈 Performance Metrics:', {
+                'Total Load Time': `${loadTime}ms`,
+                'DOM Ready': `${domContentLoaded}ms`,
+                'DNS Lookup': `${timing.domainLookupEnd - timing.domainLookupStart}ms`,
+                'Server Response': `${timing.responseEnd - timing.requestStart}ms`
+            });
+            
+            trackEvent('page_performance', {
+                'load_time': loadTime,
+                'dom_ready_time': domContentLoaded,
+                'event_category': 'performance'
+            });
+        }
+        
+        // Track successful initialization
+        trackEvent('portfolio_loaded', {
+            'stars_active': !!starsSystem,
+            'particles_active': !!particleSystem,
+            'event_category': 'initialization'
+        });
+    });
+    
+    // ============ ERROR HANDLING ============
+    window.addEventListener('error', (event) => {
+        console.error('JavaScript Error:', event.error);
+        
+        trackEvent('javascript_error', {
+            'error_message': event.error ? event.error.toString() : 'Unknown error',
+            'filename': event.filename,
+            'line_number': event.lineno,
+            'event_category': 'error'
+        });
+    });
+
+    window.addEventListener('unhandledrejection', (event) => {
+        console.error('Unhandled Promise Rejection:', event.reason);
+        
+        trackEvent('promise_rejection', {
+            'error_message': event.reason ? event.reason.toString() : 'Unknown rejection',
+            'event_category': 'error'
+        });
+    });
+    
+    // ============ THEME & PREFERENCES ============
+    function initThemeSystem() {
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+        const currentTheme = localStorage.getItem('theme');
+        
+        // Apply saved theme or system preference
+        if (currentTheme === 'dark' || (!currentTheme && prefersDarkScheme.matches)) {
+            document.documentElement.classList.add('dark-mode');
+        }
+        
+        // Listen for system theme changes
+        prefersDarkScheme.addEventListener('change', (e) => {
+            if (!localStorage.getItem('theme')) {
+                if (e.matches) {
+                    document.documentElement.classList.add('dark-mode');
+                } else {
+                    document.documentElement.classList.remove('dark-mode');
+                }
+            }
+        });
+        
+        // Respect reduced motion preference
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+        if (prefersReducedMotion.matches) {
+            document.documentElement.classList.add('reduced-motion');
+            console.log('♿ Reduced motion preferences detected');
+        }
+    }
+    
+    initThemeSystem();
+    
+    // ============ PROGRESSIVE WEB APP ============
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+        
+        // Show install banner (you can implement this UI)
+        console.log('📱 PWA installation available');
+        
+        trackEvent('pwa_install_prompt', {
+            'event_category': 'pwa'
+        });
+    });
+
+    window.addEventListener('appinstalled', () => {
+        console.log('📱 PWA installed successfully');
+        deferredPrompt = null;
+        
+        trackEvent('pwa_installed', {
+            'event_category': 'pwa'
+        });
+    });
+    
+    // ============ NETWORK STATUS ============
+    function updateOnlineStatus() {
+        const status = navigator.onLine ? 'online' : 'offline';
+        console.log(`🌐 Network status: ${status}`);
+        
+        if (!navigator.onLine) {
+            // Show offline message
+            const offlineMessage = document.createElement('div');
+            offlineMessage.className = 'offline-banner';
+            offlineMessage.innerHTML = `
+                <div class="offline-content">
+                    📡 You're currently offline. Some features may be limited.
+                </div>
+            `;
+            document.body.appendChild(offlineMessage);
+        } else {
+            // Remove offline message
+            const offlineBanner = document.querySelector('.offline-banner');
+            if (offlineBanner) {
+                offlineBanner.remove();
+            }
+        }
+        
+        trackEvent('network_status_change', {
+            'status': status,
+            'event_category': 'technical'
+        });
+    }
+
+    window.addEventListener('online', updateOnlineStatus);
+    window.addEventListener('offline', updateOnlineStatus);
+    
+    // ============ CUSTOM INTERACTIONS ============
+    
+    // Logo click easter egg
+    const logo = document.querySelector('.logo');
+    if (logo) {
+        let clickCount = 0;
+        logo.addEventListener('click', () => {
+            clickCount++;
+            if (clickCount >= 5) {
+                // Easter egg: create multiple beats
+                if (starsSystem) {
+                    for (let i = 0; i < 10; i++) {
+                        setTimeout(() => starsSystem.addBeat(), i * 100);
+                    }
+                }
+                
+                Swal.fire({
+                    icon: 'success',
+                    title: '🎉 Easter Egg Found!',
+                    text: 'You discovered the hidden celebration! Cultural AI loves curious minds!',
+                    confirmButtonColor: '#6366f1',
+                    timer: 3000,
+                    customClass: {
+                        popup: 'cultural-ai-modal easter-egg'
+                    }
+                });
+                
+                trackEvent('easter_egg_found', {
+                    'trigger': 'logo_clicks',
+                    'click_count': clickCount,
+                    'event_category': 'engagement'
+                });
+                
+                clickCount = 0; // Reset
+            }
+        });
+    }
+    
+    // Konami Code easter egg
+    const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'KeyB', 'KeyA'];
+    let konamiIndex = 0;
+    
+    document.addEventListener('keydown', (e) => {
+        if (e.code === konamiCode[konamiIndex]) {
+            konamiIndex++;
+            if (konamiIndex === konamiCode.length) {
+                // Konami code activated
+                document.body.classList.add('konami-mode');
+                
+                if (starsSystem) {
+                    // Super celebration
+                    for (let i = 0; i < 20; i++) {
+                        setTimeout(() => starsSystem.addBeat(), i * 50);
+                    }
+                }
+                
+                Swal.fire({
+                    icon: 'success',
+                    title: '🚀 Konami Code Activated!',
+                    text: 'Cultural AI Mode: ENHANCED! You are truly a digital explorer!',
+                    confirmButtonColor: '#6366f1',
+                    customClass: {
+                        popup: 'cultural-ai-modal konami-mode'
+                    }
+                });
+                
+                trackEvent('konami_code_activated', {
+                    'event_category': 'engagement'
+                });
+                
+                konamiIndex = 0;
+                
+                // Remove effect after 10 seconds
+                setTimeout(() => {
+                    document.body.classList.remove('konami-mode');
+                }, 10000);
+            }
+        } else {
+            konamiIndex = 0;
+        }
+    });
+    
+    // ============ INITIALIZATION COMPLETE ============
+    console.log('✅ Cultural AI Portfolio Fully Initialized!');
+    console.log('📊 Systems Status:');
+    console.log(`   🌟 Animated Stars: ${starsSystem ? 'Active' : 'Inactive'}`);
+    console.log(`   🔷 3D Particles: ${particleSystem ? 'Active' : 'Inactive'}`);
+    console.log(`   📱 PWA Ready: ${typeof navigator.serviceWorker !== 'undefined'}`);
+    console.log(`   🔄 Animations: ${typeof AOS !== 'undefined' ? 'AOS Loaded' : 'Manual'}`);
+    
+    trackEvent('initialization_complete', {
+        'stars_system': !!starsSystem,
+        'particle_system': !!particleSystem,
+        'aos_loaded': typeof AOS !== 'undefined',
+        'three_js_loaded': typeof THREE !== 'undefined',
+        'event_category': 'system'
+    });
+    
+    // Initialize AOS if available
+    if (typeof AOS !== 'undefined') {
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out-cubic',
+            once: true,
+            offset: 100,
+            delay: 100
+        });
+        console.log('🎬 AOS animations initialized');
+    }
+});
+
+// ============ SERVICE WORKER & PWA ============
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js')
+        .then((registration) => {
+            console.log('✅ ServiceWorker registration successful');
+            
+            // Check for updates
+            registration.addEventListener('updatefound', () => {
+                const newWorker = registration.installing;
+                newWorker.addEventListener('statechange', () => {
+                    if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                        console.log('🔄 New content available, page will refresh');
+                        window.location.reload();
+                    }
+                });
+            });
+        })
+        .catch((err) => {
+            console.log('❌ ServiceWorker registration failed: ', err);
+        });
 }
 
-// Initialize when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-    // Delay to ensure everything is loaded
-    setTimeout(createParticleSystem, 200);
-});
+// ============ WEB APP MANIFEST ============
+const manifestContent = {
+    "name": "Thanatsitt Santisamranwilai - Cultural AI Innovator",
+    "short_name": "Cultural AI Portfolio",
+    "description": "Leading Cultural AI Innovator specializing in cross-cultural technology solutions",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#0f0f23",
+    "theme_color": "#6366f1",
+    "orientation": "portrait-primary",
+    "icons": [
+        {
+            "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTkyIiBoZWlnaHQ9IjE5MiIgdmlld0JveD0iMCAwIDE5MiAxOTIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxOTIiIGhlaWdodD0iMTkyIiByeD0iMjQiIGZpbGw9IiM2MzY2ZjEiLz4KPHN2ZyB4PSI0OCIgeT0iNDgiIHdpZHRoPSI5NiIgaGVpZ2h0PSI5NiIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiPgo8cGF0aCBkPSJtOSAxMiAyIDIgNC00Ii8+CjxwYXRoIGQ9Im0yMS4zNDQgMTUuNjQ0LTMuNjA2IDMuNmE5IDkgMCAxIDEgMC0xNC44NTZsMy42MDYgMy42YTIuNSAyLjUgMCAxIDEgMCA3LjY1NloiLz4KPC9zdmc+Cjwvc3ZnPg==",
+            "sizes": "192x192",
+            "type": "image/svg+xml"
+        },
+        {
+            "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgdmlld0JveD0iMCAwIDUxMiA1MTIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiByeD0iNjQiIGZpbGw9IiM2MzY2ZjEiLz4KPHN2ZyB4PSIxMjgiIHk9IjEyOCIgd2lkdGg9IjI1NiIgaGVpZ2h0PSIyNTYiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIyIj4KPHBhdGggZD0ibTkgMTIgMiAyIDQtNCIvPgo8cGF0aCBkPSJtMjEuMzQ0IDE1LjY0NC0zLjYwNiAzLjZhOSA5IDAgMSAxIDAtMTQuODU2bDMuNjA2IDMuNmEyLjUgMi41IDAgMSAxIDAgNy42NTZaIi8+Cjwvc3ZnPgo8L3N2Zz4=",
+            "sizes": "512x512",
+            "type": "image/svg+xml"
+        }
+    ],
+    "categories": ["technology", "education", "portfolio", "ai"],
+    "lang": "en",
+    "dir": "ltr",
+    "scope": "/",
+    "prefer_related_applications": false
+};
+
+// Create and inject manifest
+const manifestBlob = new Blob([JSON.stringify(manifestContent)], { type: 'application/json' });
+const manifestUrl = URL.createObjectURL(manifestBlob);
+const manifestLink = document.createElement('link');
+manifestLink.rel = 'manifest';
+manifestLink.href = manifestUrl;
+document.head.appendChild(manifestLink);
+
+// ============ GLOBAL UTILITY FUNCTIONS ============
+window.culturalAI = {
+    // Stars system control
+    stars: {
+        addBeat: () => starsSystem?.addBeat(),
+        getStats: () => starsSystem?.getStats(),
+        stop: () => starsSystem?.stop(),
+        start: () => starsSystem?.start()
+    },
+    
+    // Particle system control
+    particles: {
+        stop: () => particleSystem?.stop()
+    },
+    
+    // Analytics
+    track: trackEvent,
+    
+    // Theme control
+    toggleTheme: () => {
+        const isDark = document.documentElement.classList.contains('dark-mode');
+        if (isDark) {
+            document.documentElement.classList.remove('dark-mode');
+            localStorage.setItem('theme', 'light');
+        } else {
+            document.documentElement.classList.add('dark-mode');
+            localStorage.setItem('theme', 'dark');
+        }
+        trackEvent('theme_toggle', { 
+            new_theme: isDark ? 'light' : 'dark',
+            event_category: 'ui'
+        });
+    },
+    
+    // Version info
+    version: '2.0.0',
+    build: 'cultural-ai-enhanced'
+};
+
+console.log('🌍 Cultural AI Portfolio v2.0.0 - Ready to Bridge Cultures! 🤖✨');
 </script>
+
+<!-- ============ SCHEMA MARKUP ============ -->
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Thanatsitt Santisamranwilai",
+    "jobTitle": "Cultural AI Innovator",
+    "description": "Leading Cultural AI Innovator specializing in cross-cultural technology solutions and AI-driven cultural preservation",
+    "url": "https://cultural-ai-portfolio.netlify.app",
+    "image": "https://cultural-ai-portfolio.netlify.app/assets/images/profile.jpg",
+    "sameAs": [
+        "https://github.com/thanatsitt",
+        "https://linkedin.com/in/thanatsitt-santisamranwilai",
+        "https://twitter.com/thanatsitt_ai"
+    ],
+    "knowsAbout": [
+        "Artificial Intelligence",
+        "Cultural Technology",
+        "Cross-Cultural Communication",
+        "Machine Learning",
+        "Natural Language Processing",
+        "VTuber Technology",
+        "Blockchain Development",
+        "Cultural Preservation"
+    ],
+    "affiliation": {
+        "@type": "Organization",
+        "name": "Cultural AI Innovation Lab"
+    },
+    "hasOccupation": {
+        "@type": "Occupation",
+        "name": "AI Research Scientist",
+        "occupationLocation": {
+            "@type": "Place",
+            "name": "Global Remote"
+        },
+        "skills": [
+            "Python",
+            "TensorFlow",
+            "PyTorch",
+            "React",
+            "Node.js",
+            "Blockchain",
+            "Cultural Analysis",
+            "Cross-Cultural Communication"
+        ]
+    }
+}
+</script>
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Cultural AI Innovation Projects",
+    "description": "Cutting-edge projects bridging AI technology with cultural understanding",
+    "numberOfItems": 4,
+    "itemListElement": [
+        {
+            "@type": "CreativeWork",
+            "position": 1,
+            "name": "Siam-Blessing VTuber AI",
+            "description": "Revolutionary AI-driven VTuber technology with advanced cultural awareness and cross-cultural communication capabilities",
+            "creator": {
+                "@type": "Person",
+                "name": "Thanatsitt Santisamranwilai"
+            },
+            "dateCreated": "2023",
+            "keywords": "AI, VTuber, Cultural Technology, Machine Learning, Virtual Influencer",
+            "applicationCategory": "Entertainment Technology"
+        },
+        {
+            "@type": "CreativeWork",
+            "position": 2,
+            "name": "Cross-Border E-commerce AI",
+            "description": "Innovative blockchain-based e-commerce platform with AI-powered cultural adaptation and localization features",
+            "creator": {
+                "@type": "Person",
+                "name": "Thanatsitt Santisamranwilai"
+            },
+            "dateCreated": "2023",
+            "keywords": "Blockchain, E-commerce, AI, Cultural Adaptation, International Trade",
+            "applicationCategory": "Business Technology"
+        },
+        {
+            "@type": "CreativeWork",
+            "position": 3,
+            "name": "Cultural Translation AI",
+            "description": "Advanced multilingual AI system that preserves cultural context and nuances in translation",
+            "creator": {
+                "@type": "Person",
+                "name": "Thanatsitt Santisamranwilai"
+            },
+            "dateCreated": "2022",
+            "keywords": "NLP, Machine Translation, Cultural Analysis, Multilingual AI, Language Technology",
+            "applicationCategory": "Language Technology"
+        },
+        {
+            "@type": "CreativeWork",
+            "position": 4,
+            "name": "Smart Real Estate AI",
+            "description": "Intelligent property matching system with cultural preference analysis and location-based recommendations",
+            "creator": {
+                "@type": "Person",
+                "name": "Thanatsitt Santisamranwilai"
+            },
+            "dateCreated": "2023",
+            "keywords": "PropTech, AI, Cultural Insights, Predictive Analytics, Real Estate Technology",
+            "applicationCategory": "Real Estate Technology"
+        }
+    ]
+}
+</script>
+
+<!-- ============ PERFORMANCE & MONITORING ============ -->
+<script>
+// Web Vitals monitoring (basic implementation)
+function observeWebVitals() {
+    if ('PerformanceObserver' in window) {
+        // Largest Contentful Paint
+        const lcpObserver = new PerformanceObserver((list) => {
+            for (const entry of list.getEntries()) {
+                console.log('📊 LCP:', Math.round(entry.startTime), 'ms');
+                trackEvent('web_vital_lcp', {
+                    value: Math.round(entry.startTime),
+                    event_category: 'performance'
+                });
+            }
+        });
+        
+        try {
+            lcpObserver.observe({ entryTypes: ['largest-contentful-paint'] });
+        } catch (e) {
+            console.log('LCP observation not supported');
+        }
+        
+        // First Input Delay
+        const fidObserver = new PerformanceObserver((list) => {
+            for (const entry of list.getEntries()) {
+                console.log('📊 FID:', Math.round(entry.processingStart - entry.startTime), 'ms');
+                trackEvent('web_vital_fid', {
+                    value: Math.round(entry.processingStart - entry.startTime),
+                    event_category: 'performance'
+                });
+            }
+        });
+        
+        try {
+            fidObserver.observe({ entryTypes: ['first-input'] });
+        } catch (e) {
+            console.log('FID observation not supported');
+        }
+    }
+}
+
+// Initialize web vitals monitoring
+observeWebVitals();
+</script>
+
 </body>
 </html>
+
+        
