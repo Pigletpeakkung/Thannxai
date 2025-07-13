@@ -1,340 +1,3703 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" itemscope itemtype="https://schema.org/Person">
 <head>
+    <!-- Essential Meta Tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tailwind + GSAP Animations</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
-        body { font-family: 'Inter', sans-serif; }
-    </style>
-</head>
-<body class="bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 min-h-screen overflow-x-hidden">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- Security Headers -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https: data:; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net; font-src 'self' https://fonts.gstatic.com;">
 
-    <!-- Hero Section -->
-    <section class="relative h-screen flex items-center justify-center overflow-hidden">
-        <!-- Animated Background Particles -->
-        <canvas id="particles" class="absolute inset-0 z-0"></canvas>
-        
-        <!-- Gradient Overlay -->
-        <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-purple-900/30 z-10"></div>
-        
-        <!-- Hero Content -->
-        <div class="relative z-20 text-center space-y-8 px-6">
-            <h1 id="hero-title" class="text-7xl md:text-9xl font-black">
-                <span class="bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 bg-clip-text text-transparent opacity-0">
-                    FLUID
-                </span>
-            </h1>
-            
-            <p id="hero-subtitle" class="text-xl md:text-2xl text-gray-300/90 font-light max-w-2xl mx-auto opacity-0">
-                Experience the perfect blend of Tailwind CSS and GSAP animations
-            </p>
-            
-            <div id="hero-buttons" class="flex flex-wrap gap-4 justify-center opacity-0">
-                <button onclick="triggerParticles()" class="btn-primary">
-                    Particle Blast
-                </button>
-                <button onclick="morphingCards()" class="btn-secondary">
-                    Morphing Cards
-                </button>
-                <button onclick="textAnimations()" class="btn-ghost">
-                    Text Effects
-                </button>
-            </div>
-        </div>
-        
-        <!-- Floating Elements -->
-        <div id="floating-elements" class="absolute inset-0 pointer-events-none z-15">
-            <div class="floating-circle bg-cyan-500/20 w-32 h-32 rounded-full absolute top-1/4 left-1/4"></div>
-            <div class="floating-circle bg-purple-500/20 w-24 h-24 rounded-full absolute top-3/4 right-1/4"></div>
-            <div class="floating-circle bg-pink-500/20 w-40 h-40 rounded-full absolute bottom-1/4 left-1/2"></div>
-        </div>
-    </section>
+    <!-- Primary SEO Meta Tags -->
+    <title>Thanatsitt Santisamranwilai - Cultural AI Innovator | AI Developer & Cross-Cultural Technology Expert</title>
+    <meta name="description" content="Leading Cultural AI Innovator specializing in cross-cultural technology solutions, AI development, and VTuber content creation. Expert in Thai, English, and Japanese markets with 500K+ project views.">
+    <meta name="keywords" content="Cultural AI, AI Developer, Cross-Cultural Technology, VTuber AI, Thai AI Expert, Blockchain Developer, E-commerce AI, AI Ethics, Multilingual AI, Cultural Technology, AI Innovation, Machine Learning, Deep Learning, Natural Language Processing, Computer Vision, AI Research, Technology Consulting, Digital Transformation, AI Solutions, Cultural Sensitivity AI, AI Localization, Southeast Asia AI, AI Startups, Tech Innovation, AI Portfolio">
+    <meta name="author" content="Thanatsitt Santisamranwilai">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="language" content="English">
 
-    <!-- Cards Section -->
-    <section class="relative py-20 px-6">
-        <div class="max-w-7xl mx-auto">
-            <h2 class="text-5xl font-bold text-center mb-16 bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
-                Interactive Cards
-            </h2>
-            
-            <div id="cards-container" class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="morph-card bg-gradient-to-br from-cyan-500/10 to-blue-600/10 backdrop-blur-sm border border-cyan-500/20 rounded-2xl p-8 hover:border-cyan-400/50 transition-all duration-500">
-                    <div class="w-16 h-16 bg-gradient-to-br from-cyan-400 to-cyan-600 rounded-xl mb-6"></div>
-                    <h3 class="text-2xl font-bold text-white mb-4">Particle System</h3>
-                    <p class="text-gray-300">Dynamic particle animations with physics</p>
-                </div>
-                
-                <div class="morph-card bg-gradient-to-br from-purple-500/10 to-pink-600/10 backdrop-blur-sm border border-purple-500/20 rounded-2xl p-8 hover:border-purple-400/50 transition-all duration-500">
-                    <div class="w-16 h-16 bg-gradient-to-br from-purple-400 to-pink-600 rounded-xl mb-6"></div>
-                    <h3 class="text-2xl font-bold text-white mb-4">Morphing UI</h3>
-                    <p class="text-gray-300">Smooth transitions and transformations</p>
-                </div>
-                
-                <div class="morph-card bg-gradient-to-br from-emerald-500/10 to-teal-600/10 backdrop-blur-sm border border-emerald-500/20 rounded-2xl p-8 hover:border-emerald-400/50 transition-all duration-500">
-                    <div class="w-16 h-16 bg-gradient-to-br from-emerald-400 to-teal-600 rounded-xl mb-6"></div>
-                    <h3 class="text-2xl font-bold text-white mb-4">Text Effects</h3>
-                    <p class="text-gray-300">Advanced typography animations</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- Open Graph / Facebook Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://thanatsitt.dev">
+    <meta property="og:title" content="Thanatsitt Santisamranwilai - Cultural AI Innovator">
+    <meta property="og:description" content="Leading Cultural AI Innovator bridging technology and cultural understanding through collaborative AI development. Expert in cross-cultural technology solutions with 500K+ project views.">
+    <meta property="og:image" content="https://thanatsitt.dev/assets/images/og-image.jpg">
+    <meta property="og:site_name" content="Thanatsitt Santisamranwilai Portfolio">
+    <meta property="og:locale" content="en_US">
 
-    <!-- Text Animation Showcase -->
-    <section class="relative py-20 px-6 bg-gradient-to-r from-slate-900/50 to-purple-900/50">
-        <div class="max-w-4xl mx-auto text-center space-y-12">
-            <div id="split-text" class="text-6xl md:text-8xl font-black text-white">
-                AMAZING EFFECTS
-            </div>
-            
-            <div id="reveal-text" class="text-2xl text-gray-300 overflow-hidden">
-                <div class="inline-block">Watch as text comes alive with stunning animations</div>
-            </div>
-        </div>
-    </section>
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://thanatsitt.dev">
+    <meta name="twitter:title" content="Thanatsitt Santisamranwilai - Cultural AI Innovator">
+    <meta name="twitter:description" content="Leading Cultural AI Innovator bridging technology and cultural understanding through collaborative AI development.">
+    <meta name="twitter:image" content="https://thanatsitt.dev/assets/images/twitter-image.jpg">
 
-    <!-- Custom Styles -->
-    <style>
-        .btn-primary {
-            @apply px-8 py-4 bg-gradient-to-r from-cyan-500 to-purple-600 text-white font-semibold rounded-full hover:shadow-2xl hover:shadow-cyan-500/25 transition-all duration-300 transform hover:scale-105;
-        }
-        
-        .btn-secondary {
-            @apply px-8 py-4 bg-white/10 backdrop-blur-sm text-white font-semibold rounded-full border border-white/20 hover:bg-white/20 transition-all duration-300;
-        }
-        
-        .btn-ghost {
-            @apply px-8 py-4 text-gray-300 font-semibold rounded-full border border-gray-500/30 hover:border-white/50 hover:text-white transition-all duration-300;
-        }
-        
-        .floating-circle {
-            animation: float 6s ease-in-out infinite;
-        }
-        
-        .floating-circle:nth-child(2) { animation-delay: 2s; }
-        .floating-circle:nth-child(3) { animation-delay: 4s; }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(180deg); }
-        }
-    </style>
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&display=swap" as="style">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" as="style">
 
+    <!-- Tailwind CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+    <!-- AOS (Animate On Scroll) CSS -->
+    <link rel="stylesheet" href="https://cdn.rawgit.com/michalsnik/aos/2.3.1/dist/aos.css"/>
+
+    <!-- Sweet Alert CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#6366f1">
+    <meta name="msapplication-TileColor" content="#6366f1">
+    <meta name="theme-color" content="#6366f1">
+
+    <!-- Additional Meta Tags for Verification and Social Sharing -->
+    <meta name="google-site-verification" content="your-actual-google-verification-code">
+    <meta name="pinterest-rich-pin" content="true">
+
+    <!-- Structured Data - JSON-LD -->
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Thanatsitt Santisamranwilai",
+    "jobTitle": "Cultural AI Innovation Specialist",
+    "description": "Leading Cultural AI Innovator specializing in cross-cultural technology solutions, VTuber AI development, and multilingual voice acting",
+    "url": "https://thannxai.netlify.app",
+    "email": "thanattsitt.info@yahoo.co.uk",
+    "image": "https://thannxai.netlify.app/assets/images/profile.jpg",
+        "sameAs": [
+            "https://www.linkedin.com/in/thanattsitts",
+            "https://github.com/Pigletpeakkung",
+            "https://linktr.ee/ThanttEzekiel",
+            "https://x.com/SThanattsitt"
+        ],
+        "knowsAbout": [
+            "Artificial Intelligence",
+            "Cultural Technology",
+            "Cross-Cultural Development",
+            "VTuber AI",
+            "Blockchain Development",
+            "Machine Learning",
+            "Natural Language Processing",
+            "AI Ethics",
+            "Multilingual AI",
+            "Cultural Sensitivity",
+            "E-commerce AI",
+            "Digital Transformation"
+        ],
+        "knowsLanguage": [
+            {
+                "@type": "Language",
+                "name": "English"
+            },
+            {
+                "@type": "Language",
+                "name": "Thai"
+            },
+            {
+                "@type": "Language",
+                "name": "Japanese"
+            }
+        ],
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Bangkok",
+            "addressCountry": "Thailand"
+        },
+        "worksFor": {
+            "@type": "Organization",
+            "name": "Independent AI Consultant"
+        },
+        "hasCredential": [
+            {
+                "@type": "EducationalOccupationalCredential",
+                "name": "AI Development Specialist",
+                "description": "Expert in cultural AI development and cross-cultural technology solutions"
+            }
+        ],
+        "makesOffer": [
+            {
+                "@type": "Service",
+                "name": "Cultural AI Development",
+                "description": "Development of AI systems that understand and respect cultural nuances"
+            },
+            {
+                "@type": "Service",
+                "name": "Cross-Cultural Technology Consulting",
+                "description": "Consulting services for implementing technology solutions across different cultures"
+            },
+            {
+                "@type": "Service",
+                "name": "VTuber AI Content Creation",
+                "description": "AI-enhanced content creation for VTuber and digital entertainment"
+            }
+        ]
+    }
+    </script>
+
+    <!-- Additional Structured Data for Organization -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Thanatsitt Santisamranwilai - Cultural AI Innovation",
+        "url": "https://thanatsitt.dev",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://thanatsitt.dev/assets/images/logo.png",
+            "width": 400,
+            "height": 400
+        },
+        "founder": {
+            "@type": "Person",
+            "name": "Thanatsitt Santisamranwilai"
+        },
+        "foundingDate": "2020",
+        "description": "Leading provider of cultural AI solutions and cross-cultural technology development",
+        "areaServed": [
+            {
+                "@type": "Country",
+                "name": "Thailand"
+            },
+            {
+                "@type": "Country",
+                "name": "Japan"
+            },
+            {
+                "@type": "Country",
+                "name": "Singapore"
+            },
+            {
+                "@type": "Country",
+                "name": "United Kingdom"
+            }
+        ],
+        "serviceType": [
+            "AI Development",
+            "Cultural Technology",
+            "VTuber AI",
+            "Blockchain Development",
+            "E-commerce AI"
+        ]
+    }
+    </script>
+
+    <!-- Additional Structured Data for Website -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Thanatsitt Santisamranwilai - Cultural AI Innovator",
+        "url": "https://thanatsitt.dev",
+        "description": "Portfolio showcasing cultural AI innovation and cross-cultural technology solutions.",
+        "inLanguage": ["en", "th", "ja"],
+        "author": {
+            "@type": "Person",
+            "name": "Thanatsitt Santisamranwilai"
+        },
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://thanatsitt.dev/search?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }
+    }
+    </script>
+
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
     <script>
-        // Register GSAP plugins
-        gsap.registerPlugin(ScrollTrigger);
-
-        // Particle System
-        class Particle {
-            constructor(canvas) {
-                this.canvas = canvas;
-                this.ctx = canvas.getContext('2d');
-                this.reset();
-            }
-            
-            reset() {
-                this.x = Math.random() * this.canvas.width;
-                this.y = Math.random() * this.canvas.height;
-                this.size = Math.random() * 3 + 1;
-                this.speedX = (Math.random() - 0.5) * 2;
-                this.speedY = (Math.random() - 0.5) * 2;
-                this.opacity = Math.random() * 0.5 + 0.2;
-                this.hue = Math.random() * 360;
-            }
-            
-            update() {
-                this.x += this.speedX;
-                this.y += this.speedY;
-                
-                if (this.x < 0 || this.x > this.canvas.width) this.speedX *= -1;
-                if (this.y < 0 || this.y > this.canvas.height) this.speedY *= -1;
-            }
-            
-            draw() {
-                this.ctx.save();
-                this.ctx.globalAlpha = this.opacity;
-                this.ctx.fillStyle = `hsl(${this.hue}, 70%, 60%)`;
-                this.ctx.shadowBlur = 20;
-                this.ctx.shadowColor = `hsl(${this.hue}, 70%, 60%)`;
-                this.ctx.beginPath();
-                this.ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                this.ctx.fill();
-                this.ctx.restore();
-            }
-        }
-
-        // Initialize particles
-        const canvas = document.getElementById('particles');
-        const ctx = canvas.getContext('2d');
-        let particles = [];
-
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-
-        function initParticles() {
-            particles = [];
-            for (let i = 0; i < 50; i++) {
-                particles.push(new Particle(canvas));
-            }
-        }
-
-        function animateParticles() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particles.forEach(particle => {
-                particle.update();
-                particle.draw();
-            });
-            requestAnimationFrame(animateParticles);
-        }
-
-        // Initialize everything
-        window.addEventListener('load', () => {
-            resizeCanvas();
-            initParticles();
-            animateParticles();
-            initAnimations();
-        });
-
-        window.addEventListener('resize', resizeCanvas);
-
-        // GSAP Animations
-        function initAnimations() {
-            // Hero entrance animation
-            const tl = gsap.timeline();
-            
-            tl.to("#hero-title span", {
-                opacity: 1,
-                y: 0,
-                duration: 1.5,
-                ease: "power3.out"
-            })
-            .to("#hero-subtitle", {
-                opacity: 1,
-                y: 0,
-                duration: 1,
-                ease: "power2.out"
-            }, "-=0.5")
-            .to("#hero-buttons", {
-                opacity: 1,
-                y: 0,
-                duration: 1,
-                ease: "power2.out"
-            }, "-=0.5");
-
-            // Floating elements animation
-            gsap.to(".floating-circle", {
-                y: -30,
-                duration: 4,
-                ease: "power2.inOut",
-                repeat: -1,
-                yoyo: true,
-                stagger: 0.5
-            });
-
-            // Cards scroll animation
-            gsap.fromTo(".morph-card", 
-                { opacity: 0, y: 100, scale: 0.8 },
-                {
-                    opacity: 1,
-                    y: 0,
-                    scale: 1,
-                    duration: 1,
-                    ease: "power3.out",
-                    stagger: 0.2,
-                    scrollTrigger: {
-                        trigger: "#cards-container",
-                        start: "top 80%",
-                        toggleActions: "play none none reverse"
-                    }
-                }
-            );
-        }
-
-        // Animation Triggers
-        function triggerParticles() {
-            // Explosive particle effect
-            particles.forEach((particle, index) => {
-                gsap.to(particle, {
-                    size: particle.size * 3,
-                    opacity: 1,
-                    duration: 0.5,
-                    ease: "power2.out",
-                    delay: index * 0.01,
-                    yoyo: true,
-                    repeat: 1
-                });
-            });
-        }
-
-        function morphingCards() {
-            gsap.to(".morph-card", {
-                scale: 1.1,
-                rotateY: 5,
-                z: 100,
-                duration: 0.8,
-                ease: "power2.out",
-                stagger: 0.1,
-                yoyo: true,
-                repeat: 1
-            });
-        }
-
-        function textAnimations() {
-            // Split text animation
-            const text = document.getElementById('split-text');
-            const chars = text.textContent.split('');
-            text.innerHTML = chars.map(char => `<span class="inline-block">${char === ' ' ? '&nbsp;' : char}</span>`).join('');
-            
-            gsap.fromTo("#split-text span", 
-                { y: 100, opacity: 0 },
-                {
-                    y: 0,
-                    opacity: 1,
-                    duration: 0.8,
-                    ease: "power3.out",
-                    stagger: 0.05
-                }
-            );
-
-            // Reveal text animation
-            gsap.fromTo("#reveal-text div",
-                { x: -100, opacity: 0 },
-                {
-                    x: 0,
-                    opacity: 1,
-                    duration: 1.5,
-                    ease: "power3.out",
-                    delay: 1
-                }
-            );
-        }
-
-        // Enhanced card hover effects
-        document.querySelectorAll('.morph-card').forEach(card => {
-            card.addEventListener('mouseenter', () => {
-                gsap.to(card, {
-                    y: -10,
-                    scale: 1.02,
-                    duration: 0.3,
-                    ease: "power2.out"
-                });
-            });
-            
-            card.addEventListener('mouseleave', () => {
-                gsap.to(card, {
-                    y: 0,
-                    scale: 1,
-                    duration: 0.3,
-                    ease: "power2.out"
-                });
-            });
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX', {
+            page_title: 'Thanatsitt Santisamranwilai - Cultural AI Innovator',
+            page_location: window.location.href
         });
     </script>
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
+
+    <!-- Critical CSS (Inline for above-the-fold content) -->
+    <style>
+        /* Critical CSS for above-the-fold content */
+        :root {
+            --primary-color: #6366f1;
+            --secondary-color: #8b5cf6;
+            --accent-color: #f59e0b;
+            --success-color: #10b981;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --text-light: #9ca3af;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f9fafb;
+            --bg-accent: #f3f4f6;
+            --border-color: #e5e7eb;
+            --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            --gradient-primary: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            --gradient-accent: linear-gradient(135deg, var(--accent-color), #fbbf24);
+            --gradient-success: linear-gradient(135deg, var(--success-color), #34d399);
+            --font-display: 'Playfair Display', serif;
+            --font-body: 'Inter', sans-serif;
+            --border-radius: 16px;
+            --border-radius-lg: 24px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            --max-width: 1400px;
+            --container-padding: 2rem;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            line-height: 1.7;
+            color: var(--text-primary);
+            background-color: var(--bg-primary);
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+        
+        /* Enhanced Loading Screen with Progress */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-primary);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            transition: all 0.8s ease;
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .loading-screen.loaded {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .loading-animation {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            margin-bottom: 40px;
+        }
+
+        .loading-ring {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 4px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1.2s linear infinite;
+        }
+
+        .loading-ring:nth-child(2) {
+            animation-delay: -0.4s;
+            border-width: 3px;
+            width: 80%;
+            height: 80%;
+            top: 10%;
+            left: 10%;
+        }
+
+        .loading-ring:nth-child(3) {
+            animation-delay: -0.8s;
+            border-width: 2px;
+            width: 60%;
+            height: 60%;
+            top: 20%;
+            left: 20%;
+        }
+
+        .loading-progress {
+            width: 200px;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 3px;
+            margin-top: 20px;
+            overflow: hidden;
+        }
+
+        .loading-progress-bar {
+            height: 100%;
+            background: white;
+            border-radius: 3px;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .loading-text {
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-top: 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Enhanced Container System */
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 var(--container-padding);
+        }
+
+        /* Enhanced Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 0;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        header.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: var(--shadow-md);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem var(--container-padding);
+        }
+
+        .logo {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: var(--transition-bounce);
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 600;
+            font-size: 1rem;
+            transition: var(--transition);
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--gradient-primary);
+            transition: width 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            width: 40px;
+            height: 40px;
+            justify-content: center;
+            gap: 4px;
+        }
+
+        .mobile-menu-toggle span {
+            display: block;
+            height: 3px;
+            width: 25px;
+            background: var(--text-primary);
+            transition: var(--transition);
+            border-radius: 2px;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 80px;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            padding: 2rem;
+            box-shadow: var(--shadow-lg);
+            z-index: 999;
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .mobile-menu li {
+            margin-bottom: 1rem;
+        }
+
+        .mobile-menu a {
+            display: block;
+            padding: 1rem 0;
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 600;
+            font-size: 1.1rem;
+            border-bottom: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+
+        .mobile-menu a:hover {
+            color: var(--primary-color);
+            transform: translateX(10px);
+        }
+/* Your existing hero CSS with small enhancements */
+.hero {
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 120%;
+    height: 120%;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.8), rgba(139, 92, 246, 0.8)), /* Slightly reduced opacity for stars */
+                url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80') center/cover;
+    will-change: transform;
+    z-index: 0; /* Ensure background stays at bottom */
+}
+
+.rhythm-stars-canvas {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    pointer-events: none !important;
+    z-index: 1 !important;
+    mix-blend-mode: screen; /* Creates beautiful glow effect */
+}
+
+/* Alternative blend modes for different effects */
+.rhythm-stars-canvas.soft {
+    mix-blend-mode: soft-light;
+}
+
+.rhythm-stars-canvas.multiply {
+    mix-blend-mode: multiply;
+}
+
+.rhythm-stars-canvas.overlay {
+    mix-blend-mode: overlay;
+}
+        
+.hero-content {
+    max-width: 900px;
+    padding: 0 var(--container-padding);
+    z-index: 3; /* Increased to stay above stars */
+    position: relative;
+}
+
+.hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 6vw, 5rem);
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    transform: translateY(60px);
+    animation: fadeInUp 1.2s ease 0.5s forwards;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Better text visibility with stars */
+}
+
+.hero p {
+    font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+    margin-bottom: 2.5rem;
+    opacity: 0;
+    transform: translateY(60px);
+    animation: fadeInUp 1.2s ease 0.7s forwards;
+    font-weight: 300;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4); /* Better text visibility */
+}
+
+/* Stars canvas positioning - matches your structure */
+.rhythm-stars-canvas {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    pointer-events: none !important;
+    z-index: 1 !important; /* Between background and content */
+    mix-blend-mode: screen;
+    opacity: 0.8; /* Slightly reduced for better text readability */
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Enhanced glow effect for buttons/CTAs in hero */
+.hero .btn {
+    animation: fadeInUp 1.2s ease 0.9s forwards;
+    opacity: 0;
+    transform: translateY(60px);
+    box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+    transition: all 0.3s ease;
+}
+
+.hero .btn:hover {
+    box-shadow: 0 15px 40px rgba(99, 102, 241, 0.5);
+    transform: translateY(-2px);
+}
+
+        
+        /* Enhanced Section Layouts */
+        section {
+            padding: 8rem 0;
+            position: relative;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--gradient-primary);
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            font-size: 1.3rem;
+            text-align: center;
+            color: var(--text-secondary);
+            margin-bottom: 4rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 400;
+        }
+
+        /* Enhanced Card System */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2.5rem;
+            padding: 0 var(--container-padding);
+        }
+
+        .card {
+            background: var(--bg-primary);
+            border-radius: var(--border-radius-lg);
+            padding: 2.5rem;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-slow);
+            cursor: pointer;
+            overflow: hidden;
+            position: relative;
+            border: 2px solid transparent;
+            opacity: 0;
+            transform: translateY(60px) scale(0.9);
+        }
+
+        .card.animate-in {
+            animation: cardAppear 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        @keyframes cardAppear {
+            0% {
+                opacity: 0;
+                transform: translateY(60px) scale(0.9);
+            }
+            70% {
+                opacity: 1;
+                transform: translateY(-10px) scale(1.02);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: var(--gradient-primary);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+            border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
+        }
+
+        .card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: var(--shadow-2xl);
+            border-color: var(--primary-color);
+        }
+
+        /* Enhanced Project Cards */
+        .project-card {
+            background: var(--bg-primary);
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-slow);
+            border: 2px solid transparent;
+            position: relative;
+            opacity: 0;
+            transform: translateY(60px) scale(0.9);
+        }
+
+        .project-card.animate-in {
+            animation: cardAppear 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .project-card:hover {
+            transform: translateY(-20px) scale(1.03);
+            box-shadow: var(--shadow-2xl);
+            border-color: var(--primary-color);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            transition: var(--transition-slow);
+        }
+
+        .project-card:hover .project-image {
+            transform: scale(1.1);
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+            font-family: var(--font-display);
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-tag {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .tech-tag:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Enhanced Carousel */
+        .carousel-container {
+            position: relative;
+            padding: 0 var(--container-padding);
+        }
+
+        .carousel {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            gap: 2rem;
+            padding-bottom: 2rem;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .carousel::-webkit-scrollbar {
+            display: none;
+        }
+
+        .carousel-item {
+            flex: 0 0 420px;
+            scroll-snap-align: start;
+        }
+
+        .carousel-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .carousel-dot {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--border-color);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .carousel-dot.active {
+            background: var(--primary-color);
+            transform: scale(1.2);
+        }
+
+        /* Enhanced Testimonials */
+        .testimonial-card {
+            background: var(--bg-primary);
+            border-radius: var(--border-radius-lg);
+            padding: 2.5rem;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-slow);
+            border: 2px solid transparent;
+            position: relative;
+            opacity: 0;
+            transform: translateY(60px) scale(0.9);
+        }
+
+        .testimonial-card.animate-in {
+            animation: cardAppear 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: -20px;
+            left: 30px;
+            font-size: 5rem;
+            color: var(--primary-color);
+            font-family: var(--font-display);
+            opacity: 0.3;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: var(--shadow-2xl);
+            border-color: var(--primary-color);
+        }
+
+        .client-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .client-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-right: 1.5rem;
+            object-fit: cover;
+            border: 4px solid var(--border-color);
+            transition: var(--transition);
+        }
+
+        .testimonial-card:hover .client-avatar {
+            border-color: var(--primary-color);
+        }
+
+        .quote {
+            font-style: italic;
+            font-size: 1.2rem;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .rating {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .star {
+            color: var(--accent-color);
+            font-size: 1.5rem;
+        }
+
+        /* Enhanced Statistics */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            padding: 0 var(--container-padding);
+            margin-top: 3rem;
+        }
+
+        .stat-card {
+            background: var(--bg-primary);
+            border-radius: var(--border-radius-lg);
+            padding: 2.5rem;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-slow);
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(60px) scale(0.9);
+        }
+
+        .stat-card.animate-in {
+            animation: cardAppear 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: var(--gradient-success);
+            border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: var(--shadow-2xl);
+            border-color: var(--success-color);
+        }
+
+        .stat-number {
+            font-size: 4rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-family: var(--font-display);
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        /* Enhanced Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2rem;
+            background: var(--gradient-primary);
+            color: white;
+            text-decoration: none;
+            border-radius: var(--border-radius);
+            font-weight: 700;
+            font-size: 1rem;
+            transition: var(--transition-bounce);
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .btn-secondary {
+            background: var(--gradient-accent);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* Enhanced Modal */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .modal.active {
+            opacity: 1;
+        }
+
+        .modal-content {
+            background: var(--bg-primary);
+            border-radius: var(--border-radius-lg);
+            padding: 3rem;
+            max-width: 700px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            transform: scale(0.9);
+            transition: var(--transition-bounce);
+            position: relative;
+            box-shadow: var(--shadow-2xl);
+        }
+
+        .modal.active .modal-content {
+            transform: scale(1);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            transition: var(--transition);
+            border-radius: 50%;
+            background: var(--bg-secondary);
+        }
+
+        .modal-close:hover {
+            color: var(--text-primary);
+            background: var(--border-color);
+        }
+
+        /* Enhanced Contact Form */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--border-color);
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            font-family: var(--font-body);
+            transition: var(--transition);
+            background: var(--bg-primary);
+            resize: vertical;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        /* Enhanced Footer */
+        footer {
+            background: var(--text-primary);
+            color: white;
+            padding: 4rem 0 2rem;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            text-decoration: none;
+            border-radius: 50%;
+            transition: var(--transition-bounce);
+            font-size: 1.5rem;
+        }
+
+        .social-link:hover {
+            background: var(--primary-color);
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            :root {
+                --container-padding: 1rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-toggle {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .carousel-item {
+                flex: 0 0 320px;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+
+            .stat-card {
+                padding: 1.5rem;
+            }
+
+            .stat-number {
+                font-size: 2.5rem;
+            }
+
+            section {
+                padding: 4rem 0;
+            }
+
+            .modal-content {
+                padding: 2rem;
+                width: 95%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding: 0 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .social-links {
+                gap: 1rem;
+            }
+
+            .social-link {
+                width: 45px;
+                height: 45px;
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Accessibility */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* Focus styles for keyboard navigation */
+        *:focus-visible {
+            outline: 3px solid var(--primary-color);
+            outline-offset: 2px;
+        }
+
+        /* Scroll to top button */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: var(--transition-bounce);
+            opacity: 0;
+            visibility: hidden;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .scroll-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-to-top:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Lazy loading images */
+        .lazy-load {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .lazy-load.loaded {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/gtm.html?id=GTM-XXXXXXX"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+    <!-- Enhanced Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-animation">
+            <div class="loading-ring"></div>
+            <div class="loading-ring"></div>
+            <div class="loading-ring"></div>
+        </div>
+        <div class="loading-progress">
+            <div class="loading-progress-bar" id="loading-progress-bar"></div>
+        </div>
+        <div class="loading-text" id="loading-text">Initializing Cultural AI...</div>
+    </div>
+
+    <!-- Enhanced Header with Mobile Menu -->
+    <header id="header" class="header">
+        <nav class="container">
+            <a href="#home" class="logo" aria-label="Thanatsitt Santisamranwilai - Cultural AI Innovator">
+                Thanatsitt
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="#home" class="nav-link active" aria-current="page">Home</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#voice-writing" class="nav-link">Voice & Writing</a></li>
+                <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+
+            <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle mobile menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+
+        <div class="mobile-menu" id="mobile-menu">
+            <ul>
+                <li><a href="#home" class="mobile-nav-link">Home</a></li>
+                <li><a href="#projects" class="mobile-nav-link">Projects</a></li>
+                <li><a href="#voice-writing" class="mobile-nav-link">Voice & Writing</a></li>
+                <li><a href="#testimonials" class="mobile-nav-link">Testimonials</a></li>
+                <li><a href="#contact" class="mobile-nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Enhanced Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-bg" id="hero-bg"></div>
+        <div class="hero-content">
+            <h1>Cultural AI Innovator</h1>
+            <p>Bridging technology and cultural understanding through collaborative AI development</p>
+            <div class="flex flex-wrap justify-center gap-4 mt-8" style="opacity: 0; transform: translateY(60px); animation: fadeInUp 1.2s ease 0.9s forwards;">
+                <a href="#projects" class="btn" aria-label="View my projects">
+                    <span>View Projects</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                    </svg>
+                </a>
+                <a href="#contact" class="btn btn-outline" aria-label="Contact me">
+                    <span>Contact Me</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                        <polyline points="22,6 12,13 2,6"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Statistics Section -->
+    <section class="bg-gray-50 py-16">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="stat-number" data-count="500000">0</div>
+                    <div class="stat-label">Total Project Views</div>
+                </div>
+                <div class="stat-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="stat-number" data-count="10">0</div>
+                    <div class="stat-label">Major Projects</div>
+                </div>
+                <div class="stat-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="stat-number" data-count="3">0</div>
+                    <div class="stat-label">Languages & Cultures</div>
+                </div>
+                <div class="stat-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="stat-number" data-count="5">0</div>
+                    <div class="stat-label">Years Experience</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Projects Section -->
+    <section id="projects" class="section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Featured Projects</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+                Innovative AI solutions bridging cultures and technologies
+            </p>
+
+            <div class="carousel-container">
+                <div class="carousel" id="projects-carousel">
+                    <!-- Project 1: Siam-Blessing -->
+                    <div class="carousel-item">
+                        <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+                            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                 alt="Siam-Blessing AI VTuber Project" 
+                                 class="project-image lazy-load"
+                                 loading="lazy">
+                            <div class="project-content">
+                                <h3 class="project-title">Siam-Blessing VTuber AI</h3>
+                                <p class="project-description">
+                                    Pioneering AI-driven VTuber technology with cultural awareness, achieving over 250,000 viewer engagement through innovative content generation and real-time interaction systems.
+                                </p>
+                                <div class="tech-tags">
+                                    <span class="tech-tag">AI/ML</span>
+                                    <span class="tech-tag">VTuber Tech</span>
+                                    <span class="tech-tag">Real-time Processing</span>
+                                    <span class="tech-tag">Cultural AI</span>
+                                </div>
+                                <button onclick="openModal('siam-modal')" class="btn" aria-label="View Siam-Blessing project details">
+                                    View Details
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 2: Blockchain E-commerce -->
+                    <div class="carousel-item">
+                        <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+                            <img src="https://images.unsplash.com/photo-1639762681485-074b7f938ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                 alt="Blockchain E-commerce Platform" 
+                                 class="project-image lazy-load"
+                                 loading="lazy">
+                            <div class="project-content">
+                                <h3 class="project-title">Cross-Border E-commerce AI</h3>
+                                <p class="project-description">
+                                    Revolutionary blockchain-based e-commerce platform with AI-powered cultural adaptation, facilitating seamless international trade with localized user experiences.
+                                </p>
+                                <div class="tech-tags">
+                                    <span class="tech-tag">Blockchain</span>
+                                    <span class="tech-tag">Smart Contracts</span>
+                                    <span class="tech-tag">Cultural AI</span>
+                                    <span class="tech-tag">E-commerce</span>
+                                </div>
+                                <button onclick="openModal('blockchain-modal')" class="btn" aria-label="View Blockchain E-commerce project details">
+                                    View Details
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 3: Cultural Translation AI -->
+                    <div class="carousel-item">
+                        <div class="project-card" data-aos="fade-up" data-aos-delay="300">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                 alt="Cultural Translation AI System" 
+                                 class="project-image lazy-load"
+                                 loading="lazy">
+                            <div class="project-content">
+                                <h3 class="project-title">Cultural Translation AI</h3>
+                                <p class="project-description">
+                                    Advanced multilingual AI system that preserves cultural context and nuances in translation, supporting Thai, English, and Japanese with 95% accuracy in cultural adaptation.
+                                </p>
+                                <div class="tech-tags">
+                                    <span class="tech-tag">NLP</span>
+                                    <span class="tech-tag">Machine Translation</span>
+                                    <span class="tech-tag">Cultural Analysis</span>
+                                    <span class="tech-tag">Deep Learning</span>
+                                </div>
+                                <button onclick="openModal('translation-modal')" class="btn" aria-label="View Cultural Translation AI project details">
+                                    View Details
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 4: Real Estate AI -->
+                    <div class="carousel-item">
+                        <div class="project-card" data-aos="fade-up" data-aos-delay="400">
+                            <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                 alt="Real Estate AI Platform" 
+                                 class="project-image lazy-load"
+                                 loading="lazy">
+                            <div class="project-content">
+                                <h3 class="project-title">Smart Real Estate AI</h3>
+                                <p class="project-description">
+                                    Intelligent property matching system with cultural preference analysis, utilizing machine learning to predict ideal property matches based on cultural background and lifestyle preferences.
+                                </p>
+                                <div class="tech-tags">
+                                    <span class="tech-tag">Predictive AI</span>
+                                    <span class="tech-tag">Data Analytics</span>
+                                    <span class="tech-tag">Property Tech</span>
+                                    <span class="tech-tag">Cultural Insights</span>
+                                </div>
+                                <button onclick="openModal('realestate-modal')" class="btn" aria-label="View Smart Real Estate AI project details">
+                                    View Details
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-nav" id="carousel-nav">
+                    <span class="carousel-dot active" data-slide="0"></span>
+                    <span class="carousel-dot" data-slide="1"></span>
+                    <span class="carousel-dot" data-slide="2"></span>
+                    <span class="carousel-dot" data-slide="3"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Voice & Writing Section -->
+    <section id="voice-writing" class="section bg-gray-50">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Voice & Creative Writing</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+                Exploring cultural narratives through voice acting and creative storytelling
+            </p>
+
+            <div class="card-grid">
+                <div class="card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="mb-6">
+                        <div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-full flex items-center justify-center text-white text-2xl mb-4">
+                            🎭
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3 font-display">VTuber Voice Acting</h3>
+                        <p class="text-gray-600 mb-4">
+                            Bringing AI characters to life through culturally-aware voice performance, creating authentic connections across different cultural audiences.
+                        </p>
+                        <ul class="text-gray-600 space-y-2">
+                            <li>• Multi-language voice adaptation</li>
+                            <li>• Cultural accent authenticity</li>
+                            <li>• AI character personality development</li>
+                            <li>• Real-time voice interaction</li>
+                        </ul>
+                    </div>
+                    <button onclick="openModal('voice-modal')" class="btn w-full" aria-label="Learn more about voice acting work">
+                        Explore Voice Work
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="mb-6">
+                        <div class="w-16 h-16 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full flex items-center justify-center text-white text-2xl mb-4">
+                            ✍️
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3 font-display">Cultural Storytelling</h3>
+                        <p class="text-gray-600 mb-4">
+                            Crafting narratives that bridge cultures, exploring themes of technology, identity, and cross-cultural understanding through creative writing.
+                        </p>
+                        <ul class="text-gray-600 space-y-2">
+                            <li>• Cross-cultural narrative development</li>
+                            <li>• AI-human interaction stories</li>
+                            <li>• Technical documentation artistry</li>
+                            <li>• Multilingual content creation</li>
+                        </ul>
+                    </div>
+                    <button onclick="openModal('writing-modal')" class="btn w-full" aria-label="Learn more about creative writing work">
+                        Read My Writing
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Testimonials Section -->
+    <section id="testimonials" class="section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Client Testimonials</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+                What collaborators say about working with a Cultural AI Innovator
+            </p>
+
+            <div class="carousel-container">
+                <div class="carousel" id="testimonials-carousel">
+                    <div class="carousel-item">
+                        <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
+                            <div class="client-info">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" 
+                                     alt="Sarah Chen - Tech Director" 
+                                     class="client-avatar lazy-load"
+                                     loading="lazy">
+                                <div>
+                                    <h4 class="text-lg font-semibold">Sarah Chen</h4>
+                                    <p class="text-gray-600">Tech Director, GlobalAI Solutions</p>
+                                </div>
+                            </div>
+                            <div class="rating">
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                            </div>
+                            <p class="quote">
+                                "Thanatsitt's ability to seamlessly blend AI technology with cultural sensitivity is remarkable. Their work on our cross-cultural AI platform exceeded all expectations, delivering solutions that truly understand and respect different cultural contexts."
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="carousel-item">
+                        <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
+                            <div class="client-info">
+                                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" 
+                                     alt="Hiroshi Tanaka - Innovation Lead" 
+                                     class="client-avatar lazy-load"
+                                     loading="lazy">
+                                <div>
+                                    <h4 class="text-lg font-semibold">Hiroshi Tanaka</h4>
+                                    <p class="text-gray-600">Innovation Lead, Tokyo Digital Labs</p>
+                                </div>
+                            </div>
+                            <div class="rating">
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                            </div>
+                            <p class="quote">
+                                "Working with Thanatsitt on our VTuber AI project was transformative. Their deep understanding of both Japanese and Thai cultures, combined with cutting-edge AI expertise, created an authentic experience that resonated with our global audience."
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="carousel-item">
+                        <div class="testimonial-card" data-aos="fade-up" data-aos-delay="300">
+                            <div class="client-info">
+                                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" 
+                                     alt="Elena Rodriguez - Product Manager" 
+                                     class="client-avatar lazy-load"
+                                     loading="lazy">
+                                <div>
+                                    <h4 class="text-lg font-semibold">Elena Rodriguez</h4>
+                                    <p class="text-gray-600">Product Manager, CulturalTech Inc</p>
+                                </div>
+                            </div>
+                            <div class="rating">
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                            </div>
+                            <p class="quote">
+                                "Thanatsitt brings a unique perspective to AI development that goes beyond technical skills. Their cultural insight and collaborative approach helped us create solutions that are not just technologically advanced, but culturally intelligent."
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-nav" id="testimonials-nav">
+                    <span class="carousel-dot active" data-slide="0"></span>
+                    <span class="carousel-dot" data-slide="1"></span>
+                    <span class="carousel-dot" data-slide="2"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Contact Section -->
+    <!-- Update the contact information in the contact section -->
+<section id="contact" class="py-20 bg-gradient-to-br from-indigo-50 via-white to-purple-50">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="text-center mb-16" data-aos="fade-up">
+            <h2 class="font-display text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                Let's Create Cultural AI Magic Together
+            </h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                Ready to bridge cultures through innovative AI solutions? Let's discuss your next groundbreaking project.
+            </p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-12 items-start">
+            <!-- Contact Info -->
+            <div data-aos="fade-right" data-aos-delay="200">
+                <div class="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+                    <h3 class="font-display text-2xl font-bold text-gray-900 mb-6">Get In Touch</h3>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center">
+                                <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-gray-900">Email</p>
+                                <a href="mailto:thanattsitt.info@yahoo.co.uk" 
+                                   class="text-indigo-600 hover:text-indigo-700 transition-colors cursor-pointer"
+                                   onclick="copyToClipboard('thanattsitt.info@yahoo.co.uk', this); return false;">
+                                    thanattsitt.info@yahoo.co.uk
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center">
+                                <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9v-9m0-9v9"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-gray-900">Website</p>
+                                <a href="https://thannxai.netlify.app" 
+                                   target="_blank" 
+                                   rel="noopener noreferrer"
+                                   class="text-purple-600 hover:text-purple-700 transition-colors">
+                                    thannxai.netlify.app
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                                <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-gray-900">Location</p>
+                                <p class="text-gray-600">Thailand 🇹🇭 | Global Remote</p>
+                            </div>
+                        </div>
+
+                        <!-- Social Links -->
+                        <div class="pt-6 border-t border-gray-100">
+                            <p class="font-semibold text-gray-900 mb-4">Connect With Me</p>
+                            <div class="flex gap-4">
+                                <a href="https://www.linkedin.com/in/thanattsitts" 
+                                   target="_blank" 
+                                   rel="noopener noreferrer"
+                                   class="social-link linkedin">
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M19 0H5C2.239 0 0 2.239 0 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5V5c0-2.761-2.238-5-5-5zM8 19H5V8h3v11zM6.5 6.732c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zM20 19h-3v-5.604c0-3.368-4-3.113-4 0V19h-3V8h3v1.765c1.396-2.586 7-2.777 7 2.476V19z"/>
+                                    </svg>
+                                    LinkedIn
+                                </a>
+                                <a href="https://github.com/Pigletpeakkung" 
+                                   target="_blank" 
+                                   rel="noopener noreferrer"
+                                   class="social-link github">
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 0C5.374 0 0 5.373 0 12 0 17.302 3.438 21.8 8.207 23.387c.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 .992a11.5 11.5 0 013.003.404c2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+                                    </svg>
+                                    GitHub
+                                </a>
+                                <a href="https://x.com/SThanattsitt" 
+                                   target="_blank" 
+                                   rel="noopener noreferrer"
+                                   class="social-link twitter">
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                                    </svg>
+                                    Twitter
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+                    <!-- Contact Form -->
+                    <div class="bg-white p-8 rounded-3xl shadow-sm" data-aos="fade-right" data-aos-delay="200">
+                        <h3 class="text-2xl font-bold mb-6 font-display">Send a Message</h3>
+                        <form class="contact-form" id="contact-form">
+                            <div class="form-group">
+                                <label for="name">Your Name</label>
+                                <input type="text" id="name" name="name" required aria-describedby="name-help">
+                                <div id="name-help" class="sr-only">Enter your full name</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Your Email</label>
+                                <input type="email" id="email" name="email" required aria-describedby="email-help">
+                                <div id="email-help" class="sr-only">Enter your email address</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">Subject</label>
+                                <input type="text" id="subject" name="subject" required aria-describedby="subject-help">
+                                <div id="subject-help" class="sr-only">Enter the subject of your message</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Your Message</label>
+                                <textarea id="message" name="message" rows="5" required aria-describedby="message-help"></textarea>
+                                <div id="message-help" class="sr-only">Enter your detailed message</div>
+                            </div>
+                            <button type="submit" class="btn w-full">
+                                Send Message
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M2 12L22 2L13 21L11 13L2 12Z"/>
+                                </svg>
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Contact Info -->
+                    <div class="space-y-8" data-aos="fade-left" data-aos-delay="300">
+                        <div class="bg-white p-8 rounded-3xl shadow-sm">
+                            <h3 class="text-2xl font-bold mb-6 font-display">Get in Touch</h3>
+                            <div class="space-y-4">
+                                <div class="flex items-center space-x-4">
+                                    <div class="w-12 h-12 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-full flex items-center justify-center text-white">
+                                        📧
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold">Email</p>
+                                        <a href="mailto:contact@thanatsitt.dev" class="text-indigo-600 hover:text-indigo-800 transition-colors">
+                                            contact@thanatsitt.dev
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-4">
+                                    <div class="w-12 h-12 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-full flex items-center justify-center text-white">
+                                        🌍
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold">Location</p>
+                                        <p class="text-gray-600">Bangkok, Thailand</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-4">
+                                    <div class="w-12 h-12 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-full flex items-center justify-center text-white">
+                                        🕒
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold">Response Time</p>
+                                        <p class="text-gray-600">Within 24 hours</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-8 rounded-3xl shadow-sm">
+                            <h3 class="text-xl font-bold mb-4 font-display">Connect on Social</h3>
+                            <div class="flex space-x-4">
+                                <a href="https://www.linkedin.com/in/thanattsitts" 
+                                   target="_blank" 
+                                   rel="noopener noreferrer"
+                                   class="social-link"
+                                   aria-label="Connect on LinkedIn">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                                    </svg>
+                                </a>
+                                <a href="https://github.com/Pigletpeakkung" 
+                                   target="_blank" 
+                                   rel="noopener noreferrer"
+                                   class="social-link"
+                                   aria-label="View GitHub profile">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M12 0C5.374 0 0 5.373 0 12 0 17.302 3.438 21.8 8.207 23.387c.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+                                    </svg>
+                                </a>
+                                <a href="https://x.com/SThanattsitt" 
+                                   target="_blank" 
+                                   rel="noopener noreferrer"
+                                   class="social-link"
+                                   aria-label="Follow on Twitter/X">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                                    </svg>
+                                </a>
+                                <a href="https://linktr.ee/ThanttEzekiel" 
+                                   target="_blank" 
+                                   rel="noopener noreferrer"
+                                   class="social-link"
+                                   aria-label="View Linktree profile">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M12 22.5c5.799 0 10.5-4.701 10.5-10.5S17.799 1.5 12 1.5 1.5 6.201 1.5 12 6.201 22.5 12 22.5zm-1.125-12.75h2.25v-2.25h-2.25v2.25zm0 3h2.25V9.75h-2.25v2.25zm0 3h2.25v-2.25h-2.25v2.25z"/>
+                                    </svg>
+                                </a>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Footer -->
+    <footer class="bg-gray-900 text-white">
+        <div class="container">
+            <div class="text-center py-8">
+                <div class="mb-6">
+                    <h3 class="text-2xl font-bold mb-2 font-display">Thanatsitt Santisamranwilai</h3>
+                    <p class="text-gray-400">Cultural AI Innovator</p>
+                </div>
+                
+                <div class="social-links mb-6">
+                    <a href="https://www.linkedin.com/in/thanattsitts" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       class="social-link"
+                       aria-label="Connect on LinkedIn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                    </a>
+                    <a href="https://github.com/Pigletpeakkung" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       class="social-link"
+                       aria-label="View GitHub profile">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0C5.374 0 0 5.373 0 12 0 17.302 3.438 21.8 8.207 23.387c.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                    </a>
+                    <a href="https://x.com/SThanattsitt" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       class="social-link"
+                       aria-label="Follow on Twitter/X">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        </svg>
+                    </a>
+                    <a href="https://linktr.ee/ThanttEzekiel" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       class="social-link"
+                       aria-label="View Linktree profile">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 22.5c5.799 0 10.5-4.701 10.5-10.5S17.799 1.5 12 1.5 1.5 6.201 1.5 12 6.201 22.5 12 22.5zm-1.125-12.75h2.25v-2.25h-2.25v2.25zm0 3h2.25V9.75h-2.25v2.25zm0 3h2.25v-2.25h-2.25v2.25z"/>
+                        </svg>
+                    </a>
+                </div>
+                
+                <div class="border-t border-gray-800 pt-6">
+                    <p class="text-gray-400 text-sm">
+                        © 2024 Thanatsitt Santisamranwilai. All rights reserved. | 
+                        <a href="/privacy" class="hover:text-white transition-colors">Privacy Policy</a> | 
+                        <a href="/terms" class="hover:text-white transition-colors">Terms of Service</a>
+                    </p>
+                    <p class="text-gray-500 text-xs mt-2">
+                        Bridging cultures through innovative AI solutions
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button id="scroll-to-top" class="scroll-to-top" aria-label="Scroll to top">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 15L12 9L6 15"/>
+        </svg>
+    </button>
+
+    <!-- Enhanced Modals -->
+    <!-- Siam-Blessing Modal -->
+    <div id="siam-modal" class="modal" role="dialog" aria-labelledby="siam-modal-title" aria-hidden="true">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('siam-modal')" aria-label="Close modal">×</button>
+            <h2 id="siam-modal-title" class="text-3xl font-bold mb-4 font-display">Siam-Blessing VTuber AI</h2>
+            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                 alt="Siam-Blessing VTuber AI Project Interface" 
+                 class="w-full h-64 object-cover rounded-lg mb-6 lazy-load"
+                 loading="lazy">
+            <p class="text-lg mb-6 text-gray-600">
+                Revolutionary AI-driven VTuber technology that combines cultural awareness with cutting-edge artificial intelligence to create authentic, engaging virtual personalities.
+            </p>
+            <div class="grid md:grid-cols-2 gap-6 mb-6">
+                <div>
+                    <h3 class="text-xl font-semibold mb-3">Key Features</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li>• Real-time AI personality adaptation</li>
+                        <li>• Cultural context understanding</li>
+                        <li>• Multi-language interaction support</li>
+                        <li>• Advanced emotion recognition</li>
+                        <li>• Dynamic content generation</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-3">Impact & Results</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li>• 250K+ viewer engagement</li>
+                        <li>• 95% positive sentiment analysis</li>
+                        <li>• Cross-cultural audience growth</li>
+                        <li>• Industry recognition achievement</li>
+                        <li>• Collaborative innovation success</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="flex flex-wrap gap-3 mb-6">
+                <span class="px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm font-medium">Machine Learning</span>
+                <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm font-medium">Natural Language Processing</span>
+                <span class="px-3 py-1 bg-pink-100 text-pink-800 rounded-full text-sm font-medium">Computer Vision</span>
+                <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-medium">Cultural AI</span>
+                <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">Real-time Processing</span>
+            </div>
+            <a href="https://github.com/Pigletpeakkung" target="_blank" rel="noopener noreferrer" class="btn">
+                View Project Details
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/>
+                </svg>
+            </a>
+        </div>
+    </div>
+
+    <!-- Blockchain E-commerce Modal -->
+    <div id="blockchain-modal" class="modal" role="dialog" aria-labelledby="blockchain-modal-title" aria-hidden="true">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('blockchain-modal')" aria-label="Close modal">×</button>
+            <h2 id="blockchain-modal-title" class="text-3xl font-bold mb-4 font-display">Cross-Border E-commerce AI</h2>
+            <img src="https://images.unsplash.com/photo-1639762681485-074b7f938ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                 alt="Blockchain E-commerce Platform Dashboard" 
+                 class="w-full h-64 object-cover rounded-lg mb-6 lazy-load"
+                 loading="lazy">
+            <p class="text-lg mb-6 text-gray-600">
+                Next-generation e-commerce platform leveraging blockchain technology and AI to create seamless cross-cultural shopping experiences with built-in cultural adaptation.
+            </p>
+            <div class="grid md:grid-cols-2 gap-6 mb-6">
+                <div>
+                    <h3 class="text-xl font-semibold mb-3">Technical Innovation</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li>• Smart contract automation</li>
+                        <li>• AI-powered cultural localization</li>
+                        <li>• Decentralized payment systems</li>
+                        <li>• Predictive recommendation engine</li>
+                        <li>• Cross-border logistics optimization</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-3">Business Impact</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li>• 40% reduction in transaction fees</li>
+                        <li>• 60% faster international payments</li>
+                        <li>• 85% customer satisfaction increase</li>
+                        <li>• 3x market expansion rate</li>
+                        <li>• Enhanced security & transparency</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="flex flex-wrap gap-3 mb-6">
+                <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">Blockchain</span>
+                <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-medium">Smart Contracts</span>
+                <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm font-medium">Cultural AI</span>
+                <span class="px-3 py-1 bg-orange-100 text-orange-800 rounded-full text-sm font-medium">E-commerce</span>
+                <span class="px-3 py-1 bg-red-100 text-red-800 rounded-full text-sm font-medium">Fintech</span>
+            </div>
+            <a href="#contact" class="btn">
+                Discuss Similar Projects
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M2 12L22 2L13 21L11 13L2 12Z"/>
+                </svg>
+            </a>
+        </div>
+    </div>
+
+    <!-- Cultural Translation AI Modal -->
+    <div id="translation-modal" class="modal" role="dialog" aria-labelledby="translation-modal-title" aria-hidden="true">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('translation-modal')" aria-label="Close modal">×</button>
+            <h2 id="translation-modal-title" class="text-3xl font-bold mb-4 font-display">Cultural Translation AI</h2>
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                 alt="Cultural Translation AI Interface" 
+                 class="w-full h-64 object-cover rounded-lg mb-6 lazy-load"
+                 loading="lazy">
+            <p class="text-lg mb-6 text-gray-600">
+                Advanced multilingual AI system that goes beyond literal translation to preserve cultural context, nuances, and emotional undertones across Thai, English, and Japanese languages.
+            </p>
+            <div class="grid md:grid-cols-2 gap-6 mb-6">
+                <div>
+                    <h3 class="text-xl font-semibold mb-3">Core Capabilities</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li>• Context-aware translation</li>
+                        <li>• Cultural nuance preservation</li>
+                        <li>• Idiom & metaphor adaptation</li>
+                        <li>• Emotional tone matching</li>
+                        <li>• Real-time processing</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-3">Performance Metrics</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li>• 95% cultural accuracy rate</li>
+                        <li>• 98% linguistic precision</li>
+                        <li>• Sub-second response time</li>
+                        <li>• 99.9% system uptime</li>
+                        <li>• Multi-domain expertise</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="flex flex-wrap gap-3 mb-6">
+                <span class="px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm font-medium">Natural Language Processing</span>
+                <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-medium">Machine Translation</span>
+                <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm font-medium">Cultural Analysis</span>
+                <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">Deep Learning</span>
+                <span class="px-3 py-1 bg-pink-100 text-pink-800 rounded-full text-sm font-medium">Multilingual AI</span>
+            </div>
+            <a href="#contact" class="btn">
+                Explore Translation Solutions
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2z"/>
+                    <path d="M8 15l4-4 4 4"/>
+                </svg>
+            </a>
+        </div>
+    </div>
+
+    <!-- Real Estate AI Modal -->
+    <div id="realestate-modal" class="modal" role="dialog" aria-labelledby="realestate-modal-title" aria-hidden="true">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('realestate-modal')" aria-label="Close modal">×</button>
+            <h2 id="realestate-modal-title" class="text-3xl font-bold mb-4 font-display">Smart Real Estate AI</h2>
+            <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                 alt="Smart Real Estate AI Platform" 
+                 class="w-full h-64 object-cover rounded-lg mb-6 lazy-load"
+                 loading="lazy">
+            <p class="text-lg mb-6 text-gray-600">
+                Intelligent property matching platform that analyzes cultural preferences, lifestyle patterns, and personal requirements to predict ideal property matches with unprecedented accuracy.
+            </p>
+            <div class="grid md:grid-cols-2 gap-6 mb-6">
+                <div>
+                    <h3 class="text-xl font-semibold mb-3">AI Features</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li>• Predictive matching algorithms</li>
+                        <li>• Cultural preference analysis</li>
+                        <li>• Lifestyle pattern recognition</li>
+                        <li>• Market trend prediction</li>
+                        <li>• Virtual property tours</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-3">Success Metrics</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li>• 88% match satisfaction rate</li>
+                        <li>• 50% faster decision making</li>
+                        <li>• 35% increase in successful deals</li>
+                        <li>• 92% user retention rate</li>
+                        <li>• Cross-cultural adaptability</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="flex flex-wrap gap-3 mb-6">
+                <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">Predictive Analytics</span>
+                <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-medium">Machine Learning</span>
+                <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm font-medium">Data Science</span>
+                <span class="px-3 py-1 bg-orange-100 text-orange-800 rounded-full text-sm font-medium">PropTech</span>
+                <span class="px-3 py-1 bg-red-100 text-red-800 rounded-full text-sm font-medium">Cultural Insights</span>
+            </div>
+            <a href="#contact" class="btn">
+                Learn About PropTech Solutions
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 9L12 2L21 9V20A2 2 0 0119 22H5A2 2 0 013 20V9Z"/>
+                    <polyline points="9,22 9,12 15,12 15,22"/>
+                </svg>
+            </a>
+        </div>
+    </div>
+
+    <!-- Voice Work Modal -->
+    <div id="voice-modal" class="modal" role="dialog" aria-labelledby="voice-modal-title" aria-hidden="true">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('voice-modal')" aria-label="Close modal">×</button>
+            <h2 id="voice-modal-title" class="text-3xl font-bold mb-4 font-display">VTuber Voice Acting</h2>
+            <div class="bg-gradient-to-r from-purple-100 to-indigo-100 p-6 rounded-lg mb-6">
+                <p class="text-lg text-gray-700">
+                    Bringing AI characters to life through culturally-authentic voice performance, creating genuine connections across diverse audiences.
+                </p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-6 mb-6">
+                <div>
+                    <h3 class="text-xl font-semibold mb-3">Voice Specialties</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li>• Multi-language voice acting (Thai/English/Japanese)</li>
+                        <li>• Cultural accent authenticity</li>
+                        <li>• AI character personality development</li>
+                        <li>• Real-time voice interaction</li>
+                        <li>• Emotional range expression</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-3">Performance Experience</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li>• 100+ hours of voice content</li>
+                        <li>• Cross-cultural audience engagement</li>
+                        <li>• Interactive live streaming</li>
+                        <li>• Character consistency maintenance</li>
+                        <li>• Cultural sensitivity training</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="bg-gray-50 p-6 rounded-lg mb-6">
+                <h3 class="text-lg font-semibold mb-3">Sample Voice Clips</h3>
+                <div class="space-y-3">
+                    <div class="flex items-center justify-between p-3 bg-white rounded border">
+                        <span class="text-sm">Cultural AI Introduction (English)</span>
+                        <button class="text-indigo-600 hover:text-indigo-800 font-medium">▶ Play</button>
+                    </div>
+                    <div class="flex items-center justify-between p-3 bg-white rounded border">
+                        <span class="text-sm">VTuber Character Voice (Thai)</span>
+                        <button class="text-indigo-600 hover:text-indigo-800 font-medium">▶ Play</button>
+                    </div>
+                    <div class="flex items-center justify-between p-3 bg-white rounded border">
+                        <span class="text-sm">AI Personality Demo (Japanese)</span>
+                        <button class="text-indigo-600 hover:text-indigo-800 font-medium">▶ Play</button>
+                    </div>
+                </div>
+            </div>
+            <a href="#contact" class="btn">
+                Discuss Voice Projects
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2a4 4 0 00-4 4v4a4 4 0 008 0V6a4 4 0 00-4-4zm0 14a6 6 0 01-6-6h-2a8 8 0 0016 0h-2a6 6 0 01-6 6z"/>
+                </svg>
+            </a>
+        </div>
+    </div>
+
+    <!-- Creative Writing Modal -->
+    <div id="writing-modal" class="modal" role="dialog" aria-labelledby="writing-modal-title" aria-hidden="true">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('writing-modal')" aria-label="Close modal">×</button>
+            <h2 id="writing-modal-title" class="text-3xl font-bold mb-4 font-display">Cultural Storytelling</h2>
+            <div class="bg-gradient-to-r from-amber-100 to-orange-100 p-6 rounded-lg mb-6">
+                <p class="text-lg text-gray-700">
+                    Exploring the intersection of technology and humanity through narratives that bridge cultures and inspire understanding.
+                </p>
+            </div>
+            <div class="grid md:grid-cols-1 gap-6 mb-6">
+                <div>
+                    <h3 class="text-xl font-semibold mb-3">Published Works</h3>
+                    <div class="space-y-4">
+                        <div class="border-l-4 border-indigo-500 pl-4">
+                            <h4 class="font-semibold text-lg">"The Digital Bridge"</h4>
+                            <p class="text-gray-600 text-sm mb-2">Short Story Collection | 2023</p>
+                            <p class="text-gray-700">Exploring how AI technology can preserve and celebrate cultural diversity rather than homogenize it.</p>
+                        </div>
+                        <div class="border-l-4 border-purple-500 pl-4">
+                            <h4 class="font-semibold text-lg">"Algorithms of Understanding"</h4>
+                            <p class="text-gray-600 text-sm mb-2">Technical Blog Series | 2022-2024</p>
+                            <p class="text-gray-700">Deep dives into the technical and philosophical aspects of building culturally-aware AI systems.</p>
+                        </div>
+                        <div class="border-l-4 border-green-500 pl-4">
+                            <h4 class="font-semibold text-lg">"Voices Across Cultures"</h4>
+                            <p class="text-gray-600 text-sm mb-2">Creative Non-fiction | 2023</p>
+                            <p class="text-gray-700">Personal essays on the journey of becoming a cultural bridge in the tech industry.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid md:grid-cols-2 gap-6 mb-6">
+                <div>
+                    <h3 class="text-xl font-semibold mb-3">Writing Themes</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li>• AI and cultural preservation</li>
+                        <li>• Cross-cultural technology ethics</li>
+                        <li>• Human-AI collaboration stories</li>
+                        <li>• Southeast Asian tech narratives</li>
+                        <li>• Future of digital identity</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-3">Recognition</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li>• Tech Culture Quarterly</li>
+                        <li>• Cultural Innovation Writing Award</li>
+                        <li>• Readers across platforms</li>
+                        <li>• International conference speaker</li>
+                        <li>• Multilingual publication reach</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="flex gap-3">
+                <a href="https://linktr.ee/ThanttEzekiel" target="_blank" rel="noopener noreferrer" class="btn">
+                    Read My Writing
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/>
+                    </svg>
+                </a>
+                <a href="#contact" class="btn btn-outline">
+                    Collaboration Inquiry
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <!-- AOS (Animate On Scroll) JS -->
+    <script src="https://cdn.rawgit.com/michalsnik/aos/2.3.1/dist/aos.js"></script>
+
+    <!-- Sweet Alert JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js')
+                .then((registration) => {
+                    console.log('ServiceWorker registration successful');
+                })
+                .catch((err) => {
+                    console.log('ServiceWorker registration failed: ', err);
+                });
+        }
+    </script>
+
+    <!-- Main JavaScript -->
+    <script>
+        // Enhanced loading simulation with progress
+        document.addEventListener('DOMContentLoaded', function() {
+            const loadingScreen = document.getElementById('loading-screen');
+            const progressBar = document.getElementById('loading-progress-bar');
+            const loadingText = document.getElementById('loading-text');
+            
+            const loadingSteps = [
+                { progress: 20, text: 'Loading AI Models...' },
+                { progress: 40, text: 'Initializing Cultural Database...' },
+                { progress: 60, text: 'Connecting Cross-Cultural Networks...' },
+                { progress: 80, text: 'Optimizing User Experience...' },
+                { progress: 100, text: 'Ready!' }
+            ];
+            
+            let currentStep = 0;
+            
+            const updateProgress = () => {
+                if (currentStep < loadingSteps.length) {
+                    const step = loadingSteps[currentStep];
+                    progressBar.style.width = step.progress + '%';
+                    loadingText.textContent = step.text;
+                    currentStep++;
+                    
+                    if (currentStep < loadingSteps.length) {
+                        setTimeout(updateProgress, 600);
+                    } else {
+                        setTimeout(() => {
+                            loadingScreen.classList.add('loaded');
+                        }, 500);
+                    }
+                }
+            };
+            
+            setTimeout(updateProgress, 300);
+        });
+
+        // Enhanced Mobile Menu
+        document.getElementById('mobile-menu-toggle').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const toggle = this;
+            
+            toggle.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            
+            // Update aria attributes
+            const expanded = toggle.classList.contains('active');
+            toggle.setAttribute('aria-expanded', expanded);
+        });
+
+        // Close mobile menu when clicking links
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mobile-menu').classList.remove('active');
+                document.getElementById('mobile-menu-toggle').classList.remove('active');
+                document.getElementById('mobile-menu-toggle').setAttribute('aria-expanded', 'false');
+            });
+        });
+
+        // Enhanced Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Enhanced Parallax Hero Background
+        window.addEventListener('scroll', function() {
+            const heroBg = document.getElementById('hero-bg');
+            const scrollTop = window.pageYOffset;
+            const rate = scrollTop * -0.5;
+            
+            if (heroBg) {
+                heroBg.style.transform = `translate3d(0, ${rate}px, 0)`;
+            }
+        });
+
+        // Enhanced Navigation Highlighting
+        function updateActiveNavLink() {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const scrollTop = window.pageYOffset + 100;
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+                const sectionId = section.getAttribute('id');
+
+                if (scrollTop >= sectionTop && scrollTop < sectionTop + sectionHeight) {
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        link.removeAttribute('aria-current');
+                        if (link.getAttribute('href') === `#${sectionId}`) {
+                            link.classList.add('active');
+                            link.setAttribute('aria-current', 'page');
+                        }
+                    });
+                }
+            });
+        }
+
+        window.addEventListener('scroll', updateActiveNavLink);
+
+        // Enhanced Statistics Counter Animation
+        function animateCounters() {
+            const counters = document.querySelectorAll('[data-count]');
+            
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-count'));
+                let count = 0;
+                const increment = target / 50;
+                
+                const updateCounter = () => {
+                    if (count < target) {
+                        count += increment;
+                        if (target >= 1000) {
+                            counter.textContent = Math.floor(count).toLocaleString() + '+';
+                        } else {
+                            counter.textContent = Math.floor(count) + '+';
+                        }
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        if (target >= 1000) {
+                            counter.textContent = target.toLocaleString() + '+';
+                        } else {
+                            counter.textContent = target + '+';
+                        }
+                    }
+                };
+                
+                updateCounter();
+            });
+        }
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                    
+                    // Trigger counter animation for stats
+                    if (entry.target.classList.contains('stat-card') && !entry.target.classList.contains('counted')) {
+                        entry.target.classList.add('counted');
+                        setTimeout(animateCounters, 200);
+                    }
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.card, .project-card, .testimonial-card, .stat-card').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Enhanced Carousel functionality
+        function initCarousel(carouselId, navId) {
+            const carousel = document.getElementById(carouselId);
+            const nav = document.getElementById(navId);
+            const items = carousel.querySelectorAll('.carousel-item');
+            const dots = nav.querySelectorAll('.carousel-dot');
+            
+            let currentSlide = 0;
+            
+            function updateCarousel() {
+                const translateX = -currentSlide * (100 / Math.min(items.length, 3));
+                carousel.style.transform = `translateX(${translateX}%)`;
+                
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentSlide);
+                });
+            }
+            
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    currentSlide = index;
+                    updateCarousel();
+                });
+            });
+            
+            // Auto-advance carousel
+            setInterval(() => {
+                currentSlide = (currentSlide + 1) % items.length;
+                updateCarousel();
+            }, 7000);
+            // Touch/swipe support for mobile
+            let startX = 0;
+            let endX = 0;
+            
+            carousel.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+            });
+            
+            carousel.addEventListener('touchend', (e) => {
+                endX = e.changedTouches[0].clientX;
+                handleSwipe();
+            });
+            
+            function handleSwipe() {
+                const threshold = 50;
+                const diff = startX - endX;
+                
+                if (Math.abs(diff) > threshold) {
+                    if (diff > 0) {
+                        // Swipe left - next slide
+                        currentSlide = (currentSlide + 1) % items.length;
+                    } else {
+                        // Swipe right - previous slide
+                        currentSlide = (currentSlide - 1 + items.length) % items.length;
+                    }
+                    updateCarousel();
+                }
+            }
+        }
+
+        // Initialize carousels
+        initCarousel('projects-carousel', 'carousel-nav');
+        initCarousel('testimonials-carousel', 'testimonials-nav');
+
+        // Enhanced Modal functionality
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.style.display = 'flex';
+                modal.setAttribute('aria-hidden', 'false');
+                document.body.style.overflow = 'hidden';
+                
+                // Focus management
+                const focusableElements = modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+                if (focusableElements.length > 0) {
+                    focusableElements[0].focus();
+                }
+                
+                setTimeout(() => {
+                    modal.classList.add('active');
+                }, 10);
+                
+                // Track modal open events
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'modal_open', {
+                        'modal_id': modalId,
+                        'event_category': 'engagement'
+                    });
+                }
+            }
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.remove('active');
+                modal.setAttribute('aria-hidden', 'true');
+                document.body.style.overflow = '';
+                
+                setTimeout(() => {
+                    modal.style.display = 'none';
+                }, 300);
+            }
+        }
+
+        // Close modal on outside click
+        document.querySelectorAll('.modal').forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closeModal(modal.id);
+                }
+            });
+        });
+
+        // Close modal on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                const activeModal = document.querySelector('.modal.active');
+                if (activeModal) {
+                    closeModal(activeModal.id);
+                }
+            }
+        });
+
+        // Enhanced Contact Form
+        document.getElementById('contact-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const submitButton = this.querySelector('button[type="submit"]');
+            const originalText = submitButton.innerHTML;
+            
+            // Show loading state
+            submitButton.innerHTML = `
+                <svg class="animate-spin" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2L12 6M12 18L12 22M4.93 4.93L7.76 7.76M16.24 16.24L19.07 19.07M2 12L6 12M18 12L22 12M4.93 19.07L7.76 16.24M16.24 7.76L19.07 4.93"/>
+                </svg>
+                Sending...
+            `;
+            submitButton.disabled = true;
+
+            try {
+                // Simulate form submission (replace with actual endpoint)
+                await new Promise(resolve => setTimeout(resolve, 2000));
+                
+                // Show success message
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Message Sent Successfully!',
+                    text: 'Thank you for reaching out. I\'ll get back to you within 24 hours.',
+                    confirmButtonColor: '#6366f1',
+                    confirmButtonText: 'Great!'
+                });
+                
+                // Reset form
+                this.reset();
+                
+                // Track form submission
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'form_submit', {
+                        'form_name': 'contact_form',
+                        'event_category': 'engagement'
+                    });
+                }
+                
+            } catch (error) {
+                // Show error message
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops! Something went wrong',
+                    text: 'Sorry, there was an issue sending your message. Please try again or contact me directly via email.',
+                    confirmButtonColor: '#6366f1',
+                    confirmButtonText: 'Try Again'
+                });
+            } finally {
+                // Restore button
+                submitButton.innerHTML = originalText;
+                submitButton.disabled = false;
+            }
+        });
+
+        // Enhanced Scroll to Top
+        const scrollToTopBtn = document.getElementById('scroll-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.classList.add('visible');
+            } else {
+                scrollToTopBtn.classList.remove('visible');
+            }
+        });
+
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Enhanced Smooth Scrolling for Navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                
+                if (target) {
+                    const headerHeight = document.querySelector('header').offsetHeight;
+                    const targetPosition = target.offsetTop - headerHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    const mobileToggle = document.getElementById('mobile-menu-toggle');
+                    if (mobileMenu.classList.contains('active')) {
+                        mobileMenu.classList.remove('active');
+                        mobileToggle.classList.remove('active');
+                        mobileToggle.setAttribute('aria-expanded', 'false');
+                    }
+                }
+            });
+        });
+
+        // Enhanced Lazy Loading for Images
+        function initLazyLoading() {
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        const src = img.getAttribute('data-src');
+                        
+                        if (src) {
+                            img.setAttribute('src', src);
+                            img.removeAttribute('data-src');
+                        }
+                        
+                        img.classList.add('loaded');
+                        observer.unobserve(img);
+                    }
+                });
+            });
+
+            document.querySelectorAll('.lazy-load').forEach(img => {
+                imageObserver.observe(img);
+            });
+        }
+
+        // Initialize AOS (Animate On Scroll)
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out-cubic',
+            once: true,
+            offset: 50
+        });
+
+        // Initialize lazy loading
+        initLazyLoading();
+
+        // Enhanced Error Handling
+        window.addEventListener('unhandledrejection', (event) => {
+            console.error('Unhandled promise rejection:', event.reason);
+            
+            // Optional: Send to monitoring service
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'exception', {
+                    'description': 'Unhandled promise rejection',
+                    'fatal': false
+                });
+            }
+        });
+
+        window.addEventListener('error', (event) => {
+            console.error('JavaScript error:', event.error);
+            
+            // Optional: Send to monitoring service
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'exception', {
+                    'description': event.error ? event.error.toString() : 'Unknown error',
+                    'fatal': false
+                });
+            }
+        });
+
+        // Enhanced Performance Monitoring
+        window.addEventListener('load', () => {
+            // Track page load time
+            if ('performance' in window && 'timing' in performance) {
+                const loadTime = performance.timing.loadEventEnd - performance.timing.navigationStart;
+                
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'timing_complete', {
+                        'name': 'page_load',
+                        'value': loadTime
+                    });
+                }
+            }
+            
+            // Track Core Web Vitals
+            if ('web-vitals' in window) {
+                // This would require the web-vitals library
+                // getCLS, getFID, getFCP, getLCP, getTTFB
+            }
+        });
+
+        // Enhanced Accessibility Features
+        document.addEventListener('keydown', (e) => {
+            // Skip to main content on Tab
+            if (e.key === 'Tab' && !e.shiftKey && document.activeElement === document.body) {
+                const mainContent = document.querySelector('main') || document.querySelector('#home');
+                if (mainContent) {
+                    mainContent.focus();
+                    e.preventDefault();
+                }
+            }
+        });
+
+        // Enhanced Dark Mode Support (if implemented)
+        function initThemeToggle() {
+            const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+            const currentTheme = localStorage.getItem('theme');
+            
+            if (currentTheme === 'dark' || (!currentTheme && prefersDarkScheme.matches)) {
+                document.documentElement.classList.add('dark');
+            }
+            
+            // Listen for theme preference changes
+            prefersDarkScheme.addEventListener('change', (e) => {
+                if (!localStorage.getItem('theme')) {
+                    if (e.matches) {
+                        document.documentElement.classList.add('dark');
+                    } else {
+                        document.documentElement.classList.remove('dark');
+                    }
+                }
+            });
+        }
+
+        // Initialize theme toggle (if dark mode is implemented)
+        // initThemeToggle();
+
+        // Enhanced Social Share Tracking
+        document.querySelectorAll('a[href^="https://"]').forEach(link => {
+            if (link.hostname !== window.location.hostname) {
+                link.addEventListener('click', () => {
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'click', {
+                            'event_category': 'outbound',
+                            'event_label': link.href,
+                            'transport_type': 'beacon'
+                        });
+                    }
+                });
+            }
+        });
+
+        // Enhanced Search Functionality (if implemented)
+        function initSearch() {
+            // This would implement search functionality
+            // for the portfolio content
+        }
+
+        // Enhanced Print Styles Handler
+        window.addEventListener('beforeprint', () => {
+            // Expand all collapsed content for printing
+            document.querySelectorAll('.modal').forEach(modal => {
+                modal.style.display = 'none';
+            });
+        });
+
+        // Enhanced Copy to Clipboard (for contact info)
+        function copyToClipboard(text, element) {
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(text).then(() => {
+                    showCopyFeedback(element);
+                });
+            } else {
+                // Fallback for older browsers
+                const textArea = document.createElement('textarea');
+                textArea.value = text;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                showCopyFeedback(element);
+            }
+        }
+
+        function showCopyFeedback(element) {
+            const originalText = element.textContent;
+            element.textContent = 'Copied!';
+            element.style.color = '#10b981';
+            
+            setTimeout(() => {
+                element.textContent = originalText;
+                element.style.color = '';
+            }, 2000);
+        }
+
+        // Add copy functionality to email link
+        const emailLink = document.querySelector('a[href^="mailto:"]');
+        if (emailLink) {
+            emailLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                const email = emailLink.href.replace('mailto:', '');
+                copyToClipboard(email, emailLink);
+            });
+        }
+
+        // Enhanced Analytics Event Tracking
+        function trackEvent(eventName, parameters = {}) {
+            if (typeof gtag !== 'undefined') {
+                gtag('event', eventName, parameters);
+            }
+        }
+
+        // Track section viewing
+        const sectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
+                    trackEvent('section_view', {
+                        'section_name': entry.target.id,
+                        'event_category': 'engagement'
+                    });
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('section[id]').forEach(section => {
+            sectionObserver.observe(section);
+        });
+
+        // Enhanced PWA Support
+        let deferredPrompt;
+
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            
+            // Show install button/banner if desired
+            // showInstallPromotion();
+        });
+
+        window.addEventListener('appinstalled', () => {
+            trackEvent('app_installed', {
+                'event_category': 'engagement'
+            });
+            deferredPrompt = null;
+        });
+
+        // Enhanced Offline Support Detection
+        window.addEventListener('online', () => {
+            console.log('Back online');
+            // Handle reconnection
+        });
+
+        window.addEventListener('offline', () => {
+            console.log('Gone offline');
+            // Handle offline state
+        });
+
+        // Enhanced Focus Management for Accessibility
+        let focusedElementBeforeModal;
+
+        function trapFocus(element) {
+            const focusableElements = element.querySelectorAll(
+                'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+            );
+            const firstFocusableElement = focusableElements[0];
+            const lastFocusableElement = focusableElements[focusableElements.length - 1];
+
+            element.addEventListener('keydown', (e) => {
+                if (e.key === 'Tab') {
+                    if (e.shiftKey) {
+                        if (document.activeElement === firstFocusableElement) {
+                            lastFocusableElement.focus();
+                            e.preventDefault();
+                        }
+                    } else {
+                        if (document.activeElement === lastFocusableElement) {
+                            firstFocusableElement.focus();
+                            e.preventDefault();
+                        }
+                    }
+                }
+            });
+        }
+
+        // Apply focus trap to modals
+        document.querySelectorAll('.modal').forEach(modal => {
+            trapFocus(modal);
+        });
+
+        // Enhanced Content Security
+        function sanitizeInput(str) {
+            const div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
+        }
+
+        // Enhanced Feature Detection
+        function detectFeatures() {
+            const features = {
+                webp: false,
+                avif: false,
+                intersectionObserver: 'IntersectionObserver' in window,
+                serviceWorker: 'serviceWorker' in navigator,
+                webShare: 'share' in navigator
+            };
+
+            // Test for WebP support
+            const webpTest = new Image();
+            webpTest.onload = () => features.webp = true;
+            webpTest.src = 'data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA';
+
+            return features;
+        }
+
+        const supportedFeatures = detectFeatures();
+        console.log('Supported features:', supportedFeatures);
+
+        // Log successful initialization
+        console.log('🚀 Cultural AI Portfolio initialized successfully');
+        console.log('🌟 Ready to showcase cross-cultural innovation');
+        
+        // Global functions for modal access
+        window.openModal = openModal;
+        window.closeModal = closeModal;
+    </script>
+
+    <!-- Service Worker -->
+    <script>
+        // Service Worker for PWA functionality
+        const swContent = `
+            const CACHE_NAME = 'cultural-ai-v1.0.0';
+            const urlsToCache = [
+                '/',
+                '/assets/css/main.css',
+                '/assets/js/main.js',
+                '/assets/images/hero-bg.jpg',
+                'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&display=swap',
+                'https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css',
+                'https://cdn.rawgit.com/michalsnik/aos/2.3.1/dist/aos.css',
+                'https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css'
+            ];
+
+            self.addEventListener('install', event => {
+                event.waitUntil(
+                    caches.open(CACHE_NAME)
+                        .then(cache => cache.addAll(urlsToCache))
+                );
+            });
+
+            self.addEventListener('fetch', event => {
+                event.respondWith(
+                    caches.match(event.request)
+                        .then(response => {
+                            if (response) {
+                                return response;
+                            }
+                            return fetch(event.request);
+                        }
+                    )
+                );
+            });
+
+            self.addEventListener('activate', event => {
+                event.waitUntil(
+                    caches.keys().then(cacheNames => {
+                        return Promise.all(
+                            cacheNames.map(cacheName => {
+                                if (cacheName !== CACHE_NAME) {
+                                    return caches.delete(cacheName);
+                                }
+                            })
+                        );
+                    })
+                );
+            });
+        `;
+
+        // Create and register service worker
+        if ('serviceWorker' in navigator) {
+            const blob = new Blob([swContent], { type: 'text/javascript' });
+            const swUrl = URL.createObjectURL(blob);
+            
+            navigator.serviceWorker.register(swUrl)
+                .then(registration => {
+                    console.log('ServiceWorker registration successful');
+                })
+                .catch(err => {
+                    console.log('ServiceWorker registration failed: ', err);
+                });
+        }
+    </script>
+
+    <!-- Web App Manifest -->
+    <script>
+        const manifestContent = {
+            "name": "Thanatsitt Santisamranwilai - Cultural AI Innovator",
+            "short_name": "Cultural AI Portfolio",
+            "description": "Leading Cultural AI Innovator specializing in cross-cultural technology solutions",
+            "start_url": "/",
+            "display": "standalone",
+            "background_color": "#6366f1",
+            "theme_color": "#6366f1",
+            "orientation": "portrait-primary",
+            "icons": [
+                {
+                    "src": "/favicon-192x192.png",
+                    "sizes": "192x192",
+                    "type": "image/png"
+                },
+                {
+                    "src": "/favicon-512x512.png",
+                    "sizes": "512x512",
+                    "type": "image/png"
+                }
+            ],
+            "categories": ["technology", "education", "portfolio"],
+            "lang": "en",
+            "dir": "ltr"
+        };
+
+        // Create manifest blob and link
+        const manifestBlob = new Blob([JSON.stringify(manifestContent)], { type: 'application/json' });
+        const manifestUrl = URL.createObjectURL(manifestBlob);
+        const manifestLink = document.createElement('link');
+        manifestLink.rel = 'manifest';
+        manifestLink.href = manifestUrl;
+        document.head.appendChild(manifestLink);
+    </script>
+
+    <!-- Schema Markup for Portfolio Items -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "Cultural AI Innovation Projects",
+        "numberOfItems": 4,
+        "itemListElement": [
+            {
+                "@type": "CreativeWork",
+                "position": 1,
+                "name": "Siam-Blessing VTuber AI",
+                "description": "Pioneering AI-driven VTuber technology with cultural awareness",
+                "creator": {
+                    "@type": "Person",
+                    "name": "Thanatsitt Santisamranwilai"
+                },
+                "dateCreated": "2023",
+                "keywords": "AI, VTuber, Cultural Technology, Machine Learning"
+            },
+            {
+                "@type": "CreativeWork",
+                "position": 2,
+                "name": "Cross-Border E-commerce AI",
+                "description": "Revolutionary blockchain-based e-commerce platform with AI-powered cultural adaptation",
+                "creator": {
+                    "@type": "Person",
+                    "name": "Thanatsitt Santisamranwilai"
+                },
+                "dateCreated": "2023",
+                "keywords": "Blockchain, E-commerce, AI, Cultural Adaptation"
+            },
+            {
+                "@type": "CreativeWork",
+                "position": 3,
+                "name": "Cultural Translation AI",
+                "description": "Advanced multilingual AI system that preserves cultural context",
+                "creator": {
+                    "@type": "Person",
+                    "name": "Thanatsitt Santisamranwilai"
+                },
+                "dateCreated": "2022",
+                "keywords": "NLP, Machine Translation, Cultural Analysis, Multilingual AI"
+            },
+            {
+                "@type": "CreativeWork",
+                "position": 4,
+                "name": "Smart Real Estate AI",
+                "description": "Intelligent property matching system with cultural preference analysis",
+                "creator": {
+                    "@type": "Person",
+                    "name": "Thanatsitt Santisamranwilai"
+                },
+                "dateCreated": "2023",
+                "keywords": "PropTech, AI, Cultural Insights, Predictive Analytics"
+            }
+        ]
+    }
+    </script>
+
+    <!-- Performance Monitoring -->
+    <script>
+        // Web Vitals monitoring
+        function measureWebVitals() {
+            // This would integrate with web-vitals library
+            // to measure Core Web Vitals metrics
+        }
+
+        // Resource timing monitoring
+        window.addEventListener('load', () => {
+            if ('performance' in window && 'timing' in performance) {
+                const timing = performance.timing;
+                const metrics = {
+                    dns: timing.domainLookupEnd - timing.domainLookupStart,
+                    tcp: timing.connectEnd - timing.connectStart,
+                    ttfb: timing.responseStart - timing.requestStart,
+                    download: timing.responseEnd - timing.responseStart,
+                    dom: timing.domContentLoadedEventEnd - timing.domLoading,
+                    load: timing.loadEventEnd - timing.loadEventStart
+                };
+                
+                console.log('Performance metrics:', metrics);
+            }
+        });
+        // Modified to work perfectly with your hero structure
+function createRhythmShiningStars() {
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    
+    canvas.className = 'rhythm-stars-canvas';
+    canvas.style.cssText = `
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        pointer-events: none !important;
+        z-index: 1 !important;
+        mix-blend-mode: screen;
+        opacity: 0.8;
+    `;
+    
+    // Target your hero section specifically
+    const heroSection = document.querySelector('.hero');
+    if (heroSection) {
+        heroSection.appendChild(canvas);
+    }
+    
+    function resizeCanvas() {
+        const rect = heroSection.getBoundingClientRect();
+        canvas.width = rect.width;
+        canvas.height = rect.height;
+    }
+    resizeCanvas();
+    
+    const stars = [];
+    const rhythmBeats = [];
+    let time = 0;
+    let beatTime = 0;
+    
+    // Optimized color palettes that work well with your space background
+    const iridescent = [
+        ['#6366f1', '#8b5cf6', '#a855f7', '#3b82f6'], // Your brand colors
+        ['#60a5fa', '#a78bfa', '#f472b6', '#fb7185'], // Complementary
+        ['#34d399', '#60a5fa', '#a78bfa', '#f472b6'], // Accent colors
+        ['#fbbf24', '#f59e0b', '#d97706', '#92400e'], // Warm accents
+    ];
+    
+    function createStar() {
+        const palette = iridescent[Math.floor(Math.random() * iridescent.length)];
+        return {
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            size: Math.random() * 12 + 2, // Slightly smaller for better readability
+            baseSize: 0,
+            angle: Math.random() * Math.PI * 2,
+            speed: Math.random() * 0.015 + 0.005,
+            colors: palette,
+            colorIndex: 0,
+            opacity: Math.random() * 0.6 + 0.3, // Reduced max opacity
+            shimmerPhase: Math.random() * Math.PI * 2,
+            rhythmOffset: Math.random() * Math.PI * 2,
+            twinkleSpeed: Math.random() * 0.08 + 0.02,
+            drift: {
+                x: (Math.random() - 0.5) * 0.2,
+                y: (Math.random() - 0.5) * 0.2
+            }
+        };
+    }
+    
+    // Create fewer stars for better performance and readability
+    for (let i = 0; i < 40; i++) {
+        const star = createStar();
+        star.baseSize = star.size;
+        stars.push(star);
+    }
+    
+    function drawStar(star) {
+        const x = star.x;
+        const y = star.y;
+        const size = star.size;
+        
+        const gradient = ctx.createRadialGradient(x, y, 0, x, y, size * 2.5);
+        const color1 = star.colors[Math.floor(star.colorIndex) % star.colors.length];
+        const color2 = star.colors[Math.floor(star.colorIndex + 1) % star.colors.length];
+        
+        gradient.addColorStop(0, color1 + 'dd');
+        gradient.addColorStop(0.4, color2 + '88');
+        gradient.addColorStop(1, 'transparent');
+        
+        ctx.save();
+        ctx.translate(x, y);
+        ctx.rotate(star.angle);
+        ctx.globalAlpha = star.opacity;
+        
+        // Outer glow
+        ctx.fillStyle = gradient;
+        ctx.beginPath();
+        ctx.arc(0, 0, size * 2, 0, Math.PI * 2);
+        ctx.fill();
+        
+        // Main star
+        ctx.fillStyle = color1;
+        ctx.shadowBlur = 12;
+        ctx.shadowColor = color2;
+        ctx.beginPath();
+        
+        // 6-pointed star for cleaner look
+        for (let i = 0; i < 12; i++) {
+            const radius = i % 2 === 0 ? size : size * 0.4;
+            const angle = (i / 12) * Math.PI * 2;
+            const px = Math.cos(angle) * radius;
+            const py = Math.sin(angle) * radius;
+            
+            if (i === 0) ctx.moveTo(px, py);
+            else ctx.lineTo(px, py);
+        }
+        ctx.closePath();
+        ctx.fill();
+        
+        // Center sparkle
+        ctx.fillStyle = '#ffffff';
+        ctx.globalAlpha = star.opacity * 0.9;
+        ctx.beginPath();
+        ctx.arc(0, 0, size * 0.15, 0, Math.PI * 2);
+        ctx.fill();
+        
+        ctx.restore();
+    }
+    
+    function createBeat() {
+        rhythmBeats.push({
+            time: beatTime,
+            intensity: Math.random() * 0.4 + 0.3, // Reduced intensity
+            duration: 50 + Math.random() * 30
+        });
+        
+        if (rhythmBeats.length > 6) {
+            rhythmBeats.shift();
+        }
+    }
+    
+    function updateStarRhythm(star) {
+        let rhythmIntensity = 0;
+        
+        rhythmBeats.forEach(beat => {
+            const age = beatTime - beat.time;
+            if (age >= 0 && age < beat.duration) {
+                const influence = Math.exp(-age / 15) * beat.intensity;
+                rhythmIntensity += influence;
+            }
+        });
+        
+        const rhythmPulse = Math.sin(beatTime * 0.08 + star.rhythmOffset) * rhythmIntensity;
+        star.size = star.baseSize * (1 + rhythmPulse * 0.25);
+        
+        star.colorIndex += (0.015 + rhythmIntensity * 0.02);
+        
+        const shimmer = Math.sin(time * star.twinkleSpeed + star.shimmerPhase);
+        star.opacity = (0.3 + shimmer * 0.25) * (0.7 + rhythmIntensity * 0.3);
+        
+        star.angle += star.speed * (1 + rhythmIntensity * 0.5);
+        
+        star.x += star.drift.x;
+        star.y += star.drift.y;
+        
+        // Boundary checks
+        if (star.x < 0 || star.x > canvas.width) {
+            star.drift.x *= -1;
+            star.x = Math.max(0, Math.min(canvas.width, star.x));
+        }
+        if (star.y < 0 || star.y > canvas.height) {
+            star.drift.y *= -1;
+            star.y = Math.max(0, Math.min(canvas.height, star.y));
+        }
+    }
+    
+    function animate() {
+        time += 1;
+        beatTime += 1;
+        
+        if (Math.random() < 0.02) {
+            createBeat();
+        }
+        
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.06)'; // Slight trail
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        
+        stars.forEach(star => {
+            updateStarRhythm(star);
+            drawStar(star);
+        });
+        
+        requestAnimationFrame(animate);
+    }
+    
+    // Gentle mouse interaction
+    window.addEventListener('mousemove', throttle((e) => {
+        if (Math.random() < 0.05) {
+            createBeat();
+        }
+    }, 200));
+    
+    window.addEventListener('resize', resizeCanvas);
+    animate();
+}
+
+// Throttle function for performance
+function throttle(func, limit) {
+    let inThrottle;
+    return function() {
+        const args = arguments;
+        const context = this;
+        if (!inThrottle) {
+            func.apply(context, args);
+            inThrottle = true;
+            setTimeout(() => inThrottle = false, limit);
+        }
+    }
+}
+
+// Initialize after DOM loads
+document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(createRhythmShiningStars, 100);
+});
+
+    </script>
+    function createParticleSystem() {
+    // Scene setup
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ 
+        alpha: true, 
+        antialias: true 
+    });
+    
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setClearColor(0x000000, 0); // Transparent background
+    
+    // Add canvas to hero background
+    const canvas = renderer.domElement;
+    canvas.className = 'particle-canvas';
+    canvas.style.position = 'absolute';
+    canvas.style.top = '0';
+    canvas.style.left = '0';
+    canvas.style.width = '100%';
+    canvas.style.height = '100%';
+    canvas.style.pointerEvents = 'none';
+    canvas.style.zIndex = '1';
+    
+    const heroSection = document.querySelector('.hero-bg');
+    if (heroSection) {
+        heroSection.appendChild(canvas);
+    }
+
+    // Particle system arrays
+    const particles = [];
+    const connections = [];
+    const mousePosition = new THREE.Vector2();
+    
+    // AI-themed geometric shapes
+    const geometries = [
+        new THREE.SphereGeometry(0.5, 8, 8),
+        new THREE.BoxGeometry(0.8, 0.8, 0.8),
+        new THREE.OctahedronGeometry(0.6),
+        new THREE.TetrahedronGeometry(0.7),
+        new THREE.ConeGeometry(0.5, 1, 6)
+    ];
+
+    // Materials with AI theme colors
+    const materials = [
+        new THREE.MeshBasicMaterial({ 
+            color: 0x6366f1, 
+            transparent: true, 
+            opacity: 0.8 
+        }),
+        new THREE.MeshBasicMaterial({ 
+            color: 0x8b5cf6, 
+            transparent: true, 
+            opacity: 0.7 
+        }),
+        new THREE.MeshBasicMaterial({ 
+            color: 0xa855f7, 
+            transparent: true, 
+            opacity: 0.6 
+        }),
+        new THREE.MeshBasicMaterial({ 
+            color: 0x3b82f6, 
+            transparent: true, 
+            opacity: 0.9 
+        })
+    ];
+
+    // Create particles
+    function createParticles() {
+        for (let i = 0; i < 50; i++) {
+            const geometry = geometries[Math.floor(Math.random() * geometries.length)];
+            const material = materials[Math.floor(Math.random() * materials.length)].clone();
+            const particle = new THREE.Mesh(geometry, material);
+            
+            // Random position
+            particle.position.x = (Math.random() - 0.5) * 20;
+            particle.position.y = (Math.random() - 0.5) * 20;
+            particle.position.z = (Math.random() - 0.5) * 20;
+            
+            // Random rotation speed
+            particle.rotationSpeed = {
+                x: (Math.random() - 0.5) * 0.02,
+                y: (Math.random() - 0.5) * 0.02,
+                z: (Math.random() - 0.5) * 0.02
+            };
+            
+            // Random float speed
+            particle.floatSpeed = {
+                x: (Math.random() - 0.5) * 0.01,
+                y: (Math.random() - 0.5) * 0.01,
+                z: (Math.random() - 0.5) * 0.01
+            };
+            
+            // Store original position for mouse interaction
+            particle.originalPosition = particle.position.clone();
+            
+            scene.add(particle);
+            particles.push(particle);
+        }
+    }
+
+    // Create connections between nearby particles
+    function createConnections() {
+        const connectionMaterial = new THREE.LineBasicMaterial({
+            color: 0x6366f1,
+            transparent: true,
+            opacity: 0.3
+        });
+
+        for (let i = 0; i < particles.length; i++) {
+            for (let j = i + 1; j < particles.length; j++) {
+                const distance = particles[i].position.distanceTo(particles[j].position);
+                
+                if (distance < 5) {
+                    const geometry = new THREE.BufferGeometry().setFromPoints([
+                        particles[i].position,
+                        particles[j].position
+                    ]);
+                    
+                    const line = new THREE.Line(geometry, connectionMaterial);
+                    scene.add(line);
+                    connections.push({
+                        line: line,
+                        particleA: particles[i],
+                        particleB: particles[j],
+                        opacity: 0.3 - (distance / 5) * 0.3
+                    });
+                }
+            }
+        }
+    }
+
+    // Mouse interaction
+    function onMouseMove(event) {
+        mousePosition.x = (event.clientX / window.innerWidth) * 2 - 1;
+        mousePosition.y = -(event.clientY / window.innerHeight) * 2 + 1;
+        
+        // Convert mouse position to 3D world coordinates
+        const vector = new THREE.Vector3(mousePosition.x, mousePosition.y, 0.5);
+        vector.unproject(camera);
+        const dir = vector.sub(camera.position).normalize();
+        const distance = -camera.position.z / dir.z;
+        const pos = camera.position.clone().add(dir.multiplyScalar(distance));
+        
+        // Attract particles to mouse
+        particles.forEach(particle => {
+            const mouseDistance = particle.position.distanceTo(pos);
+            if (mouseDistance < 8) {
+                const force = 0.1 * (1 - mouseDistance / 8);
+                const direction = pos.clone().sub(particle.position).normalize();
+                particle.position.add(direction.multiplyScalar(force));
+                
+                // Increase opacity when near mouse
+                particle.material.opacity = Math.min(1, particle.material.opacity + 0.02);
+            } else {
+                // Return to original position
+                particle.position.lerp(particle.originalPosition, 0.02);
+                // Fade back to original opacity
+                particle.material.opacity *= 0.99;
+            }
+        });
+    }
+
+    // Animation loop
+    function animate() {
+        requestAnimationFrame(animate);
+        
+        // Rotate and float particles
+        particles.forEach(particle => {
+            particle.rotation.x += particle.rotationSpeed.x;
+            particle.rotation.y += particle.rotationSpeed.y;
+            particle.rotation.z += particle.rotationSpeed.z;
+            
+            // Subtle floating motion
+            particle.originalPosition.x += particle.floatSpeed.x;
+            particle.originalPosition.y += particle.floatSpeed.y;
+            
+            // Bounce off boundaries
+            if (particle.originalPosition.x > 10) particle.floatSpeed.x *= -1;
+            if (particle.originalPosition.x < -10) particle.floatSpeed.x *= -1;
+            if (particle.originalPosition.y > 10) particle.floatSpeed.y *= -1;
+            if (particle.originalPosition.y < -10) particle.floatSpeed.y *= -1;
+        });
+        
+        // Update connections
+        connections.forEach(connection => {
+            const distance = connection.particleA.position.distanceTo(connection.particleB.position);
+            
+            if (distance < 8) {
+                // Update line geometry
+                connection.line.geometry.setFromPoints([
+                    connection.particleA.position,
+                    connection.particleB.position
+                ]);
+                
+                // Update opacity based on distance
+                const opacity = 0.5 - (distance / 8) * 0.5;
+                connection.line.material.opacity = opacity;
+                connection.line.visible = true;
+            } else {
+                connection.line.visible = false;
+            }
+        });
+        
+        // Add pulsing effect
+        const time = Date.now() * 0.001;
+        particles.forEach((particle, index) => {
+            const pulseSpeed = 1 + index * 0.1;
+            const pulse = Math.sin(time * pulseSpeed) * 0.1 + 1;
+            particle.scale.setScalar(pulse);
+        });
+        
+        renderer.render(scene, camera);
+    }
+
+    // Initialize system
+    createParticles();
+    createConnections();
+    
+    // Set camera position
+    camera.position.z = 15;
+    
+    // Event listeners
+    window.addEventListener('mousemove', onMouseMove);
+    
+    // Handle window resize
+    window.addEventListener('resize', () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+    
+    // Start animation
+    animate();
+    
+    // Optional: Add performance monitoring
+    console.log('🚀 AI Particle System Initialized');
+    console.log(`📊 Particles: ${particles.length}`);
+    console.log(`🔗 Connections: ${connections.length}`);
+}
+
+// Initialize when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    // Small delay to ensure hero section is rendered
+    setTimeout(createParticleSystem, 100);
+});
+<!-- Add this before your closing </body> tag -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+// Your particle system code will go here
+</script>
+
 </body>
 </html>
